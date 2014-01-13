@@ -108,7 +108,7 @@ public class BarManager implements Listener {
     private void sendDragon(FakeDragon dragon, Player player) {
 	Object metaPacket = dragon.getMetaPacket(dragon.getWatcher());
 	Object teleportPacket = dragon.getTeleportPacket(player.getLocation()
-		.add(0, -200, 0));
+		.add(0, -100, 0));
 
 	Util.sendPacket(player, metaPacket);
 	Util.sendPacket(player, teleportPacket);
