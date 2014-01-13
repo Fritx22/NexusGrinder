@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\.idea\libraries\Maven__org_bukkit_bukkit_1_6_4_R0_1_SNAPSHOT.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Annihilation.iml" afterPath="$PROJECT_DIR$/Annihilation.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -69,10 +69,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="35" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.39152542" vertical-offset="602" max-vertical-offset="2567">
+            <state line="49" column="35" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="2567">
               <folding />
             </state>
           </provider>
@@ -81,7 +81,7 @@
       <file leaf-file-name="PhaseTimer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="8" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="2635">
+            <state line="51" column="76" selection-start="1572" selection-end="1572" vertical-scroll-proportion="0.0" vertical-offset="564" max-vertical-offset="2669">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#825#901#0" expanded="true" />
@@ -94,7 +94,25 @@
       <file leaf-file-name="PlayerMeta.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PlayerMeta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="16" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="935">
+            <state line="28" column="0" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WandListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/WandListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="13" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResourceListener.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ResourceListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="13" selection-start="683" selection-end="683" vertical-scroll-proportion="-0.31694916" vertical-offset="255" max-vertical-offset="2975">
               <folding />
             </state>
           </provider>
@@ -104,7 +122,9 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/SoundUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="9" column="13" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,7 +133,12 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderChestListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="23" column="13" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#822#850#0" expanded="false" />
+                <element signature="e#915#934#0" expanded="false" />
+                <element signature="e#2282#2293#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,8 +157,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/BarManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java" />
       </list>
     </option>
   </component>
@@ -145,7 +170,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -402,7 +427,67 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="bar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -569,7 +654,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -679,15 +764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ResourceListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="3264">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="149" column="17" selection-start="5086" selection-end="5086" vertical-scroll-proportion="0.0" vertical-offset="2057" max-vertical-offset="7718">
@@ -730,9 +806,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/SoundUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderChestListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="13" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#822#850#0" expanded="false" />
+            <element signature="e#915#934#0" expanded="false" />
+            <element signature="e#2282#2293#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="35" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.0" vertical-offset="602" max-vertical-offset="2567">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="8" selection-start="1387" selection-end="1387" vertical-scroll-proportion="0.0" vertical-offset="666" max-vertical-offset="2635">
+        <state line="51" column="76" selection-start="1572" selection-end="1572" vertical-scroll-proportion="0.0" vertical-offset="564" max-vertical-offset="2669">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#825#901#0" expanded="true" />
@@ -743,28 +847,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PlayerMeta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="532" selection-end="532" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="935">
+        <state line="28" column="0" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/SoundUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/WandListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+        <state line="23" column="13" selection-start="695" selection-end="695" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1819">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderChestListener.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ResourceListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="13" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="35" selection-start="1827" selection-end="1827" vertical-scroll-proportion="0.39152542" vertical-offset="602" max-vertical-offset="2567">
+        <state line="23" column="13" selection-start="683" selection-end="683" vertical-scroll-proportion="-0.31694916" vertical-offset="255" max-vertical-offset="2975">
           <folding />
         </state>
       </provider>
