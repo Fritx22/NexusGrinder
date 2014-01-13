@@ -1,39 +1,44 @@
 package net.coasterman10.Annihilation.listeners;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import net.coasterman10.Annihilation.Annihilation;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 
 public class WorldListener implements Listener {
-    public WorldListener(Annihilation plugin) {
-	plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
+	private static final Set<EntityType> hostileEntityTypes = new HashSet<EntityType>() {
+		private static final long serialVersionUID = 42L;
+		{
+			add(EntityType.SKELETON);
+			add(EntityType.CREEPER);
+			add(EntityType.ZOMBIE);
+			add(EntityType.SPIDER);
+			add(EntityType.BAT);
+			add(EntityType.ENDERMAN);
+			add(EntityType.SLIME);
+			add(EntityType.WITCH);
+		}
+	};
 
-    @EventHandler
-    public void onWaterFlow(BlockFromToEvent e) {
-	if (isEmptyColumn(e.getToBlock().getLocation()))
-	    e.setCancelled(true);
-    }
-
-    @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e) {
-	if (isEmptyColumn(e.getBlock().getLocation()))
-	    e.setCancelled(true);
-    }
-
-    private boolean isEmptyColumn(Location loc) {
-	boolean hasBlock = false;
-	Location test = loc.clone();
-	for (int y = 0; y < loc.getWorld().getMaxHeight(); y++) {
-	    test.setY(y);
-	    if (test.getBlock().getType() != Material.AIR)
-		hasBlock = true;
+	@EventHandler
+	public void onWaterFlow(BlockFromToEvent e) {
+		if (Annihilation.Util.isEmptyColumn(e.getToBlock().getLocation()))
+			e.setCancelled(true);
 	}
-	return !hasBlock;
-    }
+
+	@EventHandler
+	public void onSpawn(CreatureSpawnEvent e) {
+		if (isHostile(e.getEntityType()))
+			e.setCancelled(true);
+	}
+
+	private boolean isHostile(EntityType entityType) {
+		return hostileEntityTypes.contains(entityType);
+	}
 }

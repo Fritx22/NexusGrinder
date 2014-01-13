@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.teams.TeamName;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,12 +17,9 @@ public class MapManager {
 	private GameMap currentMap = null;
 	private Location lobbySpawn;
 	private MapLoader mapLoader;
-	private Configuration config;
-
-	public MapManager(Annihilation plugin, Configuration config) {
-		mapLoader = new MapLoader(plugin.getLogger(), plugin.getDataFolder());
-		this.config = config;
-
+	
+	public MapManager(Annihilation plugin, MapLoader loader, Configuration config) {
+		mapLoader = loader;
 		for (String s : config.getKeys(false)) {
 			if (!s.equalsIgnoreCase("lobby"))
 				maps.add(s);
@@ -53,8 +49,7 @@ public class MapManager {
 	}
 
 	public boolean selectMap(String mapName) {
-		currentMap = new GameMap(mapLoader,
-				config.getConfigurationSection(mapName));
+		currentMap = new GameMap(mapLoader);
 		return currentMap.loadIntoGame(mapName);
 	}
 
@@ -66,14 +61,6 @@ public class MapManager {
 		return currentMap;
 	}
 
-	public Location getSpawnPoint(TeamName teamName) {
-		return getCurrentMap().getSpawnPoint(teamName);
-	}
-
-	public Location getNexus(TeamName team) {
-		return currentMap.getNexusLocation(team);
-	}
-
 	public Location getLobbySpawnPoint() {
 		return lobbySpawn;
 	}
@@ -82,5 +69,9 @@ public class MapManager {
 		LinkedList<String> shuffledMaps = new LinkedList<String>(maps);
 		Collections.shuffle(shuffledMaps);
 		return shuffledMaps.subList(0, Math.min(3, shuffledMaps.size()));
+	}
+	
+	public void reset() {
+		currentMap = null;
 	}
 }

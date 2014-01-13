@@ -6,8 +6,10 @@ import java.util.Random;
 import java.util.Set;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.maps.GameMap;
+import net.coasterman10.Annihilation.Kit;
+import net.coasterman10.Annihilation.PlayerMeta;
 
+import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -20,137 +22,171 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class ResourceListener implements Listener {
-    private static class Resource {
-	public final Material drop;
-	public final Integer xp;
-	public final Integer delay;
+	private class Resource {
+		public final Material drop;
+		public final Integer xp;
+		public final Integer delay;
 
-	public Resource(Material drop, Integer xp, Integer delay) {
-	    this.drop = drop;
-	    this.xp = xp;
-	    this.delay = delay;
-	}
-    }
-
-    private final Annihilation plugin;
-    private final HashSet<Location> queue = new HashSet<Location>();
-    private final static HashMap<Material, Resource> resources = new HashMap<Material, Resource>();
-
-    static {
-	resources.put(Material.COAL_ORE, new Resource(Material.COAL, 8, 10));
-	resources.put(Material.IRON_ORE,
-		new Resource(Material.IRON_ORE, 10, 20));
-	resources.put(Material.GOLD_ORE,
-		new Resource(Material.GOLD_ORE, 10, 20));
-	resources.put(Material.DIAMOND_ORE, new Resource(Material.DIAMOND, 12,
-		30));
-	resources.put(Material.EMERALD_ORE, new Resource(Material.EMERALD, 18,
-		40));
-	resources.put(Material.REDSTONE_ORE, new Resource(Material.REDSTONE,
-		10, 20));
-	resources.put(Material.GLOWING_REDSTONE_ORE, new Resource(
-		Material.REDSTONE, 10, 20));
-	resources.put(Material.LOG, new Resource(Material.LOG, 2, 10));
-	resources.put(Material.GRAVEL, new Resource(null, 2, 20));
-	resources
-		.put(Material.MELON_BLOCK, new Resource(Material.MELON, 0, 10));
-    }
-
-    public ResourceListener(Annihilation plugin) {
-	this.plugin = plugin;
-	plugin.getServer().getPluginManager().registerEvents(this, plugin);
-    }
-
-    @EventHandler(ignoreCancelled = false)
-    public void onResourceBreak(BlockBreakEvent e) {
-	final Material material = e.getBlock().getType();
-	if (resources.containsKey(material)) {
-	    Player player = e.getPlayer();
-	    if (material.equals(Material.GRAVEL)) {
-		Random rand = new Random();
-		ItemStack arrows = new ItemStack(Material.ARROW, Math.max(
-			rand.nextInt(5) - 2, 0));
-		ItemStack flint = new ItemStack(Material.FLINT, Math.max(
-			rand.nextInt(4) - 2, 0));
-		ItemStack feathers = new ItemStack(Material.FEATHER, Math.max(
-			rand.nextInt(4) - 2, 0));
-		ItemStack string = new ItemStack(Material.STRING, Math.max(
-			rand.nextInt(5) - 3, 0));
-		ItemStack bones = new ItemStack(Material.BONE, Math.max(
-			rand.nextInt(4) - 2, 0));
-		ItemStack[] stacks = new ItemStack[] { arrows, flint, feathers,
-			string, bones };
-		for (ItemStack stack : stacks)
-		    if (stack.getAmount() > 0)
-			player.getInventory().addItem(stack);
-	    } else {
-		int qty = 1;
-		if (material.equals(Material.REDSTONE_ORE)
-			|| material.equals(Material.GLOWING_REDSTONE_ORE)) {
-		    qty = 4 + (new Random().nextBoolean() ? 1 : 0);
+		public Resource(Material drop, Integer xp, Integer delay) {
+			this.drop = drop;
+			this.xp = xp;
+			this.delay = delay;
 		}
-		if (material.equals(Material.MELON_BLOCK)) {
-		    qty = 3 + new Random().nextInt(4);
+	}
+
+	private final Annihilation plugin;
+	private final HashMap<Material, Resource> resources = new HashMap<Material, Resource>();
+	private final HashSet<Location> queue = new HashSet<Location>();
+	private final Set<Location> diamonds = new HashSet<Location>();
+	private Random rand = new Random();
+
+	public ResourceListener(Annihilation plugin) {
+		this.plugin = plugin;
+		
+		addResource(Material.COAL_ORE, 8, 10);
+		addResource(Material.IRON_ORE, 10, 20);
+		addResource(Material.GOLD_ORE, 10, 20);
+		addResource(Material.DIAMOND_ORE, 12, 30);
+		addResource(Material.EMERALD_ORE, 18, 40);
+		addResource(Material.REDSTONE_ORE, 10, 20);
+		addResource(Material.GLOWING_REDSTONE_ORE, 10, 20);
+		addResource(Material.LOG, 2, 10);
+		addResource(Material.GRAVEL, 2, 20);
+		addResource(Material.MELON_BLOCK, 0, 10);
+	}
+
+	@SuppressWarnings("deprecation")
+	@EventHandler(ignoreCancelled = false)
+	public void onResourceBreak(BlockBreakEvent e) {
+		if (resources.containsKey(e.getBlock().getType())) {
+			e.setCancelled(true);
+			breakResource(e.getPlayer(), e.getBlock());
+			e.getBlock().getWorld().playEffect(e.getBlock().getLocation(), Effect.STEP_SOUND, e.getBlock().getTypeId());
+		} else if (queue.contains(e.getBlock().getLocation())) {
+			e.setCancelled(true);
 		}
-		player.getInventory().addItem(
-			new ItemStack(resources.get(material).drop, qty));
-	    }
-	    e.setCancelled(true);
-	    player.giveExp(resources.get(material).xp);
-	    if (resources.get(material).xp > 0)
-		player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1.0F,
-			(new Random().nextFloat() * 0.2F) + 0.9F);
-	    queueRespawn(material, e.getBlock());
-	} else if (queue.contains(e.getBlock().getLocation())) {
-	    e.setCancelled(true);
 	}
-    }
 
-    @EventHandler(ignoreCancelled = false)
-    public void placeResource(BlockPlaceEvent e) {
-	if (resources.containsKey(e.getBlock().getType())) {
-	    e.setCancelled(true);
+	@EventHandler(ignoreCancelled = false)
+	public void placeResource(BlockPlaceEvent e) {
+		if (resources.containsKey(e.getBlock().getType())) {
+			e.setCancelled(true);
+		}
 	}
-    }
 
-    public void queueDiamondSpawn() {
-	GameMap map = plugin.getMapManager().getCurrentMap();
-	if (map == null)
-	    return;
+	public void loadDiamonds(Set<Location> diamondLocations) {
+		for (Location loc : diamondLocations) {
+			if (loc.getBlock().getType() == Material.DIAMOND_ORE)
+				loc.getBlock().setType(Material.AIR);
+			diamonds.add(loc);
+		}
+	}
 
-	Set<Location> diamondLocations = map.getDiamondLocations();
-	if (diamondLocations == null)
-	    return;
-	for (Location loc : diamondLocations) {
-	    final Block block = loc.getBlock();
-	    if (block.getType().equals(Material.DIAMOND_ORE)) {
-		block.setType(Material.AIR);
+	public void spawnDiamonds() {
+		for (Location loc : diamonds)
+			loc.getBlock().setType(Material.DIAMOND_ORE);
+	}
+
+	private void breakResource(Player player, Block block) {
+		Material type = block.getType();
+		Kit kit = PlayerMeta.getMeta(player).getKit();
+		Resource resource = resources.get(type);
+
+		if (type.equals(Material.GRAVEL)) {
+			ItemStack[] drops = getGravelDrops();
+			for (ItemStack stack : drops)
+				if (stack.getAmount() > 0)
+					player.getInventory().addItem(stack);
+		} else {
+			Material dropType = resource.drop;
+			int qty = getDropQuantity(type);
+			if ((type.name().contains("ORE") && kit == Kit.MINER)
+					|| (type.name().contains("LOG") && kit == Kit.LUMBERJACK))
+				qty *= rand.nextFloat() < 0.9 ? 2 : 1;
+			player.getInventory().addItem(new ItemStack(dropType, qty));
+		}
+
+		if (resource.xp > 0) {
+			player.giveExp(resource.xp);
+			player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1.0F,
+					(rand.nextFloat() * 0.2F) + 0.9F);
+		}
+
+		queueRespawn(block);
+	}
+
+	private void queueRespawn(final Block block) {
+		final Material type = block.getType();
+		block.setType(getRespawnMaterial(type));
 		queue.add(block.getLocation());
-		plugin.getServer().getScheduler()
-			.runTaskLater(plugin, new Runnable() {
-			    public void run() {
-				block.setType(Material.DIAMOND_ORE);
+		plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+			@SuppressWarnings("deprecation")
+			@Override
+			public void run() {
+				block.setType(type);
 				queue.remove(block.getLocation());
-			    }
-			}, 2 * plugin.getPhaseDelay() * 20L);
-	    }
+				block.getWorld().playEffect(block.getLocation(), Effect.STEP_SOUND, block.getTypeId());
+			}
+		}, resources.get(type).delay * 20L);
 	}
-    }
 
-    private void queueRespawn(final Material material, final Block block) {
-	if (material.equals(Material.LOG)
-		|| material.equals(Material.MELON_BLOCK)) {
-	    block.setType(Material.AIR);
-	} else {
-	    block.setType(Material.COBBLESTONE);
+	private int getDropQuantity(Material type) {
+		switch (type) {
+		case MELON_BLOCK:
+			return 3 + rand.nextInt(5);
+		case REDSTONE_ORE:
+		case GLOWING_REDSTONE_ORE:
+			return 4 + (rand.nextBoolean() ? 1 : 0);
+		default:
+			return 1;
+		}
 	}
-	queue.add(block.getLocation());
-	plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-	    @Override
-	    public void run() {
-		block.setType(material);
-		queue.remove(block.getLocation());
-	    }
-	}, resources.get(material).delay * 20L);
-    }
+
+	private Material getRespawnMaterial(Material type) {
+		switch (type) {
+		case LOG:
+		case MELON_BLOCK:
+			return Material.AIR;
+		default:
+			return Material.COBBLESTONE;
+		}
+	}
+
+	private ItemStack[] getGravelDrops() {
+		ItemStack arrows = new ItemStack(Material.ARROW, Math.max(
+				rand.nextInt(5) - 2, 0));
+		ItemStack flint = new ItemStack(Material.FLINT, Math.max(
+				rand.nextInt(4) - 2, 0));
+		ItemStack feathers = new ItemStack(Material.FEATHER, Math.max(
+				rand.nextInt(4) - 2, 0));
+		ItemStack string = new ItemStack(Material.STRING, Math.max(
+				rand.nextInt(5) - 3, 0));
+		ItemStack bones = new ItemStack(Material.BONE, Math.max(
+				rand.nextInt(4) - 2, 0));
+		return new ItemStack[] { arrows, flint, feathers, string, bones };
+	}
+	
+	private void addResource(Material type, int xp, int delay) {
+		resources.put(type, new Resource(getDropMaterial(type), xp, delay));
+	}
+
+	private Material getDropMaterial(Material type) {
+		switch (type) {
+		case COAL_ORE:
+			return Material.COAL;
+		case DIAMOND_ORE:
+			return Material.DIAMOND;
+		case EMERALD_ORE:
+			return Material.EMERALD;
+		case GLOWING_REDSTONE_ORE:
+		case REDSTONE_ORE:
+			return Material.REDSTONE;
+		case MELON_BLOCK:
+			return Material.MELON;
+		case GRAVEL:
+			return null;
+		default:
+			return type;
+		}
+	}
 }

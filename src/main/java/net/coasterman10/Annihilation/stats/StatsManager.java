@@ -1,42 +1,64 @@
 package net.coasterman10.Annihilation.stats;
 
-import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import net.coasterman10.Annihilation.Annihilation;
+import net.coasterman10.Annihilation.ConfigManager;
 
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
 public class StatsManager {
-	
 	private Annihilation plugin;
-	private YamlConfiguration yml;
-	
-	public StatsManager(Annihilation instance) {
+	private ConfigManager config;
+	public static final int UNDEF_STAT = -42;
+
+	public StatsManager(Annihilation instance, ConfigManager config) {
 		this.plugin = instance;
-		yml = plugin.getConfigManager().getConfig("stats.yml");
+		this.config = config;
 	}
-	
+
 	public int getStat(StatType s, Player p) {
 		if (!plugin.useMysql) {
-			return yml.getInt(p.getName() + "." + s.name());
+			return config.getConfig("stats.yml").getInt(
+					p.getName() + "." + s.name());
 		} else {
 			try {
-				return plugin.getDatabaseHandler().query("SELECT * FROM `annihilation` WHERE `username`='" + p.getName() + "'").getResultSet().getInt(s.name().toLowerCase());
+				int stat = UNDEF_STAT;
+				ResultSet rs = plugin
+						.getDatabaseHandler()
+						.query("SELECT * FROM `annihilation` WHERE `username`='"
+								+ p.getName() + "'").getResultSet();
+
+				while (rs.next())
+					stat = rs.getInt(s.name().toLowerCase());
+
+				return stat;
 			} catch (SQLException ex) {
 				ex.printStackTrace();
-				return -5;
+				return UNDEF_STAT;
 			}
 		}
 	}
-	
-	public void setValue(StatType s, Player p, int value) throws IOException {
+
+	public void setValue(StatType s, Player p, int value) {
 		if (!plugin.useMysql) {
-			yml.set(p.getName() + "." + s.name(), value);
-			plugin.getConfigManager().save("stats.yml");
+			config.getConfig("stats.yml").set(p.getName() + "." + s.name(),
+					value);
+			config.save("stats.yml");
 		} else {
-			plugin.getDatabaseHandler().query("UPDATE `" + s.name().toLowerCase() + "`='" + value + "' WHERE `username`='" + p.getName() + "'");
+			plugin.getDatabaseHandler().query(
+					"UPDATE `annihilation` SET `" + s.name().toLowerCase()
+							+ "`='" + value + "' WHERE `username`='"
+							+ p.getName() + "';");
 		}
+	}
+
+	public void incrementStat(StatType s, Player p) {
+		incrementStat(s, p, 1);
+	}
+
+	public void incrementStat(StatType s, Player p, int amount) {
+		setValue(s, p, getStat(s, p) + amount);
 	}
 }

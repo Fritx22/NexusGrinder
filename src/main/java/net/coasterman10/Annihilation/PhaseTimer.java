@@ -2,134 +2,147 @@ package net.coasterman10.Annihilation;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import net.coasterman10.Annihilation.bar.BarManager;
+import net.coasterman10.Annihilation.bar.BarUtil;
+import net.coasterman10.Annihilation.chat.ChatUtil;
 
 public class PhaseTimer {
-    private long time;
-    private long startTime;
-    private long phaseTime;
-    private int phase;
-    private boolean isRunning;
+	private long time;
+	private long startTime;
+	private long phaseTime;
+	private int phase;
+	private boolean isRunning;
 
-    private final Annihilation plugin;
-    private final BarManager bar;
+	private final Annihilation plugin;
 
-    public PhaseTimer(Annihilation plugin, long start, long period) {
-	this.plugin = plugin;
-	bar = new BarManager(plugin);
-	startTime = start;
-	phaseTime = period;
-	phase = 0;
-    }
+	private int taskID;
 
-    public PhaseTimer(Annihilation plugin, ConfigurationSection config) {
-	this.plugin = plugin;
-	bar = new BarManager(plugin);
-	startTime = config.getLong("start-delay", 120L);
-	phaseTime = config.getLong("phase-period", 600L);
-	phase = 0;
-    }
+	public PhaseTimer(Annihilation plugin, int start, int period) {
+		this.plugin = plugin;
+		startTime = start;
+		phaseTime = period;
+		phase = 0;
+	}
 
-    public void start() {
-	if (!isRunning) {
-	    BukkitScheduler scheduler = plugin.getServer().getScheduler();
-	    scheduler.scheduleSyncRepeatingTask(plugin, new Runnable() {
-		public void run() {
-		    onSecond();
+	public void start() {
+		if (!isRunning) {
+			BukkitScheduler scheduler = plugin.getServer().getScheduler();
+			taskID = scheduler.scheduleSyncRepeatingTask(plugin,
+					new Runnable() {
+						public void run() {
+							onSecond();
+						}
+					}, 20L, 20L);
+			isRunning = true;
 		}
-	    }, 20L, 20L);
-	    isRunning = true;
+
+		time = -startTime;
+
+		for (Player p : Bukkit.getOnlinePlayers())
+			BarUtil.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
+					+ -time, 1F);
+
+		plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
+		plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
+		plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
+		plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
 	}
 
-	time = -startTime;
-
-	for (Player p : Bukkit.getOnlinePlayers()) {
-        bar.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
-                + -time, 1F);
-        p.playSound(p.getLocation(), Sound.NOTE_BASS, 20, 20);
-        p.playSound(p.getLocation(), Sound.NOTE_BASS_DRUM, 20, 20);
-        p.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 20, 20);
-        p.playSound(p.getLocation(), Sound.NOTE_PLING, 20, 20);
-    }
-
-    }
-
-
-    public long getTime() {
-	return time;
-    }
-
-    public long getRemainingPhaseTime() {
-	if (phase == 5) {
-	    return phaseTime;
-	}
-	if (phase >= 1) {
-	    return time % phaseTime;
-	}
-	return -time;
-    }
-
-    public int getPhase() {
-	return phase;
-    }
-
-    public boolean isRunning() {
-	return isRunning;
-    }
-
-    private void onSecond() {
-	time++;
-
-	if (getRemainingPhaseTime() == 0)
-	    phase++;
-
-	float percent;
-	String text;
-
-	if (phase == 0) {
-	    percent = (float) -time / (float) startTime;
-	    text = ChatColor.GREEN + "Starting in " + -time;
-	} else {
-	    if (phase == 5)
-		percent = 1F;
-	    else
-		percent = (float) getRemainingPhaseTime() / (float) phaseTime;
-	    text = "Phase " + phase;
-	    switch (phase) {
-	    case 1:
-		text = ChatColor.BLUE + text;
-		break;
-	    case 2:
-		text = ChatColor.GREEN + text;
-		break;
-	    case 3:
-		text = ChatColor.YELLOW + text;
-		break;
-	    case 4:
-		text = ChatColor.GOLD + text;
-		break;
-	    case 5:
-		text = ChatColor.RED + text;
-		break;
-	    }
-	    text += ChatColor.WHITE + " | " + timeString();
+	public void stop() {
+		if (isRunning) {
+			isRunning = false;
+			Bukkit.getServer().getScheduler().cancelTask(taskID);
+		}
 	}
 
-	for (Player p : Bukkit.getOnlinePlayers())
-	    bar.setMessageAndPercent(p, text, percent);
+	public void reset() {
+		stop();
+		time = -startTime;
+		phase = 0;
+	}
 
-	plugin.onSecond();
-    }
+	public long getTime() {
+		return time;
+	}
 
-    private String timeString() {
-	long hours = time / 3600L;
-	long minutes = (time - hours * 3600L) / 60L;
-	long seconds = time - hours * 3600L - minutes * 60L;
-	return String.format("%02d:%02d:%02d", hours, minutes, seconds);
-    }
+	public long getRemainingPhaseTime() {
+		if (phase == 5) {
+			return phaseTime;
+		}
+		if (phase >= 1) {
+			return time % phaseTime;
+		}
+		return -time;
+	}
+
+	public int getPhase() {
+		return phase;
+	}
+
+	public boolean isRunning() {
+		return isRunning;
+	}
+
+	private void onSecond() {
+		time++;
+
+		if (getRemainingPhaseTime() == 0) {
+			phase++;
+			plugin.advancePhase();
+		}
+
+		float percent;
+		String text;
+
+		if (phase == 0) {
+			percent = (float) -time / (float) startTime;
+			text = ChatColor.GREEN + "Starting in " + -time;
+		} else {
+			if (phase == 5)
+				percent = 1F;
+			else
+				percent = (float) getRemainingPhaseTime() / (float) phaseTime;
+			text = getPhaseColor() + "Phase " + ChatUtil.translateRoman(phase)
+					+ ChatColor.DARK_GRAY + " | " + ChatColor.WHITE
+					+ timeString(time);
+
+			plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
+			plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
+			plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
+			plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
+		}
+
+		for (Player p : Bukkit.getOnlinePlayers())
+			BarUtil.setMessageAndPercent(p, text, percent);
+
+		plugin.onSecond();
+	}
+
+	private String getPhaseColor() {
+		switch (phase) {
+		case 1:
+			return ChatColor.BLUE.toString();
+		case 2:
+			return ChatColor.GREEN.toString();
+		case 3:
+			return ChatColor.YELLOW.toString();
+		case 4:
+			return ChatColor.GOLD.toString();
+		case 5:
+			return ChatColor.RED.toString();
+		default:
+			return ChatColor.WHITE.toString();
+		}
+	}
+
+	public static String timeString(long time) {
+		long hours = time / 3600L;
+		long minutes = (time - hours * 3600L) / 60L;
+		long seconds = time - hours * 3600L - minutes * 60L;
+		return String.format(ChatColor.WHITE + "%02d" + ChatColor.GRAY + ":"
+				+ ChatColor.WHITE + "%02d" + ChatColor.GRAY + ":"
+				+ ChatColor.WHITE + "%02d", hours, minutes, seconds);
+	}
 }
