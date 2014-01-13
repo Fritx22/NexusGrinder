@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.Sound;
 
 import net.coasterman10.Annihilation.bar.BarUtil;
 import net.coasterman10.Annihilation.chat.ChatUtil;
@@ -40,15 +41,21 @@ public class PhaseTimer {
 
 		time = -startTime;
 
-		for (Player p : Bukkit.getOnlinePlayers())
+		for (Player p : Bukkit.getOnlinePlayers()) {
 			BarUtil.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
 					+ -time, 1F);
+            p.playSound(p.getLocation(), Sound.NOTE_BASS, 20, 20);
+            p.playSound(p.getLocation(), Sound.NOTE_BASS_DRUM, 20, 20);
+            p.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 20, 20);
+            p.playSound(p.getLocation(), Sound.NOTE_PLING, 20, 20);
 
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
+
+        plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
 		plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
 		plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
 		plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
-	}
+	  }
+    }
 
 	public void stop() {
 		if (isRunning) {
