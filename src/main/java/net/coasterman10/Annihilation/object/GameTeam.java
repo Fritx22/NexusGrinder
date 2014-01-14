@@ -1,4 +1,4 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-public enum AnnihilationTeam {
+public enum GameTeam {
 	RED, YELLOW, GREEN, BLUE, NONE;
 
 	private final ChatColor color;
 	private List<Location> spawns;
 	private Nexus nexus;
 
-	AnnihilationTeam() {
+	GameTeam() {
 		if (name().equals("NONE"))
 			color = ChatColor.WHITE;
 		else
@@ -69,7 +69,7 @@ public enum AnnihilationTeam {
 		return players;
 	}
 
-	public static AnnihilationTeam[] teams() {
-		return new AnnihilationTeam[] { RED, YELLOW, GREEN, BLUE };
+	public static GameTeam[] teams() {
+		return new GameTeam[] { RED, YELLOW, GREEN, BLUE };
 	}
 }

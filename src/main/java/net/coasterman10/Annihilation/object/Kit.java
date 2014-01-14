@@ -1,4 +1,4 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -211,7 +211,7 @@ public enum Kit {
 		return null;
 	}
 
-	public void give(Player recipient, AnnihilationTeam team) {
+	public void give(Player recipient, GameTeam team) {
 		PlayerInventory inv = recipient.getInventory();
 		inv.clear();
 
@@ -248,7 +248,7 @@ public enum Kit {
 			recipient.setMaxHealth(20.0);
 	}
 
-	private Color getTeamColor(AnnihilationTeam team) {
+	private Color getTeamColor(GameTeam team) {
 		switch (team) {
 		case RED:
 			return Color.RED;

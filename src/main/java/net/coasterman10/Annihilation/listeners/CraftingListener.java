@@ -2,8 +2,8 @@ package net.coasterman10.Annihilation.listeners;
 
 import java.util.Arrays;
 
-import net.coasterman10.Annihilation.Kit;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.Kit;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

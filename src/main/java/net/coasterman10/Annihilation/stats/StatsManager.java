@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.ConfigManager;
+import net.coasterman10.Annihilation.manager.ConfigManager;
 
 import org.bukkit.entity.Player;
 

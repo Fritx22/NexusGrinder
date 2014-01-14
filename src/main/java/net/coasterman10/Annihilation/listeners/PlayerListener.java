@@ -3,13 +3,13 @@ package net.coasterman10.Annihilation.listeners;
 import java.util.HashMap;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.AnnihilationTeam;
-import net.coasterman10.Annihilation.Kit;
-import net.coasterman10.Annihilation.PlayerMeta;
 import net.coasterman10.Annihilation.api.NexusDamageEvent;
 import net.coasterman10.Annihilation.api.NexusDestroyEvent;
 import net.coasterman10.Annihilation.bar.BarUtil;
 import net.coasterman10.Annihilation.chat.ChatUtil;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.Kit;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.stats.StatType;
 
 import org.bukkit.Bukkit;
@@ -71,7 +71,7 @@ public class PlayerListener implements Listener {
 					boolean setCompass = false;
 					boolean setToNext = false;
 					while (!setCompass) {
-						for (AnnihilationTeam team : AnnihilationTeam.teams()) {
+						for (GameTeam team : GameTeam.teams()) {
 							if (setToNext) {
 								ItemMeta meta = handItem.getItemMeta();
 								meta.setDisplayName(team.color()
@@ -99,10 +99,10 @@ public class PlayerListener implements Listener {
 				Sign s = (Sign) e.getClickedBlock().getState();
 				if (s.getLine(0).contains(ChatColor.DARK_PURPLE + "[Team]")) {
 					String teamName = ChatColor.stripColor(s.getLine(1));
-					AnnihilationTeam team = AnnihilationTeam.valueOf(teamName
+					GameTeam team = GameTeam.valueOf(teamName
 							.toUpperCase());
 					if (team != null) {
-						if (pmeta.getTeam() == AnnihilationTeam.NONE) {
+						if (pmeta.getTeam() == GameTeam.NONE) {
 							if (team.getNexus() != null) {
 								if (team.getNexus().getHealth() == 0
 										&& plugin.getPhase() > 1) {
@@ -321,7 +321,7 @@ public class PlayerListener implements Listener {
 	@EventHandler(ignoreCancelled = true)
 	public void onBreak(BlockBreakEvent e) {
 		if (plugin.getPhase() > 0) {
-			for (AnnihilationTeam t : AnnihilationTeam.teams()) {
+			for (GameTeam t : GameTeam.teams()) {
 				if (t.getNexus().getLocation()
 						.equals(e.getBlock().getLocation())) {
 					e.setCancelled(true);
@@ -349,7 +349,7 @@ public class PlayerListener implements Listener {
 		double y = loc.getY();
 		double z = loc.getZ();
 
-		for (AnnihilationTeam team : AnnihilationTeam.teams()) {
+		for (GameTeam team : GameTeam.teams()) {
 			Location nexusLoc = team.getNexus().getLocation();
 			double nX = nexusLoc.getX();
 			double nY = nexusLoc.getY();
@@ -385,8 +385,8 @@ public class PlayerListener implements Listener {
 		}
 	}
 
-	private void breakNexus(final AnnihilationTeam victim, Player breaker) {
-		AnnihilationTeam attacker = PlayerMeta.getMeta(breaker).getTeam();
+	private void breakNexus(final GameTeam victim, Player breaker) {
+		GameTeam attacker = PlayerMeta.getMeta(breaker).getTeam();
 		if (victim == attacker)
 			breaker.sendMessage(ChatColor.DARK_AQUA
 					+ "You can't damage your own nexus");

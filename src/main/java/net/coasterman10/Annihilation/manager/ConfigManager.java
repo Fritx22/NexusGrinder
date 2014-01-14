@@ -1,4 +1,4 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.manager;
 
 import java.io.File;
 import java.io.FileOutputStream;

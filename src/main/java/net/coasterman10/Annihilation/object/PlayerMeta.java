@@ -1,4 +1,4 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.object;
 
 import java.util.HashMap;
 
@@ -17,24 +17,24 @@ public class PlayerMeta {
 		return metaTable.get(username);
 	}
 
-	private AnnihilationTeam team;
+	private GameTeam team;
 	private Kit kit;
 	private boolean alive;
 
 	public PlayerMeta() {
-		team = AnnihilationTeam.NONE;
+		team = GameTeam.NONE;
 		kit = Kit.CIVILIAN;
 		alive = false;
 	}
 
-	public void setTeam(AnnihilationTeam t) {
+	public void setTeam(GameTeam t) {
 		if (team != null)
 			team = t;
 		else
-			team = AnnihilationTeam.NONE;
+			team = GameTeam.NONE;
 	}
 
-	public AnnihilationTeam getTeam() {
+	public GameTeam getTeam() {
 		return team;
 	}
 	

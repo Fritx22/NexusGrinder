@@ -1,25 +1,26 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.bar.BarUtil;
 
-public class RestartTimer {
+public class RestartHandler {
 	private final Annihilation plugin;
 	private long time;
 	private long delay;
 	private int taskID;
 
-	public RestartTimer(Annihilation plugin, final long delay) {
+	public RestartHandler(Annihilation plugin, final long delay) {
 		this.plugin = plugin;
 		this.delay = delay;
 	}
 
 	public void start(final long gameTime) {
 		time = delay;
-		final String totalTime = PhaseTimer.timeString(gameTime);
+		final String totalTime = PhaseManager.timeString(gameTime);
 		taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin,
 				new Runnable() {
 					@Override

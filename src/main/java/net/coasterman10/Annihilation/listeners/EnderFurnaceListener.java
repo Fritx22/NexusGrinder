@@ -19,30 +19,30 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.AnnihilationTeam;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.minecraft.server.v1_7_R1.EntityHuman;
 import net.minecraft.server.v1_7_R1.EntityPlayer;
 import net.minecraft.server.v1_7_R1.TileEntityFurnace;
 
 public class EnderFurnaceListener implements Listener {
-	private HashMap<AnnihilationTeam, Location> locations;
+	private HashMap<GameTeam, Location> locations;
 	private HashMap<String, VirtualFurnace> furnaces;
 
 	public EnderFurnaceListener(Annihilation plugin) {
-		locations = new HashMap<AnnihilationTeam, Location>();
+		locations = new HashMap<GameTeam, Location>();
 		furnaces = new HashMap<String, VirtualFurnace>();
-
-        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-            @Override
-            public void run() {
-                for (VirtualFurnace f : furnaces.values())
-                    f.h();
-            }
-        }, 0L, 1L);
+		
+		Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
+			@Override
+			public void run() {
+				for (VirtualFurnace f : furnaces.values())
+					f.h();
+			}
+		}, 0L, 1L);
 	}
 
-	public void setFurnaceLocation(AnnihilationTeam team, Location loc) {
+	public void setFurnaceLocation(GameTeam team, Location loc) {
 		locations.put(team, loc);
 	}
 
@@ -57,7 +57,7 @@ public class EnderFurnaceListener implements Listener {
 
 		Location loc = b.getLocation();
 		Player player = e.getPlayer();
-		AnnihilationTeam team = PlayerMeta.getMeta(player).getTeam();
+		GameTeam team = PlayerMeta.getMeta(player).getTeam();
 		if (team == null || !locations.containsKey(team))
 			return;
 

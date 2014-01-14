@@ -1,6 +1,8 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.manager;
 
 import java.util.HashMap;
+
+import net.coasterman10.Annihilation.object.GameTeam;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -10,7 +12,7 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
-public class ScoreboardHandler {
+public class ScoreboardManager {
 	public Scoreboard sb;
 	public Objective obj;
 	
@@ -38,13 +40,13 @@ public class ScoreboardHandler {
 		obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 		obj.setDisplayName(objName);
 		
-		setTeam(AnnihilationTeam.RED);
-		setTeam(AnnihilationTeam.BLUE);
-		setTeam(AnnihilationTeam.GREEN);
-		setTeam(AnnihilationTeam.YELLOW);
+		setTeam(GameTeam.RED);
+		setTeam(GameTeam.BLUE);
+		setTeam(GameTeam.GREEN);
+		setTeam(GameTeam.YELLOW);
 	}
 	
-	public void setTeam(AnnihilationTeam t) {
+	public void setTeam(GameTeam t) {
 		teams.put(t.name(), sb.registerNewTeam(t.name()));
 		Team sbt = teams.get(t.name());
 		sbt.setAllowFriendlyFire(false);

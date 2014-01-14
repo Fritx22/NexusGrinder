@@ -1,8 +1,8 @@
 package net.coasterman10.Annihilation.chat;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.AnnihilationTeam;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -25,11 +25,11 @@ public class ChatListener implements Listener {
 		String WHITE = ChatColor.WHITE.toString();
 
 		String username = e.getPlayer().getName();
-		AnnihilationTeam team = PlayerMeta.getMeta(e.getPlayer()).getTeam();
+		GameTeam team = PlayerMeta.getMeta(e.getPlayer()).getTeam();
 		String group;
 		String message = e.getMessage();
 
-		if (team == AnnihilationTeam.NONE) {
+		if (team == GameTeam.NONE) {
 			String color = ChatColor.DARK_PURPLE.toString();
 			group = DARK_GRAY + "[" + color + "Lobby" + DARK_GRAY + "]";
 

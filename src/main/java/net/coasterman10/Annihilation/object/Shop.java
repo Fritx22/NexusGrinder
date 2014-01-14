@@ -1,8 +1,10 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.object;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import net.coasterman10.Annihilation.Annihilation;
 
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;

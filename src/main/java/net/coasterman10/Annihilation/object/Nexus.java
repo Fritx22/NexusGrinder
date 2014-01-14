@@ -1,14 +1,14 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.object;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
 
 public class Nexus {
-	private final AnnihilationTeam team;
+	private final GameTeam team;
 	private final Location location;
 	private int health;
 
-	public Nexus(AnnihilationTeam team, Location location, int health) {
+	public Nexus(GameTeam team, Location location, int health) {
 		this.team = team;
 		this.location = location;
 		this.health = health;
@@ -16,7 +16,7 @@ public class Nexus {
 		location.getBlock().setType(Material.ENDER_STONE);
 	}
 
-	public AnnihilationTeam getTeam() {
+	public GameTeam getTeam() {
 		return team;
 	}
 

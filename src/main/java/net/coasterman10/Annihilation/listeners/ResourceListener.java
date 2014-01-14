@@ -6,8 +6,8 @@ import java.util.Random;
 import java.util.Set;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.Kit;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.Kit;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;

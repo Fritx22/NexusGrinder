@@ -1,7 +1,7 @@
 package net.coasterman10.Annihilation.chat;
 
-import net.coasterman10.Annihilation.AnnihilationTeam;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,8 +22,8 @@ public class ChatUtil {
 		Bukkit.broadcastMessage(message);
 	}
 
-	public static void nexusDestroyed(AnnihilationTeam attacker,
-			AnnihilationTeam victim, Player p) {
+	public static void nexusDestroyed(GameTeam attacker,
+			GameTeam victim, Player p) {
 		broadcast(GRAY + "===============[ " + victim.color().toString() + "Nexus Destroyed"
 				+ GRAY + " ]===============");
 		broadcast(attacker.color().toString() + p.getName() + GRAY + " from " + attacker.coloredName() + GRAY + 
@@ -32,12 +32,12 @@ public class ChatUtil {
 	}
 
 	public static String nexusBreakMessage(Player breaker,
-			AnnihilationTeam attacker, AnnihilationTeam victim) {
+			GameTeam attacker, GameTeam victim) {
 		return colorizeName(breaker, attacker) + GRAY + " has damaged the "
 				+ victim.coloredName() + " team's Nexus!";
 	}
 
-	private static String colorizeName(Player player, AnnihilationTeam team) {
+	private static String colorizeName(Player player, GameTeam team) {
 		return team.color() + player.getName();
 	}
 
@@ -63,7 +63,7 @@ public class ChatUtil {
 		broadcast(GRAY + "==============================");
 	}
 
-	public static void winMessage(AnnihilationTeam winner) {
+	public static void winMessage(GameTeam winner) {
 		broadcast(GRAY + "================[ " + winner.color().toString()  + "End Game" + GRAY
 				+ " ]================");
 		broadcast(GRAY + "Team " +  winner.coloredName() + GRAY + " Wins Annihilation! Restarting game...");
@@ -72,7 +72,7 @@ public class ChatUtil {
 
 	public static String formatDeathMessage(Player victim, Player killer,
 			String original) {
-		AnnihilationTeam killerTeam = PlayerMeta.getMeta(killer).getTeam();
+		GameTeam killerTeam = PlayerMeta.getMeta(killer).getTeam();
 		String killerColor = killerTeam != null ? killerTeam.color().toString()
 				: ChatColor.DARK_PURPLE.toString();
 		String killerName = killerColor + killer.getName() + ChatColor.GRAY;
@@ -84,7 +84,7 @@ public class ChatUtil {
 	}
 
 	public static String formatDeathMessage(Player victim, String original) {
-		AnnihilationTeam victimTeam = PlayerMeta.getMeta(victim).getTeam();
+		GameTeam victimTeam = PlayerMeta.getMeta(victim).getTeam();
 		String victimColor = victimTeam != null ? victimTeam.color().toString()
 				: ChatColor.DARK_PURPLE.toString();
 		String victimName = victimColor + victim.getName() + ChatColor.GRAY;

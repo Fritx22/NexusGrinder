@@ -3,7 +3,7 @@ package net.coasterman10.Annihilation.listeners;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import net.coasterman10.Annihilation.SoundUtil;
+import net.coasterman10.Annihilation.manager.SoundManager;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -24,7 +24,7 @@ public class SoulboundListener implements Listener {
 	public void onSoulboundDrop(PlayerDropItemEvent e) {
 		if (isSoulbound(e.getItemDrop().getItemStack())) {
 			Player p = e.getPlayer();
-			SoundUtil.playSoundForPlayer(p, Sound.BLAZE_HIT, 1F, 0.25F, 0.5F);
+			SoundManager.playSoundForPlayer(p, Sound.BLAZE_HIT, 1F, 0.25F, 0.5F);
 			e.getItemDrop().remove();
 		}
 	}

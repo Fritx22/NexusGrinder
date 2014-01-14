@@ -1,7 +1,11 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.manager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import net.coasterman10.Annihilation.Annihilation;
+import net.coasterman10.Annihilation.Annihilation.Util;
+import net.coasterman10.Annihilation.object.GameTeam;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,19 +15,19 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.configuration.ConfigurationSection;
 
-public class SignHandler {
+public class SignManager {
 	private Annihilation plugin;
 
-	private HashMap<AnnihilationTeam, ArrayList<Location>> signs = new HashMap<AnnihilationTeam, ArrayList<Location>>();
+	private HashMap<GameTeam, ArrayList<Location>> signs = new HashMap<GameTeam, ArrayList<Location>>();
 
-	public SignHandler(Annihilation instance) {
+	public SignManager(Annihilation instance) {
 		this.plugin = instance;
 	}
 
 	public void loadSigns() {
 		ConfigurationSection config = plugin.getConfigManager().getConfig(
 				"maps.yml");
-		for (AnnihilationTeam team : AnnihilationTeam.teams()) {
+		for (GameTeam team : GameTeam.teams()) {
 			signs.put(team, new ArrayList<Location>());
 			String name = team.name().toLowerCase();
 			for (String l : config.getStringList("lobby.signs." + name)) {
@@ -35,7 +39,7 @@ public class SignHandler {
 		}
 	}
 
-	public void addTeamSign(AnnihilationTeam team, Location loc) {
+	public void addTeamSign(GameTeam team, Location loc) {
 		Block b = loc.getBlock();
 		if (b == null)
 			return;
@@ -47,8 +51,8 @@ public class SignHandler {
 		}
 	}
 
-	public void updateSigns(AnnihilationTeam t) {
-		if (t == AnnihilationTeam.NONE)
+	public void updateSigns(GameTeam t) {
+		if (t == GameTeam.NONE)
 			return;
 
 		for (Location l : signs.get(t)) {

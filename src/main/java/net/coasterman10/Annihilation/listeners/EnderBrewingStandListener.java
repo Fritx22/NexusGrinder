@@ -19,31 +19,30 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.AnnihilationTeam;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.minecraft.server.v1_7_R1.EntityHuman;
 import net.minecraft.server.v1_7_R1.EntityPlayer;
 import net.minecraft.server.v1_7_R1.TileEntityBrewingStand;
 
 public class EnderBrewingStandListener implements Listener {
-	private HashMap<AnnihilationTeam, Location> locations;
+	private HashMap<GameTeam, Location> locations;
 	private HashMap<String, VirtualBrewingStand> brewingStands;
 
 	public EnderBrewingStandListener(Annihilation plugin) {
-		locations = new HashMap<AnnihilationTeam, Location>();
+		locations = new HashMap<GameTeam, Location>();
 		brewingStands = new HashMap<String, VirtualBrewingStand>();
+		
+		Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
+			@Override
+			public void run() {
+				for (VirtualBrewingStand b : brewingStands.values())
+					b.h();
+			}
+		}, 0L, 1L);
+	}
 
-        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-            @Override
-            public void run() {
-                for (VirtualBrewingStand b : brewingStands.values())
-                    b.h();
-            }
-        }, 0L, 1L);
-    }
-
-
-	public void setBrewingStandLocation(AnnihilationTeam team, Location loc) {
+	public void setBrewingStandLocation(GameTeam team, Location loc) {
 		locations.put(team, loc);
 	}
 
@@ -58,7 +57,7 @@ public class EnderBrewingStandListener implements Listener {
 
 		Location loc = b.getLocation();
 		Player player = e.getPlayer();
-		AnnihilationTeam team = PlayerMeta.getMeta(player).getTeam();
+		GameTeam team = PlayerMeta.getMeta(player).getTeam();
 		if (team == null || !locations.containsKey(team))
 			return;
 		

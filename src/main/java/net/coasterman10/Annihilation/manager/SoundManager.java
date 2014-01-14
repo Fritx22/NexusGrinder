@@ -1,13 +1,16 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.manager;
 
 import java.util.Random;
+
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-public class SoundUtil {
+public class SoundManager {
 	private static Random rand = new Random();
 
 	public static void playSound(Location loc, Sound sound, float volume,
@@ -22,7 +25,7 @@ public class SoundUtil {
 				randomPitch(minPitch, maxPitch));
 	}
 
-	public static void playSoundForTeam(AnnihilationTeam team, Sound sound, float volume,
+	public static void playSoundForTeam(GameTeam team, Sound sound, float volume,
 			float minPitch, float maxPitch) {
 		for (Player p : Bukkit.getOnlinePlayers())
 			if (PlayerMeta.getMeta(p).getTeam() == team)

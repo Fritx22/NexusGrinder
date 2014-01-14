@@ -1,14 +1,16 @@
-package net.coasterman10.Annihilation;
+package net.coasterman10.Annihilation.manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 
+import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.bar.BarUtil;
 import net.coasterman10.Annihilation.chat.ChatUtil;
+import net.coasterman10.Annihilation.object.GameTeam;
 
-public class PhaseTimer {
+public class PhaseManager {
 	private long time;
 	private long startTime;
 	private long phaseTime;
@@ -19,7 +21,7 @@ public class PhaseTimer {
 
 	private int taskID;
 
-	public PhaseTimer(Annihilation plugin, int start, int period) {
+	public PhaseManager(Annihilation plugin, int start, int period) {
 		this.plugin = plugin;
 		startTime = start;
 		phaseTime = period;
@@ -44,10 +46,10 @@ public class PhaseTimer {
 			BarUtil.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
 					+ -time, 1F);
 
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
+		plugin.getSignHandler().updateSigns(GameTeam.RED);
+		plugin.getSignHandler().updateSigns(GameTeam.BLUE);
+		plugin.getSignHandler().updateSigns(GameTeam.GREEN);
+		plugin.getSignHandler().updateSigns(GameTeam.YELLOW);
 	}
 
 	public void stop() {
@@ -108,10 +110,10 @@ public class PhaseTimer {
 					+ ChatColor.DARK_GRAY + " | " + ChatColor.WHITE
 					+ timeString(time);
 
-			plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
-			plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
-			plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
-			plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
+			plugin.getSignHandler().updateSigns(GameTeam.RED);
+			plugin.getSignHandler().updateSigns(GameTeam.BLUE);
+			plugin.getSignHandler().updateSigns(GameTeam.GREEN);
+			plugin.getSignHandler().updateSigns(GameTeam.YELLOW);
 		}
 
 		for (Player p : Bukkit.getOnlinePlayers())

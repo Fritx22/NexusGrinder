@@ -1,6 +1,6 @@
 package net.coasterman10.Annihilation.api;
 
-import net.coasterman10.Annihilation.AnnihilationTeam;
+import net.coasterman10.Annihilation.object.GameTeam;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -9,9 +9,9 @@ import org.bukkit.event.HandlerList;
 public class NexusDestroyEvent extends Event {
 
 	private Player p;
-	private AnnihilationTeam t;
+	private GameTeam t;
 	
-	public NexusDestroyEvent(Player p, AnnihilationTeam t) {
+	public NexusDestroyEvent(Player p, GameTeam t) {
 		this.p = p;
 		this.t = t;
 	}
@@ -30,7 +30,7 @@ public class NexusDestroyEvent extends Event {
 		return p;
 	}
 	
-	public AnnihilationTeam getTeam() {
+	public GameTeam getTeam() {
 		return t;
 	}
 }

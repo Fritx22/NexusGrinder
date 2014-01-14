@@ -1,8 +1,8 @@
 package net.coasterman10.Annihilation.commands;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.AnnihilationTeam;
-import net.coasterman10.Annihilation.PlayerMeta;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -35,16 +35,16 @@ public class TeamCommand implements CommandExecutor {
 
 	private void joinTeam(Player player, String team) {
 		PlayerMeta meta = PlayerMeta.getMeta(player);
-		if (meta.getTeam() != AnnihilationTeam.NONE) {
-			AnnihilationTeam currentTeam = meta.getTeam();
+		if (meta.getTeam() != GameTeam.NONE) {
+			GameTeam currentTeam = meta.getTeam();
 			player.sendMessage(ChatColor.DARK_AQUA + "You are already on "
 					+ currentTeam.coloredName());
 			return;
 		}
 
-		AnnihilationTeam target;
+		GameTeam target;
 		try {
-			target = AnnihilationTeam.valueOf(team.toUpperCase());
+			target = GameTeam.valueOf(team.toUpperCase());
 		} catch (IllegalArgumentException e) {
 			player.sendMessage(ChatColor.RED + "\"" + team
 					+ "\" is not a valid team name!");
@@ -69,17 +69,17 @@ public class TeamCommand implements CommandExecutor {
 			Annihilation.Util.sendPlayerToGame(player);
 		}
 		
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
-		plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
+		plugin.getSignHandler().updateSigns(GameTeam.RED);
+		plugin.getSignHandler().updateSigns(GameTeam.BLUE);
+		plugin.getSignHandler().updateSigns(GameTeam.GREEN);
+		plugin.getSignHandler().updateSigns(GameTeam.YELLOW);
 	}
 
 	private void listTeams(CommandSender sender) {
 		sender.sendMessage(ChatColor.GRAY + "============[ "
 				+ ChatColor.DARK_AQUA + "Teams" + ChatColor.GRAY
 				+ " ]============");
-		for (AnnihilationTeam t : AnnihilationTeam.teams()) {
+		for (GameTeam t : GameTeam.teams()) {
 			int size = 0;
 
 			for (Player p : Bukkit.getOnlinePlayers()) {

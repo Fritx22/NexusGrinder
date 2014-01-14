@@ -29,9 +29,18 @@ import net.coasterman10.Annihilation.listeners.ResourceListener;
 import net.coasterman10.Annihilation.listeners.SoulboundListener;
 import net.coasterman10.Annihilation.listeners.WandListener;
 import net.coasterman10.Annihilation.listeners.WorldListener;
+import net.coasterman10.Annihilation.manager.ConfigManager;
+import net.coasterman10.Annihilation.manager.PhaseManager;
+import net.coasterman10.Annihilation.manager.RestartHandler;
+import net.coasterman10.Annihilation.manager.ScoreboardManager;
+import net.coasterman10.Annihilation.manager.SignManager;
 import net.coasterman10.Annihilation.maps.MapLoader;
 import net.coasterman10.Annihilation.maps.MapManager;
 import net.coasterman10.Annihilation.maps.VotingManager;
+import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.Kit;
+import net.coasterman10.Annihilation.object.PlayerMeta;
+import net.coasterman10.Annihilation.object.Shop;
 import net.coasterman10.Annihilation.stats.DatabaseHandler;
 import net.coasterman10.Annihilation.stats.StatType;
 import net.coasterman10.Annihilation.stats.StatsManager;
@@ -61,14 +70,14 @@ public final class Annihilation extends JavaPlugin {
 	private ConfigManager configManager;
 	private VotingManager voting;
 	private MapManager maps;
-	private PhaseTimer timer;
+	private PhaseManager timer;
 	private ResourceListener resources;
 	private EnderFurnaceListener enderFurnaces;
 	private EnderBrewingStandListener enderBrewingStands;
 	private EnderChestListener enderChests;
 	private StatsManager stats;
-	private SignHandler sign;
-	private ScoreboardHandler sb;
+	private SignManager sign;
+	private ScoreboardManager sb;
 	private DatabaseHandler db;
 	public boolean useMysql = false;
 	public boolean updateAvailable = false;
@@ -119,12 +128,12 @@ public final class Annihilation extends JavaPlugin {
 		enderFurnaces = new EnderFurnaceListener(this);
 		enderBrewingStands = new EnderBrewingStandListener(this);
 		enderChests = new EnderChestListener();
-		sign = new SignHandler(this);
+		sign = new SignManager(this);
 		Configuration config = configManager.getConfig("config.yml");
-		timer = new PhaseTimer(this, config.getInt("start-delay"),
+		timer = new PhaseManager(this, config.getInt("start-delay"),
 				config.getInt("phase-period"));
 		voting = new VotingManager(this);
-		sb = new ScoreboardHandler();
+		sb = new ScoreboardManager();
 
 		PluginManager pm = getServer().getPluginManager();
 
@@ -199,7 +208,7 @@ public final class Annihilation extends JavaPlugin {
 
 		World w = getServer().getWorld(map);
 
-		for (AnnihilationTeam team : AnnihilationTeam.teams()) {
+		for (GameTeam team : GameTeam.teams()) {
 			String name = team.name().toLowerCase();
 			if (section.contains("spawns." + name)) {
 				for (String s : section.getStringList("spawns." + name))
@@ -257,7 +266,7 @@ public final class Annihilation extends JavaPlugin {
 		sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
 				+ WordUtils.capitalize(voting.getWinner()));
 
-		for (AnnihilationTeam t : AnnihilationTeam.teams()) {
+		for (GameTeam t : GameTeam.teams()) {
 			sb.scores.put(t.name(), sb.obj.getScore(Bukkit
 					.getOfflinePlayer(WordUtils.capitalize(t.name()
 							.toLowerCase() + " Nexus"))));
@@ -274,7 +283,7 @@ public final class Annihilation extends JavaPlugin {
 				+ WordUtils.capitalize(voting.getWinner()));
 
 		for (Player p : getServer().getOnlinePlayers())
-			if (PlayerMeta.getMeta(p).getTeam() != AnnihilationTeam.NONE)
+			if (PlayerMeta.getMeta(p).getTeam() != GameTeam.NONE)
 				Util.sendPlayerToGame(p);
 
 		sb.update();
@@ -298,10 +307,10 @@ public final class Annihilation extends JavaPlugin {
 		Bukkit.getPluginManager().callEvent(
 				new PhaseChangeEvent(timer.getPhase()));
 
-		getSignHandler().updateSigns(AnnihilationTeam.RED);
-		getSignHandler().updateSigns(AnnihilationTeam.BLUE);
-		getSignHandler().updateSigns(AnnihilationTeam.GREEN);
-		getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
+		getSignHandler().updateSigns(GameTeam.RED);
+		getSignHandler().updateSigns(GameTeam.BLUE);
+		getSignHandler().updateSigns(GameTeam.GREEN);
+		getSignHandler().updateSigns(GameTeam.YELLOW);
 	}
 
 	public void onSecond() {
@@ -354,11 +363,11 @@ public final class Annihilation extends JavaPlugin {
 		return voting;
 	}
 
-	public ScoreboardHandler getScoreboardHandler() {
+	public ScoreboardManager getScoreboardHandler() {
 		return sb;
 	}
 
-	public void endGame(AnnihilationTeam winner) {
+	public void endGame(GameTeam winner) {
 		if (winner == null)
 			return;
 
@@ -370,7 +379,7 @@ public final class Annihilation extends JavaPlugin {
 				stats.incrementStat(StatType.WINS, p);
 		long restartDelay = configManager.getConfig("config.yml").getLong(
 				"restart-delay");
-		new RestartTimer(this, restartDelay).start(timer.getTime());
+		new RestartHandler(this, restartDelay).start(timer.getTime());
 	}
 
 	public void reset() {
@@ -379,7 +388,7 @@ public final class Annihilation extends JavaPlugin {
 		maps.reset();
 		timer.reset();
 		for (Player p : getServer().getOnlinePlayers()) {
-			PlayerMeta.getMeta(p).setTeam(AnnihilationTeam.NONE);
+			PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
 			p.teleport(maps.getLobbySpawnPoint());
 			BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA
 					+ "Welcome to Annihilation!", 0.01F);
@@ -430,8 +439,8 @@ public final class Annihilation extends JavaPlugin {
 					p.updateInventory();
 				}
 				
-				for (AnnihilationTeam t : AnnihilationTeam.values())
-					if (t != AnnihilationTeam.NONE) sign.updateSigns(t);
+				for (GameTeam t : GameTeam.values())
+					if (t != GameTeam.NONE) sign.updateSigns(t);
 				
 				checkStarting();
 			}
@@ -440,8 +449,8 @@ public final class Annihilation extends JavaPlugin {
 
 	public void checkWin() {
 		int alive = 0;
-		AnnihilationTeam aliveTeam = null;
-		for (AnnihilationTeam t : AnnihilationTeam.teams()) {
+		GameTeam aliveTeam = null;
+		for (GameTeam t : GameTeam.teams()) {
 			if (t.getNexus().isAlive()) {
 				alive++;
 				aliveTeam = t;
@@ -452,11 +461,11 @@ public final class Annihilation extends JavaPlugin {
 		}
 	}
 
-	public SignHandler getSignHandler() {
+	public SignManager getSignHandler() {
 		return sign;
 	}
 
-	public void setSignHandler(SignHandler sign) {
+	public void setSignHandler(SignManager sign) {
 		this.sign = sign;
 	}
 
