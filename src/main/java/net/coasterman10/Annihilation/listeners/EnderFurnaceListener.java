@@ -51,8 +51,8 @@ public class EnderFurnaceListener implements Listener {
 		if (team == null || !locations.containsKey(team))
 			return;
 
-		e.setCancelled(true);
 		if (locations.get(team).equals(loc)) {
+            e.setCancelled(true);
 			EntityPlayer handle = ((CraftPlayer) player).getHandle();
 			handle.openFurnace(getFurnace(player));
 			player.sendMessage(ChatColor.DARK_AQUA

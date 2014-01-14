@@ -1,5 +1,7 @@
 package net.coasterman10.Annihilation.listeners;
 
+import java.util.HashMap;
+
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.AnnihilationTeam;
 import net.coasterman10.Annihilation.Kit;
@@ -39,6 +41,8 @@ import org.bukkit.potion.PotionEffect;
 
 public class PlayerListener implements Listener {
 	private final Annihilation plugin;
+
+    private HashMap<String, Kit> kitsToGive = new HashMap<String, Kit>();
 
 	public PlayerListener(Annihilation plugin) {
 		this.plugin = plugin;
@@ -131,6 +135,10 @@ public class PlayerListener implements Listener {
 		Player player = e.getPlayer();
 		PlayerMeta meta = PlayerMeta.getMeta(player);
 		if (meta.isAlive()) {
+            if (kitsToGive.containsKey(e.getPlayer().getName())) {
+                meta.setKit(kitsToGive.get(e.getPlayer().getName()));
+                kitsToGive.remove(e.getPlayer().getName());
+            }
 			e.setRespawnLocation(meta.getTeam().getRandomSpawn());
 			meta.getKit().give(player, meta.getTeam());
 		} else {
@@ -440,9 +448,14 @@ public class PlayerListener implements Listener {
 			String name = e.getCurrentItem().getItemMeta().getDisplayName();
 			PlayerMeta meta = PlayerMeta.getMeta(player);
 			meta.setKit(Kit.getKit(ChatColor.stripColor(name)));
-			if (meta.isAlive())
-				player.sendMessage(ChatColor.GREEN + "You will recieve this class when you respawn.");
-			player.sendMessage(ChatColor.DARK_AQUA + "Selected class " + ChatColor.stripColor(name));
+			if (meta.isAlive()) {
+                player.sendMessage(ChatColor.GREEN
+                + "You will recieve this class when you respawn.");
+                kitsToGive.put(player.getName(),
+                        Kit.getKit(ChatColor.stripColor(name)));
+            }
+            player.sendMessage(ChatColor.GOLD + "Selected Class "
+            + ChatColor.stripColor(name));
 		}
 	}
 }

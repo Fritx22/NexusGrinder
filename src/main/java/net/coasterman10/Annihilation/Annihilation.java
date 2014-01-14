@@ -501,9 +501,9 @@ public final class Annihilation extends JavaPlugin {
 			return !hasBlock;
 		}
 		
-		public static void showClassSelector(Player player) {
+		public static void showClassSelector(Player player, String title) {
 			int size = ((Kit.values().length + 8) / 9) * 9;
-			Inventory inv = Bukkit.createInventory(null, size, "Class Selector");
+			Inventory inv = Bukkit.createInventory(null, size, "title");
 			for (Kit kit : Kit.values())
 				inv.addItem(kit.getIcon());
 			player.openInventory(inv);
