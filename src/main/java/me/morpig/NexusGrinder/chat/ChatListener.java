@@ -22,7 +22,7 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        e.setJoinMessage(ChatColor.GOLD + "[NexusGrinder] " + ChatColor.AQUA + e.getPlayer().getName() + "has joined NexusGrinder!");
+        e.setJoinMessage(ChatColor.GOLD + "[NexusGrinder] " + ChatColor.AQUA + e.getPlayer().getName() + " has joined NexusGrinder!");
     }
 
     @EventHandler

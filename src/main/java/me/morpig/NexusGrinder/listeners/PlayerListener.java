@@ -213,7 +213,7 @@ public class PlayerListener implements Listener {
 							+ "', '0', '0', '0', '0', '0');");
 
 		if (plugin.getPhase() == 0 && plugin.getVotingManager().isRunning()) {
-			BarUtil.setMessageAndPercent(player, ChatColor.DARK_AQUA
+			BarUtil.setMessageAndPercent(player, ChatColor.GOLD
 					+ "Welcome to NexusGrinder!", 0.01f);
 			plugin.checkStarting();
 		}
