@@ -381,8 +381,7 @@ public final class Annihilation extends JavaPlugin {
 		for (Player p : getServer().getOnlinePlayers()) {
 			PlayerMeta.getMeta(p).setTeam(AnnihilationTeam.NONE);
 			p.teleport(maps.getLobbySpawnPoint());
-			BarUtil.setMessageAndPercent(p, ChatColor.GOLD
-					+ "Welcome to NexusGrinder! !!BETA-GAME!!!", 0.01F);
+			BarUtil.setMessageAndPercent(p, ChatColor.GOLD + "Welcome to NexusGrinder! !!BETA-GAME!!!", 0.01F);
 			p.setMaxHealth(20D);
 			p.setHealth(20D);
 			p.setFoodLevel(20);

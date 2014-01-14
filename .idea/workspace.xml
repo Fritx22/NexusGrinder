@@ -117,7 +117,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="plugin.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plugin.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
@@ -189,10 +189,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="382" column="50" selection-start="12584" selection-end="12584" vertical-scroll-proportion="-5.6153846" vertical-offset="5158" max-vertical-offset="7616">
+            <state line="376" column="56" selection-start="12333" selection-end="12333" vertical-scroll-proportion="0.15157117" vertical-offset="5120" max-vertical-offset="7599">
               <folding />
             </state>
           </provider>
@@ -258,8 +258,8 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/ClassCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
       </list>
     </option>
   </component>
@@ -763,16 +763,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="382" column="50" selection-start="12584" selection-end="12584" vertical-scroll-proportion="-5.6153846" vertical-offset="5158" max-vertical-offset="7616">
+        <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="18" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+        <state line="376" column="56" selection-start="12333" selection-end="12333" vertical-scroll-proportion="0.15157117" vertical-offset="5120" max-vertical-offset="7599">
           <folding />
         </state>
       </provider>
