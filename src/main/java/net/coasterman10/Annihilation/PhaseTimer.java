@@ -2,7 +2,6 @@ package net.coasterman10.Annihilation;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -41,35 +40,15 @@ public class PhaseTimer {
 
 		time = -startTime;
 
-        if (time <= 120) {
-            for (Player p : Bukkit.getOnlinePlayers()) {
-
-                SoundUtil.playSound(p.getLocation(), Sound.NOTE_PIANO, 20F, 20F, 20F);
-                SoundUtil.playSound(p.getLocation(), Sound.NOTE_PLING, 20, 20, 20);
-                SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 20, 20, 20);
-                SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS_DRUM, 20, 20, 20);
-                SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS, 20, 20, 20);
-
-            }
-
-        }
-
-		for (Player p : Bukkit.getOnlinePlayers()) {
+		for (Player p : Bukkit.getOnlinePlayers())
 			BarUtil.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
 					+ -time, 1F);
-            SoundUtil.playSound(p.getLocation(), Sound.NOTE_PIANO, 20F, 20F, 20F);
-            SoundUtil.playSound(p.getLocation(), Sound.NOTE_PLING, 20, 20, 20);
-            SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 20, 20, 20);
-            SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS_DRUM, 20, 20, 20);
-            SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS, 20, 20, 20);
 
-
-            plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
+		plugin.getSignHandler().updateSigns(AnnihilationTeam.RED);
 		plugin.getSignHandler().updateSigns(AnnihilationTeam.BLUE);
 		plugin.getSignHandler().updateSigns(AnnihilationTeam.GREEN);
 		plugin.getSignHandler().updateSigns(AnnihilationTeam.YELLOW);
-	  }
-    }
+	}
 
 	public void stop() {
 		if (isRunning) {
