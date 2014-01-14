@@ -41,6 +41,19 @@ public class PhaseTimer {
 
 		time = -startTime;
 
+        if (time <= 120) {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+
+                SoundUtil.playSound(p.getLocation(), Sound.NOTE_PIANO, 20F, 20F, 20F);
+                SoundUtil.playSound(p.getLocation(), Sound.NOTE_PLING, 20, 20, 20);
+                SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 20, 20, 20);
+                SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS_DRUM, 20, 20, 20);
+                SoundUtil.playSound(p.getLocation(), Sound.NOTE_BASS, 20, 20, 20);
+
+            }
+
+        }
+
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			BarUtil.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
 					+ -time, 1F);
