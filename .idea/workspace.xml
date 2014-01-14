@@ -1,59 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\Annihilation.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\Metrics.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Metrics.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\Updater.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Updater.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\api\GameStartEvent.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/api/GameStartEvent.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\api\NexusDamageEvent.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/api/NexusDamageEvent.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\api\NexusDestroyEvent.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/api/NexusDestroyEvent.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\api\PhaseChangeEvent.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/api/PhaseChangeEvent.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\bar\BarUtil.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/BarUtil.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\bar\FakeDragon.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/FakeDragon.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\bar\Util.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/Util.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\chat\ChatListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\chat\ChatUtil.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatUtil.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\AnnihilationCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\ClassCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/ClassCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\DistanceCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/DistanceCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\MapCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/MapCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\StatsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/StatsCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\TeamCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\TeamShortcutCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\commands\VoteCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/VoteCommand.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\ClassAbilityListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ClassAbilityListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\CraftingListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/CraftingListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\EnderBrewingStandListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderBrewingStandListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\EnderChestListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderChestListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\EnderFurnaceListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderFurnaceListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\ResourceListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ResourceListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\SoulboundListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/SoulboundListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\WandListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WandListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\listeners\WorldListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WorldListener.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\manager\ConfigManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/ConfigManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\manager\PhaseManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\manager\RestartHandler.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/RestartHandler.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\manager\ScoreboardManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/ScoreboardManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\manager\SignManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/SignManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\manager\SoundManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/SoundManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\maps\GameMap.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\maps\MapLoader.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\maps\MapManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\maps\VoidGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/VoidGenerator.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\maps\VotingManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/VotingManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\object\GameTeam.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/GameTeam.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\object\Kit.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Kit.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\object\Nexus.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Nexus.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\object\PlayerMeta.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/PlayerMeta.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\object\Shop.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Shop.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\stats\DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/DatabaseHandler.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\stats\StatType.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/StatType.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\net\coasterman10\Annihilation\stats\StatsManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/StatsManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="" />
     <ignored path="Annihilation.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -338,8 +286,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1358" />
-    <option name="y" value="-8" />
+    <option name="x" value="1354" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -902,7 +849,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1354" y="0" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
