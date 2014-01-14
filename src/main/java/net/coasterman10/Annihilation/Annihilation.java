@@ -116,8 +116,8 @@ public final class Annihilation extends JavaPlugin {
 
 		stats = new StatsManager(this, configManager);
 		resources = new ResourceListener(this);
-		enderFurnaces = new EnderFurnaceListener();
-		enderBrewingStands = new EnderBrewingStandListener();
+		enderFurnaces = new EnderFurnaceListener(this);
+		enderBrewingStands = new EnderBrewingStandListener(this);
 		enderChests = new EnderChestListener();
 		sign = new SignHandler(this);
 		Configuration config = configManager.getConfig("config.yml");

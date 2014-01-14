@@ -2,6 +2,7 @@ package net.coasterman10.Annihilation.listeners;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,6 +18,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
+import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.AnnihilationTeam;
 import net.coasterman10.Annihilation.PlayerMeta;
 import net.minecraft.server.v1_7_R1.EntityHuman;
@@ -27,9 +29,17 @@ public class EnderFurnaceListener implements Listener {
 	private HashMap<AnnihilationTeam, Location> locations;
 	private HashMap<String, VirtualFurnace> furnaces;
 
-	public EnderFurnaceListener() {
+	public EnderFurnaceListener(Annihilation plugin) {
 		locations = new HashMap<AnnihilationTeam, Location>();
 		furnaces = new HashMap<String, VirtualFurnace>();
+
+        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
+            @Override
+            public void run() {
+                for (VirtualFurnace f : furnaces.values())
+                    f.h();
+            }
+        }, 0L, 1L);
 	}
 
 	public void setFurnaceLocation(AnnihilationTeam team, Location loc) {

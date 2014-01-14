@@ -2,6 +2,7 @@ package net.coasterman10.Annihilation.listeners;
 
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -17,6 +18,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
+import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.AnnihilationTeam;
 import net.coasterman10.Annihilation.PlayerMeta;
 import net.minecraft.server.v1_7_R1.EntityHuman;
@@ -27,10 +29,19 @@ public class EnderBrewingStandListener implements Listener {
 	private HashMap<AnnihilationTeam, Location> locations;
 	private HashMap<String, VirtualBrewingStand> brewingStands;
 
-	public EnderBrewingStandListener() {
+	public EnderBrewingStandListener(Annihilation plugin) {
 		locations = new HashMap<AnnihilationTeam, Location>();
 		brewingStands = new HashMap<String, VirtualBrewingStand>();
-	}
+
+        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
+            @Override
+            public void run() {
+                for (VirtualBrewingStand b : brewingStands.values())
+                    b.h();
+            }
+        }, 0L, 1L);
+    }
+
 
 	public void setBrewingStandLocation(AnnihilationTeam team, Location loc) {
 		locations.put(team, loc);
