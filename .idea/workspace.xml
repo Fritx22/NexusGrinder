@@ -177,7 +177,7 @@
       <file leaf-file-name="ChatListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="91" selection-start="1227" selection-end="1227" vertical-scroll-proportion="-0.84115523" vertical-offset="1010" max-vertical-offset="1564">
+            <state line="32" column="93" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.44765344" vertical-offset="296" max-vertical-offset="1564">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1339,7 +1339,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="91" selection-start="1227" selection-end="1227" vertical-scroll-proportion="-0.84115523" vertical-offset="1010" max-vertical-offset="1564">
+        <state line="32" column="93" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.44765344" vertical-offset="296" max-vertical-offset="1564">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
