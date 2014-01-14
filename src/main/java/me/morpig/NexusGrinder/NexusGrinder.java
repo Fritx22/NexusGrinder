@@ -86,41 +86,25 @@ public final class NexusGrinder extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
-		try {
-		    Metrics metrics = new Metrics(this);
-		    metrics.start();
-		} catch (IOException e) {
-		    
-		}
-		
-		Updater.UpdateResult updateResult = null;
-		Updater u = null;
-
-		if (this.getConfig().getBoolean("allowUpdater"))
-			u = new Updater(this, 72127, this.getFile(),
-					Updater.UpdateType.DEFAULT, true);
-
-		if (u != null)
-			updateResult = u.getResult();
-
-		if (updateResult != null) {
-			if (updateResult == Updater.UpdateResult.SUCCESS) {
-				updateAvailable = true;
-				newVersion = u.getLatestName();
-			}
-		}
 
 		configManager = new ConfigManager(this);
 		configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
 				"stats.yml");
-		
-		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
+
+        getLogger().info("#######################################");
+        getLogger().info("            Nexus Grinder              ");
+        getLogger().info("                v.12                   ");
+        getLogger().info("#######################################");
+
+        MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
+        getLogger().info("Loaded MapManager, PGM for Nexus Grinder v.12");
 
 		Configuration shops = configManager.getConfig("shops.yml");
 		new Shop(this, "Weapon", shops);
 		new Shop(this, "Brewing", shops);
+        getLogger().info("Loaded Shop, PGM for Nexus Grinder v.12");
 
 		stats = new StatsManager(this, configManager);
 		resources = new ResourceListener(this);
@@ -134,9 +118,11 @@ public final class NexusGrinder extends JavaPlugin {
 		voting = new VotingManager(this);
 		sb = new ScoreboardManager();
 
+
 		PluginManager pm = getServer().getPluginManager();
 
 		sign.loadSigns();
+        getLogger().info("Loaded SignEvent, PGM for Nexus Grinder v.12");
 
 		sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
 				+ " | " + ChatColor.GOLD + "/vote <name>");
@@ -154,6 +140,7 @@ public final class NexusGrinder extends JavaPlugin {
 		pm.registerEvents(new WandListener(this), this);
 		pm.registerEvents(new CraftingListener(), this);
 		pm.registerEvents(new ClassAbilityListener(this), this);
+        getLogger().info("Loaded Register Events, PGM for Nexus Grinder v.12");
 
 		getCommand("nexusgrinder").setExecutor(new NexusGrinderCommand(this));
 		getCommand("class").setExecutor(new ClassCommand());
@@ -166,6 +153,7 @@ public final class NexusGrinder extends JavaPlugin {
 		getCommand("blue").setExecutor(new TeamShortcutCommand());
 		getCommand("distance").setExecutor(new DistanceCommand(this));
 		getCommand("map").setExecutor(new MapCommand(this, mapLoader));
+        getLogger().info("Loaded Commands, PGM for Nexus Grinder v.12");
 
 		BarUtil.init(this);
 
@@ -389,7 +377,7 @@ public final class NexusGrinder extends JavaPlugin {
 		for (Player p : getServer().getOnlinePlayers()) {
 			PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
 			p.teleport(maps.getLobbySpawnPoint());
-			BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA
+			BarUtil.setMessageAndPercent(p, ChatColor.GOLD
 					+ "Welcome to NexusGrinder!", 0.01F);
 			p.setMaxHealth(20D);
 			p.setHealth(20D);

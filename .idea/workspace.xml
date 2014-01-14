@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
     </list>
     <ignored path="Annihilation.iws" />
@@ -162,22 +163,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NexusGrinder.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="398" column="0" selection-start="12901" selection-end="12901" vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="8687">
+            <state line="379" column="58" selection-start="12878" selection-end="12878" vertical-scroll-proportion="2.9382715" vertical-offset="4522" max-vertical-offset="8483">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8931#8941#0" expanded="true" />
+                <element signature="e#9054#9064#0" expanded="true" />
+                <element signature="e#13271#13303#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ChatListener.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ChatListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="93" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.44765344" vertical-offset="296" max-vertical-offset="1564">
+            <state line="32" column="93" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="1564">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -235,7 +237,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderBrewingStandListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderFurnaceListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Annihilation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/BarUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/ClassCommand.java" />
@@ -260,6 +261,7 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WorldListener.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       </list>
     </option>
   </component>
@@ -1327,21 +1329,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="398" column="0" selection-start="12901" selection-end="12901" vertical-scroll-proportion="0.0" vertical-offset="2193" max-vertical-offset="8687">
+        <state line="32" column="93" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="1564">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8931#8941#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="93" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.44765344" vertical-offset="296" max-vertical-offset="1564">
+        <state line="379" column="58" selection-start="12878" selection-end="12878" vertical-scroll-proportion="2.9382715" vertical-offset="4522" max-vertical-offset="8483">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#9054#9064#0" expanded="true" />
+            <element signature="e#13271#13303#0" expanded="true" />
           </folding>
         </state>
       </provider>
