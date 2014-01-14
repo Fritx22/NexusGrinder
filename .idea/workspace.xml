@@ -4,6 +4,7 @@
     <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/AnnihilationCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/AnnihilationCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderFurnaceListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderFurnaceListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -127,12 +128,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerListener.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="73" selection-start="2455" selection-end="2455" vertical-scroll-proportion="-4.3076925" vertical-offset="313" max-vertical-offset="7225">
+            <state line="272" column="68" selection-start="9021" selection-end="9021" vertical-scroll-proportion="-3.375231" vertical-offset="6450" max-vertical-offset="8024">
               <folding>
-                <element signature="e#1788#1801#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1838#1851#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,8 +143,10 @@
       <file leaf-file-name="ClassCommand.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="41" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="425">
-              <folding />
+            <state line="20" column="69" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="425">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,10 +171,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="505" column="63" selection-start="15907" selection-end="15907" vertical-scroll-proportion="0.5946745" vertical-offset="7993" max-vertical-offset="8534">
+            <state line="511" column="0" selection-start="16016" selection-end="16016" vertical-scroll-proportion="-11.653846" vertical-offset="7993" max-vertical-offset="8534">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -248,10 +252,11 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/PhaseTimer.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderFurnaceListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/AnnihilationCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
       </list>
     </option>
   </component>
@@ -507,7 +512,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="SearchEverywhereHistory" value="EnderFur&#10;Anni&#10;PlayerLi" />
+    <property name="SearchEverywhereHistory" value="Player&#10;EnderFur&#10;Anni&#10;PlayerLi" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -671,7 +676,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3306189" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3306189" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -859,27 +864,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="511" column="0" selection-start="16016" selection-end="16016" vertical-scroll-proportion="-11.653846" vertical-offset="7993" max-vertical-offset="8534">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="41" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="425">
-          <folding />
+        <state line="20" column="69" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="425">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="73" selection-start="2455" selection-end="2455" vertical-scroll-proportion="-4.3076925" vertical-offset="313" max-vertical-offset="7225">
-          <folding>
-            <element signature="e#1788#1801#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="505" column="63" selection-start="15907" selection-end="15907" vertical-scroll-proportion="0.5946745" vertical-offset="7993" max-vertical-offset="8534">
+        <state line="272" column="68" selection-start="9021" selection-end="9021" vertical-scroll-proportion="-3.375231" vertical-offset="6450" max-vertical-offset="8024">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1838#1851#0" expanded="true" />
           </folding>
         </state>
       </provider>

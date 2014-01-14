@@ -18,7 +18,7 @@ public class ClassCommand implements CommandExecutor {
 					+ "Classes pertain only to players");
 		} else {
 			Player player = (Player) sender;
-			Annihilation.Util.showClassSelector(player);
+			Annihilation.Util.showClassSelector(player, "Select Class");
 		}
 		return false;
 	}
