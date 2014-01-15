@@ -1,4 +1,4 @@
-package me.morpig.NexusGrinder.stats;
+package me.morpig.NexusGrinder.manager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
