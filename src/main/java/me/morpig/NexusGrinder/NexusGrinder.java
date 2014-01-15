@@ -93,29 +93,6 @@ public final class NexusGrinder extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
-		try {
-		    Metrics metrics = new Metrics(this);
-		    metrics.start();
-		} catch (IOException e) {
-		    
-		}
-		
-		Updater.UpdateResult updateResult = null;
-		Updater u = null;
-
-		if (this.getConfig().getBoolean("allowUpdater"))
-			u = new Updater(this, 72127, this.getFile(),
-					Updater.UpdateType.DEFAULT, true);
-
-		if (u != null)
-			updateResult = u.getResult();
-
-		if (updateResult != null) {
-			if (updateResult == Updater.UpdateResult.SUCCESS) {
-				updateAvailable = true;
-				newVersion = u.getLatestName();
-			}
-		}
 
 		configManager = new ConfigManager(this);
 		configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
@@ -124,6 +101,12 @@ public final class NexusGrinder extends JavaPlugin {
 		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
+        getLogger().info("#######################################");
+        getLogger().info("            Nexus Grinder              ");
+        getLogger().info("                v.12                   ");
+        getLogger().info("#######################################");
+
+
 
 		Configuration shops = configManager.getConfig("shops.yml");
 		new Shop(this, "Weapon", shops);
