@@ -42,24 +42,12 @@ public class NexusGrinderCommand implements CommandExecutor {
 					if (!plugin.startTimer()) {
 						sender.sendMessage(prefix + red + "The game has already started");
 					} else {
+                        plugin.startGame();
 						sender.sendMessage(prefix + green + "The game has been started.");
 					}
 				} else sender.sendMessage(prefix + red + "You cannot use this command!");
 			}
 		}
-        if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("begin")) {
-                if (sender.hasPermission("annihilation.command.start")) {
-                    plugin.startGame();
-                    sender.sendMessage(prefix + red + "The game has been force started.");
-
-                    } else {
-                    sender.sendMessage(prefix + green + "You cannot use this command!");
-
-                }
-            }
-            return false;
-        }
 		return false;
 	}
 }
