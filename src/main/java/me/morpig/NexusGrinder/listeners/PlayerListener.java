@@ -216,7 +216,6 @@ public class PlayerListener implements Listener {
 			BarUtil.setMessageAndPercent(player, ChatColor.GOLD
 					+ "Welcome to NexusGrinder!", 0.01f);
 			plugin.checkStarting();
-            plugin.checkPlayers();
 		}
 
 		plugin.getSignHandler().updateSigns(meta.getTeam());
