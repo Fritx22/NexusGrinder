@@ -1,5 +1,6 @@
 package me.morpig.NexusGrinder.chat;
 
+import me.morpig.NexusGrinder.object.Boss;
 import me.morpig.NexusGrinder.object.GameTeam;
 import me.morpig.NexusGrinder.object.PlayerMeta;
 
@@ -19,7 +20,7 @@ public class ChatUtil {
 	}
 
 	public static void broadcast(String message) {
-		Bukkit.broadcastMessage(message);
+		Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
 	}
 
 	public static void nexusDestroyed(GameTeam attacker,
@@ -42,8 +43,8 @@ public class ChatUtil {
 	}
 
 	public static void phaseMessage(int phase) {
-		broadcast(GRAY + "==========[ " + DARK_AQUA + "Progress" + GRAY
-				+ " ]==========");
+		broadcast(GRAY + "===========[ " + DARK_AQUA + "Progress" + GRAY
+				+ " ]===========");
 		broadcast(GRAY + "Phase " + translateRoman(phase) + " has started");
 		switch (phase) {
 		case 1:
@@ -51,6 +52,7 @@ public class ChatUtil {
 			break;
 		case 2:
 			broadcast(GRAY + "Each nexus is no longer invincible");
+			broadcast(GRAY + "Boss Iron Golems will now spawn");
 			break;
 		case 3:
 			broadcast(GRAY + "Diamonds will now spawn in the middle");
@@ -60,7 +62,7 @@ public class ChatUtil {
 		case 5:
 			broadcast(RED + "Double nexus damage");
 		}
-		broadcast(GRAY + "==============================");
+		broadcast(GRAY + "================================");
 	}
 
 	public static void winMessage(GameTeam winner) {
@@ -68,6 +70,20 @@ public class ChatUtil {
 				+ " ]================");
 		broadcast(GRAY + "Team " +  winner.coloredName() + GRAY + " Wins Annihilation! Restarting game...");
 		broadcast(GRAY + "==========================================");
+	}
+	
+	public static void bossDeath(Boss b, Player killer, GameTeam team) {
+		broadcast(GRAY + "==========[ " + DARK_AQUA + "Boss Killed" + GRAY
+				+ " ]==========");
+		broadcast(GRAY + b.getBossName() + GRAY + " was killed by " + colorizeName(killer, team));
+		broadcast(GRAY + "================================");
+	}
+	
+	public static void bossRespawn(Boss b) {
+		broadcast(GRAY + "================[ " + DARK_AQUA + "Boss" + GRAY
+				+ " ]================");
+		broadcast(GRAY + b.getBossName() + GRAY + " has respawned! Go slay the beast!");
+		broadcast(GRAY + "=======================================");
 	}
 
 	public static String formatDeathMessage(Player victim, Player killer,

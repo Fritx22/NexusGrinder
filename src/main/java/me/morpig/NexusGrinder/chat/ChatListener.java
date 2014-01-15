@@ -9,8 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 public class ChatListener implements Listener {
 	private final NexusGrinder plugin;
@@ -19,19 +17,6 @@ public class ChatListener implements Listener {
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 		this.plugin = plugin;
 	}
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        e.setJoinMessage(ChatColor.GOLD + "[NexusGrinder] " + ChatColor.AQUA + e.getPlayer().getName() + " has joined NexusGrinder!");
-    }
-
-    @EventHandler
-    public void onPlayerLeave(PlayerQuitEvent e) {
-        String username = e.getPlayer().getName();
-        GameTeam team = PlayerMeta.getMeta(e.getPlayer()).getTeam();
-        String color = team.color().toString();
-        e.setQuitMessage(ChatColor.GOLD + "[NexusGrinder] " + color + e.getPlayer().getName() + " leave NexusGrinder!");
-    }
 
 	@EventHandler
 	public void onPlayerChat(final AsyncPlayerChatEvent e) {
@@ -48,7 +33,7 @@ public class ChatListener implements Listener {
 			String color = ChatColor.DARK_PURPLE.toString();
 			group = DARK_GRAY + "[" + color + "Lobby" + DARK_GRAY + "]";
 
-			if (message.startsWith("@"))
+			if (message.startsWith("!"))
 				message = message.substring(1);
 		} else {
 			String color = team.color().toString();

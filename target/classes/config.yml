@@ -27,4 +27,7 @@ allowUpdater: true
 requiredToStart: 2
 
 # Build Distance from Nexus
-build: 1
+build: 5
+
+# Delay in minutes to respawn the bosses after death
+bossRespawnDelay: 10

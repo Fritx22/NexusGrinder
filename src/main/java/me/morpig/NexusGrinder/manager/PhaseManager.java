@@ -122,7 +122,7 @@ public class PhaseManager {
 		plugin.onSecond();
 	}
 
-	private String getPhaseColor() {
+	public String getPhaseColor() {
 		switch (phase) {
 		case 1:
 			return ChatColor.BLUE.toString();

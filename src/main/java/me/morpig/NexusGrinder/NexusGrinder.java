@@ -1,6 +1,7 @@
 package me.morpig.NexusGrinder;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ import me.morpig.NexusGrinder.commands.StatsCommand;
 import me.morpig.NexusGrinder.commands.TeamCommand;
 import me.morpig.NexusGrinder.commands.TeamShortcutCommand;
 import me.morpig.NexusGrinder.commands.VoteCommand;
+import me.morpig.NexusGrinder.listeners.BossListener;
 import me.morpig.NexusGrinder.listeners.ClassAbilityListener;
 import me.morpig.NexusGrinder.listeners.CraftingListener;
 import me.morpig.NexusGrinder.listeners.EnderBrewingStandListener;
@@ -28,7 +30,9 @@ import me.morpig.NexusGrinder.listeners.ResourceListener;
 import me.morpig.NexusGrinder.listeners.SoulboundListener;
 import me.morpig.NexusGrinder.listeners.WandListener;
 import me.morpig.NexusGrinder.listeners.WorldListener;
+import me.morpig.NexusGrinder.manager.BossManager;
 import me.morpig.NexusGrinder.manager.ConfigManager;
+import me.morpig.NexusGrinder.manager.DatabaseManager;
 import me.morpig.NexusGrinder.manager.PhaseManager;
 import me.morpig.NexusGrinder.manager.RestartHandler;
 import me.morpig.NexusGrinder.manager.ScoreboardManager;
@@ -36,11 +40,11 @@ import me.morpig.NexusGrinder.manager.SignManager;
 import me.morpig.NexusGrinder.maps.MapLoader;
 import me.morpig.NexusGrinder.maps.MapManager;
 import me.morpig.NexusGrinder.maps.VotingManager;
+import me.morpig.NexusGrinder.object.Boss;
 import me.morpig.NexusGrinder.object.GameTeam;
 import me.morpig.NexusGrinder.object.Kit;
 import me.morpig.NexusGrinder.object.PlayerMeta;
 import me.morpig.NexusGrinder.object.Shop;
-import me.morpig.NexusGrinder.stats.DatabaseHandler;
 import me.morpig.NexusGrinder.stats.StatType;
 import me.morpig.NexusGrinder.stats.StatsManager;
 
@@ -77,34 +81,53 @@ public final class NexusGrinder extends JavaPlugin {
 	private StatsManager stats;
 	private SignManager sign;
 	private ScoreboardManager sb;
-	private DatabaseHandler db;
+	private DatabaseManager db;
+	private BossManager boss;
+	
 	public boolean useMysql = false;
 	public boolean updateAvailable = false;
 	public String newVersion;
 
 	public int build = 1;
+	public int respawn = 10;
 	
 	@Override
 	public void onEnable() {
+		try {
+		    Metrics metrics = new Metrics(this);
+		    metrics.start();
+		} catch (IOException e) {
+		    
+		}
+		
+		Updater.UpdateResult updateResult = null;
+		Updater u = null;
+
+		if (this.getConfig().getBoolean("allowUpdater"))
+			u = new Updater(this, 72127, this.getFile(),
+					Updater.UpdateType.DEFAULT, true);
+
+		if (u != null)
+			updateResult = u.getResult();
+
+		if (updateResult != null) {
+			if (updateResult == Updater.UpdateResult.SUCCESS) {
+				updateAvailable = true;
+				newVersion = u.getLatestName();
+			}
+		}
 
 		configManager = new ConfigManager(this);
 		configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
 				"stats.yml");
-
-        getLogger().info("#######################################");
-        getLogger().info("            Nexus Grinder              ");
-        getLogger().info("                v.12                   ");
-        getLogger().info("#######################################");
-
-        MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
+		
+		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
-        getLogger().info("Loaded MapManager, PGM for Nexus Grinder v.12");
 
 		Configuration shops = configManager.getConfig("shops.yml");
 		new Shop(this, "Weapon", shops);
 		new Shop(this, "Brewing", shops);
-        getLogger().info("Loaded Shop, PGM for Nexus Grinder v.12");
 
 		stats = new StatsManager(this, configManager);
 		resources = new ResourceListener(this);
@@ -117,17 +140,17 @@ public final class NexusGrinder extends JavaPlugin {
 				config.getInt("phase-period"));
 		voting = new VotingManager(this);
 		sb = new ScoreboardManager();
-
-
+		boss = new BossManager(this);
+		
 		PluginManager pm = getServer().getPluginManager();
 
 		sign.loadSigns();
-        getLogger().info("Loaded SignEvent, PGM for Nexus Grinder v.12");
 
 		sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
 				+ " | " + ChatColor.GOLD + "/vote <name>");
 
-		build = this.getConfig().getInt("build", 1);
+		build = this.getConfig().getInt("build", 5);
+		respawn = this.getConfig().getInt("bossRespawnDelay", 10);
 		
 		pm.registerEvents(resources, this);
 		pm.registerEvents(enderFurnaces, this);
@@ -140,8 +163,8 @@ public final class NexusGrinder extends JavaPlugin {
 		pm.registerEvents(new WandListener(this), this);
 		pm.registerEvents(new CraftingListener(), this);
 		pm.registerEvents(new ClassAbilityListener(this), this);
-        getLogger().info("Loaded Register Events, PGM for Nexus Grinder v.12");
-
+		pm.registerEvents(new BossListener(this), this);
+		
 		getCommand("nexusgrinder").setExecutor(new NexusGrinderCommand(this));
 		getCommand("class").setExecutor(new ClassCommand());
 		getCommand("stats").setExecutor(new StatsCommand(stats));
@@ -153,7 +176,6 @@ public final class NexusGrinder extends JavaPlugin {
 		getCommand("blue").setExecutor(new TeamShortcutCommand());
 		getCommand("distance").setExecutor(new DistanceCommand(this));
 		getCommand("map").setExecutor(new MapCommand(this, mapLoader));
-        getLogger().info("Loaded Commands, PGM for Nexus Grinder v.12");
 
 		BarUtil.init(this);
 
@@ -166,14 +188,14 @@ public final class NexusGrinder extends JavaPlugin {
 			String name = config.getString("MySQL.name");
 			String user = config.getString("MySQL.user");
 			String pass = config.getString("MySQL.pass");
-			db = new DatabaseHandler(host, port, name, user, pass, this);
+			db = new DatabaseManager(host, port, name, user, pass, this);
 
-			db.query("CREATE TABLE IF NOT EXISTS `annihilation` ( `username` varchar(16) NOT NULL, "
+			db.query("CREATE TABLE IF NOT EXISTS `nexusgrinder` ( `username` varchar(16) NOT NULL, "
 					+ "`kills` int(16) NOT NULL, `deaths` int(16) NOT NULL, `wins` int(16) NOT NULL, "
 					+ "`losses` int(16) NOT NULL, `nexus_damage` int(16) NOT NULL, "
 					+ "UNIQUE KEY `username` (`username`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
 		} else
-			db = new DatabaseHandler(this);
+			db = new DatabaseManager(this);
 
 		reset();
 
@@ -225,6 +247,17 @@ public final class NexusGrinder extends JavaPlugin {
 				enderChests.setEnderChestLocation(team, loc);
 				loc.getBlock().setType(Material.ENDER_CHEST);
 			}
+		}
+		
+		if (section.contains("bosses")) {
+			HashMap<String, Boss> bosses = new HashMap<String, Boss>();
+			ConfigurationSection sec = section.getConfigurationSection("bosses");
+			for (String boss : sec.getKeys(false))
+				bosses.put(boss, 
+				new Boss(boss, sec.getInt(boss + ".hearts") * 2, sec.getString(boss + ".name"), 
+				Util.parseLocation(w, sec.getString(boss + ".spawn")), 
+				Util.parseLocation(w, sec.getString(boss + ".chest"))));
+			boss.loadBosses(bosses);
 		}
 
 		if (section.contains("diamonds")) {
@@ -289,8 +322,13 @@ public final class NexusGrinder extends JavaPlugin {
 
 	public void advancePhase() {
 		ChatUtil.phaseMessage(timer.getPhase());
+		
+		if (timer.getPhase() == 2)
+			boss.spawnBosses();
+		
 		if (timer.getPhase() == 3)
 			resources.spawnDiamonds();
+		
 		Bukkit.getPluginManager().callEvent(
 				new PhaseChangeEvent(timer.getPhase()));
 
@@ -330,7 +368,7 @@ public final class NexusGrinder extends JavaPlugin {
 		return stats;
 	}
 
-	public DatabaseHandler getDatabaseHandler() {
+	public DatabaseManager getDatabaseHandler() {
 		return db;
 	}
 
@@ -512,5 +550,9 @@ public final class NexusGrinder extends JavaPlugin {
 			if (Bukkit.getOnlinePlayers().length >= getConfig().getInt("requiredToStart"))
 				timer.start();
 		}
+	}
+
+	public BossManager getBossManager() {
+		return boss;
 	}
 }

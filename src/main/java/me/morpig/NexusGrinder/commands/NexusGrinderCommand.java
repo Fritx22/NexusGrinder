@@ -38,7 +38,7 @@ public class NexusGrinderCommand implements CommandExecutor {
 		
 		if (args.length == 1) {
 			if (args[0].equalsIgnoreCase("start")) {
-				if (sender.hasPermission("nexusgrinder.command.start")) {
+				if (sender.hasPermission("annihilation.command.start")) {
 					if (!plugin.startTimer()) {
 						sender.sendMessage(prefix + red + "The game has already started");
 					} else {

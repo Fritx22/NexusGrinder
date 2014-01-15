@@ -13,7 +13,7 @@ import me.morpig.NexusGrinder.NexusGrinder;
 
 import org.bukkit.Bukkit;
 
-public class DatabaseHandler {
+public class DatabaseManager {
 	private static final Logger logger = Bukkit.getLogger();
     protected boolean connected = false; 
     
@@ -22,13 +22,13 @@ public class DatabaseHandler {
     private NexusGrinder plugin;
     public Connection c = null; 
   
-    public DatabaseHandler(String hostname, int port, String database, String username, String password, NexusGrinder plugin) { 
+    public DatabaseManager(String hostname, int port, String database, String username, String password, NexusGrinder plugin) { 
         driver="com.mysql.jdbc.Driver";
         connectionString="jdbc:mysql://" + hostname + ":" + port + "/" + database+ "?user=" + username + "&password=" + password;
         this.plugin = plugin;
     } 
     
-    public DatabaseHandler(NexusGrinder plugin) { 
+    public DatabaseManager(NexusGrinder plugin) { 
     	this.plugin = plugin;
     }
     

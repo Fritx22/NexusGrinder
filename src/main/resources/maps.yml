@@ -32,7 +32,7 @@ test:
     blue: "22,65,-22"
         
   # Ender brewing stands for each team, only one each.
-  # Option.
+  # Optional.
   brewingstands:
     red: "-20,65,-20"
     yellow: "-20,65,20"
@@ -55,6 +55,20 @@ test:
   - "1,62,-1"
   - "-1,62,-1"
   - "-1,62,1"
+  
+  # Boss Configuration.
+  # Optional.
+  bosses:
+    boss1:
+      name: "&bCelariel"
+      spawn: "0,63,-21"
+      chest: "0,63,-23"
+      hearts: 100
+    boss2:
+      name: "&cFirwen"
+      spawn: "0,63,22"
+      chest: "0,63,24"
+      hearts: 100
     
 # The spawn location for the lobby world.
 # Mandatory.
@@ -62,7 +76,7 @@ lobby:
   spawn: "0,64,0"
   
   # Team join sign locations.
-  # Optional.
+  # Optional, but highly recommended.
   signs:
     red:
     - "-4,65,-3"
