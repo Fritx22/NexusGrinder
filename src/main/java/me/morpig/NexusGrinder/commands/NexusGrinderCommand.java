@@ -58,6 +58,7 @@ public class NexusGrinderCommand implements CommandExecutor {
 
                 }
             }
+            return false;
         }
 		return false;
 	}

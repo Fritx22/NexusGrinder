@@ -1,11 +1,11 @@
-name: Anni
-main: me.morpig.NexusGrinder.Annihilation
+name: NexusGrinder
+main: me.morpig.NexusGrinder.NexusGrinder
 authors: [coasterman10, stuntguy3000]
 version: 1.4
 commands:
-  annihilation:
+  nexusgrinder:
     description: Plugin commands for Annihilation
-    aliases: anni
+    aliases: ng
   team:
     description: Team command for Annihilation
     aliases: t
