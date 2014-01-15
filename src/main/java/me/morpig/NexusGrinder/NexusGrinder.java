@@ -539,6 +539,14 @@ public final class NexusGrinder extends JavaPlugin {
     public void checkPlayers() {
             if (Bukkit.getOnlinePlayers().length >= getConfig().getInt("requiredToStop"))
                 timer.stop();
+        for (Player p : Bukkit.getOnlinePlayers()) {
+
+            BarUtil.setMessageAndPercent(p, ChatColor.GOLD
+                    + "Welcome to NexusGrinder! Countdown stop!", 0.01F);
+
+        }
+
+
         }
 
 
