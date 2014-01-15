@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/BossManager.java" />
-      <change type="MOVED" beforePath="C:\Users\morpig\Documents\GitHub\Annihilation\src\main\java\me\morpig\NexusGrinder\stats\DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/DatabaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatUtil.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ClassAbilityListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ClassAbilityListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/maps.yml" afterPath="$PROJECT_DIR$/src/main/resources/maps.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Annihilation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -92,7 +81,11 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#575#576#0" expanded="false" />
+                <element signature="e#594#595#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,11 +93,22 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="424" column="0" selection-start="13813" selection-end="13813" vertical-scroll-proportion="0.0" vertical-offset="6331" max-vertical-offset="9163">
+            <state line="236" column="13" selection-start="8722" selection-end="8722" vertical-scroll-proportion="0.0" vertical-offset="2455" max-vertical-offset="9163">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9316#9330#0" expanded="true" />
                 <element signature="e#9787#9797#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NexusGrinderCommand.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="85" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.79826087" vertical-offset="493" max-vertical-offset="1190">
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,10 +126,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plugin.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="16" selection-start="60" selection-end="77" vertical-scroll-proportion="0.05782313" vertical-offset="0" max-vertical-offset="663">
+            <state line="26" column="6" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
               <folding />
             </state>
           </provider>
@@ -170,7 +174,6 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/BarUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/AnnihilationCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/DistanceCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/ClassCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/MapCommand.java" />
@@ -195,6 +198,7 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
       </list>
     </option>
   </component>
@@ -206,7 +210,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -770,8 +774,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -790,7 +794,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -900,10 +904,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="40" selection-start="738" selection-end="738" vertical-scroll-proportion="-8.654546" vertical-offset="0" max-vertical-offset="2754">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#650#670#0" expanded="true" />
-            <element signature="e#2768#3165#0" expanded="true" />
-            <element signature="e#3160#3161#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#650#670#0" expanded="false" />
+            <element signature="e#2768#3165#0" expanded="false" />
+            <element signature="e#3160#3161#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -940,20 +944,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="69" selection-start="1149" selection-end="1149" vertical-scroll-proportion="-4.5636363" vertical-offset="276" max-vertical-offset="986">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/ClassCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="24" selection-start="610" selection-end="610" vertical-scroll-proportion="-6.181818" vertical-offset="0" max-vertical-offset="527">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1112,7 +1107,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="24" selection-start="843" selection-end="843" vertical-scroll-proportion="-4.6545453" vertical-offset="254" max-vertical-offset="850">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1255,17 +1250,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="424" column="0" selection-start="13813" selection-end="13813" vertical-scroll-proportion="0.0" vertical-offset="6331" max-vertical-offset="9163">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9316#9330#0" expanded="true" />
-            <element signature="e#9787#9797#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#575#576#0" expanded="false" />
+            <element signature="e#594#595#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1282,8 +1270,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="16" selection-start="60" selection-end="77" vertical-scroll-proportion="0.05782313" vertical-offset="0" max-vertical-offset="663">
+        <state line="26" column="6" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="236" column="13" selection-start="8722" selection-end="8722" vertical-scroll-proportion="0.0" vertical-offset="2455" max-vertical-offset="9163">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9316#9330#0" expanded="true" />
+            <element signature="e#9787#9797#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="85" selection-start="2329" selection-end="2329" vertical-scroll-proportion="0.79826087" vertical-offset="493" max-vertical-offset="1190">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
