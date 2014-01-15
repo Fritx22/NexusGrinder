@@ -451,7 +451,6 @@ public final class NexusGrinder extends JavaPlugin {
 					if (t != GameTeam.NONE) sign.updateSigns(t);
 				
 				checkStarting();
-                checkPlayer();
 			}
 		}, 2L);
 	}
@@ -533,24 +532,10 @@ public final class NexusGrinder extends JavaPlugin {
 		if (!timer.isRunning()) {
 			if (Bukkit.getOnlinePlayers().length >= getConfig().getInt("requiredToStart"))
 				timer.start();
-		}
-	}
-
-    public void checkPlayer() {
-        if (!timer.isRunning()) {
-            if (Bukkit.getOnlinePlayers().length < getConfig().getInt("requiredtoStart")) {
-
-                if (timer.isRunning()) {
-
-                    timer.stop();
-
-                }
-
-            }
-
-
+		} else {
+            timer.stop();
         }
-    }
+	}
 
 	public BossManager getBossManager() {
 		return boss;

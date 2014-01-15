@@ -270,6 +270,7 @@ public class PlayerListener implements Listener {
 	public void onPlayerPortal(PlayerPortalEvent e) {
 		Player player = e.getPlayer();
 		NexusGrinder.Util.showClassSelector(player, "Select Class   ");
+        player.setHealth(0);
 	}
 
 	@EventHandler

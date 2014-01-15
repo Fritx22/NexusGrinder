@@ -4,6 +4,7 @@
     <list default="true" id="497c7bcc-49e7-4aba-89e6-d8941169009d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" />
     </list>
     <ignored path="Annihilation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,12 +95,14 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="544" column="33" selection-start="17178" selection-end="17178" vertical-scroll-proportion="0.5600739" vertical-offset="8554" max-vertical-offset="9163">
+            <state line="191" column="22" selection-start="7557" selection-end="7557" vertical-scroll-proportion="0.33271718" vertical-offset="3067" max-vertical-offset="8942">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9064#9078#0" expanded="true" />
                 <element signature="e#9535#9545#0" expanded="true" />
                 <element signature="e#13813#13845#0" expanded="true" />
+                <element signature="e#16993#16994#0" expanded="true" />
+                <element signature="e#17011#17012#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,7 +153,7 @@
       <file leaf-file-name="PlayerListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="215" column="63" selection-start="7206" selection-end="7206" vertical-scroll-proportion="0.0" vertical-offset="3229" max-vertical-offset="8075">
+            <state line="217" column="32" selection-start="7265" selection-end="7273" vertical-scroll-proportion="-6.923077" vertical-offset="3509" max-vertical-offset="8092">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1778#1791#0" expanded="true" />
@@ -237,9 +240,9 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/VotingManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Shop.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/StatsManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       </list>
     </option>
@@ -1288,16 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="215" column="63" selection-start="7206" selection-end="7206" vertical-scroll-proportion="0.0" vertical-offset="3229" max-vertical-offset="8075">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1778#1791#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="15" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
@@ -1346,14 +1339,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="217" column="32" selection-start="7265" selection-end="7273" vertical-scroll-proportion="-6.923077" vertical-offset="3509" max-vertical-offset="8092">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1778#1791#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="544" column="33" selection-start="17178" selection-end="17178" vertical-scroll-proportion="0.5600739" vertical-offset="8554" max-vertical-offset="9163">
+        <state line="191" column="22" selection-start="7557" selection-end="7557" vertical-scroll-proportion="0.33271718" vertical-offset="3067" max-vertical-offset="8942">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9064#9078#0" expanded="true" />
             <element signature="e#9535#9545#0" expanded="true" />
             <element signature="e#13813#13845#0" expanded="true" />
+            <element signature="e#16993#16994#0" expanded="true" />
+            <element signature="e#17011#17012#0" expanded="true" />
           </folding>
         </state>
       </provider>
