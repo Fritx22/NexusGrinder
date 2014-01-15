@@ -537,13 +537,10 @@ public final class NexusGrinder extends JavaPlugin {
     }
 
     public void checkPlayers() {
-
-        if (!timer.isRunning()) {
-            if (Bukkit.getOnlinePlayers().length < getConfig().getInt("requiredToStart"))
+            if (Bukkit.getOnlinePlayers().length >= getConfig().getInt("requiredToStop"))
                 timer.stop();
         }
 
-    }
 
 	public BossManager getBossManager() {
 		return boss;

@@ -22,7 +22,7 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        e.setJoinMessage(ChatColor.GOLD + "[NexusGrinder] " + ChatColor.AQUA + e.getPlayer().getName() + "has joined NexusGrinder!");
+        e.setJoinMessage(ChatColor.GOLD + "[NexusGrinder] " + ChatColor.AQUA + e.getPlayer().getName() + " has joined NexusGrinder!");
     }
 
     @EventHandler
@@ -30,7 +30,7 @@ public class ChatListener implements Listener {
         String username = e.getPlayer().getName();
         GameTeam team = PlayerMeta.getMeta(e.getPlayer()).getTeam();
         String color = team.color().toString();
-        e.setQuitMessage(ChatColor.GOLD + "[NexusGrinder] " + color + "leave NexusGrinder!");
+        e.setQuitMessage(ChatColor.GOLD + "[NexusGrinder] " + color + e.getPlayer().getName() + "leave NexusGrinder!");
         plugin.checkPlayers();
     }
 
