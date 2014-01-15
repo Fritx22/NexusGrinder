@@ -1,5 +1,5 @@
 name: NexusGrinder
-main: me.morpig.NexusGrinder.Annihilation
+main: me.morpig.NexusGrinder.NexusGrinder
 authors: [coasterman10, stuntguy3000]
 version: 1.4
 commands:
