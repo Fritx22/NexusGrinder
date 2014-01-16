@@ -94,6 +94,11 @@ public final class NexusGrinder extends JavaPlugin {
 	@Override
 	public void onEnable() {
 
+        getLogger().info("#######################################");
+        getLogger().info("            Nexus Grinder              ");
+        getLogger().info("                v.12                   ");
+        getLogger().info("#######################################");
+
 		configManager = new ConfigManager(this);
 		configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
 				"stats.yml");
@@ -101,10 +106,8 @@ public final class NexusGrinder extends JavaPlugin {
 		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
-        getLogger().info("#######################################");
-        getLogger().info("            Nexus Grinder              ");
-        getLogger().info("                v.12                   ");
-        getLogger().info("#######################################");
+        getLogger().info("Register " + maps +"map");
+
 
 
 
