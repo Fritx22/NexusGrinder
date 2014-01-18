@@ -48,6 +48,14 @@ import me.morpig.NexusGrinder.object.Shop;
 import me.morpig.NexusGrinder.stats.StatType;
 import me.morpig.NexusGrinder.stats.StatsManager;
 
+import de.kumpelblase2.remoteentities.EntityManager;
+import de.kumpelblase2.remoteentities.RemoteEntities;
+import de.kumpelblase2.remoteentities.api.RemoteEntity;
+import de.kumpelblase2.remoteentities.api.RemoteEntityType;
+import de.kumpelblase2.remoteentities.api.features.RemoteTamingFeature;
+import de.kumpelblase2.remoteentities.api.features.TamingFeature;
+import de.kumpelblase2.remoteentities.api.thinking.goals.DesireFollowTamer;
+
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -60,6 +68,9 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -69,7 +80,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Team;
 
-public final class NexusGrinder extends JavaPlugin {
+public final class NexusGrinder extends JavaPlugin implements Listener {
 	private ConfigManager configManager;
 	private VotingManager voting;
 	private MapManager maps;
@@ -83,6 +94,7 @@ public final class NexusGrinder extends JavaPlugin {
 	private ScoreboardManager sb;
 	private DatabaseManager db;
 	private BossManager boss;
+    private EntityManager npcManager;
 	
 	public boolean useMysql = false;
 	public boolean updateAvailable = false;
@@ -107,6 +119,10 @@ public final class NexusGrinder extends JavaPlugin {
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
         getLogger().info("Register " + maps.getRandomMaps() +"map");
+
+
+        EntityManager manager = RemoteEntities.createManager(this);
+
 
 
 
@@ -148,6 +164,7 @@ public final class NexusGrinder extends JavaPlugin {
 		pm.registerEvents(new SoulboundListener(), this);
 		pm.registerEvents(new WandListener(this), this);
 		pm.registerEvents(new CraftingListener(), this);
+        pm.registerEvents(this, this);
 		pm.registerEvents(new ClassAbilityListener(this), this);
 		pm.registerEvents(new BossListener(this), this);
 		
@@ -196,6 +213,15 @@ public final class NexusGrinder extends JavaPlugin {
 
 		return true;
 	}
+
+    @EventHandler
+    public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
+
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Choose Team Red");
+
+
+
+    }
 
 	public void loadMap(final String map) {
 		FileConfiguration config = configManager.getConfig("maps.yml");

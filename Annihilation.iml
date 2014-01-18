@@ -13,8 +13,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Maven: org.bukkit:bukkit:1.7.2-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bukkit:craftbukkit:1.7.2-R0.1-SNAPSHOT" level="project" />
-    <orderEntry type="library" name="Maven: me.confuser:BarAPI:2.0" level="project" />
-    <orderEntry type="library" name="Maven: me.captainbern:AnimationLib:1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: de.kumpelblase2:remoteentities:1.7" level="project" />
   </component>
 </module>
 

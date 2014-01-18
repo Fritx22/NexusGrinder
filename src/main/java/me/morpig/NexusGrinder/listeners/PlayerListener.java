@@ -226,6 +226,8 @@ public class PlayerListener implements Listener {
 	public void onPlayerDeath(PlayerDeathEvent e) {
 		Player p = e.getEntity();
 
+        
+
 		if (plugin.getPhase() > 0) {
 			PlayerMeta meta = PlayerMeta.getMeta(p);
 			if (!meta.getTeam().getNexus().isAlive()) {
