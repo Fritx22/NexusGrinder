@@ -7,6 +7,7 @@ phase-period: 600
 # When the game ends, the delay before resetting the game
 restart-delay: 120
 
+
 # Stat system: "flatfile" for yml or "sql" for MySQL
 stats: flatfile
 

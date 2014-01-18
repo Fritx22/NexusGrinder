@@ -99,10 +99,12 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 	private BossManager boss;
     private static GameTeam team;
     private EntityManager npcManager;
+    private Location NPCSpawn;
 	
 	public boolean useMysql = false;
 	public boolean updateAvailable = false;
 	public String newVersion;
+
 
 	public int build = 1;
 	public int respawn = 10;
@@ -222,10 +224,33 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		return true;
 	}
 
+    private Location parseLocation(String in) {
+        String[] params = in.split(",");
+        if (params.length == 3 || params.length == 5) {
+            double x = Double.parseDouble(params[0]);
+            double y = Double.parseDouble(params[1]);
+            double z = Double.parseDouble(params[2]);
+            Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
+            if (params.length == 5) {
+                loc.setYaw(Float.parseFloat(params[3]));
+                loc.setPitch(Float.parseFloat(params[4]));
+            }
+            return loc;
+        }
+        return null;
+    }
+
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
+         double x = -16;
+         double y = -4;
+         double z = -3;
+         NPCSpawn = parseLocation(getConfig().getString("blue.spawn"));
+         Location l = inEvent.getPlayer().getLocation();
+         Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, Bukkit.getWorld("world").getSpawnLocation().add(-2,4,17), ChatColor.GOLD + "Join Team Blue", true);
+
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc, ChatColor.GOLD + "Join Team Blue", true);
 
 
 

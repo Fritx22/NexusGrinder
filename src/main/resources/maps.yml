@@ -74,6 +74,24 @@ test:
 # Mandatory.
 lobby:
   spawn: "0,64,0"
+
+## the spawn of the NPC'S
+## NPC blue, red, orange, green
+blue:
+  spawn: "-16,4,-2"
+
+## npc red
+red:
+  spawn: "-16,4,-1"
+
+## npc orange
+orange:
+  spawn: "16,4,-0"
+
+## npc green
+green:
+  spawn: "-16,4,0"
+
   
   # Team join sign locations.
   # Optional, but highly recommended.
