@@ -44,23 +44,6 @@ public class NPCBehaviour extends InteractBehavior {
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);
 
-        // Set tools and armor.
-        ItemStack axe = new ItemStack(defaultItem);
-        axe.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 10);
-        npc.setItemInHand(axe);
-
-        // Armor
-        ItemStack[] armor = new ItemStack[4];
-        armor[3] = new ItemStack(Material.LEATHER_HELMET);
-        armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
-        armor[1] = new ItemStack(Material.IRON_LEGGINGS);
-        armor[0] = new ItemStack(Material.LEATHER_BOOTS);
-        // Set it backwards just for our own sanity.
-
-        for (ItemStack itemStack : armor)
-            itemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 10); // Give it that glowing feeling.
-
-        npc.getInventory().setArmorContents(armor); // Set it.
     }
 
     public void onInteract(Player inPlayer)
@@ -76,7 +59,7 @@ public class NPCBehaviour extends InteractBehavior {
         Player npc = behaviorEntity.getBukkitEntity();
 
         String name = behaviorEntity.getName();
-        if (name == "Join Team Blue") {
+        if (name == ChatColor.GOLD + "Join Team Blue") {
 
             GameTeam target;
             target = GameTeam.BLUE;

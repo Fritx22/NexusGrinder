@@ -225,7 +225,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Join Team Blue", true);
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, Bukkit.getWorld("world").getSpawnLocation().add(-2,4,17), ChatColor.GOLD + "Join Team Blue", true);
 
 
 

@@ -71,7 +71,7 @@
       <file leaf-file-name="NPCBehaviour.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="65" selection-start="2441" selection-end="2441" vertical-scroll-proportion="0.24829932" vertical-offset="1044" max-vertical-offset="2108">
+            <state line="61" column="37" selection-start="1963" selection-end="1963" vertical-scroll-proportion="0.76870745" vertical-offset="585" max-vertical-offset="1819">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,9 +83,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="23" column="8" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,10 +103,10 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="227" column="133" selection-start="8913" selection-end="8913" vertical-scroll-proportion="0.0" vertical-offset="3600" max-vertical-offset="10217">
+            <state line="227" column="138" selection-start="8918" selection-end="8918" vertical-scroll-proportion="0.0" vertical-offset="3590" max-vertical-offset="10217">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16267#16299#0" expanded="true" />
+                <element signature="e#16307#16339#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -187,8 +185,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCLib.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java" />
       </list>
     </option>
   </component>
@@ -210,7 +208,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -727,7 +725,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1032,15 +1030,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="8" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="39" selection-start="1016" selection-end="1021" vertical-scroll-proportion="-14.384615" vertical-offset="255" max-vertical-offset="1785">
@@ -1050,19 +1039,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="8" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="227" column="133" selection-start="8913" selection-end="8913" vertical-scroll-proportion="0.0" vertical-offset="3600" max-vertical-offset="10217">
+        <state line="227" column="138" selection-start="8918" selection-end="8918" vertical-scroll-proportion="0.0" vertical-offset="3590" max-vertical-offset="10217">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16267#16299#0" expanded="true" />
+            <element signature="e#16307#16339#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="65" selection-start="2441" selection-end="2441" vertical-scroll-proportion="0.24829932" vertical-offset="1044" max-vertical-offset="2108">
+        <state line="61" column="37" selection-start="1963" selection-end="1963" vertical-scroll-proportion="0.76870745" vertical-offset="585" max-vertical-offset="1819">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
