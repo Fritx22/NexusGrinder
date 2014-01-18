@@ -59,7 +59,7 @@ public class NPCBehaviour extends InteractBehavior {
         Player npc = behaviorEntity.getBukkitEntity();
 
         String name = behaviorEntity.getName();
-        if (name == ChatColor.GOLD + "Join Team Blue") {
+        if (name == "Join Team Blue") {
 
             GameTeam target;
             target = GameTeam.BLUE;
