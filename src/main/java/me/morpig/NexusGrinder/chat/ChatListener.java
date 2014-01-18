@@ -31,7 +31,6 @@ public class ChatListener implements Listener {
         GameTeam team = PlayerMeta.getMeta(e.getPlayer()).getTeam();
         String color = team.color().toString();
         e.setQuitMessage(ChatColor.GOLD + "[NexusGrinder] " + color + e.getPlayer().getName() + "leave NexusGrinder!");
-        plugin.checkPlayers();
     }
 
 	@EventHandler

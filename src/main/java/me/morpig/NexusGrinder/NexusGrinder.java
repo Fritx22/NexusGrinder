@@ -106,7 +106,7 @@ public final class NexusGrinder extends JavaPlugin {
 		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
-        getLogger().info("Register " + maps +"map");
+        getLogger().info("Register " + maps.getRandomMaps() +"map");
 
 
 
@@ -539,18 +539,6 @@ public final class NexusGrinder extends JavaPlugin {
 	  }
     }
 
-    public void checkPlayers() {
-            if (Bukkit.getOnlinePlayers().length >= getConfig().getInt("requiredToStop"))
-                timer.stop();
-        for (Player p : Bukkit.getOnlinePlayers()) {
-
-            BarUtil.setMessageAndPercent(p, ChatColor.GOLD
-                    + "Welcome to NexusGrinder! Countdown stop!", 0.01F);
-
-        }
-
-
-        }
 
 
 	public BossManager getBossManager() {
