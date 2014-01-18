@@ -243,7 +243,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
          double x = -16;
-         double y = -4;
+         double y = 5;
          double z = -3;
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 

@@ -87,10 +87,10 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="259" column="64" selection-start="9831" selection-end="9831" vertical-scroll-proportion="0.6564626" vertical-offset="4017" max-vertical-offset="10608">
+            <state line="245" column="21" selection-start="9470" selection-end="9470" vertical-scroll-proportion="0.25170067" vertical-offset="4017" max-vertical-offset="10608">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#17046#17078#0" expanded="true" />
+                <element signature="e#17045#17077#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1039,10 +1039,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="259" column="64" selection-start="9831" selection-end="9831" vertical-scroll-proportion="0.6564626" vertical-offset="4017" max-vertical-offset="10608">
+        <state line="245" column="21" selection-start="9470" selection-end="9470" vertical-scroll-proportion="0.25170067" vertical-offset="4017" max-vertical-offset="10608">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17046#17078#0" expanded="true" />
+            <element signature="e#17045#17077#0" expanded="true" />
           </folding>
         </state>
       </provider>
