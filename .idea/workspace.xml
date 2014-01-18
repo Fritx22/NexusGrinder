@@ -88,10 +88,10 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="255" column="8" selection-start="9749" selection-end="9749" vertical-scroll-proportion="0.5697279" vertical-offset="4000" max-vertical-offset="10625">
+            <state line="255" column="35" selection-start="9822" selection-end="9822" vertical-scroll-proportion="0.5986394" vertical-offset="3983" max-vertical-offset="10642">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#17055#17087#0" expanded="true" />
+                <element signature="e#17129#17161#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -740,7 +740,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1068,10 +1068,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="8" selection-start="9749" selection-end="9749" vertical-scroll-proportion="0.5697279" vertical-offset="4000" max-vertical-offset="10625">
+        <state line="255" column="35" selection-start="9822" selection-end="9822" vertical-scroll-proportion="0.5986394" vertical-offset="3983" max-vertical-offset="10642">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17055#17087#0" expanded="true" />
+            <element signature="e#17129#17161#0" expanded="true" />
           </folding>
         </state>
       </provider>
