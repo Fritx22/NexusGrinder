@@ -23,6 +23,7 @@ public class NPCBehaviour extends InteractBehavior {
     private static Material defaultItem = Material.DIAMOND_AXE;
     private final Plugin plugin;
     private static GameTeam team;
+    private static Player player;
 
     public NPCBehaviour(RemoteEntity inEntity) {
         super(inEntity);
@@ -32,7 +33,7 @@ public class NPCBehaviour extends InteractBehavior {
         this.onEntityUpdate();
     }
 
-    public void onEntityUpdate(Player player)
+    public void onEntityUpdate()
     {
         if (this.m_entity.getBukkitEntity() == null)
         {
