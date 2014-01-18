@@ -234,8 +234,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc, "Join Team Blue", true);
 
-        entity.setStationary(false);
-        entity.setPushable(false);
 
         //set new mind
         entity.getMind().addBehaviour(new NPCBehaviour(entity));

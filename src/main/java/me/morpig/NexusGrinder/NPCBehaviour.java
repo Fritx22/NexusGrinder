@@ -16,6 +16,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Wool;
 import org.bukkit.plugin.Plugin;
 
 public class NPCBehaviour extends InteractBehavior {
@@ -39,7 +40,7 @@ public class NPCBehaviour extends InteractBehavior {
         }
 
         this.m_entity.setPushable(false);
-        this.m_entity.setStationary(true);
+        this.m_entity.setStationary(false);
 
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);
@@ -51,7 +52,7 @@ public class NPCBehaviour extends InteractBehavior {
 
         // Armor
         ItemStack[] armor = new ItemStack[4];
-        armor[3] = new ItemStack(Material.LEATHER_HELMET);
+        armor[3] = new ItemStack(Material.DIAMOND_BLOCK);
         armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
         armor[1] = new ItemStack(Material.IRON_LEGGINGS);
         armor[0] = new ItemStack(Material.LEATHER_BOOTS);
