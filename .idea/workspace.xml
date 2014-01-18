@@ -85,22 +85,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NexusGrinder.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="250" column="84" selection-start="9655" selection-end="9655" vertical-scroll-proportion="0.0" vertical-offset="4017" max-vertical-offset="10608">
+            <state line="255" column="8" selection-start="9749" selection-end="9749" vertical-scroll-proportion="0.5697279" vertical-offset="4000" max-vertical-offset="10625">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#17048#17080#0" expanded="true" />
+                <element signature="e#17055#17087#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NPCBehaviour.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NPCBehaviour.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="20" selection-start="1946" selection-end="1946" vertical-scroll-proportion="0.76870745" vertical-offset="585" max-vertical-offset="1819">
+            <state line="61" column="20" selection-start="1946" selection-end="1946" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1819">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -179,8 +179,8 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/maps.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java" />
+        <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       </list>
     </option>
   </component>
@@ -1057,21 +1057,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="250" column="84" selection-start="9655" selection-end="9655" vertical-scroll-proportion="0.0" vertical-offset="4017" max-vertical-offset="10608">
+        <state line="61" column="20" selection-start="1946" selection-end="1946" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1819">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#17048#17080#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="20" selection-start="1946" selection-end="1946" vertical-scroll-proportion="0.76870745" vertical-offset="585" max-vertical-offset="1819">
+        <state line="255" column="8" selection-start="9749" selection-end="9749" vertical-scroll-proportion="0.5697279" vertical-offset="4000" max-vertical-offset="10625">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#17055#17087#0" expanded="true" />
           </folding>
         </state>
       </provider>
