@@ -15,14 +15,6 @@
             <name>Bukkit Repo</name>
             <url>http://lasagne.tgnmc.com:8081/nexus/content/groups/public/</url>
         </repository>
-        <repository>
-            <id>confuser-repo</id>
-            <url>http://jamesmortemore.com:8080/plugin/repository/everything</url>
-        </repository>
-        <repository>
-            <id>npc-repo</id>
-            <url>http://repo.infinityblade.de/remoteentities/releases</url>
-        </repository>
     </repositories>
 
     <!-- Distribution Management, TGN Repositories -->
@@ -55,9 +47,9 @@
             <version>1.7.2-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>de.kumpelblase2</groupId>
+            <groupId>me.morpig</groupId>
             <artifactId>remoteentities</artifactId>
-            <version>1.7</version>
+            <version>1.8-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
