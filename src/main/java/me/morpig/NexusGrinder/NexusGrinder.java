@@ -215,8 +215,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 	}
 
     @EventHandler
-    public void onJoin(PlayerJoinEvent inEvent) throws Exception
-    {
+    public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
+
         RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Lonely Trader");
 
         //First of all, we create the feature with a store title. In this case, I named the store 'custom store'.
@@ -241,8 +241,10 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         //Lastly, don't forget to add the feature to the entity.
         entity.getFeatures().addFeature(feature);
+
+
+
     }
-}
 
 	public void loadMap(final String map) {
 		FileConfiguration config = configManager.getConfig("maps.yml");
