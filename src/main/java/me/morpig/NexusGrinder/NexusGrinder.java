@@ -1,11 +1,11 @@
 package me.morpig.NexusGrinder;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Level;
 
+import de.kumpelblase2.remoteentities.api.features.RemoteTradingFeature;
+import de.kumpelblase2.remoteentities.api.features.TradeOffer;
 import me.morpig.NexusGrinder.api.GameStartEvent;
 import me.morpig.NexusGrinder.api.PhaseChangeEvent;
 import me.morpig.NexusGrinder.bar.BarUtil;
@@ -121,8 +121,9 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         getLogger().info("Register " + maps.getRandomMaps() +"map");
 
 
-        EntityManager manager = RemoteEntities.createManager(this);
 
+        Bukkit.getPluginManager().registerEvents(this, this);
+        this.npcManager = RemoteEntities.createManager(this);
 
 
 
@@ -164,7 +165,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		pm.registerEvents(new SoulboundListener(), this);
 		pm.registerEvents(new WandListener(this), this);
 		pm.registerEvents(new CraftingListener(), this);
-        pm.registerEvents(this, this);
 		pm.registerEvents(new ClassAbilityListener(this), this);
 		pm.registerEvents(new BossListener(this), this);
 		
@@ -215,13 +215,34 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 	}
 
     @EventHandler
-    public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
+    public void onJoin(PlayerJoinEvent inEvent) throws Exception
+    {
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Lonely Trader");
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Choose Team Red");
+        //First of all, we create the feature with a store title. In this case, I named the store 'custom store'.
+        RemoteTradingFeature feature = new RemoteTradingFeature(entity, "Custom store");
 
+        //Then I add an offer. This time, the trader will sell 1 paper and it costs 1 stone.
+        feature.addOffer(new ItemStack(Material.PAPER), new ItemStack(Material.STONE));
 
+        //We can also specify how often this offer can be used. In order to do that, we create a TraderOffer, where we can specify the usable amount.
+        //This means that this offer can only be used twice. If player 1 buys it once and player 2 buys it also one time, it will be gone for player 3.
+        feature.addOffer(new TradeOffer(new ItemStack(Material.FEATHER), new ItemStack(Material.STONE), 2));
 
+        //We can also add lore to the item if we want to. Here, I add some text to make it a bit more interesting.
+        ItemStack customItem = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta meta = customItem.getItemMeta();
+        meta.setDisplayName("BACON MAKER");
+        meta.setLore(new ArrayList<String>(Arrays.asList("GET THAT BACON!")));
+        customItem.setItemMeta(meta);
+
+        //And just like we did earlier, I add it to the feature.
+        feature.addOffer(new TradeOffer(customItem, new ItemStack(Material.FEATHER), 1));
+
+        //Lastly, don't forget to add the feature to the entity.
+        entity.getFeatures().addFeature(feature);
     }
+}
 
 	public void loadMap(final String map) {
 		FileConfiguration config = configManager.getConfig("maps.yml");
