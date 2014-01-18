@@ -245,8 +245,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
          double x = -16;
          double y = -4;
          double z = -3;
-         NPCSpawn = parseLocation(getConfig().getString("blue.spawn"));
-         Location l = inEvent.getPlayer().getLocation();
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
 
