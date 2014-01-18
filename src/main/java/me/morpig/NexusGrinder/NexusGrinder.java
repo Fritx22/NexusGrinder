@@ -224,22 +224,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		return true;
 	}
 
-    private Location parseLocation(String in) {
-        String[] params = in.split(",");
-        if (params.length == 3 || params.length == 5) {
-            double x = Double.parseDouble(params[0]);
-            double y = Double.parseDouble(params[1]);
-            double z = Double.parseDouble(params[2]);
-            Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
-            if (params.length == 5) {
-                loc.setYaw(Float.parseFloat(params[3]));
-                loc.setPitch(Float.parseFloat(params[4]));
-            }
-            return loc;
-        }
-        return null;
-    }
-
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
          double x = -17;
@@ -248,16 +232,10 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc, ChatColor.GOLD + "Join Team Blue", true);
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc, "Join Team Blue", true);
 
-        entity.getMind().fixHeadYawAt(inEvent.getPlayer().getLocation().getYaw());
-
-        entity.getMind().fixPitchAt(inEvent.getPlayer().getLocation().getPitch());
-
-
-
-
-
+        entity.setStationary(false);
+        entity.setPushable(false);
 
         //set new mind
         entity.getMind().addBehaviour(new NPCBehaviour(entity));
