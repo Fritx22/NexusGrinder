@@ -68,9 +68,11 @@ import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -122,9 +124,11 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         getLogger().info("Register " + maps.getRandomMaps() +"map");
 
 
-
+        //npc
         Bukkit.getPluginManager().registerEvents(this, this);
         this.npcManager = RemoteEntities.createManager(this);
+
+
 
 
 
@@ -181,6 +185,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		getCommand("distance").setExecutor(new DistanceCommand(this));
 		getCommand("map").setExecutor(new MapCommand(this, mapLoader));
 
+
+
 		BarUtil.init(this);
 
 		if (config.getString("stats").equalsIgnoreCase("sql"))
@@ -218,27 +224,46 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Lonely Trader", false);
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Lonely Trader", true);
 
 
 
         entity.setStationary(true);
 
 
+
         //set new mind
-        entity.getMind().addBehaviour(new InteractBehavior(entity) {
-            @Override
-            public void onInteract(Player player) {
-
-                player.sendMessage(ChatColor.GOLD + "UPDATE");
-
-            }
-        });
+        entity.getMind().addBehaviour(new NPCBehaviour(entity));
 
 
     }
 
 
+
+   @EventHandler
+   public void onPlayerInteractWithEntityEvent(PlayerInteractEntityEvent interactEvent) {
+       if (!(interactEvent.getRightClicked() instanceof LivingEntity)) {
+           return;
+       }
+
+       LivingEntity livingEntity = (LivingEntity)interactEvent.getRightClicked();
+
+       if (RemoteEntities.isRemoteEntity(livingEntity)) {
+
+           RemoteEntity remoteEntity = RemoteEntities.getRemoteEntityFromEntity(livingEntity);
+
+           if (remoteEntity.getMind().hasBehaviour("Interact")) {
+               InteractBehavior interactBehavior = (InteractBehavior)remoteEntity.getMind().getBehaviour("Interact");
+               if (interactBehavior instanceof NPCBehaviour) {
+                   NPCBehaviour npcBehavior = (NPCBehaviour)interactBehavior;
+                   npcBehavior.onRightClickInteractEventWithPlayer(interactEvent.getPlayer());
+               }
+           }
+
+       }
+
+
+   }
 
 
 
