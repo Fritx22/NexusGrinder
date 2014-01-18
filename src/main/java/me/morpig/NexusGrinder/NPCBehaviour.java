@@ -41,10 +41,8 @@ public class NPCBehaviour extends InteractBehavior {
         }
 
 
-        this.m_entity.setPushable(true);
+        this.m_entity.setPushable(false);
         this.m_entity.setStationary(false);
-        this.m_entity.getMind().fixHeadYawAt(player.getLocation().getYaw());
-        this.m_entity.getMind().fixPitchAt(player.getLocation().getPitch());
 
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);
