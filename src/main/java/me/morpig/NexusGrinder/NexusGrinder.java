@@ -252,8 +252,9 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         entity.getMind().fixHeadYawAt(inEvent.getPlayer().getLocation().getYaw());
 
+        entity.getMind().fixPitchAt(inEvent.getPlayer().getLocation().getPitch());
 
-        entity.setStationary(true);
+
 
 
 

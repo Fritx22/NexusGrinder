@@ -39,7 +39,7 @@ public class NPCBehaviour extends InteractBehavior {
         }
 
         this.m_entity.setPushable(false);
-        this.m_entity.setStationary(true);
+        this.m_entity.setStationary(false);
 
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);
@@ -59,7 +59,7 @@ public class NPCBehaviour extends InteractBehavior {
         Player npc = behaviorEntity.getBukkitEntity();
 
         String name = behaviorEntity.getName();
-        if (name == "Join Team Blue") {
+        if (name == ChatColor.GOLD + "Join Team Blue") {
 
             GameTeam target;
             target = GameTeam.BLUE;
