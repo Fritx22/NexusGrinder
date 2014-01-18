@@ -97,6 +97,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 	private ScoreboardManager sb;
 	private DatabaseManager db;
 	private BossManager boss;
+    private static GameTeam team;
     private EntityManager npcManager;
 	
 	public boolean useMysql = false;
@@ -224,7 +225,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Lonely Trader", true);
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, inEvent.getPlayer().getLocation(), "Join Team Blue", true);
 
 
 
@@ -240,30 +241,31 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
 
 
-   @EventHandler
-   public void onPlayerInteractWithEntityEvent(PlayerInteractEntityEvent interactEvent) {
-       if (!(interactEvent.getRightClicked() instanceof LivingEntity)) {
-           return;
-       }
+    @EventHandler
+    public void onPlayerInteractWithEntityEvent(PlayerInteractEntityEvent interactEvent)
+    {
+        if (!(interactEvent.getRightClicked() instanceof LivingEntity))
+        {
+            return;
+        }
 
-       LivingEntity livingEntity = (LivingEntity)interactEvent.getRightClicked();
+        LivingEntity livingEntity = (LivingEntity)interactEvent.getRightClicked();
 
-       if (RemoteEntities.isRemoteEntity(livingEntity)) {
+        if (RemoteEntities.isRemoteEntity(livingEntity))
+        {
 
-           RemoteEntity remoteEntity = RemoteEntities.getRemoteEntityFromEntity(livingEntity);
+            RemoteEntity remoteEntity = RemoteEntities.getRemoteEntityFromEntity(livingEntity);
 
-           if (remoteEntity.getMind().hasBehaviour("Interact")) {
-               InteractBehavior interactBehavior = (InteractBehavior)remoteEntity.getMind().getBehaviour("Interact");
-               if (interactBehavior instanceof NPCBehaviour) {
-                   NPCBehaviour npcBehavior = (NPCBehaviour)interactBehavior;
-                   npcBehavior.onRightClickInteractEventWithPlayer(interactEvent.getPlayer());
-               }
-           }
-
-       }
-
-
-   }
+            if (remoteEntity.getMind().hasBehaviour("Interact"))
+            {
+                InteractBehavior interactBehavior = (InteractBehavior)remoteEntity.getMind().getBehaviour("Interact");
+                if (interactBehavior instanceof NPCBehaviour) {
+                    NPCBehaviour npcBehaviours = (NPCBehaviour)interactBehavior;
+                    npcBehaviours.onRightClickInteractEventWithPlayer(interactEvent.getPlayer());
+                }
+            }
+        }
+    }
 
 
 
