@@ -241,6 +241,11 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         s.setColor(DyeColor.BLUE);
         s.getAgeLock();
         s.teleport(loc);
+        s.getLocation().setX(x);
+        s.getLocation().setY(y);
+        s.getLocation().setZ(z);
+        s.setCustomName("Hi! I'm a blue sheep. Working for TGN.");
+
 
 
 
