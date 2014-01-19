@@ -58,9 +58,9 @@ public class NPCBehaviour extends InteractBehavior {
 
             if (size != 1) {
 
-                this.m_entity.setName(ChatColor.MAGIC + "abcdefg" + ChatColor.GOLD + " Join Team Blue");
+                this.m_entity.setName(t.coloredName() + size + "players" + ChatColor.GOLD + "Join Blue!");
             } else {
-                this.m_entity.setName(ChatColor.MAGIC + "abcdefg" + ChatColor.GOLD + " Join Team Blue");
+                this.m_entity.setName(t.coloredName() + size + "players" + ChatColor.GOLD + "Join Blue!");
             }
         }
 
@@ -69,7 +69,7 @@ public class NPCBehaviour extends InteractBehavior {
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);
 
-        
+
     }
 
     public void onInteract(Player inPlayer)
