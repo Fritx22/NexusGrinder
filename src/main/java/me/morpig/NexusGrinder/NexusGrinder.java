@@ -287,12 +287,19 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e){
         if(e instanceof EntityDamageByEntityEvent){
+
             EntityDamageByEntityEvent event = (EntityDamageByEntityEvent) e;
             if(event.getDamager() instanceof Player){
                 Player player = (Player) event.getDamager();
                 Sheep s = (Sheep) event.getEntity();
+                Player p1 = (Player) event.getEntity();
                 PlayerMeta meta = PlayerMeta.getMeta(player);
                 GameTeam target;
+                if (event.getEntity() instanceof Player) {
+                    event.setCancelled(true);
+                }
+
+
 
                 if (s.getColor() == DyeColor.BLUE) {
                     target = GameTeam.BLUE;
@@ -378,6 +385,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                             s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
                         } else {
                             s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+
                         }
 
                     }
