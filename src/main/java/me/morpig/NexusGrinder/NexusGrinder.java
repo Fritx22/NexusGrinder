@@ -297,11 +297,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                 GameTeam target;
                 if (event.getEntity() instanceof Player) {
                     event.setCancelled(true);
-                }
-
-
-
-                if (s.getColor() == DyeColor.BLUE) {
+                } else if (s.getColor() == DyeColor.BLUE) {
                     target = GameTeam.BLUE;
                     player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                             + target.coloredName());
