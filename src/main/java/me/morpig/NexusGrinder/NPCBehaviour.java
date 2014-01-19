@@ -45,6 +45,26 @@ public class NPCBehaviour extends InteractBehavior {
         this.m_entity.setPushable(false);
         this.m_entity.setStationary(false);
 
+        this.m_entity.setName("test");
+
+        for (GameTeam t : GameTeam.teams()) {
+            int size = 0;
+
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                PlayerMeta meta = PlayerMeta.getMeta(p);
+                if (meta.getTeam() == t)
+                    size++;
+            }
+
+            if (size != 1) {
+                
+                this.m_entity.setName(ChatColor.MAGIC + "abcdefg" + ChatColor.GOLD + " Join Team Blue");
+            } else {
+                this.m_entity.setName(ChatColor.MAGIC + "abcdefg" + ChatColor.GOLD + " Join Team Blue");
+            }
+        }
+
+
 
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);
