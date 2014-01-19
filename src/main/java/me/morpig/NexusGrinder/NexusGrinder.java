@@ -239,6 +239,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         Sheep s = (Sheep)loc.getWorld().spawnCreature(loc, EntityType.SHEEP);
         s.setColor(DyeColor.BLUE);
+        s.getAgeLock();
+        s.teleport(loc);
 
 
 
