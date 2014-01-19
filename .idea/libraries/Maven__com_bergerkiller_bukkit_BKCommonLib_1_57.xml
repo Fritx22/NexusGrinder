@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.bergerkiller.bukkit:BKCommonLib:1.57">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/BKCommonLib/1.57/BKCommonLib-1.57.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/BKCommonLib/1.57/BKCommonLib-1.57-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/BKCommonLib/1.57/BKCommonLib-1.57-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

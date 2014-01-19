@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 
+import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
 import de.kumpelblase2.remoteentities.api.features.RemoteTradingFeature;
 import de.kumpelblase2.remoteentities.api.features.TradeOffer;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookAtNearest;
@@ -230,9 +231,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
 
-
-
-
          double x = 11;
          double y = 5;
          double z = 0;
@@ -246,7 +244,27 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         s.getLocation().setX(x);
         s.getLocation().setY(y);
         s.getLocation().setZ(z);
-        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join" + "0" + "Players" );
+        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+
+
+    }
+
+    @EventHandler
+    public void sheepMoveEvent(EntityMoveEvent event) {
+
+
+        if (event.getEntity() instanceof Sheep) {
+
+            double x = 11;
+            double y = 5;
+            double z = 0;
+            Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
+
+            Sheep sheep = (Sheep) event.getEntity();
+
+            sheep.teleport(loc)
+
+        }
 
 
     }
