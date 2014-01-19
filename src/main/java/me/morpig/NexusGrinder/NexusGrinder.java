@@ -199,26 +199,13 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		reset();
 
 		ChatUtil.setRoman(getConfig().getBoolean("roman", false));
-	}
 
-	public boolean startTimer() {
-		if (timer.isRunning())
-			return false;
-
-		timer.start();
-
-		return true;
-	}
-
-
-    @EventHandler
-    public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
-
-         //BLUE
-         double xblue = 11;
-         double yblue = 5;
-         double zblue = 0;
-         Location locblue = new Location(Bukkit.getWorld("lobby"), xblue, yblue, zblue);
+        //sheep npc
+        //BLUE
+        double xblue = 11;
+        double yblue = 5;
+        double zblue = 0;
+        Location locblue = new Location(Bukkit.getWorld("lobby"), xblue, yblue, zblue);
         //RED
         double xred = -11;
         double yred = 5;
@@ -230,9 +217,9 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         double zorange = -11;
         Location locorange = new Location(Bukkit.getWorld("lobby"), xorange, yorange, zorange);
         //GREEN
-        double xgreen = 11;
+        double xgreen = 0;
         double ygreen = 5;
-        double zgreen = 0;
+        double zgreen = 10;
         Location locgreen = new Location(Bukkit.getWorld("lobby"), xgreen, ygreen, zgreen);
 
 
@@ -247,6 +234,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         sblue.getLocation().setY(yblue);
         sblue.getLocation().setZ(zblue);
         sblue.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        getLogger().info("Blue sheep, spawned.");
 
         //RED
         Sheep sred = (Sheep)locred.getWorld().spawnCreature(locred, EntityType.SHEEP);
@@ -257,7 +245,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         sred.getLocation().setX(xred);
         sred.getLocation().setY(yred);
         sred.getLocation().setZ(zred);
-        sred.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        sred.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        getLogger().info("Red sheep, spawned.");
 
         //ORANGE
         Sheep sorange = (Sheep)locorange.getWorld().spawnCreature(locorange, EntityType.SHEEP);
@@ -268,7 +257,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         sorange.getLocation().setX(xorange);
         sorange.getLocation().setY(yorange);
         sorange.getLocation().setZ(zorange);
-        sorange.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        sorange.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM" + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        getLogger().info("Yellow sheep, spawned.");
 
         //GREEN
         Sheep sgreen = (Sheep)locgreen.getWorld().spawnCreature(locgreen, EntityType.SHEEP);
@@ -279,9 +269,18 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         sgreen.getLocation().setX(xgreen);
         sgreen.getLocation().setY(ygreen);
         sgreen.getLocation().setZ(zgreen);
-        sgreen.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        sgreen.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        getLogger().info("Green sheep, spawned.");
+    }
 
-        }
+	public boolean startTimer() {
+		if (timer.isRunning())
+			return false;
+
+		timer.start();
+
+		return true;
+    }
 
 
     @EventHandler
@@ -305,7 +304,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             PlayerMeta metas = PlayerMeta.getMeta(p);
-                            if (meta.getTeam() == t)
+                            if (meta.getTeam() == GameTeam.BLUE)
                                 size++;
                         }
 
@@ -327,7 +326,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             PlayerMeta metas = PlayerMeta.getMeta(p);
-                            if (meta.getTeam() == t)
+                            if (meta.getTeam() == GameTeam.RED)
                                 size++;
                         }
 
@@ -349,7 +348,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             PlayerMeta metas = PlayerMeta.getMeta(p);
-                            if (meta.getTeam() == t)
+                            if (meta.getTeam() == GameTeam.GREEN)
                                 size++;
                         }
 
@@ -370,7 +369,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             PlayerMeta metas = PlayerMeta.getMeta(p);
-                            if (meta.getTeam() == t)
+                            if (meta.getTeam() == GameTeam.YELLOW)
                                 size++;
                         }
 
@@ -409,9 +408,9 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             double zorange = -11;
             Location locorange = new Location(Bukkit.getWorld("lobby"), xorange, yorange, zorange);
             //GREEN
-            double xgreen = 11;
+            double xgreen = 0;
             double ygreen = 5;
-            double zgreen = 0;
+            double zgreen = 10;
             Location locgreen = new Location(Bukkit.getWorld("lobby"), xgreen, ygreen, zgreen);
 
             Sheep sheep = (Sheep) event.getEntity();
@@ -424,7 +423,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == t)
+                        if (metas.getTeam() == GameTeam.BLUE)
                             size++;
                     }
 
@@ -443,7 +442,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == t)
+                        if (metas.getTeam() == GameTeam.RED)
                             size++;
                     }
 
@@ -462,7 +461,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == t)
+                        if (metas.getTeam() == GameTeam.YELLOW)
                             size++;
                     }
 
@@ -479,7 +478,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == t)
+                        if (metas.getTeam() == GameTeam.GREEN)
                             size++;
                     }
 
@@ -521,7 +520,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == t)
+                        if (meta.getTeam() == GameTeam.BLUE)
                             size++;
                     }
 
@@ -543,7 +542,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == t)
+                        if (meta.getTeam() == GameTeam.RED)
                             size++;
                     }
 
@@ -565,7 +564,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == t)
+                        if (meta.getTeam() == GameTeam.GREEN)
                             size++;
                     }
 
@@ -586,7 +585,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == t)
+                        if (meta.getTeam() == GameTeam.YELLOW)
                             size++;
                     }
 
