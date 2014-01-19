@@ -7,6 +7,7 @@ import de.kumpelblase2.remoteentities.api.thinking.InteractBehavior;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookAtNearest;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookRandomly;
 import de.kumpelblase2.remoteentities.entities.RemotePlayer;
+import de.kumpelblase2.remoteentities.entities.RemoteSheep;
 import me.morpig.NexusGrinder.object.GameTeam;
 import me.morpig.NexusGrinder.object.PlayerMeta;
 import net.minecraft.server.v1_7_R1.EntityPlayer;
@@ -14,7 +15,9 @@ import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Sheep;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Wool;
@@ -43,7 +46,7 @@ public class NPCBehaviour extends InteractBehavior {
 
 
         this.m_entity.setPushable(false);
-        this.m_entity.setStationary(false);
+        this.m_entity.setStationary(true);
 
         this.m_entity.setName("test");
 
@@ -58,16 +61,15 @@ public class NPCBehaviour extends InteractBehavior {
 
             if (size != 1) {
 
-                this.m_entity.setName(t.coloredName() + size + "players" + ChatColor.GOLD + "Join Blue!");
+                this.m_entity.setName(ChatColor.GOLD + "" + size + "players" + ChatColor.GOLD + "Join Blue!");
             } else {
-                this.m_entity.setName(t.coloredName() + size + "players" + ChatColor.GOLD + "Join Blue!");
+                this.m_entity.setName(ChatColor.GOLD + "" + size + "player" + ChatColor.GOLD + "Join Blue!");
             }
         }
 
 
 
-        Player npc = (Player)this.m_entity.getBukkitEntity();
-        npc.setCanPickupItems(false);
+        Sheep npc = (Sheep)this.m_entity.getBukkitEntity();
 
 
     }
@@ -81,8 +83,8 @@ public class NPCBehaviour extends InteractBehavior {
     {
         PlayerMeta meta = PlayerMeta.getMeta(player);
 
-        RemotePlayer behaviorEntity = (RemotePlayer) this.getRemoteEntity();
-        Player npc = behaviorEntity.getBukkitEntity();
+        RemoteSheep behaviorEntity = (RemoteSheep) this.getRemoteEntity();
+        LivingEntity npc = behaviorEntity.getBukkitEntity();
 
         String name = behaviorEntity.getName();
         if (name == "Join Team Blue") {
