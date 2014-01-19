@@ -88,16 +88,16 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="0" selection-start="6429" selection-end="6429" vertical-scroll-proportion="0.61559886" vertical-offset="2516" max-vertical-offset="10455">
+            <state line="238" column="164" selection-start="9325" selection-end="9325" vertical-scroll-proportion="0.42118862" vertical-offset="3883" max-vertical-offset="10455">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16750#16782#0" expanded="true" />
-                <element signature="e#17980#17981#0" expanded="true" />
-                <element signature="e#17998#17999#0" expanded="true" />
-                <element signature="e#18047#18048#0" expanded="true" />
-                <element signature="e#18070#18071#0" expanded="true" />
-                <element signature="e#19894#19895#0" expanded="true" />
-                <element signature="e#19912#19913#0" expanded="true" />
+                <element signature="e#16811#16843#0" expanded="true" />
+                <element signature="e#18041#18042#0" expanded="true" />
+                <element signature="e#18059#18060#0" expanded="true" />
+                <element signature="e#18108#18109#0" expanded="true" />
+                <element signature="e#18131#18132#0" expanded="true" />
+                <element signature="e#19955#19956#0" expanded="true" />
+                <element signature="e#19973#19974#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -782,7 +782,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3306189" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26384366" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1095,16 +1095,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="0" selection-start="6429" selection-end="6429" vertical-scroll-proportion="0.61559886" vertical-offset="2516" max-vertical-offset="10455">
+        <state line="238" column="164" selection-start="9325" selection-end="9325" vertical-scroll-proportion="0.42118862" vertical-offset="3883" max-vertical-offset="10455">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16750#16782#0" expanded="true" />
-            <element signature="e#17980#17981#0" expanded="true" />
-            <element signature="e#17998#17999#0" expanded="true" />
-            <element signature="e#18047#18048#0" expanded="true" />
-            <element signature="e#18070#18071#0" expanded="true" />
-            <element signature="e#19894#19895#0" expanded="true" />
-            <element signature="e#19912#19913#0" expanded="true" />
+            <element signature="e#16811#16843#0" expanded="true" />
+            <element signature="e#18041#18042#0" expanded="true" />
+            <element signature="e#18059#18060#0" expanded="true" />
+            <element signature="e#18108#18109#0" expanded="true" />
+            <element signature="e#18131#18132#0" expanded="true" />
+            <element signature="e#19955#19956#0" expanded="true" />
+            <element signature="e#19973#19974#0" expanded="true" />
           </folding>
         </state>
       </provider>
