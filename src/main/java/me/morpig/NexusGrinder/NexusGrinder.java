@@ -261,7 +261,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         //ORANGE
         Sheep sorange = (Sheep)locorange.getWorld().spawnCreature(locorange, EntityType.SHEEP);
-        sorange.setColor(DyeColor.ORANGE);
+        sorange.setColor(DyeColor.YELLOW);
         sorange.getAgeLock();
         sorange.teleport(locorange);
         sorange.isAdult();
@@ -271,7 +271,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         sorange.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
 
         //GREEN
-        Sheep sgreen = (Sheep)locgreen.getWorld().spawnCreature(locred, EntityType.SHEEP);
+        Sheep sgreen = (Sheep)locgreen.getWorld().spawnCreature(locgreen, EntityType.SHEEP);
         sgreen.setColor(DyeColor.GREEN);
         sgreen.getAgeLock();
         sgreen.teleport(locgreen);
@@ -294,7 +294,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                 PlayerMeta meta = PlayerMeta.getMeta(player);
                 GameTeam target;
 
-                if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM") {
+                if (s.getColor() == DyeColor.BLUE) {
                     target = GameTeam.BLUE;
                     player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                             + target.coloredName());
@@ -317,7 +317,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     }
 
-                } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM ") {
+                } else if (s.getColor() == DyeColor.RED) {
                     target = GameTeam.RED;
                     player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                             + target.coloredName());
@@ -339,7 +339,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                     }
 
-               } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + "GREEN TEAM") {
+               } else if (s.getColor() == DyeColor.GREEN) {
                     target = GameTeam.GREEN;
                     player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                             + target.coloredName());
@@ -360,7 +360,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                         }
 
                     }
-                } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + "YELLOW TEAM") {
+                } else if (s.getColor() == DyeColor.YELLOW) {
                     target = GameTeam.YELLOW;
                     player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                             + target.coloredName());
@@ -417,7 +417,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             Sheep sheep = (Sheep) event.getEntity();
 
 
-            if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM") {
+            if (sheep.getColor() == DyeColor.BLUE) {
                 sheep.teleport(locblue);
                 for (GameTeam t : GameTeam.teams()) {
                     int size = 0;
@@ -436,7 +436,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                 }
 
 
-            } else if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM") {
+            } else if (sheep.getColor() == DyeColor.RED) {
                 sheep.teleport(locred);
                 for (GameTeam t : GameTeam.teams()) {
                     int size = 0;
@@ -455,7 +455,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                 }
 
 
-            } else if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM") {
+            } else if (sheep.getColor() == DyeColor.YELLOW) {
                 sheep.teleport(locorange);
                 for (GameTeam t : GameTeam.teams()) {
                     int size = 0;
@@ -472,7 +472,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                         sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
                     }
                 }
-            } else if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM") {
+            } else if (sheep.getColor() == DyeColor.GREEN) {
                 sheep.teleport(locgreen);
                 for (GameTeam t : GameTeam.teams()) {
                     int size = 0;
@@ -510,7 +510,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             Player player = event.getPlayer();
             PlayerMeta meta = PlayerMeta.getMeta(player);
             GameTeam target;
-            if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM" ) {
+            if (s.getColor() == DyeColor.BLUE) {
                 target = GameTeam.BLUE;
                 player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                         + target.coloredName());
@@ -533,7 +533,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                 }
 
-            } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM ") {
+            } else if (s.getColor() == DyeColor.RED) {
                 target = GameTeam.RED;
                 player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                         + target.coloredName());
@@ -555,7 +555,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
                 }
 
-            } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + "GREEN TEAM") {
+            } else if (s.getColor() == DyeColor.GREEN) {
                 target = GameTeam.GREEN;
                 player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                         + target.coloredName());
@@ -576,7 +576,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                     }
 
                 }
-            } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + "YELLOW TEAM") {
+            } else if (s.getColor() == DyeColor.YELLOW) {
                 target = GameTeam.YELLOW;
                 player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                         + target.coloredName());
