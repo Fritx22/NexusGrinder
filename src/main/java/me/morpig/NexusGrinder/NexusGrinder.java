@@ -148,6 +148,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         for (Entity e : Bukkit.getWorld("lobby").getEntities()) {
             e.remove();
         }
+        getLogger().info("Remove entities for NPC, success.");
 		
 		pm.registerEvents(resources, this);
 		pm.registerEvents(enderFurnaces, this);
@@ -245,12 +246,12 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         sred.getLocation().setX(xred);
         sred.getLocation().setY(yred);
         sred.getLocation().setZ(zred);
-        sred.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        sred.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
         getLogger().info("Red sheep, spawned.");
 
         //ORANGE
         Sheep sorange = (Sheep)locorange.getWorld().spawnCreature(locorange, EntityType.SHEEP);
-        sorange.setColor(DyeColor.YELLOW);
+        sorange.setColor(DyeColor.ORANGE);
         sorange.getAgeLock();
         sorange.teleport(locorange);
         sorange.isAdult();
