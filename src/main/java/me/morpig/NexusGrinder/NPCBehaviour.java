@@ -9,6 +9,7 @@ import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookRandomly;
 import de.kumpelblase2.remoteentities.entities.RemotePlayer;
 import me.morpig.NexusGrinder.object.GameTeam;
 import me.morpig.NexusGrinder.object.PlayerMeta;
+import net.minecraft.server.v1_7_R1.EntityPlayer;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
@@ -43,6 +44,7 @@ public class NPCBehaviour extends InteractBehavior {
 
         this.m_entity.setPushable(false);
         this.m_entity.setStationary(false);
+
 
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);

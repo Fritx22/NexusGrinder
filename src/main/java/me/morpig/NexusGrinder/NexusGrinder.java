@@ -227,11 +227,12 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		return true;
 	}
 
+
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
-         double x = -17;
+         double x = 11;
          double y = 5;
-         double z = -6;
+         double z = 0;
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
 
@@ -241,7 +242,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         //set new mind
         entity.getMind().addBehaviour(new NPCBehaviour(entity));
         entity.getMind().addMovementDesire(new DesireLookRandomly(), 1);
-        entity.getMind().addMovementDesire(new DesireLookAtNearest(EntityHuman.class, 8F, 1.0F), 2);
+        entity.getMind().addMovementDesire(new DesireLookAtNearest(EntityHuman.class, 2F, 1F), 2);
 
 
     }
