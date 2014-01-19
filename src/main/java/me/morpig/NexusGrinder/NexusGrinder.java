@@ -274,7 +274,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         Sheep sgreen = (Sheep)locgreen.getWorld().spawnCreature(locred, EntityType.SHEEP);
         sgreen.setColor(DyeColor.GREEN);
         sgreen.getAgeLock();
-        sgreen.teleport(locorange);
+        sgreen.teleport(locgreen);
         sgreen.isAdult();
         sgreen.getLocation().setX(xgreen);
         sgreen.getLocation().setY(ygreen);
@@ -294,7 +294,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                 PlayerMeta meta = PlayerMeta.getMeta(player);
                 GameTeam target;
 
-                if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM" ) {
+                if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM") {
                     target = GameTeam.BLUE;
                     player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                             + target.coloredName());
@@ -393,38 +393,115 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         if (event.getEntity() instanceof Sheep) {
 
-            double x = 11;
-            double y = 5;
-            double z = 0;
-            Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
+            //BLUE
+            double xblue = 11;
+            double yblue = 5;
+            double zblue = 0;
+            Location locblue = new Location(Bukkit.getWorld("lobby"), xblue, yblue, zblue);
+            //RED
+            double xred = -11;
+            double yred = 5;
+            double zred = 0;
+            Location locred = new Location(Bukkit.getWorld("lobby"), xred, yred, zred);
+            //ORANGE
+            double xorange = 0;
+            double yorange = 5;
+            double zorange = -11;
+            Location locorange = new Location(Bukkit.getWorld("lobby"), xorange, yorange, zorange);
+            //GREEN
+            double xgreen = 11;
+            double ygreen = 5;
+            double zgreen = 0;
+            Location locgreen = new Location(Bukkit.getWorld("lobby"), xgreen, ygreen, zgreen);
 
             Sheep sheep = (Sheep) event.getEntity();
 
-            sheep.teleport(loc);
 
-            for (GameTeam t : GameTeam.teams()) {
-                int size = 0;
+            if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM") {
+                sheep.teleport(locblue);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
 
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    PlayerMeta meta = PlayerMeta.getMeta(p);
-                    if (meta.getTeam() == t)
-                        size++;
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (metas.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
                 }
 
-                if (size != 1) {
-                    sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                } else {
-                    sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+
+            } else if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM") {
+                sheep.teleport(locred);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (metas.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
+                }
+
+
+            } else if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM") {
+                sheep.teleport(locorange);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (metas.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
+                }
+            } else if (sheep.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM") {
+                sheep.teleport(locgreen);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (metas.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
                 }
             }
 
 
-
-
-        }
-
-
+            }
     }
+
+
+
+
+
+
+
+
 
     @EventHandler
     public void sheepRightClick(PlayerInteractEntityEvent event) {
