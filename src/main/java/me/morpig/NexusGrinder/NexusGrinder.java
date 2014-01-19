@@ -8,6 +8,7 @@ import de.kumpelblase2.remoteentities.api.features.RemoteTradingFeature;
 import de.kumpelblase2.remoteentities.api.features.TradeOffer;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookAtNearest;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookRandomly;
+import de.kumpelblase2.remoteentities.entities.RemoteSheep;
 import me.morpig.NexusGrinder.api.GameStartEvent;
 import me.morpig.NexusGrinder.api.PhaseChangeEvent;
 import me.morpig.NexusGrinder.bar.BarUtil;
@@ -247,42 +248,24 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         s.setCustomName("Hi! I'm a blue sheep. Working for TGN.");
 
 
-
-
-
-
-
-
     }
-
-
 
     @EventHandler
-    public void onPlayerInteractWithEntityEvent(PlayerInteractEntityEvent interactEvent)
-    {
-        if (!(interactEvent.getRightClicked() instanceof LivingEntity))
-        {
-            return;
-        }
+    public void sheepRightClick(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() instanceof Sheep && event.getPlayer() instanceof Player) {
+            Sheep clicked = (Sheep) event.getRightClicked();
+            Player player = event.getPlayer();
+            PlayerMeta meta = PlayerMeta.getMeta(player);
+            GameTeam target;
+            target = GameTeam.BLUE;
 
-        LivingEntity livingEntity = (LivingEntity)interactEvent.getRightClicked();
 
-        if (RemoteEntities.isRemoteEntity(livingEntity))
-        {
 
-            RemoteEntity remoteEntity = RemoteEntities.getRemoteEntityFromEntity(livingEntity);
-
-            if (remoteEntity.getMind().hasBehaviour("Interact"))
-            {
-                InteractBehavior interactBehavior = (InteractBehavior)remoteEntity.getMind().getBehaviour("Interact");
-                if (interactBehavior instanceof NPCBehaviour) {
-                    NPCBehaviour npcBehaviours = (NPCBehaviour)interactBehavior;
-                    npcBehaviours.onRightClickInteractEventWithPlayer(interactEvent.getPlayer());
-                }
-            }
+            player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                    + target.coloredName());
+            meta.setTeam(target);
         }
     }
-
 
 
 

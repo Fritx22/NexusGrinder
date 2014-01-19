@@ -89,16 +89,16 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="246" column="63" selection-start="9431" selection-end="9431" vertical-scroll-proportion="0.5747331" vertical-offset="3859" max-vertical-offset="10591">
+            <state line="267" column="5" selection-start="10079" selection-end="10079" vertical-scroll-proportion="0.81850535" vertical-offset="4079" max-vertical-offset="10302">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16655#16687#0" expanded="true" />
-                <element signature="e#17885#17886#0" expanded="true" />
-                <element signature="e#17903#17904#0" expanded="true" />
-                <element signature="e#17952#17953#0" expanded="true" />
-                <element signature="e#17975#17976#0" expanded="true" />
-                <element signature="e#19799#19800#0" expanded="true" />
-                <element signature="e#19817#19818#0" expanded="true" />
+                <element signature="e#16318#16350#0" expanded="true" />
+                <element signature="e#17548#17549#0" expanded="true" />
+                <element signature="e#17566#17567#0" expanded="true" />
+                <element signature="e#17615#17616#0" expanded="true" />
+                <element signature="e#17638#17639#0" expanded="true" />
+                <element signature="e#19462#19463#0" expanded="true" />
+                <element signature="e#19480#19481#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,7 +125,7 @@
       <file leaf-file-name="NPCBehaviour.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="42" selection-start="1758" selection-end="1758" vertical-scroll-proportion="-11.769231" vertical-offset="527" max-vertical-offset="2278">
+            <state line="83" column="8" selection-start="2545" selection-end="2590" vertical-scroll-proportion="-6.5384617" vertical-offset="1241" max-vertical-offset="2278">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1033,13 +1033,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="20" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1938">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
@@ -1079,25 +1072,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="42" selection-start="1758" selection-end="1758" vertical-scroll-proportion="-11.769231" vertical-offset="527" max-vertical-offset="2278">
+        <state line="83" column="8" selection-start="2545" selection-end="2590" vertical-scroll-proportion="-6.5384617" vertical-offset="1241" max-vertical-offset="2278">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="20" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="1938">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="63" selection-start="9431" selection-end="9431" vertical-scroll-proportion="0.5747331" vertical-offset="3859" max-vertical-offset="10591">
+        <state line="267" column="5" selection-start="10079" selection-end="10079" vertical-scroll-proportion="0.81850535" vertical-offset="4079" max-vertical-offset="10302">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16655#16687#0" expanded="true" />
-            <element signature="e#17885#17886#0" expanded="true" />
-            <element signature="e#17903#17904#0" expanded="true" />
-            <element signature="e#17952#17953#0" expanded="true" />
-            <element signature="e#17975#17976#0" expanded="true" />
-            <element signature="e#19799#19800#0" expanded="true" />
-            <element signature="e#19817#19818#0" expanded="true" />
+            <element signature="e#16318#16350#0" expanded="true" />
+            <element signature="e#17548#17549#0" expanded="true" />
+            <element signature="e#17566#17567#0" expanded="true" />
+            <element signature="e#17615#17616#0" expanded="true" />
+            <element signature="e#17638#17639#0" expanded="true" />
+            <element signature="e#19462#19463#0" expanded="true" />
+            <element signature="e#19480#19481#0" expanded="true" />
           </folding>
         </state>
       </provider>
