@@ -89,20 +89,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NexusGrinder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="262" column="52" selection-start="10008" selection-end="10008" vertical-scroll-proportion="0.3734062" vertical-offset="4249" max-vertical-offset="10625">
+            <state line="81" column="29" selection-start="3600" selection-end="3600" vertical-scroll-proportion="-10.038462" vertical-offset="1116" max-vertical-offset="10302">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16876#16908#0" expanded="true" />
-                <element signature="e#18106#18107#0" expanded="true" />
-                <element signature="e#18124#18125#0" expanded="true" />
-                <element signature="e#18173#18174#0" expanded="true" />
-                <element signature="e#18196#18197#0" expanded="true" />
-                <element signature="e#20020#20021#0" expanded="true" />
-                <element signature="e#20038#20039#0" expanded="true" />
+                <element signature="e#15790#15822#0" expanded="true" />
+                <element signature="e#17020#17021#0" expanded="true" />
+                <element signature="e#17038#17039#0" expanded="true" />
+                <element signature="e#17087#17088#0" expanded="true" />
+                <element signature="e#17110#17111#0" expanded="true" />
+                <element signature="e#18934#18935#0" expanded="true" />
+                <element signature="e#18952#18953#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Metrics.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Metrics.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="13" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12053">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,10 +125,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="21" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="2499">
+            <state line="46" column="21" selection-start="1728" selection-end="1728" vertical-scroll-proportion="1.1569664" vertical-offset="126" max-vertical-offset="2499">
               <folding />
             </state>
           </provider>
@@ -1091,26 +1100,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Metrics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="21" selection-start="1728" selection-end="1728" vertical-scroll-proportion="0.0" vertical-offset="483" max-vertical-offset="2499">
+        <state line="29" column="13" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12053">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="262" column="52" selection-start="10008" selection-end="10008" vertical-scroll-proportion="0.3734062" vertical-offset="4249" max-vertical-offset="10625">
+        <state line="81" column="29" selection-start="3600" selection-end="3600" vertical-scroll-proportion="-10.038462" vertical-offset="1116" max-vertical-offset="10302">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16876#16908#0" expanded="true" />
-            <element signature="e#18106#18107#0" expanded="true" />
-            <element signature="e#18124#18125#0" expanded="true" />
-            <element signature="e#18173#18174#0" expanded="true" />
-            <element signature="e#18196#18197#0" expanded="true" />
-            <element signature="e#20020#20021#0" expanded="true" />
-            <element signature="e#20038#20039#0" expanded="true" />
+            <element signature="e#15790#15822#0" expanded="true" />
+            <element signature="e#17020#17021#0" expanded="true" />
+            <element signature="e#17038#17039#0" expanded="true" />
+            <element signature="e#17087#17088#0" expanded="true" />
+            <element signature="e#17110#17111#0" expanded="true" />
+            <element signature="e#18934#18935#0" expanded="true" />
+            <element signature="e#18952#18953#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="21" selection-start="1728" selection-end="1728" vertical-scroll-proportion="1.1569664" vertical-offset="126" max-vertical-offset="2499">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -5,11 +5,6 @@ import java.util.*;
 import java.util.logging.Level;
 
 import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
-import de.kumpelblase2.remoteentities.api.features.RemoteTradingFeature;
-import de.kumpelblase2.remoteentities.api.features.TradeOffer;
-import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookAtNearest;
-import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookRandomly;
-import de.kumpelblase2.remoteentities.entities.RemoteSheep;
 import me.morpig.NexusGrinder.api.GameStartEvent;
 import me.morpig.NexusGrinder.api.PhaseChangeEvent;
 import me.morpig.NexusGrinder.bar.BarUtil;
@@ -52,17 +47,6 @@ import me.morpig.NexusGrinder.object.Shop;
 import me.morpig.NexusGrinder.stats.StatType;
 import me.morpig.NexusGrinder.stats.StatsManager;
 
-import de.kumpelblase2.remoteentities.EntityManager;
-import de.kumpelblase2.remoteentities.RemoteEntities;
-import de.kumpelblase2.remoteentities.api.RemoteEntity;
-import de.kumpelblase2.remoteentities.api.RemoteEntityType;
-import de.kumpelblase2.remoteentities.api.features.RemoteTamingFeature;
-import de.kumpelblase2.remoteentities.api.features.TamingFeature;
-import de.kumpelblase2.remoteentities.api.thinking.goals.DesireFollowTamer;
-import de.kumpelblase2.remoteentities.api.thinking.InteractBehavior;
-
-import net.minecraft.server.v1_7_R1.EntityHuman;
-import net.minecraft.server.v1_7_R1.EntitySheep;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.*;
 import org.bukkit.configuration.Configuration;
@@ -97,8 +81,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 	private DatabaseManager db;
 	private BossManager boss;
     private static GameTeam team;
-    private EntityManager npcManager;
-    private Location NPCSpawn;
 	
 	public boolean useMysql = false;
 	public boolean updateAvailable = false;
@@ -128,7 +110,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         //npc
         Bukkit.getPluginManager().registerEvents(this, this);
-        this.npcManager = RemoteEntities.createManager(this);
 
 
 
@@ -262,7 +243,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
             Sheep sheep = (Sheep) event.getEntity();
 
-            sheep.teleport(loc)
+            sheep.teleport(loc);
 
         }
 
