@@ -148,6 +148,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		enderFurnaces = new EnderFurnaceListener(this);
 		enderBrewingStands = new EnderBrewingStandListener(this);
 		enderChests = new EnderChestListener();
+		sign = new SignManager(this);
 		Configuration config = configManager.getConfig("config.yml");
 		timer = new PhaseManager(this, config.getInt("start-delay"),
 				config.getInt("phase-period"));
@@ -157,6 +158,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		
 		PluginManager pm = getServer().getPluginManager();
 
+		sign.loadSigns();
 
 		sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
 				+ " | " + ChatColor.GOLD + "/vote <name>");
