@@ -3,6 +3,7 @@ package me.morpig.NexusGrinder;
 import de.kumpelblase2.remoteentities.RemoteEntities;
 import de.kumpelblase2.remoteentities.api.DespawnReason;
 import de.kumpelblase2.remoteentities.api.RemoteEntity;
+import de.kumpelblase2.remoteentities.api.RemoteEntityType;
 import de.kumpelblase2.remoteentities.api.thinking.InteractBehavior;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookAtNearest;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookRandomly;
@@ -48,7 +49,6 @@ public class NPCBehaviour extends InteractBehavior {
         this.m_entity.setPushable(false);
         this.m_entity.setStationary(true);
 
-        this.m_entity.setName("test");
 
         for (GameTeam t : GameTeam.teams()) {
             int size = 0;
@@ -61,9 +61,9 @@ public class NPCBehaviour extends InteractBehavior {
 
             if (size != 1) {
 
-                this.m_entity.setName(ChatColor.GOLD + "" + size + "players" + ChatColor.GOLD + "Join Blue!");
+                this.m_entity.setName(ChatColor.GOLD + "" + size + "Players | " + ChatColor.GOLD + "Join Blue!");
             } else {
-                this.m_entity.setName(ChatColor.GOLD + "" + size + "player" + ChatColor.GOLD + "Join Blue!");
+                this.m_entity.setName(ChatColor.GOLD + "" + size + "Player | " + ChatColor.GOLD + "Join Blue!");
             }
         }
 
