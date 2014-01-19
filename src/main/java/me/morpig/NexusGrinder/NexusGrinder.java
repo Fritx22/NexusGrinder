@@ -236,7 +236,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc, ChatColor.MAGIC + "abcdefg" + " Join Team Blue" + ChatColor.MAGIC + "abcdefg", true);
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc, ChatColor.MAGIC + "abcdefg" + ChatColor.GOLD + " Join Team Blue" + ChatColor.MAGIC + "abcdefg", true);
 
 
         //set new mind

@@ -88,16 +88,16 @@
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="238" column="164" selection-start="9325" selection-end="9325" vertical-scroll-proportion="0.42118862" vertical-offset="3883" max-vertical-offset="10455">
+            <state line="238" column="118" selection-start="9279" selection-end="9279" vertical-scroll-proportion="0.42118862" vertical-offset="3883" max-vertical-offset="10455">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#16811#16843#0" expanded="true" />
-                <element signature="e#18041#18042#0" expanded="true" />
-                <element signature="e#18059#18060#0" expanded="true" />
-                <element signature="e#18108#18109#0" expanded="true" />
-                <element signature="e#18131#18132#0" expanded="true" />
-                <element signature="e#19955#19956#0" expanded="true" />
-                <element signature="e#19973#19974#0" expanded="true" />
+                <element signature="e#16828#16860#0" expanded="true" />
+                <element signature="e#18058#18059#0" expanded="true" />
+                <element signature="e#18076#18077#0" expanded="true" />
+                <element signature="e#18125#18126#0" expanded="true" />
+                <element signature="e#18148#18149#0" expanded="true" />
+                <element signature="e#19972#19973#0" expanded="true" />
+                <element signature="e#19990#19991#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -230,7 +230,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -768,7 +768,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1095,16 +1095,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="238" column="164" selection-start="9325" selection-end="9325" vertical-scroll-proportion="0.42118862" vertical-offset="3883" max-vertical-offset="10455">
+        <state line="238" column="118" selection-start="9279" selection-end="9279" vertical-scroll-proportion="0.42118862" vertical-offset="3883" max-vertical-offset="10455">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#16811#16843#0" expanded="true" />
-            <element signature="e#18041#18042#0" expanded="true" />
-            <element signature="e#18059#18060#0" expanded="true" />
-            <element signature="e#18108#18109#0" expanded="true" />
-            <element signature="e#18131#18132#0" expanded="true" />
-            <element signature="e#19955#19956#0" expanded="true" />
-            <element signature="e#19973#19974#0" expanded="true" />
+            <element signature="e#16828#16860#0" expanded="true" />
+            <element signature="e#18058#18059#0" expanded="true" />
+            <element signature="e#18076#18077#0" expanded="true" />
+            <element signature="e#18125#18126#0" expanded="true" />
+            <element signature="e#18148#18149#0" expanded="true" />
+            <element signature="e#19972#19973#0" expanded="true" />
+            <element signature="e#19990#19991#0" expanded="true" />
           </folding>
         </state>
       </provider>
