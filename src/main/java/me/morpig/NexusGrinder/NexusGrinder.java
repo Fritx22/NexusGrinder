@@ -214,40 +214,75 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void onNPCJoin(PlayerJoinEvent inEvent) throws Exception {
 
-         double x = 11;
-         double y = 5;
-         double z = 0;
-         Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
+         //BLUE
+         double xblue = 11;
+         double yblue = 5;
+         double zblue = 0;
+         Location locblue = new Location(Bukkit.getWorld("lobby"), xblue, yblue, zblue);
+        //RED
+        double xred = -11;
+        double yred = 5;
+        double zred = 0;
+        Location locred = new Location(Bukkit.getWorld("lobby"), xred, yred, zred);
+        //ORANGE
+        double xorange = 0;
+        double yorange = 5;
+        double zorange = -11;
+        Location locorange = new Location(Bukkit.getWorld("lobby"), xorange, yorange, zorange);
+        //GREEN
+        double xgreen = 11;
+        double ygreen = 5;
+        double zgreen = 0;
+        Location locgreen = new Location(Bukkit.getWorld("lobby"), xgreen, ygreen, zgreen);
 
 
 
+        // BLUE
+        Sheep sblue = (Sheep)locblue.getWorld().spawnCreature(locblue, EntityType.SHEEP);
+        sblue.setColor(DyeColor.BLUE);
+        sblue.getAgeLock();
+        sblue.teleport(locblue);
+        sblue.isAdult();
+        sblue.getLocation().setX(xblue);
+        sblue.getLocation().setY(yblue);
+        sblue.getLocation().setZ(zblue);
+        sblue.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
 
-        Sheep s = (Sheep)loc.getWorld().spawnCreature(loc, EntityType.SHEEP);
-        s.setColor(DyeColor.BLUE);
-        s.getAgeLock();
-        s.teleport(loc);
-        s.isAdult();
-        s.getLocation().setX(x);
-        s.getLocation().setY(y);
-        s.getLocation().setZ(z);
-        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
-        for (GameTeam t : GameTeam.teams()) {
-            int size = 0;
+        //RED
+        Sheep sred = (Sheep)locred.getWorld().spawnCreature(locred, EntityType.SHEEP);
+        sred.setColor(DyeColor.RED);
+        sred.getAgeLock();
+        sred.teleport(locred);
+        sred.isAdult();
+        sred.getLocation().setX(xred);
+        sred.getLocation().setY(yred);
+        sred.getLocation().setZ(zred);
+        sred.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
 
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                PlayerMeta meta = PlayerMeta.getMeta(p);
-                if (meta.getTeam() == t)
-                    size++;
-            }
+        //ORANGE
+        Sheep sorange = (Sheep)locorange.getWorld().spawnCreature(locorange, EntityType.SHEEP);
+        sorange.setColor(DyeColor.ORANGE);
+        sorange.getAgeLock();
+        sorange.teleport(locorange);
+        sorange.isAdult();
+        sorange.getLocation().setX(xorange);
+        sorange.getLocation().setY(yorange);
+        sorange.getLocation().setZ(zorange);
+        sorange.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
 
-            if (size != 1) {
-                s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-            } else {
-                s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-            }
+        //GREEN
+        Sheep sgreen = (Sheep)locgreen.getWorld().spawnCreature(locred, EntityType.SHEEP);
+        sgreen.setColor(DyeColor.GREEN);
+        sgreen.getAgeLock();
+        sgreen.teleport(locorange);
+        sgreen.isAdult();
+        sgreen.getLocation().setX(xgreen);
+        sgreen.getLocation().setY(ygreen);
+        sgreen.getLocation().setZ(zgreen);
+        sgreen.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+
         }
 
-    }
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e){
@@ -258,38 +293,99 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                 Sheep s = (Sheep) event.getEntity();
                 PlayerMeta meta = PlayerMeta.getMeta(player);
                 GameTeam target;
-                target = GameTeam.BLUE;
 
+                if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM" ) {
+                    target = GameTeam.BLUE;
+                    player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                            + target.coloredName());
+                    meta.setTeam(target);
 
+                    for (GameTeam t : GameTeam.teams()) {
+                        int size = 0;
 
-                player.sendMessage(ChatColor.DARK_AQUA + "You joined "
-                        + target.coloredName());
-                meta.setTeam(target);
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            PlayerMeta metas = PlayerMeta.getMeta(p);
+                            if (meta.getTeam() == t)
+                                size++;
+                        }
 
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
+                        if (size != 1) {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                        } else {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                        }
 
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == t)
-                            size++;
                     }
 
-                    if (size != 1) {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM ") {
+                    target = GameTeam.RED;
+                    player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                            + target.coloredName());
+                    meta.setTeam(target);
+                    for (GameTeam t : GameTeam.teams()) {
+                        int size = 0;
+
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            PlayerMeta metas = PlayerMeta.getMeta(p);
+                            if (meta.getTeam() == t)
+                                size++;
+                        }
+
+                        if (size != 1) {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                        } else {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                        }
+
                     }
-                }
 
+               } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + "GREEN TEAM") {
+                    target = GameTeam.GREEN;
+                    player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                            + target.coloredName());
+                    meta.setTeam(target);
+                    for (GameTeam t : GameTeam.teams()) {
+                        int size = 0;
 
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            PlayerMeta metas = PlayerMeta.getMeta(p);
+                            if (meta.getTeam() == t)
+                                size++;
+                        }
 
+                        if (size != 1) {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM" + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                        } else {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                        }
+
+                    }
+                } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + "YELLOW TEAM") {
+                    target = GameTeam.YELLOW;
+                    player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                            + target.coloredName());
+                    meta.setTeam(target);
+                    for (GameTeam t : GameTeam.teams()) {
+                        int size = 0;
+
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            PlayerMeta metas = PlayerMeta.getMeta(p);
+                            if (meta.getTeam() == t)
+                                size++;
+                        }
+
+                        if (size != 1) {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                        } else {
+                            s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                        }
+
+                    }
                 }
             }
-
-
-
         }
+    }
+
 
     @EventHandler
     public void sheepMoveEvent(EntityMoveEvent event) {
@@ -333,38 +429,101 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     @EventHandler
     public void sheepRightClick(PlayerInteractEntityEvent event) {
         if (event.getRightClicked() instanceof Sheep && event.getPlayer() instanceof Player) {
-            Sheep clicked = (Sheep) event.getRightClicked();
+            Sheep s = (Sheep) event.getRightClicked();
             Player player = event.getPlayer();
             PlayerMeta meta = PlayerMeta.getMeta(player);
             GameTeam target;
-            target = GameTeam.BLUE;
+            if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM" ) {
+                target = GameTeam.BLUE;
+                player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                        + target.coloredName());
+                meta.setTeam(target);
 
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
 
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (meta.getTeam() == t)
+                            size++;
+                    }
 
-            player.sendMessage(ChatColor.DARK_AQUA + "You joined "
-                    + target.coloredName());
-            meta.setTeam(target);
+                    if (size != 1) {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
 
-            for (GameTeam t : GameTeam.teams()) {
-                int size = 0;
-
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    PlayerMeta metas = PlayerMeta.getMeta(p);
-                    if (meta.getTeam() == t)
-                        size++;
                 }
 
-                if (size != 1) {
-                    clicked.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                } else {
-                    clicked.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+            } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM ") {
+                target = GameTeam.RED;
+                player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                        + target.coloredName());
+                meta.setTeam(target);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (meta.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
+
+                }
+
+            } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + "GREEN TEAM") {
+                target = GameTeam.GREEN;
+                player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                        + target.coloredName());
+                meta.setTeam(target);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (meta.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM" + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
+
+                }
+            } else if (s.getCustomName() == ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + "YELLOW TEAM") {
+                target = GameTeam.YELLOW;
+                player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                        + target.coloredName());
+                meta.setTeam(target);
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
+
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (meta.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
+
                 }
             }
-
-
-
         }
     }
+
 
 
 
