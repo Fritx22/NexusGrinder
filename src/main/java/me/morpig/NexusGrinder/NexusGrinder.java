@@ -266,8 +266,24 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                         + target.coloredName());
                 meta.setTeam(target);
 
+                for (GameTeam t : GameTeam.teams()) {
+                    int size = 0;
 
-                s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + "Players");
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        PlayerMeta metas = PlayerMeta.getMeta(p);
+                        if (meta.getTeam() == t)
+                            size++;
+                    }
+
+                    if (size != 1) {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                    } else {
+                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                    }
+                }
+
+
+
                 }
             }
 
@@ -290,7 +306,23 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
             sheep.teleport(loc);
 
-            sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + "Players");
+            for (GameTeam t : GameTeam.teams()) {
+                int size = 0;
+
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    PlayerMeta meta = PlayerMeta.getMeta(p);
+                    if (meta.getTeam() == t)
+                        size++;
+                }
+
+                if (size != 1) {
+                    sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
+                } else {
+                    sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                }
+            }
+
+
 
 
         }
@@ -313,7 +345,23 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                     + target.coloredName());
             meta.setTeam(target);
 
-            clicked.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + "Players");
+            for (GameTeam t : GameTeam.teams()) {
+                int size = 0;
+
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    PlayerMeta metas = PlayerMeta.getMeta(p);
+                    if (meta.getTeam() == t)
+                        size++;
+                }
+
+                if (size != 1) {
+                    clicked.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                } else {
+                    clicked.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
+                }
+            }
+
+
 
         }
     }
