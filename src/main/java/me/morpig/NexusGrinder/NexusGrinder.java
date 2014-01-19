@@ -60,6 +60,7 @@ import de.kumpelblase2.remoteentities.api.thinking.goals.DesireFollowTamer;
 import de.kumpelblase2.remoteentities.api.thinking.InteractBehavior;
 
 import net.minecraft.server.v1_7_R1.EntityHuman;
+import net.minecraft.server.v1_7_R1.EntitySheep;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -71,6 +72,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -240,7 +242,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
 
-        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Human, loc,"", true);
+        RemoteEntity entity = npcManager.createNamedEntity(RemoteEntityType.Sheep, loc,"", true);
 
 
 
