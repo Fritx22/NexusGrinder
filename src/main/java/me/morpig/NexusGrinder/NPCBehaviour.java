@@ -42,7 +42,7 @@ public class NPCBehaviour extends InteractBehavior {
 
 
         this.m_entity.setPushable(false);
-        this.m_entity.setStationary(false);
+        this.m_entity.setStationary(true);
 
         Player npc = (Player)this.m_entity.getBukkitEntity();
         npc.setCanPickupItems(false);

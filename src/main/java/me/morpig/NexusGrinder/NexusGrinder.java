@@ -6,6 +6,8 @@ import java.util.logging.Level;
 
 import de.kumpelblase2.remoteentities.api.features.RemoteTradingFeature;
 import de.kumpelblase2.remoteentities.api.features.TradeOffer;
+import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookAtNearest;
+import de.kumpelblase2.remoteentities.api.thinking.goals.DesireLookRandomly;
 import me.morpig.NexusGrinder.api.GameStartEvent;
 import me.morpig.NexusGrinder.api.PhaseChangeEvent;
 import me.morpig.NexusGrinder.bar.BarUtil;
@@ -57,6 +59,7 @@ import de.kumpelblase2.remoteentities.api.features.TamingFeature;
 import de.kumpelblase2.remoteentities.api.thinking.goals.DesireFollowTamer;
 import de.kumpelblase2.remoteentities.api.thinking.InteractBehavior;
 
+import net.minecraft.server.v1_7_R1.EntityHuman;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -237,6 +240,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
         //set new mind
         entity.getMind().addBehaviour(new NPCBehaviour(entity));
+        entity.getMind().addMovementDesire(new DesireLookRandomly(), 1);
+        entity.getMind().addMovementDesire(new DesireLookAtNearest(EntityHuman.class, 8F, 1.0F), 2);
 
 
     }
