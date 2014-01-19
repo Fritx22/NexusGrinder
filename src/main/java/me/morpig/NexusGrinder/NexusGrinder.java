@@ -67,10 +67,7 @@ import org.bukkit.*;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Sheep;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -163,6 +160,10 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
 		build = this.getConfig().getInt("build", 5);
 		respawn = this.getConfig().getInt("bossRespawnDelay", 10);
+
+        for (Entity e : Bukkit.getWorld("lobby").getEntities()) {
+            e.remove();
+        }
 		
 		pm.registerEvents(resources, this);
 		pm.registerEvents(enderFurnaces, this);
@@ -245,7 +246,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
         s.getLocation().setX(x);
         s.getLocation().setY(y);
         s.getLocation().setZ(z);
-        s.setCustomName("Hi! I'm a blue sheep. Working for TGN.");
+        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join" + "0" + "Players" );
 
 
     }
