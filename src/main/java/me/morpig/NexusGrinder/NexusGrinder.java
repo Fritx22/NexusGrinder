@@ -55,6 +55,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
@@ -231,6 +233,26 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
     }
 
     @EventHandler
+    public void onEntityDamage(EntityDamageEvent e){
+        if(e instanceof EntityDamageByEntityEvent){
+            EntityDamageByEntityEvent event = (EntityDamageByEntityEvent) e;
+            if(event.getDamager() instanceof Player){
+                Player player = (Player) event.getDamager();
+                PlayerMeta meta = PlayerMeta.getMeta(player);
+                GameTeam target;
+                target = GameTeam.BLUE;
+
+
+
+                player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+                        + target.coloredName());
+                meta.setTeam(target);
+
+        }
+      }
+    }
+
+    @EventHandler
     public void sheepMoveEvent(EntityMoveEvent event) {
 
 
@@ -244,6 +266,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             Sheep sheep = (Sheep) event.getEntity();
 
             sheep.teleport(loc);
+
 
         }
 
