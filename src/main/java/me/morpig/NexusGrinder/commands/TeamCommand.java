@@ -63,6 +63,7 @@ public class TeamCommand implements CommandExecutor {
 				+ target.coloredName());
 		meta.setTeam(target);
 
+
 		plugin.getScoreboardHandler().teams.get(team.toUpperCase()).addPlayer(player);
 		
 		if (plugin.getPhase() > 0) {

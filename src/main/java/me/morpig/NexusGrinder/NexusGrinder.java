@@ -220,15 +220,32 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
          Location loc = new Location(Bukkit.getWorld("lobby"), x, y, z);
 
 
+
+
         Sheep s = (Sheep)loc.getWorld().spawnCreature(loc, EntityType.SHEEP);
         s.setColor(DyeColor.BLUE);
         s.getAgeLock();
         s.teleport(loc);
+        s.isAdult();
         s.getLocation().setX(x);
         s.getLocation().setY(y);
         s.getLocation().setZ(z);
         s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
+        for (GameTeam t : GameTeam.teams()) {
+            int size = 0;
 
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                PlayerMeta meta = PlayerMeta.getMeta(p);
+                if (meta.getTeam() == t)
+                    size++;
+            }
+
+            if (size != 1) {
+                s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + " Players" );
+            } else {
+                s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + " Players");
+            }
+        }
 
     }
 
@@ -238,6 +255,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             EntityDamageByEntityEvent event = (EntityDamageByEntityEvent) e;
             if(event.getDamager() instanceof Player){
                 Player player = (Player) event.getDamager();
+                Sheep s = (Sheep) event.getEntity();
                 PlayerMeta meta = PlayerMeta.getMeta(player);
                 GameTeam target;
                 target = GameTeam.BLUE;
@@ -248,9 +266,14 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
                         + target.coloredName());
                 meta.setTeam(target);
 
+
+                s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + "Players");
+                }
+            }
+
+
+
         }
-      }
-    }
 
     @EventHandler
     public void sheepMoveEvent(EntityMoveEvent event) {
@@ -266,6 +289,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             Sheep sheep = (Sheep) event.getEntity();
 
             sheep.teleport(loc);
+
+            sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + "Players");
 
 
         }
@@ -287,6 +312,9 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
             player.sendMessage(ChatColor.DARK_AQUA + "You joined "
                     + target.coloredName());
             meta.setTeam(target);
+
+            clicked.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + team + "Players");
+
         }
     }
 
