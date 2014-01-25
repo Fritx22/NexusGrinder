@@ -67,55 +67,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MapManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="56" selection-start="1306" selection-end="1306" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MapLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="20" selection-start="586" selection-end="586" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1938">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="295" column="27" selection-start="11722" selection-end="11722" vertical-scroll-proportion="0.3560606" vertical-offset="4827" max-vertical-offset="16388">
+            <state line="411" column="48" selection-start="16675" selection-end="16675" vertical-scroll-proportion="1.8011527" vertical-offset="6362" max-vertical-offset="14331">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#27994#28008#0" expanded="true" />
-                <element signature="e#28465#28475#0" expanded="true" />
-                <element signature="e#29877#30120#0" expanded="true" />
-                <element signature="e#30115#30116#0" expanded="true" />
-                <element signature="e#31038#31039#0" expanded="true" />
-                <element signature="e#31056#31057#0" expanded="true" />
-                <element signature="e#31098#31099#0" expanded="true" />
-                <element signature="e#31117#31118#0" expanded="true" />
-                <element signature="e#31165#31166#0" expanded="true" />
-                <element signature="e#31181#31182#0" expanded="true" />
-                <element signature="e#31225#31226#0" expanded="true" />
-                <element signature="e#31252#31253#0" expanded="true" />
-                <element signature="e#31468#31469#0" expanded="true" />
-                <element signature="e#31488#31489#0" expanded="true" />
-                <element signature="e#31540#31541#0" expanded="true" />
-                <element signature="e#31556#31557#0" expanded="true" />
-                <element signature="e#32723#33688#0" expanded="true" />
-                <element signature="e#32743#32775#0" expanded="true" />
-                <element signature="e#33683#33684#0" expanded="true" />
-                <element signature="e#33973#33974#0" expanded="true" />
-                <element signature="e#33991#33992#0" expanded="true" />
-                <element signature="e#34040#34041#0" expanded="true" />
-                <element signature="e#34063#34064#0" expanded="true" />
-                <element signature="e#35887#35888#0" expanded="true" />
-                <element signature="e#35905#35906#0" expanded="true" />
+                <element signature="e#21977#21991#0" expanded="true" />
+                <element signature="e#22448#22458#0" expanded="true" />
+                <element signature="e#23860#24103#0" expanded="true" />
+                <element signature="e#24098#24099#0" expanded="true" />
+                <element signature="e#25021#25022#0" expanded="true" />
+                <element signature="e#25039#25040#0" expanded="true" />
+                <element signature="e#25081#25082#0" expanded="true" />
+                <element signature="e#25100#25101#0" expanded="true" />
+                <element signature="e#25148#25149#0" expanded="true" />
+                <element signature="e#25164#25165#0" expanded="true" />
+                <element signature="e#25208#25209#0" expanded="true" />
+                <element signature="e#25235#25236#0" expanded="true" />
+                <element signature="e#25451#25452#0" expanded="true" />
+                <element signature="e#25471#25472#0" expanded="true" />
+                <element signature="e#25523#25524#0" expanded="true" />
+                <element signature="e#25539#25540#0" expanded="true" />
+                <element signature="e#26706#27671#0" expanded="true" />
+                <element signature="e#26726#26758#0" expanded="true" />
+                <element signature="e#27666#27667#0" expanded="true" />
+                <element signature="e#27956#27957#0" expanded="true" />
+                <element signature="e#27974#27975#0" expanded="true" />
+                <element signature="e#28023#28024#0" expanded="true" />
+                <element signature="e#28046#28047#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,7 +104,7 @@
       <file leaf-file-name="TeamCommand.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="1802">
+            <state line="66" column="8" selection-start="1760" selection-end="1838" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1802">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,26 +112,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Metrics.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Metrics.java">
+      <file leaf-file-name="TeamShortcutCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="13" selection-start="874" selection-end="874" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12053">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#19734#19743#0" expanded="false" />
-                <element signature="e#19968#19969#0" expanded="false" />
-                <element signature="e#20003#20004#0" expanded="false" />
-                <element signature="e#22660#22661#0" expanded="false" />
-                <element signature="e#22695#22696#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="714">
+            <state line="23" column="8" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -160,32 +124,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2499">
-              <folding>
-                <marker date="1390117761665" expanded="true" signature="1933:2131" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maps.yml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/maps.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="14" selection-start="1849" selection-end="1849" vertical-scroll-proportion="0.0" vertical-offset="1044" max-vertical-offset="1887">
+            <state line="57" column="21" selection-start="1922" selection-end="2132" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2499">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#575#576#0" expanded="false" />
-                <element signature="e#594#595#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -250,9 +190,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/maps.yml" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NPCBehaviour.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Sheep.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java" />
       </list>
     </option>
@@ -275,7 +215,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -625,7 +565,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="SearchEverywhereHistory" value="Game\&#10;NexusG&#10;PlayerL&#10;Timer&#10;SignMa&#10;EnderB&#10;Player&#10;EnderFur&#10;Anni&#10;PlayerLi" />
+    <property name="SearchEverywhereHistory" value="NexusGr&#10;Game\&#10;NexusG&#10;PlayerL&#10;Timer&#10;SignMa&#10;EnderB&#10;Player&#10;EnderFur&#10;Anni&#10;PlayerLi" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -813,21 +753,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2882736" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28664497" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1067,13 +1007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="8" selection-start="844" selection-end="844" vertical-scroll-proportion="0.54931974" vertical-offset="0" max-vertical-offset="588">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="244" selection-end="244" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
@@ -1083,14 +1016,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/maps.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="14" selection-start="1849" selection-end="1849" vertical-scroll-proportion="0.0" vertical-offset="1044" max-vertical-offset="1887">
+        <state line="99" column="14" selection-start="1849" selection-end="1849" vertical-scroll-proportion="1.0867347" vertical-offset="1044" max-vertical-offset="1887">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+        <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.11564626" vertical-offset="0" max-vertical-offset="588">
           <folding>
             <element signature="imports" expanded="false" />
             <element signature="e#575#576#0" expanded="false" />
@@ -1127,28 +1060,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="413" selection-end="413" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2499">
-          <folding>
-            <marker date="1390117761665" expanded="true" signature="1933:2131" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.1-SNAPSHOT/bukkit-1.7.2-R0.1-20131218.032934-10.jar!/org/bukkit/ChatColor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="12" selection-start="140" selection-end="164" vertical-scroll-proportion="0.10018904" vertical-offset="32" max-vertical-offset="816">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="2148" selection-end="2148" vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="1802">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,36 +1074,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.1-SNAPSHOT/bukkit-1.7.2-R0.1-20131218.032934-10.jar!/org/bukkit/event/Listener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="295" column="27" selection-start="11722" selection-end="11722" vertical-scroll-proportion="0.3560606" vertical-offset="4827" max-vertical-offset="16388">
+        <state line="6" column="17" selection-start="146" selection-end="174" vertical-scroll-proportion="0.15097691" vertical-offset="0" max-vertical-offset="563">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="21" selection-start="1922" selection-end="2132" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2499">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="8" selection-start="1760" selection-end="1838" vertical-scroll-proportion="0.0" vertical-offset="696" max-vertical-offset="1802">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#27994#28008#0" expanded="true" />
-            <element signature="e#28465#28475#0" expanded="true" />
-            <element signature="e#29877#30120#0" expanded="true" />
-            <element signature="e#30115#30116#0" expanded="true" />
-            <element signature="e#31038#31039#0" expanded="true" />
-            <element signature="e#31056#31057#0" expanded="true" />
-            <element signature="e#31098#31099#0" expanded="true" />
-            <element signature="e#31117#31118#0" expanded="true" />
-            <element signature="e#31165#31166#0" expanded="true" />
-            <element signature="e#31181#31182#0" expanded="true" />
-            <element signature="e#31225#31226#0" expanded="true" />
-            <element signature="e#31252#31253#0" expanded="true" />
-            <element signature="e#31468#31469#0" expanded="true" />
-            <element signature="e#31488#31489#0" expanded="true" />
-            <element signature="e#31540#31541#0" expanded="true" />
-            <element signature="e#31556#31557#0" expanded="true" />
-            <element signature="e#32723#33688#0" expanded="true" />
-            <element signature="e#32743#32775#0" expanded="true" />
-            <element signature="e#33683#33684#0" expanded="true" />
-            <element signature="e#33973#33974#0" expanded="true" />
-            <element signature="e#33991#33992#0" expanded="true" />
-            <element signature="e#34040#34041#0" expanded="true" />
-            <element signature="e#34063#34064#0" expanded="true" />
-            <element signature="e#35887#35888#0" expanded="true" />
-            <element signature="e#35905#35906#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamShortcutCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="8" selection-start="844" selection-end="844" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="411" column="48" selection-start="16675" selection-end="16675" vertical-scroll-proportion="1.8011527" vertical-offset="6362" max-vertical-offset="14331">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#21977#21991#0" expanded="true" />
+            <element signature="e#22448#22458#0" expanded="true" />
+            <element signature="e#23860#24103#0" expanded="true" />
+            <element signature="e#24098#24099#0" expanded="true" />
+            <element signature="e#25021#25022#0" expanded="true" />
+            <element signature="e#25039#25040#0" expanded="true" />
+            <element signature="e#25081#25082#0" expanded="true" />
+            <element signature="e#25100#25101#0" expanded="true" />
+            <element signature="e#25148#25149#0" expanded="true" />
+            <element signature="e#25164#25165#0" expanded="true" />
+            <element signature="e#25208#25209#0" expanded="true" />
+            <element signature="e#25235#25236#0" expanded="true" />
+            <element signature="e#25451#25452#0" expanded="true" />
+            <element signature="e#25471#25472#0" expanded="true" />
+            <element signature="e#25523#25524#0" expanded="true" />
+            <element signature="e#25539#25540#0" expanded="true" />
+            <element signature="e#26706#27671#0" expanded="true" />
+            <element signature="e#26726#26758#0" expanded="true" />
+            <element signature="e#27666#27667#0" expanded="true" />
+            <element signature="e#27956#27957#0" expanded="true" />
+            <element signature="e#27974#27975#0" expanded="true" />
+            <element signature="e#28023#28024#0" expanded="true" />
+            <element signature="e#28046#28047#0" expanded="true" />
           </folding>
         </state>
       </provider>
