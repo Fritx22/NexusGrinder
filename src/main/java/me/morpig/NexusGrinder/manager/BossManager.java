@@ -45,6 +45,9 @@ public class BossManager {
 			boss.setCustomNameVisible(true);
 			boss.setCustomName(ChatColor.translateAlternateColorCodes('&', b.getBossName() + " &8� &a" + (int) b.getHealth() + " HP"));
 			bossNames.put(boss.getCustomName(), b);
+			Util.spawnFirework(b.getSpawn());
+			Util.spawnFirework(b.getSpawn());
+			Util.spawnFirework(b.getSpawn());
 		}
 	}
 

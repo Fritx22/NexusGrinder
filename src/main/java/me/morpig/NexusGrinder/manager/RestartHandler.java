@@ -23,7 +23,6 @@ public class RestartHandler {
 		final String totalTime = PhaseManager.timeString(gameTime);
 		taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin,
 				new Runnable() {
-					@Override
 					public void run() {
 						if (time <= 0) {
 							plugin.reset();

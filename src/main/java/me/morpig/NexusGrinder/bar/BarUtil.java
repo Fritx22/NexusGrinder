@@ -91,7 +91,6 @@ public class BarUtil implements Listener {
 		if (!hasBar(player))
 			return;
 		plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-			@Override
 			public void run() {
 				FakeDragon oldDragon = getDragon(player, "");
 				Object destroyPacket = getDragon(player, "").getDestroyPacket();

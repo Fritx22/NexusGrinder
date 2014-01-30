@@ -1,6 +1,7 @@
 package me.morpig.NexusGrinder.listeners;
 
 import me.morpig.NexusGrinder.NexusGrinder;
+import me.morpig.NexusGrinder.NexusGrinder.Util;
 import me.morpig.NexusGrinder.chat.ChatUtil;
 import me.morpig.NexusGrinder.object.Boss;
 import me.morpig.NexusGrinder.object.PlayerMeta;
@@ -46,7 +47,6 @@ public class BossListener implements Listener {
 			}
 			
 			Bukkit.getScheduler().runTask(plugin, new Runnable() {
-				@Override
 				public void run() {
 					plugin.getBossManager().update(b, g);
 				}
@@ -69,6 +69,9 @@ public class BossListener implements Listener {
 				Player killer = g.getKiller();
 				ChatUtil.bossDeath(b, killer, PlayerMeta.getMeta(killer).getTeam());
 				respawn(b);
+				Util.spawnFirework(event.getEntity().getLocation());
+				Util.spawnFirework(event.getEntity().getLocation());
+				Util.spawnFirework(event.getEntity().getLocation());
 			} else {
 				g.teleport(b.getSpawn());
 			}
@@ -77,7 +80,6 @@ public class BossListener implements Listener {
 
 	private void respawn(final Boss b) {
 		Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-			@Override
 			public void run() {
 				Boss n = plugin.getBossManager().newBoss(b);
 				ChatUtil.bossRespawn(b);

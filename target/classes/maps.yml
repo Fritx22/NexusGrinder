@@ -22,7 +22,7 @@ test:
     yellow: "-27,66,27"
     green: "27,66,27"
     blue: "27,66,-27"
-  
+    
   # Ender furnaces for each team, only one each. 
   # Optional.
   furnaces:
@@ -74,33 +74,19 @@ test:
 # Mandatory.
 lobby:
   spawn: "0,64,0"
-
-## the spawn of the NPC'S
-## NPC blue, red, orange, green
-blue:
-  spawn: "-16,4,-2"
-
-## npc red
-red:
-  spawn: "-16,4,-1"
-
-## npc orange
-orange:
-  spawn: "16,4,-0"
-
-## npc green
-green:
-  spawn: "-16,4,0"
-
   
   # Team join sign locations.
   # Optional, but highly recommended.
   signs:
     red:
-    - "-13,4,0"
+    - "-4,65,-3"
+    - "-3,65,-4"
     yellow:
-    - "0,4,-13"
+    - "-4,65,3"
+    - "-3,65,4"
     green:
-    - "0,4,12"
+    - "4,65,3"
+    - "3,65,4"
     blue:
-    - "13,4,0"
+    - "4,65,-3"
+    - "3,65,-4"

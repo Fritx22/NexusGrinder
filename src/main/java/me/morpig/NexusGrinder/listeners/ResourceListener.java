@@ -121,7 +121,6 @@ public class ResourceListener implements Listener {
 		queue.add(block.getLocation());
 		plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
 			@SuppressWarnings("deprecation")
-			@Override
 			public void run() {
 				block.setType(type);
 				queue.remove(block.getLocation());

@@ -100,7 +100,6 @@ public class WandListener implements Listener {
 		final String name = user.getName();
 		apprenticeCooldown.put(name, true);
 		plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-			@Override
 			public void run() {
 				apprenticeCooldown.put(name, false);
 			}
@@ -117,7 +116,6 @@ public class WandListener implements Listener {
 		final String name = user.getName();
 		masterCooldown.put(name, true);
 		plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-			@Override
 			public void run() {
 				masterCooldown.put(name, false);
 			}

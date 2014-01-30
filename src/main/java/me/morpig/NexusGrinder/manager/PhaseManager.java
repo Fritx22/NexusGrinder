@@ -4,15 +4,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.Bukkit;
 
 import me.morpig.NexusGrinder.NexusGrinder;
 import me.morpig.NexusGrinder.bar.BarUtil;
 import me.morpig.NexusGrinder.chat.ChatUtil;
 import me.morpig.NexusGrinder.object.GameTeam;
-import org.bukkit.configuration.Configuration;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public class PhaseManager {
 	private long time;

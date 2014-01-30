@@ -7,7 +7,6 @@ phase-period: 600
 # When the game ends, the delay before resetting the game
 restart-delay: 120
 
-
 # Stat system: "flatfile" for yml or "sql" for MySQL
 stats: flatfile
 
@@ -27,11 +26,17 @@ allowUpdater: true
 # Amount of players required to start the game
 requiredToStart: 2
 
-# Amount of players required to stop the game
-requiredToStop: 1
-
 # Build Distance from Nexus
 build: 5
 
 # Delay in minutes to respawn the bosses after death
 bossRespawnDelay: 10
+
+# Enable the custom MOTD
+enableMotd: true
+
+# Custom MOTD - Values you can use
+# %PHASE% %TIME% %PLAYERCOUNT% %MAXPLAYERS%
+# %GREENNEXUS% %REDNEXUS% %BLUENEXUS% %YELLOWNEXUS%
+# %GREENCOUNT% %REDCOUNT% %BLUECOUNT% %YELLOWCOUNT% 
+motd: '&3Phase: &b%PHASE% &8| &bTime left: &a%TIME%'

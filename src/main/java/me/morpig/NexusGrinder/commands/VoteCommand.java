@@ -14,7 +14,6 @@ public class VoteCommand implements CommandExecutor {
 		this.manager = manager;
 	}
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if (!manager.isRunning())

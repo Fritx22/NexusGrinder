@@ -1,10 +1,12 @@
 package me.morpig.NexusGrinder;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 import java.util.logging.Level;
 
-import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
 import me.morpig.NexusGrinder.api.GameStartEvent;
 import me.morpig.NexusGrinder.api.PhaseChangeEvent;
 import me.morpig.NexusGrinder.bar.BarUtil;
@@ -48,27 +50,32 @@ import me.morpig.NexusGrinder.stats.StatType;
 import me.morpig.NexusGrinder.stats.StatsManager;
 
 import org.apache.commons.lang.WordUtils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.FireworkEffect.Type;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.*;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.entity.Firework;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Team;
 
-public final class NexusGrinder extends JavaPlugin implements Listener {
+public final class NexusGrinder extends JavaPlugin {
 	private ConfigManager configManager;
 	private VotingManager voting;
 	private MapManager maps;
@@ -82,23 +89,25 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 	private ScoreboardManager sb;
 	private DatabaseManager db;
 	private BossManager boss;
-    private static GameTeam team;
 	
 	public boolean useMysql = false;
 	public boolean updateAvailable = false;
+	public boolean motd = true;
 	public String newVersion;
-
 
 	public int build = 1;
 	public int respawn = 10;
-
+	
 	@Override
 	public void onEnable() {
+		try {
+		    Metrics metrics = new Metrics(this);
+		    metrics.start();
+		} catch (IOException e) {
+		    
+		}
+		
 
-        getLogger().info("#######################################");
-        getLogger().info("            Nexus Grinder              ");
-        getLogger().info("                v.12                   ");
-        getLogger().info("#######################################");
 
 		configManager = new ConfigManager(this);
 		configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
@@ -107,16 +116,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
 		maps = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
-        getLogger().info("Register " + maps.getRandomMaps() +"map");
-
-
-        //npc
-        Bukkit.getPluginManager().registerEvents(this, this);
-
-
-
-
-
 
 		Configuration shops = configManager.getConfig("shops.yml");
 		new Shop(this, "Weapon", shops);
@@ -144,11 +143,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 
 		build = this.getConfig().getInt("build", 5);
 		respawn = this.getConfig().getInt("bossRespawnDelay", 10);
-
-        for (Entity e : Bukkit.getWorld("lobby").getEntities()) {
-            e.remove();
-        }
-        getLogger().info("Remove entities for NPC, success.");
 		
 		pm.registerEvents(resources, this);
 		pm.registerEvents(enderFurnaces, this);
@@ -175,12 +169,13 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		getCommand("distance").setExecutor(new DistanceCommand(this));
 		getCommand("map").setExecutor(new MapCommand(this, mapLoader));
 
-
-
 		BarUtil.init(this);
 
 		if (config.getString("stats").equalsIgnoreCase("sql"))
 			useMysql = true;
+		
+		motd = config.getBoolean("enableMotd", true);
+			
 
 		if (useMysql) {
 			String host = config.getString("MySQL.host");
@@ -200,79 +195,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		reset();
 
 		ChatUtil.setRoman(getConfig().getBoolean("roman", false));
-
-        //sheep npc
-        //BLUE
-        double xblue = 11;
-        double yblue = 5;
-        double zblue = 0;
-        Location locblue = new Location(Bukkit.getWorld("lobby"), xblue, yblue, zblue);
-        //RED
-        double xred = -11;
-        double yred = 5;
-        double zred = 0;
-        Location locred = new Location(Bukkit.getWorld("lobby"), xred, yred, zred);
-        //ORANGE
-        double xorange = 0;
-        double yorange = 5;
-        double zorange = -11;
-        Location locorange = new Location(Bukkit.getWorld("lobby"), xorange, yorange, zorange);
-        //GREEN
-        double xgreen = 0;
-        double ygreen = 5;
-        double zgreen = 10;
-        Location locgreen = new Location(Bukkit.getWorld("lobby"), xgreen, ygreen, zgreen);
-
-
-
-        // BLUE
-        Sheep sblue = (Sheep)locblue.getWorld().spawnCreature(locblue, EntityType.SHEEP);
-        sblue.setColor(DyeColor.BLUE);
-        sblue.getAgeLock();
-        sblue.teleport(locblue);
-        sblue.isAdult();
-        sblue.getLocation().setX(xblue);
-        sblue.getLocation().setY(yblue);
-        sblue.getLocation().setZ(zblue);
-        sblue.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
-        getLogger().info("Blue sheep, spawned.");
-
-        //RED
-        Sheep sred = (Sheep)locred.getWorld().spawnCreature(locred, EntityType.SHEEP);
-        sred.setColor(DyeColor.RED);
-        sred.getAgeLock();
-        sred.teleport(locred);
-        sred.isAdult();
-        sred.getLocation().setX(xred);
-        sred.getLocation().setY(yred);
-        sred.getLocation().setZ(zred);
-        sred.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
-        getLogger().info("Red sheep, spawned.");
-
-        //ORANGE
-        Sheep sorange = (Sheep)locorange.getWorld().spawnCreature(locorange, EntityType.SHEEP);
-        sorange.setColor(DyeColor.ORANGE);
-        sorange.getAgeLock();
-        sorange.teleport(locorange);
-        sorange.isAdult();
-        sorange.getLocation().setX(xorange);
-        sorange.getLocation().setY(yorange);
-        sorange.getLocation().setZ(zorange);
-        sorange.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM" + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
-        getLogger().info("Yellow sheep, spawned.");
-
-        //GREEN
-        Sheep sgreen = (Sheep)locgreen.getWorld().spawnCreature(locgreen, EntityType.SHEEP);
-        sgreen.setColor(DyeColor.GREEN);
-        sgreen.getAgeLock();
-        sgreen.teleport(locgreen);
-        sgreen.isAdult();
-        sgreen.getLocation().setX(xgreen);
-        sgreen.getLocation().setY(ygreen);
-        sgreen.getLocation().setZ(zgreen);
-        sgreen.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
-        getLogger().info("Green sheep, spawned.");
-    }
+	}
 
 	public boolean startTimer() {
 		if (timer.isRunning())
@@ -281,213 +204,7 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		timer.start();
 
 		return true;
-    }
-
-
-
-    @EventHandler
-    public void sheepMoveEvent(EntityMoveEvent event) {
-
-
-        if (event.getEntity() instanceof Sheep) {
-
-            //BLUE
-            double xblue = 11;
-            double yblue = 5;
-            double zblue = 0;
-            Location locblue = new Location(Bukkit.getWorld("lobby"), xblue, yblue, zblue);
-            //RED
-            double xred = -11;
-            double yred = 5;
-            double zred = 0;
-            Location locred = new Location(Bukkit.getWorld("lobby"), xred, yred, zred);
-            //ORANGE
-            double xorange = 0;
-            double yorange = 5;
-            double zorange = -11;
-            Location locorange = new Location(Bukkit.getWorld("lobby"), xorange, yorange, zorange);
-            //GREEN
-            double xgreen = 0;
-            double ygreen = 5;
-            double zgreen = 10;
-            Location locgreen = new Location(Bukkit.getWorld("lobby"), xgreen, ygreen, zgreen);
-
-            Sheep sheep = (Sheep) event.getEntity();
-
-
-            if (sheep.getColor() == DyeColor.BLUE) {
-                sheep.teleport(locblue);
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == GameTeam.BLUE)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-                }
-
-
-            } else if (sheep.getColor() == DyeColor.RED) {
-                sheep.teleport(locred);
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == GameTeam.RED)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-                }
-
-
-            } else if (sheep.getColor() == DyeColor.ORANGE) {
-                sheep.teleport(locorange);
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == GameTeam.YELLOW)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-                }
-            } else if (sheep.getColor() == DyeColor.GREEN) {
-                sheep.teleport(locgreen);
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (metas.getTeam() == GameTeam.GREEN)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        sheep.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-                }
-            }
-
-
-            }
-    }
-
-
-
-
-
-
-
-
-
-    @EventHandler
-    public void sheepRightClick(PlayerInteractEntityEvent event) {
-        if (event.getRightClicked() instanceof Sheep && event.getPlayer() instanceof Player) {
-            Sheep s = (Sheep) event.getRightClicked();
-            Player player = event.getPlayer();
-            PlayerMeta meta = PlayerMeta.getMeta(player);
-            GameTeam target;
-            if (s.getColor() == DyeColor.BLUE) {
-                player.performCommand("team blue");
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == GameTeam.BLUE)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.BLUE + " BLU TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-
-                }
-
-            } else if (s.getColor() == DyeColor.RED) {
-                player.performCommand("team red");
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == GameTeam.RED)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.RED + " RED TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-
-                }
-
-            } else if (s.getColor() == DyeColor.GREEN) {
-                player.performCommand("team green");
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == GameTeam.GREEN)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM" + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEA " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-
-                }
-            } else if (s.getColor() == DyeColor.ORANGE) {
-                player.performCommand("team yellow");
-                for (GameTeam t : GameTeam.teams()) {
-                    int size = 0;
-
-                    for (Player p : Bukkit.getOnlinePlayers()) {
-                        PlayerMeta metas = PlayerMeta.getMeta(p);
-                        if (meta.getTeam() == GameTeam.YELLOW)
-                            size++;
-                    }
-
-                    if (size != 1) {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "< " + ChatColor.GREEN + "Join " + size + " Players" );
-                    } else {
-                        s.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.YELLOW + " YELLOW TEAM " + ChatColor.DARK_GREEN + "< " + ChatColor.GREEN + "Join " + size + " Players");
-                    }
-
-                }
-            }
-        }
-    }
-
-
-
+	}
 
 	public void loadMap(final String map) {
 		FileConfiguration config = configManager.getConfig("maps.yml");
@@ -587,7 +304,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		sb.update();
 
 		getServer().getScheduler().runTaskTimer(this, new Runnable() {
-			@Override
 			public void run() {
 				for (Player p : getServer().getOnlinePlayers()) {
 					if (PlayerMeta.getMeta(p).getKit() == Kit.SCOUT) {
@@ -693,8 +409,8 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		for (Player p : getServer().getOnlinePlayers()) {
 			PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
 			p.teleport(maps.getLobbySpawnPoint());
-			BarUtil.setMessageAndPercent(p, ChatColor.GOLD
-					+ "Welcome to NexusGrinder!", 0.01F);
+			BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA
+					+ "Welcome to Annihilation!", 0.01F);
 			p.setMaxHealth(20D);
 			p.setHealth(20D);
 			p.setFoodLevel(20);
@@ -713,7 +429,6 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 		
 		Bukkit.getScheduler().runTaskLater(this, new Runnable() {
 			@SuppressWarnings("deprecation")
-			@Override
 			public void run() {
 				for (Player p : getServer().getOnlinePlayers()) {
 					PlayerInventory inv = p.getInventory();
@@ -821,19 +536,81 @@ public final class NexusGrinder extends JavaPlugin implements Listener {
 				inv.addItem(kit.getIcon());
 			player.openInventory(inv);
 		}
+		
+		public static void spawnFirework(Location loc) {
+			Random colour = new Random();
+			
+			Firework fw = loc.getWorld().spawn(loc, Firework.class);
+			FireworkMeta fwMeta = fw.getFireworkMeta();
+			
+			Type fwType = Type.BALL_LARGE;
+			
+			int c1i = colour.nextInt(17) + 1;
+			int c2i = colour.nextInt(17) + 1;
+			
+			Color c1 = getFWColor(c1i);
+			Color c2 = getFWColor(c2i);
+			
+			FireworkEffect effect = FireworkEffect.builder().withFade(c2).withColor(c1).with(fwType).build();
+			
+			fwMeta.addEffect(effect);
+			fwMeta.setPower(1);
+			fw.setFireworkMeta(fwMeta);
+		}
+		
+		public static Color getFWColor(int c) {
+			switch (c) {
+			case 1:
+				return Color.TEAL;
+			default:
+			case 2:
+				return Color.WHITE;
+			case 3:
+				return Color.YELLOW;
+			case 4:
+				return Color.AQUA;
+			case 5:
+				return Color.BLACK;
+			case 6:
+				return Color.BLUE;
+			case 7:
+				return Color.FUCHSIA;
+			case 8:
+				return Color.GRAY;
+			case 9:
+				return Color.GREEN;
+			case 10:
+				return Color.LIME;
+			case 11:
+				return Color.MAROON;
+			case 12:
+				return Color.NAVY;
+			case 13:
+				return Color.OLIVE;
+			case 14:
+				return Color.ORANGE;
+			case 15:
+				return Color.PURPLE;
+			case 16:
+				return Color.RED;
+			case 17:
+				return Color.SILVER;
+			}
+		}
 	}
 
 	public void checkStarting() {
 		if (!timer.isRunning()) {
 			if (Bukkit.getOnlinePlayers().length >= getConfig().getInt("requiredToStart"))
 				timer.start();
-
-	  }
-    }
-
-
+		}
+	}
 
 	public BossManager getBossManager() {
 		return boss;
+	}
+	
+	public PhaseManager getPhaseManager() {
+		return timer;
 	}
 }

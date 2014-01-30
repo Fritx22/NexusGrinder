@@ -34,7 +34,6 @@ public class EnderFurnaceListener implements Listener {
 		furnaces = new HashMap<String, VirtualFurnace>();
 		
 		Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-			@Override
 			public void run() {
 				for (VirtualFurnace f : furnaces.values())
 					f.h();
@@ -112,7 +111,6 @@ public class EnderFurnaceListener implements Listener {
 		@Override
 		public InventoryHolder getOwner() {
 			return new InventoryHolder() {
-				@Override
 				public Inventory getInventory() {
 					return new CraftInventoryFurnace(VirtualFurnace.this);
 				}

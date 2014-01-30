@@ -1,8 +1,10 @@
 package me.morpig.NexusGrinder.listeners;
 
 import java.util.HashMap;
+import java.util.Random;
 
 import me.morpig.NexusGrinder.NexusGrinder;
+import me.morpig.NexusGrinder.NexusGrinder.Util;
 import me.morpig.NexusGrinder.api.NexusDamageEvent;
 import me.morpig.NexusGrinder.api.NexusDestroyEvent;
 import me.morpig.NexusGrinder.bar.BarUtil;
@@ -16,6 +18,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -34,6 +37,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -47,6 +51,53 @@ public class PlayerListener implements Listener {
 
 	public PlayerListener(NexusGrinder plugin) {
 		this.plugin = plugin;
+	}
+
+	@SuppressWarnings("static-access")
+	@EventHandler
+	public void onMOTDPing(ServerListPingEvent e) {
+		if (plugin.motd) {
+			String motd = plugin.getConfig().getString("motd");
+			
+			try {
+				motd = motd.replaceAll("%PHASE%", String.valueOf(plugin.getPhase()));
+				motd = motd.replaceAll("%TIME%", plugin.getPhaseManager().timeString(plugin.getPhaseManager().getTime()));
+				motd = motd.replaceAll("%PLAYERCOUNT", String.valueOf(Bukkit.getOnlinePlayers().length));
+				motd = motd.replaceAll("%MAXPLAYERS%", String.valueOf(Bukkit.getMaxPlayers()));
+				motd = motd.replaceAll("%GREENNEXUS%", String.valueOf(getNexus(GameTeam.GREEN)));
+				motd = motd.replaceAll("%GREENCOUNT%", String.valueOf(getPlayers(GameTeam.GREEN)));
+				motd = motd.replaceAll("%REDNEXUS%", String.valueOf(getNexus(GameTeam.RED)));
+				motd = motd.replaceAll("%REDCOUNT%", String.valueOf(getPlayers(GameTeam.GREEN)));
+				motd = motd.replaceAll("%BLUENEXUS%", String.valueOf(getNexus(GameTeam.BLUE)));
+				motd = motd.replaceAll("%BLUECOUNT%", String.valueOf(getPlayers(GameTeam.GREEN)));
+				motd = motd.replaceAll("%YELLOWNEXUS%", String.valueOf(getNexus(GameTeam.YELLOW)));
+				motd = motd.replaceAll("%YELLOWCOUNT%", String.valueOf(getPlayers(GameTeam.GREEN)));
+				
+				e.setMotd(ChatColor.translateAlternateColorCodes('&', motd));	
+			} catch (Exception ex) {
+				
+			}
+		}
+	}
+	
+	private int getNexus(GameTeam t) {
+		int health = 0;
+		
+		if (t.getNexus() != null) health = t.getNexus().getHealth();
+		
+		return health;
+	}
+
+	private int getPlayers(GameTeam t) {
+		int size = 0;
+
+		for (Player p : Bukkit.getOnlinePlayers()) {
+			PlayerMeta meta = PlayerMeta.getMeta(p);
+			if (meta.getTeam() == t)
+				size++;
+		}
+		
+		return size;
 	}
 
 	@EventHandler
@@ -213,7 +264,7 @@ public class PlayerListener implements Listener {
 							+ "', '0', '0', '0', '0', '0');");
 
 		if (plugin.getPhase() == 0 && plugin.getVotingManager().isRunning()) {
-			BarUtil.setMessageAndPercent(player, ChatColor.GOLD
+			BarUtil.setMessageAndPercent(player, ChatColor.DARK_AQUA
 					+ "Welcome to NexusGrinder!", 0.01f);
 			plugin.checkStarting();
 		}
@@ -225,8 +276,6 @@ public class PlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent e) {
 		Player p = e.getEntity();
-
-        
 
 		if (plugin.getPhase() > 0) {
 			PlayerMeta meta = PlayerMeta.getMeta(p);
@@ -272,7 +321,6 @@ public class PlayerListener implements Listener {
 	public void onPlayerPortal(PlayerPortalEvent e) {
 		Player player = e.getPlayer();
 		NexusGrinder.Util.showClassSelector(player, "Select Class   ");
-        player.setHealth(0);
 	}
 
 	@EventHandler
@@ -417,13 +465,15 @@ public class PlayerListener implements Listener {
 									.getNexus().getHealth()));
 
 			Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-				@Override
 				public void run() {
 					plugin.getScoreboardHandler().sb.getTeam(
 							victim.name() + "SB").setPrefix(
 							victim.color().toString());
 				}
 			}, 2L);
+			
+			Random r = new Random();
+			victim.getNexus().getLocation().getWorld().playSound(victim.getNexus().getLocation(), Sound.ANVIL_LAND, 0.7F, r.nextFloat());
 
 			if (victim.getNexus().getHealth() == 0) {
 				plugin.getScoreboardHandler().sb.resetScores(plugin
@@ -436,6 +486,12 @@ public class PlayerListener implements Listener {
 				for (Player p : victim.getPlayers()) {
 					plugin.getStatsManager().incrementStat(StatType.LOSSES, p);
 				}
+				for (Player player : Bukkit.getOnlinePlayers()) {
+					player.getWorld().playSound(player.getLocation(), Sound.EXPLODE, 1F, 2F);
+	            }
+				Util.spawnFirework(victim.getNexus().getLocation());
+				Util.spawnFirework(victim.getNexus().getLocation());
+				Util.spawnFirework(victim.getNexus().getLocation());
 			}
 
 			plugin.getSignHandler().updateSigns(victim);

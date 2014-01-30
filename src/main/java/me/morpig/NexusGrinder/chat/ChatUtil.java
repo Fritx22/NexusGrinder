@@ -10,6 +10,10 @@ import org.bukkit.entity.Player;
 
 public class ChatUtil {
 	private static final String DARK_AQUA = ChatColor.DARK_AQUA.toString();
+	private static final String DARK_GRAY = ChatColor.DARK_GRAY.toString();
+	private static final String DARK_PURPLE = ChatColor.DARK_PURPLE.toString();
+	private static final String DARK_RED = ChatColor.DARK_RED.toString();
+	private static final String RESET = ChatColor.RESET.toString();
 	private static final String GRAY = ChatColor.GRAY.toString();
 	private static final String RED = ChatColor.RED.toString();
 
@@ -19,21 +23,63 @@ public class ChatUtil {
 		roman = b;
 	}
 
-	public static void broadcast(String message) {
-		Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+	public static void allMessage(GameTeam team, Player sender, String message,
+			boolean dead) {
+		String group;
+		String username;
+		if (team == GameTeam.NONE) {
+			group = DARK_GRAY + "[" + DARK_PURPLE + "Lobby" + DARK_GRAY + "]";
+			username = RESET + sender.getName();
+		} else {
+			group = DARK_GRAY + "[" + team.color() + "All" + DARK_GRAY + "]";
+			username = team.color() + sender.getName();
+			if (dead) {
+				group = DARK_GRAY + "[" + DARK_RED + "DEAD" + DARK_GRAY + "] "
+						+ group;
+			}
+		}
+		String msg = message;
+		String toSend = group + " " + username + RESET + ": " + msg;
+		Bukkit.getLogger().info(toSend);
+		for (Player player : Bukkit.getOnlinePlayers())
+			player.sendMessage(toSend);
 	}
 
-	public static void nexusDestroyed(GameTeam attacker,
-			GameTeam victim, Player p) {
-		broadcast(GRAY + "===============[ " + victim.color().toString() + "Nexus Destroyed"
-				+ GRAY + " ]===============");
-		broadcast(attacker.color().toString() + p.getName() + GRAY + " from " + attacker.coloredName() + GRAY + 
-				" destroyed " + victim.coloredName() + "'s" + GRAY + " Nexus!");
+	public static void teamMessage(GameTeam team, Player sender,
+			String message, boolean dead) {
+		String group;
+		if (team == GameTeam.NONE) {
+			allMessage(team, sender, message, false);
+			return;
+		} else {
+			group = GRAY + "[" + team.color() + "Team" + GRAY + "]";
+			if (dead) {
+				group = GRAY + "[" + DARK_RED + "DEAD" + GRAY + "] " + group;
+			}
+		}
+		String toSend = group + " " + sender.getName() + RESET + ": " + message;
+		Bukkit.getLogger().info(toSend);
+		for (Player player : team.getPlayers())
+			player.sendMessage(toSend);
+	}
+
+	public static void broadcast(String message) {
+		Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&',
+				message));
+	}
+
+	public static void nexusDestroyed(GameTeam attacker, GameTeam victim,
+			Player p) {
+		broadcast(GRAY + "===============[ " + victim.color().toString()
+				+ "Nexus Destroyed" + GRAY + " ]===============");
+		broadcast(attacker.color().toString() + p.getName() + GRAY + " from "
+				+ attacker.coloredName() + GRAY + " destroyed "
+				+ victim.coloredName() + "'s" + GRAY + " Nexus!");
 		broadcast(GRAY + "===============================================");
 	}
 
-	public static String nexusBreakMessage(Player breaker,
-			GameTeam attacker, GameTeam victim) {
+	public static String nexusBreakMessage(Player breaker, GameTeam attacker,
+			GameTeam victim) {
 		return colorizeName(breaker, attacker) + GRAY + " has damaged the "
 				+ victim.coloredName() + " team's Nexus!";
 	}
@@ -48,7 +94,8 @@ public class ChatUtil {
 		broadcast(GRAY + "Phase " + translateRoman(phase) + " has started");
 		switch (phase) {
 		case 1:
-			broadcast(GRAY + "Each nexus is invincible until Phase " + translateRoman(2));
+			broadcast(GRAY + "Each nexus is invincible until Phase "
+					+ translateRoman(2));
 			break;
 		case 2:
 			broadcast(GRAY + "Each nexus is no longer invincible");
@@ -66,23 +113,26 @@ public class ChatUtil {
 	}
 
 	public static void winMessage(GameTeam winner) {
-		broadcast(GRAY + "================[ " + winner.color().toString()  + "End Game" + GRAY
-				+ " ]================");
-		broadcast(GRAY + "Team " +  winner.coloredName() + GRAY + " Wins Annihilation! Restarting game...");
+		broadcast(GRAY + "================[ " + winner.color().toString()
+				+ "End Game" + GRAY + " ]================");
+		broadcast(GRAY + "Team " + winner.coloredName() + GRAY
+				+ " Wins Annihilation! Restarting game...");
 		broadcast(GRAY + "==========================================");
 	}
-	
+
 	public static void bossDeath(Boss b, Player killer, GameTeam team) {
 		broadcast(GRAY + "==========[ " + DARK_AQUA + "Boss Killed" + GRAY
 				+ " ]==========");
-		broadcast(GRAY + b.getBossName() + GRAY + " was killed by " + colorizeName(killer, team));
+		broadcast(GRAY + b.getBossName() + GRAY + " was killed by "
+				+ colorizeName(killer, team));
 		broadcast(GRAY + "================================");
 	}
-	
+
 	public static void bossRespawn(Boss b) {
 		broadcast(GRAY + "================[ " + DARK_AQUA + "Boss" + GRAY
 				+ " ]================");
-		broadcast(GRAY + b.getBossName() + GRAY + " has respawned! Go slay the beast!");
+		broadcast(GRAY + b.getBossName() + GRAY
+				+ " has respawned! Go slay the beast!");
 		broadcast(GRAY + "=======================================");
 	}
 
@@ -108,13 +158,18 @@ public class ChatUtil {
 		String message = ChatColor.GRAY + original;
 		message = message.replace(victim.getName(), victimName);
 
-		return message;
+		if (message.contains(" �8�")) {
+			String[] arr = message.split(" �8�");
+			message = arr[0];
+		}
+
+		return message.replace("was slain by", "was killed by");
 	}
 
 	public static String translateRoman(int number) {
 		if (!roman)
 			return String.valueOf(number);
-		
+
 		switch (number) {
 		case 0:
 			return "0";

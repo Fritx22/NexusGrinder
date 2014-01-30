@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="Annihilation" />
+        <module name="NexusGrinder" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Annihilation" target="1.7" />
+      <module name="NexusGrinder" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

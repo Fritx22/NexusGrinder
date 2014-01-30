@@ -34,7 +34,6 @@ public class EnderBrewingStandListener implements Listener {
 		brewingStands = new HashMap<String, VirtualBrewingStand>();
 		
 		Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-			@Override
 			public void run() {
 				for (VirtualBrewingStand b : brewingStands.values())
 					b.h();
@@ -112,7 +111,6 @@ public class EnderBrewingStandListener implements Listener {
 		@Override
 		public InventoryHolder getOwner() {
 			return new InventoryHolder() {
-				@Override
 				public Inventory getInventory() {
 					return new CraftInventoryBrewer(VirtualBrewingStand.this);
 				}

@@ -1,11 +1,11 @@
-name: NexusGrinder
-main: me.morpig.NexusGrinder.NexusGrinder
+name: Anni
+main: me.morpig.NexusGrinder.Annihilation
 authors: [coasterman10, stuntguy3000]
-version: 1.4
+version: 1.41
 commands:
-  nexusgrinder:
+  annihilation:
     description: Plugin commands for Annihilation
-    aliases: ng
+    aliases: anni
   team:
     description: Team command for Annihilation
     aliases: t
@@ -13,7 +13,7 @@ commands:
     description: Places vote for a map
     aliases: v
   stats:
-    description: Lists your game stats
+    description: Lists your stats
     aliases: s
   class:
     description: Selects your kit

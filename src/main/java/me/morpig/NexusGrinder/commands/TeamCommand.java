@@ -18,7 +18,6 @@ public class TeamCommand implements CommandExecutor {
 		this.plugin = plugin;
 	}
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if (args.length == 0)
@@ -62,7 +61,6 @@ public class TeamCommand implements CommandExecutor {
 		player.sendMessage(ChatColor.DARK_AQUA + "You joined "
 				+ target.coloredName());
 		meta.setTeam(target);
-
 
 		plugin.getScoreboardHandler().teams.get(team.toUpperCase()).addPlayer(player);
 		

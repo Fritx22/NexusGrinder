@@ -110,8 +110,7 @@ public class DatabaseManager {
                     logger.severe("Retrying query...");
                     plugin.getServer().getScheduler()
                     .scheduleSyncDelayedTask(plugin, new Runnable() {
-                        @Override
-                            public void run() {
+                        public void run() {
                                 query(query,false);
                             }
                         }, 20);

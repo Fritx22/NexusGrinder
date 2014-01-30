@@ -33,7 +33,6 @@ public class ClassAbilityListener implements Listener {
 	public ClassAbilityListener(NexusGrinder plugin) {
 		this.plugin = plugin;
 		Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-			@Override
 			public void run() {
 				update();
 			}
@@ -96,7 +95,6 @@ public class ClassAbilityListener implements Listener {
 								+ "You will be teleported back here in 90 seconds");
 						Bukkit.getScheduler().runTaskLater(plugin,
 								new Runnable() {
-									@Override
 									public void run() {
 										placed.setType(Material.SOUL_SAND);
 									}

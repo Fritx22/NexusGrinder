@@ -23,7 +23,6 @@ public class MapCommand implements CommandExecutor {
 		this.loader = loader;
 	}
 
-	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		String cyan = ChatColor.DARK_AQUA.toString();
 		String gray = ChatColor.GRAY.toString();
@@ -59,7 +58,6 @@ public class MapCommand implements CommandExecutor {
 							final CommandSender s = sender;
 							final String mapName = args[1];
 							Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-								@Override
 								public void run() {
 									s.sendMessage(green + "Map " + mapName
 											+ " saved.");
