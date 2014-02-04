@@ -64,51 +64,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MapLoader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2074">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameMap.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="646">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="config.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="18" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="799">
+            <state line="25" column="18" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/BarUtil.java">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="5" selection-start="528" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="1932" max-vertical-offset="2499">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#650#670#0" expanded="false" />
-                <element signature="e#2768#3152#0" expanded="false" />
-                <element signature="e#3147#3148#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NexusGrinder.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="28" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.23844732" vertical-offset="1537" max-vertical-offset="10149">
+            <state line="101" column="0" selection-start="4131" selection-end="4131" vertical-scroll-proportion="0.0" vertical-offset="5941" max-vertical-offset="8687">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,94 +84,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FakeDragon.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/FakeDragon.java">
+      <file leaf-file-name="ChatUtil.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="264" column="5" selection-start="159" selection-end="6108" vertical-scroll-proportion="0.0" vertical-offset="3241" max-vertical-offset="3808">
+            <state line="166" column="31" selection-start="5935" selection-end="5936" vertical-scroll-proportion="-16.346153" vertical-offset="2244" max-vertical-offset="3451">
               <folding>
                 <element signature="imports" expanded="false" />
-                <element signature="e#1006#1007#0" expanded="false" />
-                <element signature="e#1030#1031#0" expanded="false" />
-                <element signature="e#1154#1155#0" expanded="false" />
-                <element signature="e#1177#1178#0" expanded="false" />
-                <element signature="e#1199#1200#0" expanded="false" />
-                <element signature="e#1214#1215#0" expanded="false" />
-                <element signature="e#1242#1243#0" expanded="false" />
-                <element signature="e#1259#1260#0" expanded="false" />
-                <element signature="e#1281#1282#0" expanded="false" />
-                <element signature="e#1296#1297#0" expanded="false" />
-                <element signature="e#1324#1325#0" expanded="false" />
-                <element signature="e#1341#1342#0" expanded="false" />
-                <element signature="e#1363#1364#0" expanded="false" />
-                <element signature="e#1378#1379#0" expanded="false" />
-                <element signature="e#1406#1407#0" expanded="false" />
-                <element signature="e#1423#1424#0" expanded="false" />
-                <element signature="e#1449#1450#0" expanded="false" />
-                <element signature="e#1468#1469#0" expanded="false" />
-                <element signature="e#1504#1505#0" expanded="false" />
-                <element signature="e#1529#1530#0" expanded="false" />
-                <element signature="e#1553#1554#0" expanded="false" />
-                <element signature="e#1570#1571#0" expanded="false" />
-                <element signature="e#1602#1603#0" expanded="false" />
-                <element signature="e#1623#1624#0" expanded="false" />
-                <element signature="e#1649#1650#0" expanded="false" />
-                <element signature="e#1667#1668#0" expanded="false" />
-                <element signature="e#1702#1703#0" expanded="false" />
-                <element signature="e#1725#1726#0" expanded="false" />
-                <element signature="e#1751#1752#0" expanded="false" />
-                <element signature="e#1769#1770#0" expanded="false" />
-                <element signature="e#1804#1805#0" expanded="false" />
-                <element signature="e#1827#1828#0" expanded="false" />
-                <element signature="e#1853#1854#0" expanded="false" />
-                <element signature="e#1871#1872#0" expanded="false" />
-                <element signature="e#1906#1907#0" expanded="false" />
-                <element signature="e#1929#1930#0" expanded="false" />
-                <element signature="e#1960#1961#0" expanded="false" />
-                <element signature="e#1981#1982#0" expanded="false" />
-                <element signature="e#2025#2026#0" expanded="false" />
-                <element signature="e#2054#2055#0" expanded="false" />
-                <element signature="e#2083#2084#0" expanded="false" />
-                <element signature="e#2102#2103#0" expanded="false" />
-                <element signature="e#2141#2142#0" expanded="false" />
-                <element signature="e#2166#2167#0" expanded="false" />
+                <element signature="e#932#933#0" expanded="false" />
+                <element signature="e#948#949#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Util.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/Util.java">
+      <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="5" selection-start="270" selection-end="3194" vertical-scroll-proportion="0.0" vertical-offset="1728" max-vertical-offset="2295">
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PhaseManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="36" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="2652">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/SignManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="43" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0" vertical-offset="50" max-vertical-offset="1428">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RestartHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/RestartHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="38" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="67" max-vertical-offset="901">
+            <state line="277" column="46" selection-start="9156" selection-end="9156" vertical-scroll-proportion="0.33274022" vertical-offset="3808" max-vertical-offset="8653">
               <folding />
             </state>
           </provider>
@@ -220,7 +117,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/Annihilation.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/BarUtil.java" />
@@ -248,6 +144,9 @@
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/VotingManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Shop.java" />
         <option value="$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/StatsManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
       </list>
     </option>
   </component>
@@ -259,7 +158,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1358" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -366,30 +265,8 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="net" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -415,11 +292,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="net" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
+              <option name="myItemId" value="Annihilation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -445,7 +322,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -475,7 +356,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="net" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -505,37 +390,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="net" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="Annihilation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -565,101 +424,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="net" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemId" value="Annihilation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="chat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NexusGrinder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -821,7 +594,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -870,132 +643,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="28" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3145">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/StatsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="36" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2074">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="13" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="36" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="2652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/SignManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="43" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0" vertical-offset="50" max-vertical-offset="1428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/RestartHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="38" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderBrewingStandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="49" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderFurnaceListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="54" selection-start="961" selection-end="961" vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ResourceListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="40" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="3349">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WorldListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="24" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="36" selection-start="1396" selection-end="1396" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="2210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/BossManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="35" selection-start="678" selection-end="678" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/ConfigManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="37" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0" vertical-offset="1954" max-vertical-offset="2295">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="31" selection-start="3314" selection-end="3314" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="10149">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9192#9206#0" expanded="false" />
-            <element signature="e#9663#9673#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="39" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="3009">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2652">
           <folding />
         </state>
       </provider>
@@ -1014,312 +664,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/PlayerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1787" selection-end="1787" vertical-scroll-proportion="-5.927273" vertical-offset="439" max-vertical-offset="9163">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1929#1942#0" expanded="false" />
-            <element signature="e#13345#13472#0" expanded="false" />
-            <element signature="e#13466#13467#0" expanded="false" />
-            <element signature="e#14832#15005#0" expanded="false" />
-            <element signature="e#14999#15000#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/chat/ChatListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="36" selection-start="418" selection-end="418" vertical-scroll-proportion="-4.018182" vertical-offset="0" max-vertical-offset="799">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/NexusGrinderCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="428" selection-end="428" vertical-scroll-proportion="-2.1636364" vertical-offset="153" max-vertical-offset="952">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/ClassCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="24" selection-start="599" selection-end="599" vertical-scroll-proportion="-5.8727274" vertical-offset="0" max-vertical-offset="510">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/DistanceCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="39" selection-start="490" selection-end="490" vertical-scroll-proportion="-4.6363635" vertical-offset="0" max-vertical-offset="1122">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/MapCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="45" selection-start="1013" selection-end="1013" vertical-scroll-proportion="-5.581818" vertical-offset="203" max-vertical-offset="1479">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2139#2309#0" expanded="false" />
-            <element signature="e#2299#2300#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/commands/TeamCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="24" selection-start="1876" selection-end="1876" vertical-scroll-proportion="-1.8727273" vertical-offset="1036" max-vertical-offset="1768">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/BossListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="36" selection-start="717" selection-end="717" vertical-scroll-proportion="-6.490909" vertical-offset="0" max-vertical-offset="1632">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1483#1577#0" expanded="false" />
-            <element signature="e#1571#1572#0" expanded="false" />
-            <element signature="e#2391#2555#0" expanded="false" />
-            <element signature="e#2550#2551#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ClassAbilityListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="44" selection-start="1199" selection-end="1199" vertical-scroll-proportion="-9.890909" vertical-offset="0" max-vertical-offset="3587">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1021#1039#0" expanded="false" />
-            <element signature="e#1103#1117#0" expanded="false" />
-            <element signature="e#1279#1341#0" expanded="false" />
-            <element signature="e#1336#1337#0" expanded="false" />
-            <element signature="e#3320#3432#0" expanded="false" />
-            <element signature="e#3421#3422#0" expanded="false" />
-            <element signature="e#6205#6412#0" expanded="false" />
-            <element signature="e#6404#6405#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderBrewingStandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="49" selection-start="1184" selection-end="1184" vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/EnderFurnaceListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="54" selection-start="961" selection-end="961" vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/ResourceListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="40" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="3349">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WorldListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="24" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0" vertical-offset="254" max-vertical-offset="850">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/listeners/WandListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="36" selection-start="1396" selection-end="1396" vertical-scroll-proportion="0.0" vertical-offset="220" max-vertical-offset="2210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/BossManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="35" selection-start="678" selection-end="678" vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/DatabaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="39" selection-start="1006" selection-end="1006" vertical-scroll-proportion="0.0" vertical-offset="118" max-vertical-offset="3009">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/ConfigManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="37" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.0" vertical-offset="1954" max-vertical-offset="2295">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/GameMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/PhaseManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="36" selection-start="594" selection-end="594" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="2652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/SignManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="43" selection-start="995" selection-end="995" vertical-scroll-proportion="0.0" vertical-offset="50" max-vertical-offset="1428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/manager/RestartHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="38" selection-start="382" selection-end="382" vertical-scroll-proportion="0.0" vertical-offset="67" max-vertical-offset="901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/MapManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="34" selection-start="548" selection-end="548" vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/maps/VotingManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="37" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1564">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/object/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="28" selection-start="2093" selection-end="2093" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3145">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/stats/StatsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="36" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="18" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="799">
+        <state line="25" column="18" selection-start="512" selection-end="512" vertical-scroll-proportion="0.0" vertical-offset="188" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/Util.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="5" selection-start="270" selection-end="3194" vertical-scroll-proportion="0.0" vertical-offset="1728" max-vertical-offset="2295">
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/FakeDragon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="264" column="5" selection-start="159" selection-end="6108" vertical-scroll-proportion="0.0" vertical-offset="3241" max-vertical-offset="3808">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1006#1007#0" expanded="false" />
-            <element signature="e#1030#1031#0" expanded="false" />
-            <element signature="e#1154#1155#0" expanded="false" />
-            <element signature="e#1177#1178#0" expanded="false" />
-            <element signature="e#1199#1200#0" expanded="false" />
-            <element signature="e#1214#1215#0" expanded="false" />
-            <element signature="e#1242#1243#0" expanded="false" />
-            <element signature="e#1259#1260#0" expanded="false" />
-            <element signature="e#1281#1282#0" expanded="false" />
-            <element signature="e#1296#1297#0" expanded="false" />
-            <element signature="e#1324#1325#0" expanded="false" />
-            <element signature="e#1341#1342#0" expanded="false" />
-            <element signature="e#1363#1364#0" expanded="false" />
-            <element signature="e#1378#1379#0" expanded="false" />
-            <element signature="e#1406#1407#0" expanded="false" />
-            <element signature="e#1423#1424#0" expanded="false" />
-            <element signature="e#1449#1450#0" expanded="false" />
-            <element signature="e#1468#1469#0" expanded="false" />
-            <element signature="e#1504#1505#0" expanded="false" />
-            <element signature="e#1529#1530#0" expanded="false" />
-            <element signature="e#1553#1554#0" expanded="false" />
-            <element signature="e#1570#1571#0" expanded="false" />
-            <element signature="e#1602#1603#0" expanded="false" />
-            <element signature="e#1623#1624#0" expanded="false" />
-            <element signature="e#1649#1650#0" expanded="false" />
-            <element signature="e#1667#1668#0" expanded="false" />
-            <element signature="e#1702#1703#0" expanded="false" />
-            <element signature="e#1725#1726#0" expanded="false" />
-            <element signature="e#1751#1752#0" expanded="false" />
-            <element signature="e#1769#1770#0" expanded="false" />
-            <element signature="e#1804#1805#0" expanded="false" />
-            <element signature="e#1827#1828#0" expanded="false" />
-            <element signature="e#1853#1854#0" expanded="false" />
-            <element signature="e#1871#1872#0" expanded="false" />
-            <element signature="e#1906#1907#0" expanded="false" />
-            <element signature="e#1929#1930#0" expanded="false" />
-            <element signature="e#1960#1961#0" expanded="false" />
-            <element signature="e#1981#1982#0" expanded="false" />
-            <element signature="e#2025#2026#0" expanded="false" />
-            <element signature="e#2054#2055#0" expanded="false" />
-            <element signature="e#2083#2084#0" expanded="false" />
-            <element signature="e#2102#2103#0" expanded="false" />
-            <element signature="e#2141#2142#0" expanded="false" />
-            <element signature="e#2166#2167#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/bar/BarUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="5" selection-start="528" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="1932" max-vertical-offset="2499">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#650#670#0" expanded="false" />
-            <element signature="e#2768#3152#0" expanded="false" />
-            <element signature="e#3147#3148#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/me/morpig/NexusGrinder/NexusGrinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="28" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.23844732" vertical-offset="1537" max-vertical-offset="10149">
+        <state line="101" column="0" selection-start="4131" selection-end="4131" vertical-scroll-proportion="0.0" vertical-offset="5941" max-vertical-offset="8687">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="31" selection-start="5935" selection-end="5936" vertical-scroll-proportion="-16.346153" vertical-offset="2244" max-vertical-offset="3451">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#932#933#0" expanded="false" />
+            <element signature="e#948#949#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="277" column="46" selection-start="9156" selection-end="9156" vertical-scroll-proportion="0.33274022" vertical-offset="3808" max-vertical-offset="8653">
+          <folding />
         </state>
       </provider>
     </entry>
