@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d4d544ad-b694-45c1-89e7-8483e2eee9f4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
     </list>
     <ignored path="NexusGrinder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,19 +76,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="24" selection-start="4202" selection-end="4202" vertical-scroll-proportion="0.36462092" vertical-offset="903" max-vertical-offset="14858">
+            <state line="298" column="42" selection-start="13278" selection-end="13278" vertical-scroll-proportion="0.0" vertical-offset="4794" max-vertical-offset="15487">
               <folding>
-                <element signature="e#29470#29471#0" expanded="true" />
-                <element signature="e#29497#29498#0" expanded="true" />
-                <element signature="e#29972#29973#0" expanded="true" />
-                <element signature="e#30001#30002#0" expanded="true" />
-                <element signature="e#33288#33289#0" expanded="true" />
-                <element signature="e#33315#33316#0" expanded="true" />
-                <element signature="e#33670#33671#0" expanded="true" />
-                <element signature="e#33697#33698#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#24857#24871#0" expanded="true" />
+                <element signature="e#25582#25592#0" expanded="true" />
+                <element signature="e#27337#27663#0" expanded="true" />
+                <element signature="e#27652#27653#0" expanded="true" />
+                <element signature="e#27732#28338#0" expanded="true" />
+                <element signature="e#28327#28328#0" expanded="true" />
+                <element signature="e#29471#29472#0" expanded="true" />
+                <element signature="e#29498#29499#0" expanded="true" />
+                <element signature="e#29543#29544#0" expanded="true" />
+                <element signature="e#29571#29572#0" expanded="true" />
+                <element signature="e#29622#29623#0" expanded="true" />
+                <element signature="e#29647#29648#0" expanded="true" />
+                <element signature="e#29694#29695#0" expanded="true" />
+                <element signature="e#29730#29731#0" expanded="true" />
+                <element signature="e#29973#29974#0" expanded="true" />
+                <element signature="e#30002#30003#0" expanded="true" />
+                <element signature="e#30057#30058#0" expanded="true" />
+                <element signature="e#30082#30083#0" expanded="true" />
+                <element signature="e#31586#32905#0" expanded="true" />
+                <element signature="e#31615#31647#0" expanded="true" />
+                <element signature="e#32894#32895#0" expanded="true" />
+                <element signature="e#33289#33290#0" expanded="true" />
+                <element signature="e#33316#33317#0" expanded="true" />
+                <element signature="e#33368#33369#0" expanded="true" />
+                <element signature="e#33400#33401#0" expanded="true" />
+                <element signature="e#33671#33672#0" expanded="true" />
+                <element signature="e#33698#33699#0" expanded="true" />
+                <element signature="e#33743#33744#0" expanded="true" />
+                <element signature="e#33771#33772#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,24 +175,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerListener.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="232" column="61" selection-start="9849" selection-end="9849" vertical-scroll-proportion="-34.30909" vertical-offset="2057" max-vertical-offset="10642">
+            <state line="294" column="46" selection-start="12318" selection-end="12318" vertical-scroll-proportion="0.33271718" vertical-offset="4818" max-vertical-offset="10455">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#3247#3260#0" expanded="true" />
                 <element signature="e#10158#10359#0" expanded="true" />
                 <element signature="e#10344#10345#0" expanded="true" />
-                <element signature="e#14299#14602#0" expanded="true" />
-                <element signature="e#14591#14592#0" expanded="true" />
-                <element signature="e#20238#20501#0" expanded="true" />
-                <element signature="e#20486#20487#0" expanded="true" />
-                <element signature="e#22153#22374#0" expanded="true" />
-                <element signature="e#22351#22352#0" expanded="true" />
-                <element signature="e#22641#23327#0" expanded="true" />
-                <element signature="e#23308#23309#0" expanded="true" />
+                <element signature="e#13693#13996#0" expanded="true" />
+                <element signature="e#13985#13986#0" expanded="true" />
+                <element signature="e#19632#19895#0" expanded="true" />
+                <element signature="e#19880#19881#0" expanded="true" />
+                <element signature="e#21547#21768#0" expanded="true" />
+                <element signature="e#21745#21746#0" expanded="true" />
+                <element signature="e#22035#22721#0" expanded="true" />
+                <element signature="e#22702#22703#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,10 +229,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/MapCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
       </list>
     </option>
   </component>
@@ -821,27 +845,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="232" column="61" selection-start="9849" selection-end="9849" vertical-scroll-proportion="-34.30909" vertical-offset="2057" max-vertical-offset="10642">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#3247#3260#0" expanded="true" />
-            <element signature="e#10158#10359#0" expanded="true" />
-            <element signature="e#10344#10345#0" expanded="true" />
-            <element signature="e#14299#14602#0" expanded="true" />
-            <element signature="e#14591#14592#0" expanded="true" />
-            <element signature="e#20238#20501#0" expanded="true" />
-            <element signature="e#20486#20487#0" expanded="true" />
-            <element signature="e#22153#22374#0" expanded="true" />
-            <element signature="e#22351#22352#0" expanded="true" />
-            <element signature="e#22641#23327#0" expanded="true" />
-            <element signature="e#23308#23309#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="142" column="37" selection-start="6012" selection-end="6012" vertical-scroll-proportion="-23.49091" vertical-offset="1122" max-vertical-offset="3910">
@@ -856,16 +859,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="24" selection-start="4202" selection-end="4202" vertical-scroll-proportion="0.36462092" vertical-offset="903" max-vertical-offset="14858">
+        <state line="298" column="42" selection-start="13278" selection-end="13278" vertical-scroll-proportion="0.0" vertical-offset="4794" max-vertical-offset="15487">
           <folding>
-            <element signature="e#29470#29471#0" expanded="true" />
-            <element signature="e#29497#29498#0" expanded="true" />
-            <element signature="e#29972#29973#0" expanded="true" />
-            <element signature="e#30001#30002#0" expanded="true" />
-            <element signature="e#33288#33289#0" expanded="true" />
-            <element signature="e#33315#33316#0" expanded="true" />
-            <element signature="e#33670#33671#0" expanded="true" />
-            <element signature="e#33697#33698#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#24857#24871#0" expanded="true" />
+            <element signature="e#25582#25592#0" expanded="true" />
+            <element signature="e#27337#27663#0" expanded="true" />
+            <element signature="e#27652#27653#0" expanded="true" />
+            <element signature="e#27732#28338#0" expanded="true" />
+            <element signature="e#28327#28328#0" expanded="true" />
+            <element signature="e#29471#29472#0" expanded="true" />
+            <element signature="e#29498#29499#0" expanded="true" />
+            <element signature="e#29543#29544#0" expanded="true" />
+            <element signature="e#29571#29572#0" expanded="true" />
+            <element signature="e#29622#29623#0" expanded="true" />
+            <element signature="e#29647#29648#0" expanded="true" />
+            <element signature="e#29694#29695#0" expanded="true" />
+            <element signature="e#29730#29731#0" expanded="true" />
+            <element signature="e#29973#29974#0" expanded="true" />
+            <element signature="e#30002#30003#0" expanded="true" />
+            <element signature="e#30057#30058#0" expanded="true" />
+            <element signature="e#30082#30083#0" expanded="true" />
+            <element signature="e#31586#32905#0" expanded="true" />
+            <element signature="e#31615#31647#0" expanded="true" />
+            <element signature="e#32894#32895#0" expanded="true" />
+            <element signature="e#33289#33290#0" expanded="true" />
+            <element signature="e#33316#33317#0" expanded="true" />
+            <element signature="e#33368#33369#0" expanded="true" />
+            <element signature="e#33400#33401#0" expanded="true" />
+            <element signature="e#33671#33672#0" expanded="true" />
+            <element signature="e#33698#33699#0" expanded="true" />
+            <element signature="e#33743#33744#0" expanded="true" />
+            <element signature="e#33771#33772#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="294" column="46" selection-start="12318" selection-end="12318" vertical-scroll-proportion="0.33271718" vertical-offset="4818" max-vertical-offset="10455">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3247#3260#0" expanded="true" />
+            <element signature="e#10158#10359#0" expanded="true" />
+            <element signature="e#10344#10345#0" expanded="true" />
+            <element signature="e#13693#13996#0" expanded="true" />
+            <element signature="e#13985#13986#0" expanded="true" />
+            <element signature="e#19632#19895#0" expanded="true" />
+            <element signature="e#19880#19881#0" expanded="true" />
+            <element signature="e#21547#21768#0" expanded="true" />
+            <element signature="e#21745#21746#0" expanded="true" />
+            <element signature="e#22035#22721#0" expanded="true" />
+            <element signature="e#22702#22703#0" expanded="true" />
           </folding>
         </state>
       </provider>

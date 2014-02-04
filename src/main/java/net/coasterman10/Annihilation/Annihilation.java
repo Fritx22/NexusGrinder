@@ -303,6 +303,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         getLogger().info("Green sheep, spawned.");
     }
 
+
     @EventHandler
     public void sheepMoveEvent(EntityMoveEvent event) {
 

@@ -247,21 +247,10 @@ public class PlayerListener implements Listener {
             return;
         }
 
-        player.sendMessage(prefix + ChatColor.GREEN + "Welcome to Annihilation!");
+        player.sendMessage(prefix + ChatColor.GREEN + "Welcome to NexusGrinder!");
         player.sendMessage(prefix + ChatColor.GRAY
-                + "Open-source replica by stuntguy3000 and coasterman10");
-        player.sendMessage(prefix + ChatColor.GRAY + "Original plugin by xxsaundersxx");
-
-        if (player.hasPermission("annihilation.misc.updatenotify")
-                && plugin.updateAvailable) {
-            player.sendMessage(prefix
-                    + ChatColor.GOLD
-                    + "An update is available! Please restart the server to apply this update.");
-            player.sendMessage(prefix + "Current Version: " + ChatColor.WHITE
-                    + plugin.getDescription().getVersion()
-                    + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY
-                    + "Newest Version: " + ChatColor.WHITE + plugin.newVersion);
-        }
+                + "Idea from the brain of _BritishCow_");
+        player.sendMessage(prefix + ChatColor.GOLD + "Coded by morpigthekidMC");
 
         if (meta.isAlive())
             player.teleport(meta.getTeam().getRandomSpawn());
@@ -303,7 +292,7 @@ public class PlayerListener implements Listener {
 
         if (plugin.getPhase() == 0 && plugin.getVotingManager().isRunning()) {
             BarUtil.setMessageAndPercent(player, ChatColor.DARK_AQUA
-                    + "Welcome to Annihilation!", 0.01f);
+                    + "Welcome to NexusGrinder!", 0.01f);
             plugin.checkStarting();
         }
 
