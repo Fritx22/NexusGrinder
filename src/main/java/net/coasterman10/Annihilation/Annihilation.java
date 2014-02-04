@@ -82,6 +82,7 @@ import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -497,6 +498,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         }
     }
 
+    //WATER DAMAGE
 
 
 
@@ -632,6 +634,15 @@ public final class Annihilation extends JavaPlugin implements Listener {
                 }
             }
         }, 100L, 5L);
+    }
+
+    @EventHandler
+    public void onPlayerSwim(PlayerMoveEvent e) {
+        if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
+            int damageAmount = 2;
+            e.getPlayer().damage(damageAmount);
+            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.AMBIENCE_RAIN, 150, 1);
+        }
     }
 
     public void advancePhase() {
