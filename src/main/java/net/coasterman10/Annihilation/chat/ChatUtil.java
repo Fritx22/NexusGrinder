@@ -140,7 +140,7 @@ public class ChatUtil {
         broadcast(GRAY + "================[ " + winner.color().toString()
                 + "End Game" + GRAY + " ]================");
         broadcast(GRAY + "Team " + winner.coloredName() + GRAY
-                + " Wins Annihilation! Restarting game...");
+                + " Wins NexusGrinder! Restarting game...");
         broadcast(GRAY + "==========================================");
     }
 

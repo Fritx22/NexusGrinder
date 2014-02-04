@@ -57,6 +57,17 @@
     <mapping directory="" vcs="Git" />
   </component>
   <component name="libraryTable">
+    <library name="Maven: com.bergerkiller.bukkit:BKCommonLib:1.57">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/BKCommonLib/1.57/BKCommonLib-1.57.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/BKCommonLib/1.57/BKCommonLib-1.57-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/BKCommonLib/1.57/BKCommonLib-1.57-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: net.gravitydevelopment.updater:updater:2.1">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/net/gravitydevelopment/updater/updater/2.1/updater-2.1.jar!/" />

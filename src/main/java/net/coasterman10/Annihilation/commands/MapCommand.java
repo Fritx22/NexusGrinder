@@ -46,7 +46,7 @@ public class MapCommand implements CommandExecutor {
         String gray = ChatColor.GRAY.toString();
         String red = ChatColor.RED.toString();
         final String green = ChatColor.GREEN.toString();
-        String prefix = cyan + "[Annihilation] " + gray;
+        String prefix = cyan + "[NexusGrinder] " + gray;
         
         if (sender instanceof Player) {
             Player p = (Player) sender;

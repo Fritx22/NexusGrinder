@@ -11,7 +11,7 @@
     <repositories>
         <repository>
             <id>bukkit-repo</id>
-            <url>http://repo.bukkit.org/content/groups/public/</url>
+            <url>http://lasagne.tgnmc.com:8081/nexus/content/groups/public/</url>
         </repository>
         <repository>
             <id>vault-repo</id>
@@ -28,6 +28,11 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>com.bergerkiller.bukkit</groupId>
+            <artifactId>BKCommonLib</artifactId>
+            <version>1.57</version>
+        </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
