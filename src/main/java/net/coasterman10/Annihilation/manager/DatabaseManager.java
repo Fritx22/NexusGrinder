@@ -1,3 +1,21 @@
+/*******************************************************************************
+ * Copyright 2014 stuntguy3000 (Luke Anderson) and coasterman10.
+ *  
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ ******************************************************************************/
 package net.coasterman10.Annihilation.manager;
 
 import java.sql.Connection;
@@ -14,7 +32,7 @@ import net.coasterman10.Annihilation.Annihilation;
 import org.bukkit.Bukkit;
 
 public class DatabaseManager {
-	private static final Logger logger = Bukkit.getLogger();
+    private static final Logger logger = Bukkit.getLogger();
     protected boolean connected = false; 
     
     private String driver;
@@ -29,7 +47,7 @@ public class DatabaseManager {
     } 
     
     public DatabaseManager(Annihilation plugin) { 
-    	this.plugin = plugin;
+        this.plugin = plugin;
     }
     
     public Connection open() { 
@@ -55,7 +73,7 @@ public class DatabaseManager {
         try {
             if(c!=null) c.close();
         } catch (SQLException ex) {
-        	plugin.log(ex.getMessage(), Level.SEVERE);
+            plugin.log(ex.getMessage(), Level.SEVERE);
         }
         c = null; 
     } 
@@ -90,12 +108,12 @@ public class DatabaseManager {
          }
      } 
     public Result query(final String query) {
-    	if (!isConnected()) open();
-    	return query(query,true);
+        if (!isConnected()) open();
+        return query(query,true);
     }
     public Result query(final String query, boolean retry) {
-    	if (!isConnected()) open();
-    	try {
+        if (!isConnected()) open();
+        try {
             PreparedStatement statement=null;
             try {
                 if (!isConnected()) open();
@@ -118,7 +136,7 @@ public class DatabaseManager {
             }
             if (statement != null) statement.close();
         } catch (SQLException ex) {
-        	plugin.log(ex.getMessage(), Level.SEVERE);
+            plugin.log(ex.getMessage(), Level.SEVERE);
         }
         return null;
     }

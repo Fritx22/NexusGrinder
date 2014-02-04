@@ -1,3 +1,21 @@
+/*******************************************************************************
+ * Copyright 2014 stuntguy3000 (Luke Anderson) and coasterman10.
+ *  
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ ******************************************************************************/
 package net.coasterman10.Annihilation.listeners;
 
 import java.util.HashMap;
@@ -26,95 +44,95 @@ import net.minecraft.server.v1_7_R1.EntityPlayer;
 import net.minecraft.server.v1_7_R1.TileEntityFurnace;
 
 public class EnderFurnaceListener implements Listener {
-	private HashMap<GameTeam, Location> locations;
-	private HashMap<String, VirtualFurnace> furnaces;
+    private HashMap<GameTeam, Location> locations;
+    private HashMap<String, VirtualFurnace> furnaces;
 
-	public EnderFurnaceListener(Annihilation plugin) {
-		locations = new HashMap<GameTeam, Location>();
-		furnaces = new HashMap<String, VirtualFurnace>();
-		
-		Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
-			public void run() {
-				for (VirtualFurnace f : furnaces.values())
-					f.h();
-			}
-		}, 0L, 1L);
-	}
+    public EnderFurnaceListener(Annihilation plugin) {
+        locations = new HashMap<GameTeam, Location>();
+        furnaces = new HashMap<String, VirtualFurnace>();
+        
+        Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
+            public void run() {
+                for (VirtualFurnace f : furnaces.values())
+                    f.h();
+            }
+        }, 0L, 1L);
+    }
 
-	public void setFurnaceLocation(GameTeam team, Location loc) {
-		locations.put(team, loc);
-	}
+    public void setFurnaceLocation(GameTeam team, Location loc) {
+        locations.put(team, loc);
+    }
 
-	@EventHandler
-	public void onFurnaceOpen(PlayerInteractEvent e) {
-		if (e.getAction() != Action.RIGHT_CLICK_BLOCK)
-			return;
-		
-		Block b = e.getClickedBlock();
-		if (b.getType() != Material.FURNACE)
-			return;
+    @EventHandler
+    public void onFurnaceOpen(PlayerInteractEvent e) {
+        if (e.getAction() != Action.RIGHT_CLICK_BLOCK)
+            return;
+        
+        Block b = e.getClickedBlock();
+        if (b.getType() != Material.FURNACE)
+            return;
 
-		Location loc = b.getLocation();
-		Player player = e.getPlayer();
-		GameTeam team = PlayerMeta.getMeta(player).getTeam();
-		if (team == null || !locations.containsKey(team))
-			return;
+        Location loc = b.getLocation();
+        Player player = e.getPlayer();
+        GameTeam team = PlayerMeta.getMeta(player).getTeam();
+        if (team == null || !locations.containsKey(team))
+            return;
 
-		if (locations.get(team).equals(loc)) {
-			e.setCancelled(true);
-			EntityPlayer handle = ((CraftPlayer) player).getHandle();
-			handle.openFurnace(getFurnace(player));
-			player.sendMessage(ChatColor.DARK_AQUA
-					+ "This is your team's Ender Furnace. Any items you store or smelt here are safe from all other players.");
-		}
-	}
+        if (locations.get(team).equals(loc)) {
+            e.setCancelled(true);
+            EntityPlayer handle = ((CraftPlayer) player).getHandle();
+            handle.openFurnace(getFurnace(player));
+            player.sendMessage(ChatColor.DARK_AQUA
+                    + "This is your team's Ender Furnace. Any items you store or smelt here are safe from all other players.");
+        }
+    }
 
-	@EventHandler
-	public void onFurnaceBreak(BlockBreakEvent e) {
-		if (locations.values().contains(e.getBlock().getLocation()))
-			e.setCancelled(true);
-	}
+    @EventHandler
+    public void onFurnaceBreak(BlockBreakEvent e) {
+        if (locations.values().contains(e.getBlock().getLocation()))
+            e.setCancelled(true);
+    }
 
-	private VirtualFurnace getFurnace(Player player) {
-		if (!furnaces.containsKey(player.getName())) {
-			EntityPlayer handle = ((CraftPlayer) player).getHandle();
-			furnaces.put(player.getName(), new VirtualFurnace(handle));
-		}
-		return furnaces.get(player.getName());
-	}
+    private VirtualFurnace getFurnace(Player player) {
+        if (!furnaces.containsKey(player.getName())) {
+            EntityPlayer handle = ((CraftPlayer) player).getHandle();
+            furnaces.put(player.getName(), new VirtualFurnace(handle));
+        }
+        return furnaces.get(player.getName());
+    }
 
-	private class VirtualFurnace extends TileEntityFurnace {
-		public VirtualFurnace(EntityHuman entity) {
-			world = entity.world;
-		}
+    private class VirtualFurnace extends TileEntityFurnace {
+        public VirtualFurnace(EntityHuman entity) {
+            world = entity.world;
+        }
 
-		@Override
-		public boolean a(EntityHuman entity) {
-			return true;
-		}
+        @Override
+        public boolean a(EntityHuman entity) {
+            return true;
+        }
 
-		@Override
-		public int p() {
-			return 0;
-		}
+        @Override
+        public int p() {
+            return 0;
+        }
 
-		@Override
-		public net.minecraft.server.v1_7_R1.Block q() {
-			return net.minecraft.server.v1_7_R1.Blocks.FURNACE;
-		}
+        @Override
+        public net.minecraft.server.v1_7_R1.Block q() {
+            return net.minecraft.server.v1_7_R1.Blocks.FURNACE;
+        }
 
-		@Override
-		public void update() {
+        @Override
+        public void update() {
 
-		}
+        }
 
-		@Override
-		public InventoryHolder getOwner() {
-			return new InventoryHolder() {
-				public Inventory getInventory() {
-					return new CraftInventoryFurnace(VirtualFurnace.this);
-				}
-			};
-		}
-	}
+        @Override
+        public InventoryHolder getOwner() {
+            return new InventoryHolder() {
+                public Inventory getInventory() {
+                    return new CraftInventoryFurnace(VirtualFurnace.this);
+                }
+            };
+        }
+    }
 }

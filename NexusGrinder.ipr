@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="Annihilation" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="CopyrightManager" default="">
+    <module2copyright />
+  </component>
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+  </component>
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Annihilation.iml" filepath="$PROJECT_DIR$/Annihilation.iml" />
+    </modules>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="Maven: net.gravitydevelopment.updater:updater:2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/gravitydevelopment/updater/updater/2.1/updater-2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/gravitydevelopment/updater/updater/2.1/updater-2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/gravitydevelopment/updater/updater/2.1/updater-2.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: net.milkbowl.vault:Vault:1.2.31">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/milkbowl/vault/Vault/1.2.31/Vault-1.2.31.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/net/milkbowl/vault/Vault/1.2.31/Vault-1.2.31-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/net/milkbowl/vault/Vault/1.2.31/Vault-1.2.31-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.bukkit:bukkit:1.7.2-R0.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.2/bukkit-1.7.2-R0.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.2/bukkit-1.7.2-R0.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.2/bukkit-1.7.2-R0.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.bukkit:craftbukkit:1.7.2-R0.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.2/craftbukkit-1.7.2-R0.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.2/craftbukkit-1.7.2-R0.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.2/craftbukkit-1.7.2-R0.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.mcstats.bukkit:metrics:R7">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/mcstats/bukkit/metrics/R7/metrics-R7.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/mcstats/bukkit/metrics/R7/metrics-R7-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/mcstats/bukkit/metrics/R7/metrics-R7-sources.jar!/" />
+      </SOURCES>
+    </library>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+

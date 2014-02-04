@@ -1,3 +1,21 @@
+/*******************************************************************************
+ * Copyright 2014 stuntguy3000 (Luke Anderson) and coasterman10.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ ******************************************************************************/
 package net.coasterman10.Annihilation;
 
 import java.io.IOException;
@@ -47,7 +65,8 @@ import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.object.Shop;
 import net.coasterman10.Annihilation.stats.StatType;
 import net.coasterman10.Annihilation.stats.StatsManager;
-
+import net.gravitydevelopment.updater.Updater;
+import net.gravitydevelopment.updater.Updater.UpdateResult;
 
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
@@ -67,266 +86,287 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Team;
+import org.mcstats.Metrics;
 
 public final class Annihilation extends JavaPlugin {
-	private ConfigManager configManager;
-	private VotingManager voting;
-	private MapManager maps;
-	private PhaseManager timer;
-	private ResourceListener resources;
-	private EnderFurnaceListener enderFurnaces;
-	private EnderBrewingStandListener enderBrewingStands;
-	private EnderChestListener enderChests;
-	private StatsManager stats;
-	private SignManager sign;
-	private ScoreboardManager sb;
-	private DatabaseManager db;
-	private BossManager boss;
+    private ConfigManager configManager;
+    private VotingManager voting;
+    private MapManager maps;
+    private PhaseManager timer;
+    private ResourceListener resources;
+    private EnderFurnaceListener enderFurnaces;
+    private EnderBrewingStandListener enderBrewingStands;
+    private EnderChestListener enderChests;
+    private StatsManager stats;
+    private SignManager sign;
+    private ScoreboardManager sb;
+    private DatabaseManager db;
+    private BossManager boss;
 
-	public boolean useMysql = false;
-	public boolean updateAvailable = false;
-	public boolean motd = true;
-	public String newVersion;
+    public boolean useMysql = false;
+    public boolean updateAvailable = false;
+    public boolean motd = true;
+    public String newVersion;
 
-	public int build = 1;
-	public int respawn = 10;
+    public int build = 1;
+    public int lastJoinPhase = 2;
+    public int respawn = 10;
 
-	@Override
-	public void onEnable() {
-		try {
-			Metrics metrics = new Metrics(this);
-			metrics.start();
-		} catch (IOException e) {
+    public String mysqlName = "annihilation";
 
-		}
+    @Override
+    public void onEnable() {
+        try {
+            Metrics metrics = new Metrics(this);
+            metrics.start();
+        } catch (IOException e) {
 
+        }
 
-		configManager = new ConfigManager(this);
-		configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
-				"stats.yml");
+        UpdateResult updateResult = null;
+        Updater u = null;
 
-		MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
+        if (this.getConfig().getBoolean("allowUpdater"))
+            u = new Updater(this, 72127, this.getFile(),
+                    Updater.UpdateType.DEFAULT, true);
 
-		maps = new MapManager(this, mapLoader,
-				configManager.getConfig("maps.yml"));
+        if (u != null)
+            updateResult = u.getResult();
 
-		Configuration shops = configManager.getConfig("shops.yml");
-		new Shop(this, "Weapon", shops);
-		new Shop(this, "Brewing", shops);
+        if (updateResult != null) {
+            if (updateResult == UpdateResult.SUCCESS) {
+                updateAvailable = true;
+                newVersion = u.getLatestName();
+            }
+        }
 
-		stats = new StatsManager(this, configManager);
-		resources = new ResourceListener(this);
-		enderFurnaces = new EnderFurnaceListener(this);
-		enderBrewingStands = new EnderBrewingStandListener(this);
-		enderChests = new EnderChestListener();
-		sign = new SignManager(this);
-		Configuration config = configManager.getConfig("config.yml");
-		timer = new PhaseManager(this, config.getInt("start-delay"),
-				config.getInt("phase-period"));
-		voting = new VotingManager(this);
-		sb = new ScoreboardManager();
-		boss = new BossManager(this);
+        configManager = new ConfigManager(this);
+        configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
+                "stats.yml");
 
-		PluginManager pm = getServer().getPluginManager();
+        MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
-		sign.loadSigns();
+        maps = new MapManager(this, mapLoader,
+                configManager.getConfig("maps.yml"));
 
-		sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
-				+ " | " + ChatColor.GOLD + "/vote <name>");
+        Configuration shops = configManager.getConfig("shops.yml");
+        new Shop(this, "Weapon", shops);
+        new Shop(this, "Brewing", shops);
 
-		build = this.getConfig().getInt("build", 5);
-		respawn = this.getConfig().getInt("bossRespawnDelay", 10);
+        stats = new StatsManager(this, configManager);
+        resources = new ResourceListener(this);
+        enderFurnaces = new EnderFurnaceListener(this);
+        enderBrewingStands = new EnderBrewingStandListener(this);
+        enderChests = new EnderChestListener();
+        sign = new SignManager(this);
+        Configuration config = configManager.getConfig("config.yml");
+        timer = new PhaseManager(this, config.getInt("start-delay"),
+                config.getInt("phase-period"));
+        voting = new VotingManager(this);
+        sb = new ScoreboardManager();
+        boss = new BossManager(this);
 
-		pm.registerEvents(resources, this);
-		pm.registerEvents(enderFurnaces, this);
-		pm.registerEvents(enderBrewingStands, this);
-		pm.registerEvents(enderChests, this);
-		pm.registerEvents(new ChatListener(this), this);
-		pm.registerEvents(new PlayerListener(this), this);
-		pm.registerEvents(new WorldListener(), this);
-		pm.registerEvents(new SoulboundListener(), this);
-		pm.registerEvents(new WandListener(this), this);
-		pm.registerEvents(new CraftingListener(), this);
-		pm.registerEvents(new ClassAbilityListener(this), this);
-		pm.registerEvents(new BossListener(this), this);
+        PluginManager pm = getServer().getPluginManager();
 
-		getCommand("annihilation").setExecutor(new AnnihilationCommand(this));
-		getCommand("class").setExecutor(new ClassCommand());
-		getCommand("stats").setExecutor(new StatsCommand(stats));
-		getCommand("team").setExecutor(new TeamCommand(this));
-		getCommand("vote").setExecutor(new VoteCommand(voting));
-		getCommand("red").setExecutor(new TeamShortcutCommand());
-		getCommand("green").setExecutor(new TeamShortcutCommand());
-		getCommand("yellow").setExecutor(new TeamShortcutCommand());
-		getCommand("blue").setExecutor(new TeamShortcutCommand());
-		getCommand("distance").setExecutor(new DistanceCommand(this));
-		getCommand("map").setExecutor(new MapCommand(this, mapLoader));
+        sign.loadSigns();
 
-		BarUtil.init(this);
+        sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
+                + " | " + ChatColor.GOLD + "/vote <name>");
 
-		if (config.getString("stats").equalsIgnoreCase("sql"))
-			useMysql = true;
+        build = this.getConfig().getInt("build", 5);
+        lastJoinPhase = this.getConfig().getInt("lastJoinPhase", 2);
+        respawn = this.getConfig().getInt("bossRespawnDelay", 10);
 
-		motd = config.getBoolean("enableMotd", true);
+        pm.registerEvents(resources, this);
+        pm.registerEvents(enderFurnaces, this);
+        pm.registerEvents(enderBrewingStands, this);
+        pm.registerEvents(enderChests, this);
+        pm.registerEvents(new ChatListener(this), this);
+        pm.registerEvents(new PlayerListener(this), this);
+        pm.registerEvents(new WorldListener(), this);
+        pm.registerEvents(new SoulboundListener(), this);
+        pm.registerEvents(new WandListener(this), this);
+        pm.registerEvents(new CraftingListener(), this);
+        pm.registerEvents(new ClassAbilityListener(this), this);
+        pm.registerEvents(new BossListener(this), this);
 
-		if (useMysql) {
-			String host = config.getString("MySQL.host");
-			Integer port = config.getInt("MySQL.port");
-			String name = config.getString("MySQL.name");
-			String user = config.getString("MySQL.user");
-			String pass = config.getString("MySQL.pass");
-			db = new DatabaseManager(host, port, name, user, pass, this);
+        getCommand("annihilation").setExecutor(new AnnihilationCommand(this));
+        getCommand("class").setExecutor(new ClassCommand());
+        getCommand("stats").setExecutor(new StatsCommand(stats));
+        getCommand("team").setExecutor(new TeamCommand(this));
+        getCommand("vote").setExecutor(new VoteCommand(voting));
+        getCommand("red").setExecutor(new TeamShortcutCommand());
+        getCommand("green").setExecutor(new TeamShortcutCommand());
+        getCommand("yellow").setExecutor(new TeamShortcutCommand());
+        getCommand("blue").setExecutor(new TeamShortcutCommand());
+        getCommand("distance").setExecutor(new DistanceCommand(this));
+        getCommand("map").setExecutor(new MapCommand(this, mapLoader));
 
-			db.query("CREATE TABLE IF NOT EXISTS `annihilation` ( `username` varchar(16) NOT NULL, "
-					+ "`kills` int(16) NOT NULL, `deaths` int(16) NOT NULL, `wins` int(16) NOT NULL, "
-					+ "`losses` int(16) NOT NULL, `nexus_damage` int(16) NOT NULL, "
-					+ "UNIQUE KEY `username` (`username`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
-		} else
-			db = new DatabaseManager(this);
-		
-		if (getServer().getPluginManager().isPluginEnabled("Vault")) {
-			VaultHooks.vault = true;
-			if (!VaultHooks.instance().setupPermissions()) {
-			    VaultHooks.vault = false;
-			    getLogger().warning("Unable to load Vault: No permission plugin found.");
-			} else {
-			    if (!VaultHooks.instance().setupChat()) {
-			        VaultHooks.vault = false;
-			        getLogger().warning("Unable to load Vault: No chat plugin found.");
-			    } else {
-			        getLogger().info("Vault hook initalized!");
-			    }
-			}
-		} else {
-			getLogger().warning("Vault not found! Permissions features disabled.");
-		}
+        BarUtil.init(this);
 
-		reset();
+        if (config.getString("stats").equalsIgnoreCase("sql"))
+            useMysql = true;
 
-		ChatUtil.setRoman(getConfig().getBoolean("roman", false));
-	}
+        motd = config.getBoolean("enableMotd", true);
 
-	public boolean startTimer() {
-		if (timer.isRunning())
-			return false;
+        if (useMysql) {
+            String host = config.getString("MySQL.host");
+            Integer port = config.getInt("MySQL.port");
+            String name = config.getString("MySQL.name");
+            String user = config.getString("MySQL.user");
+            String pass = config.getString("MySQL.pass");
+            db = new DatabaseManager(host, port, name, user, pass, this);
 
-		timer.start();
+            db.query("CREATE TABLE IF NOT EXISTS `" + mysqlName + "` ( `username` varchar(16) NOT NULL, "
+                    + "`kills` int(16) NOT NULL, `deaths` int(16) NOT NULL, `wins` int(16) NOT NULL, "
+                    + "`losses` int(16) NOT NULL, `nexus_damage` int(16) NOT NULL, "
+                    + "UNIQUE KEY `username` (`username`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
+        } else
+            db = new DatabaseManager(this);
 
-		return true;
-	}
+        if (getServer().getPluginManager().isPluginEnabled("Vault")) {
+            VaultHooks.vault = true;
+            if (!VaultHooks.instance().setupPermissions()) {
+                VaultHooks.vault = false;
+                getLogger().warning("Unable to load Vault: No permission plugin found.");
+            } else {
+                if (!VaultHooks.instance().setupChat()) {
+                    VaultHooks.vault = false;
+                    getLogger().warning("Unable to load Vault: No chat plugin found.");
+                } else {
+                    getLogger().info("Vault hook initalized!");
+                }
+            }
+        } else {
+            getLogger().warning("Vault not found! Permissions features disabled.");
+        }
 
-	public void loadMap(final String map) {
-		FileConfiguration config = configManager.getConfig("maps.yml");
-		ConfigurationSection section = config.getConfigurationSection(map);
+        reset();
 
-		World w = getServer().getWorld(map);
+        ChatUtil.setRoman(getConfig().getBoolean("roman", false));
+    }
 
-		for (GameTeam team : GameTeam.teams()) {
-			String name = team.name().toLowerCase();
-			if (section.contains("spawns." + name)) {
-				for (String s : section.getStringList("spawns." + name))
-					team.addSpawn(Util.parseLocation(getServer().getWorld(map),
-							s));
-			}
-			if (section.contains("nexuses." + name)) {
-				Location loc = Util.parseLocation(w,
-						section.getString("nexuses." + name));
-				team.loadNexus(loc, 75);
-			}
-			if (section.contains("furnaces." + name)) {
-				Location loc = Util.parseLocation(w,
-						section.getString("furnaces." + name));
-				enderFurnaces.setFurnaceLocation(team, loc);
-				loc.getBlock().setType(Material.FURNACE);
-			}
-			if (section.contains("brewingstands." + name)) {
-				Location loc = Util.parseLocation(w,
-						section.getString("brewingstands." + name));
-				enderBrewingStands.setBrewingStandLocation(team, loc);
-				loc.getBlock().setType(Material.BREWING_STAND);
-			}
-			if (section.contains("enderchests." + name)) {
-				Location loc = Util.parseLocation(w,
-						section.getString("enderchests." + name));
-				enderChests.setEnderChestLocation(team, loc);
-				loc.getBlock().setType(Material.ENDER_CHEST);
-			}
-		}
+    public boolean startTimer() {
+        if (timer.isRunning())
+            return false;
 
-		if (section.contains("bosses")) {
-			HashMap<String, Boss> bosses = new HashMap<String, Boss>();
-			ConfigurationSection sec = section
-					.getConfigurationSection("bosses");
-			for (String boss : sec.getKeys(false))
-				bosses.put(
-						boss,
-						new Boss(boss, sec.getInt(boss + ".hearts") * 2, sec
-								.getString(boss + ".name"), Util.parseLocation(
-								w, sec.getString(boss + ".spawn")), Util
-								.parseLocation(w,
-										sec.getString(boss + ".chest"))));
-			boss.loadBosses(bosses);
-		}
+        timer.start();
 
-		if (section.contains("diamonds")) {
-			Set<Location> diamonds = new HashSet<Location>();
-			for (String s : section.getStringList("diamonds"))
-				diamonds.add(Util.parseLocation(w, s));
-			resources.loadDiamonds(diamonds);
-		}
-	}
+        return true;
+    }
 
-	public void startGame() {
-		for (Player p : Bukkit.getOnlinePlayers()) {
-			for (Player pp : Bukkit.getOnlinePlayers()) {
-				p.showPlayer(pp);
-				pp.showPlayer(p);
-			}
-		}
+    public void loadMap(final String map) {
+        FileConfiguration config = configManager.getConfig("maps.yml");
+        ConfigurationSection section = config.getConfigurationSection(map);
 
-		Bukkit.getPluginManager().callEvent(
-				new GameStartEvent(maps.getCurrentMap()));
-		sb.scores.clear();
+        World w = getServer().getWorld(map);
 
-		for (OfflinePlayer score : sb.sb.getPlayers())
-			sb.sb.resetScores(score);
+        for (GameTeam team : GameTeam.teams()) {
+            String name = team.name().toLowerCase();
+            if (section.contains("spawns." + name)) {
+                for (String s : section.getStringList("spawns." + name))
+                    team.addSpawn(Util.parseLocation(getServer().getWorld(map),
+                            s));
+            }
+            if (section.contains("nexuses." + name)) {
+                Location loc = Util.parseLocation(w,
+                        section.getString("nexuses." + name));
+                team.loadNexus(loc, 75);
+            }
+            if (section.contains("furnaces." + name)) {
+                Location loc = Util.parseLocation(w,
+                        section.getString("furnaces." + name));
+                enderFurnaces.setFurnaceLocation(team, loc);
+                loc.getBlock().setType(Material.FURNACE);
+            }
+            if (section.contains("brewingstands." + name)) {
+                Location loc = Util.parseLocation(w,
+                        section.getString("brewingstands." + name));
+                enderBrewingStands.setBrewingStandLocation(team, loc);
+                loc.getBlock().setType(Material.BREWING_STAND);
+            }
+            if (section.contains("enderchests." + name)) {
+                Location loc = Util.parseLocation(w,
+                        section.getString("enderchests." + name));
+                enderChests.setEnderChestLocation(team, loc);
+                loc.getBlock().setType(Material.ENDER_CHEST);
+            }
+        }
 
-		sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
-				+ WordUtils.capitalize(voting.getWinner()));
+        if (section.contains("bosses")) {
+            HashMap<String, Boss> bosses = new HashMap<String, Boss>();
+            ConfigurationSection sec = section
+                    .getConfigurationSection("bosses");
+            for (String boss : sec.getKeys(false))
+                bosses.put(
+                        boss,
+                        new Boss(boss, sec.getInt(boss + ".hearts") * 2, sec
+                                .getString(boss + ".name"), Util.parseLocation(
+                                w, sec.getString(boss + ".spawn")), Util
+                                .parseLocation(w,
+                                        sec.getString(boss + ".chest"))));
+            boss.loadBosses(bosses);
+        }
 
-		for (GameTeam t : GameTeam.teams()) {
-			sb.scores.put(t.name(), sb.obj.getScore(Bukkit
-					.getOfflinePlayer(WordUtils.capitalize(t.name()
-							.toLowerCase() + " Nexus"))));
-			sb.scores.get(t.name()).setScore(t.getNexus().getHealth());
+        if (section.contains("diamonds")) {
+            Set<Location> diamonds = new HashSet<Location>();
+            for (String s : section.getStringList("diamonds"))
+                diamonds.add(Util.parseLocation(w, s));
+            resources.loadDiamonds(diamonds);
+        }
+    }
 
-			Team sbt = sb.sb.registerNewTeam(t.name() + "SB");
-			sbt.addPlayer(Bukkit.getOfflinePlayer(WordUtils
-					.capitalize(WordUtils.capitalize(t.name().toLowerCase()
-							+ " Nexus"))));
-			sbt.setPrefix(t.color().toString());
-		}
+    public void startGame() {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            for (Player pp : Bukkit.getOnlinePlayers()) {
+                p.showPlayer(pp);
+                pp.showPlayer(p);
+            }
+        }
 
-		sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
-				+ WordUtils.capitalize(voting.getWinner()));
+        Bukkit.getPluginManager().callEvent(
+                new GameStartEvent(maps.getCurrentMap()));
+        sb.scores.clear();
 
-		for (Player p : getServer().getOnlinePlayers())
-			if (PlayerMeta.getMeta(p).getTeam() != GameTeam.NONE)
-				Util.sendPlayerToGame(p);
+        for (OfflinePlayer score : sb.sb.getPlayers())
+            sb.sb.resetScores(score);
 
-		sb.update();
+        sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
+                + WordUtils.capitalize(voting.getWinner()));
 
-		getServer().getScheduler().runTaskTimer(this, new Runnable() {
-			public void run() {
-				for (Player p : getServer().getOnlinePlayers()) {
-					if (PlayerMeta.getMeta(p).getKit() == Kit.SCOUT) {
-						PlayerMeta.getMeta(p).getKit().addScoutParticles(p);
-					}
-				}
-			}
-		}, 0L, 1200L);
-		
-		getServer().getScheduler().runTaskTimer(this, new Runnable() {
+        for (GameTeam t : GameTeam.teams()) {
+            sb.scores.put(t.name(), sb.obj.getScore(Bukkit
+                    .getOfflinePlayer(WordUtils.capitalize(t.name()
+                            .toLowerCase() + " Nexus"))));
+            sb.scores.get(t.name()).setScore(t.getNexus().getHealth());
+
+            Team sbt = sb.sb.registerNewTeam(t.name() + "SB");
+            sbt.addPlayer(Bukkit.getOfflinePlayer(WordUtils
+                    .capitalize(WordUtils.capitalize(t.name().toLowerCase()
+                            + " Nexus"))));
+            sbt.setPrefix(t.color().toString());
+        }
+
+        sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
+                + WordUtils.capitalize(voting.getWinner()));
+
+        for (Player p : getServer().getOnlinePlayers())
+            if (PlayerMeta.getMeta(p).getTeam() != GameTeam.NONE)
+                Util.sendPlayerToGame(p, this);
+
+        sb.update();
+
+        getServer().getScheduler().runTaskTimer(this, new Runnable() {
+            public void run() {
+                for (Player p : getServer().getOnlinePlayers()) {
+                    if (PlayerMeta.getMeta(p).getKit() == Kit.SCOUT) {
+                        PlayerMeta.getMeta(p).getKit().addScoutParticles(p);
+                    }
+                }
+            }
+        }, 0L, 1200L);
+
+        getServer().getScheduler().runTaskTimer(this, new Runnable() {
             public void run() {
                 for (GameTeam t : GameTeam.values()) {
                     if (t != GameTeam.NONE && t.getNexus().isAlive()) {
@@ -338,195 +378,196 @@ public final class Annihilation extends JavaPlugin {
                 }
             }
         }, 100L, 5L);
-	}
+    }
 
-	public void advancePhase() {
-		ChatUtil.phaseMessage(timer.getPhase());
+    public void advancePhase() {
+        ChatUtil.phaseMessage(timer.getPhase());
 
-		if (timer.getPhase() == 2)
-			boss.spawnBosses();
+        if (timer.getPhase() == 2)
+            boss.spawnBosses();
 
-		if (timer.getPhase() == 3)
-			resources.spawnDiamonds();
+        if (timer.getPhase() == 3)
+            resources.spawnDiamonds();
 
-		Bukkit.getPluginManager().callEvent(
-				new PhaseChangeEvent(timer.getPhase()));
+        Bukkit.getPluginManager().callEvent(
+                new PhaseChangeEvent(timer.getPhase()));
 
-		getSignHandler().updateSigns(GameTeam.RED);
-		getSignHandler().updateSigns(GameTeam.BLUE);
-		getSignHandler().updateSigns(GameTeam.GREEN);
-		getSignHandler().updateSigns(GameTeam.YELLOW);
-	}
+        getSignHandler().updateSigns(GameTeam.RED);
+        getSignHandler().updateSigns(GameTeam.BLUE);
+        getSignHandler().updateSigns(GameTeam.GREEN);
+        getSignHandler().updateSigns(GameTeam.YELLOW);
+    }
 
-	public void onSecond() {
-		long time = timer.getTime();
+    public void onSecond() {
+        long time = timer.getTime();
 
-		if (time == -5L) {
-			String winner = voting.getWinner();
-			maps.selectMap(winner);
-			getServer().broadcastMessage(
-					ChatColor.GREEN + WordUtils.capitalize(winner)
-							+ " was chosen!");
-			loadMap(winner);
+        if (time == -5L) {
+            String winner = voting.getWinner();
+            maps.selectMap(winner);
+            getServer().broadcastMessage(
+                    ChatColor.GREEN + WordUtils.capitalize(winner)
+                            + " was chosen!");
+            loadMap(winner);
 
-			voting.end();
-		}
+            voting.end();
+        }
 
-		if (time == 0L)
-			startGame();
-	}
+        if (time == 0L)
+            startGame();
+    }
 
-	public int getPhase() {
-		return timer.getPhase();
-	}
+    public int getPhase() {
+        return timer.getPhase();
+    }
 
-	public MapManager getMapManager() {
-		return maps;
-	}
+    public MapManager getMapManager() {
+        return maps;
+    }
 
-	public StatsManager getStatsManager() {
-		return stats;
-	}
+    public StatsManager getStatsManager() {
+        return stats;
+    }
 
-	public DatabaseManager getDatabaseHandler() {
-		return db;
-	}
+    public DatabaseManager getDatabaseHandler() {
+        return db;
+    }
 
-	public ConfigManager getConfigManager() {
-		return configManager;
-	}
+    public ConfigManager getConfigManager() {
+        return configManager;
+    }
 
-	public int getPhaseDelay() {
-		return configManager.getConfig("config.yml").getInt("phase-period");
-	}
+    public int getPhaseDelay() {
+        return configManager.getConfig("config.yml").getInt("phase-period");
+    }
 
-	public void log(String m, Level l) {
-		getLogger().log(l, m);
-	}
+    public void log(String m, Level l) {
+        getLogger().log(l, m);
+    }
 
-	public VotingManager getVotingManager() {
-		return voting;
-	}
+    public VotingManager getVotingManager() {
+        return voting;
+    }
 
-	public ScoreboardManager getScoreboardHandler() {
-		return sb;
-	}
+    public ScoreboardManager getScoreboardHandler() {
+        return sb;
+    }
 
-	public void endGame(GameTeam winner) {
-		if (winner == null)
-			return;
+    public void endGame(GameTeam winner) {
+        if (winner == null)
+            return;
 
-		ChatUtil.winMessage(winner);
-		timer.stop();
+        ChatUtil.winMessage(winner);
+        timer.stop();
 
-		for (Player p : getServer().getOnlinePlayers())
-			if (PlayerMeta.getMeta(p).getTeam() == winner)
-				stats.incrementStat(StatType.WINS, p);
-		long restartDelay = configManager.getConfig("config.yml").getLong(
-				"restart-delay");
-		new RestartHandler(this, restartDelay).start(timer.getTime());
-	}
+        for (Player p : getServer().getOnlinePlayers())
+            if (PlayerMeta.getMeta(p).getTeam() == winner)
+                stats.incrementStat(StatType.WINS, p);
+        long restartDelay = configManager.getConfig("config.yml").getLong(
+                "restart-delay");
+        RestartHandler rs = new RestartHandler(this, restartDelay);
+        rs.start(timer.getTime(), winner.getColor(winner));
+    }
 
-	public void reset() {
-		sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
-				+ " | " + ChatColor.GOLD + "/vote <name>");
-		maps.reset();
-		timer.reset();
-		for (Player p : getServer().getOnlinePlayers()) {
-			PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
-			p.teleport(maps.getLobbySpawnPoint());
-			BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA
-					+ "Welcome to Annihilation!", 0.01F);
-			p.setMaxHealth(20D);
-			p.setHealth(20D);
-			p.setFoodLevel(20);
-			p.setSaturation(20F);
-		}
+    public void reset() {
+        sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
+                + " | " + ChatColor.GOLD + "/vote <name>");
+        maps.reset();
+        timer.reset();
+        for (Player p : getServer().getOnlinePlayers()) {
+            PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
+            p.teleport(maps.getLobbySpawnPoint());
+            BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA
+                    + "Welcome to NexusGrinder!", 0.01F);
+            p.setMaxHealth(20D);
+            p.setHealth(20D);
+            p.setFoodLevel(20);
+            p.setSaturation(20F);
+        }
 
-		voting.start();
-		sb.update();
+        voting.start();
+        sb.update();
 
-		for (Player p : Bukkit.getOnlinePlayers()) {
-			for (Player pp : Bukkit.getOnlinePlayers()) {
-				p.showPlayer(pp);
-				pp.showPlayer(p);
-			}
-		}
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            for (Player pp : Bukkit.getOnlinePlayers()) {
+                p.showPlayer(pp);
+                pp.showPlayer(p);
+            }
+        }
 
-		Bukkit.getScheduler().runTaskLater(this, new Runnable() {
-			@SuppressWarnings("deprecation")
-			public void run() {
-				for (Player p : getServer().getOnlinePlayers()) {
-					PlayerInventory inv = p.getInventory();
-					inv.setHelmet(null);
-					inv.setChestplate(null);
-					inv.setLeggings(null);
-					inv.setBoots(null);
+        Bukkit.getScheduler().runTaskLater(this, new Runnable() {
+            @SuppressWarnings("deprecation")
+            public void run() {
+                for (Player p : getServer().getOnlinePlayers()) {
+                    PlayerInventory inv = p.getInventory();
+                    inv.setHelmet(null);
+                    inv.setChestplate(null);
+                    inv.setLeggings(null);
+                    inv.setBoots(null);
 
-					p.getInventory().clear();
+                    p.getInventory().clear();
 
-					for (PotionEffect effect : p.getActivePotionEffects())
-						p.removePotionEffect(effect.getType());
+                    for (PotionEffect effect : p.getActivePotionEffects())
+                        p.removePotionEffect(effect.getType());
 
-					p.setLevel(0);
-					p.setExp(0);
-					p.setSaturation(20F);
+                    p.setLevel(0);
+                    p.setExp(0);
+                    p.setSaturation(20F);
 
-					ItemStack selector = new ItemStack(Material.FEATHER);
-					ItemMeta itemMeta = selector.getItemMeta();
-					itemMeta.setDisplayName(ChatColor.AQUA
-							+ "Right click to select class");
-					selector.setItemMeta(itemMeta);
+                    ItemStack selector = new ItemStack(Material.FEATHER);
+                    ItemMeta itemMeta = selector.getItemMeta();
+                    itemMeta.setDisplayName(ChatColor.AQUA
+                            + "Right click to select class");
+                    selector.setItemMeta(itemMeta);
 
-					p.getInventory().setItem(0, selector);
+                    p.getInventory().setItem(0, selector);
 
-					p.updateInventory();
-				}
+                    p.updateInventory();
+                }
 
-				for (GameTeam t : GameTeam.values())
-					if (t != GameTeam.NONE)
-						sign.updateSigns(t);
+                for (GameTeam t : GameTeam.values())
+                    if (t != GameTeam.NONE)
+                        sign.updateSigns(t);
 
-				checkStarting();
-			}
-		}, 2L);
-	}
+                checkStarting();
+            }
+        }, 2L);
+    }
 
-	public void checkWin() {
-		int alive = 0;
-		GameTeam aliveTeam = null;
-		for (GameTeam t : GameTeam.teams()) {
-			if (t.getNexus().isAlive()) {
-				alive++;
-				aliveTeam = t;
-			}
-		}
-		if (alive == 1) {
-			endGame(aliveTeam);
-		}
-	}
+    public void checkWin() {
+        int alive = 0;
+        GameTeam aliveTeam = null;
+        for (GameTeam t : GameTeam.teams()) {
+            if (t.getNexus().isAlive()) {
+                alive++;
+                aliveTeam = t;
+            }
+        }
+        if (alive == 1) {
+            endGame(aliveTeam);
+        }
+    }
 
-	public SignManager getSignHandler() {
-		return sign;
-	}
+    public SignManager getSignHandler() {
+        return sign;
+    }
 
-	public void setSignHandler(SignManager sign) {
-		this.sign = sign;
-	}
+    public void setSignHandler(SignManager sign) {
+        this.sign = sign;
+    }
 
-	public void checkStarting() {
-		if (!timer.isRunning()) {
-			if (Bukkit.getOnlinePlayers().length >= getConfig().getInt(
-					"requiredToStart"))
-				timer.start();
-		}
-	}
+    public void checkStarting() {
+        if (!timer.isRunning()) {
+            if (Bukkit.getOnlinePlayers().length >= getConfig().getInt(
+                    "requiredToStart"))
+                timer.start();
+        }
+    }
 
-	public BossManager getBossManager() {
-		return boss;
-	}
+    public BossManager getBossManager() {
+        return boss;
+    }
 
-	public PhaseManager getPhaseManager() {
-		return timer;
-	}
+    public PhaseManager getPhaseManager() {
+        return timer;
+    }
 }

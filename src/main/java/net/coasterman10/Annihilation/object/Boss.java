@@ -1,69 +1,155 @@
+/*******************************************************************************
+ * Copyright 2014 stuntguy3000 (Luke Anderson) and coasterman10.
+ *  
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ ******************************************************************************/
 package net.coasterman10.Annihilation.object;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Chest;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public class Boss {
-	private String configName;
-	private int health;
-	private String bossName;
-	private Location spawn;
-	private Location chest;
-	private boolean alive;
-	
-	public Boss(String configName, int health, String bossName, Location spawn, Location chest) {
-		this.configName = configName;
-		this.health = health;
-		this.bossName = bossName;
-		this.spawn = spawn;
-		this.chest = chest;
-		this.setAlive(false);
-	}
-	
-	public String getConfigName() {
-		return configName;
-	}
-	
-	public void setConfigName(String configName) {
-		this.configName = configName;
-	}
+    private String configName;
+    private int health;
+    private String bossName;
+    private Location spawn;
+    private Location chest;
+    private boolean alive;
 
-	public int getHealth() {
-		return health;
-	}
+    private HashMap<ItemStack, Float> legendaries = new HashMap<ItemStack, Float>();
+    private HashMap<ItemStack, Float> loot = new HashMap<ItemStack, Float>();
+    private int lootItems;
+    private int ingots;
 
-	public void setHealth(int health) {
-		this.health = health;
-	}
+    public Boss(String configName, int health, String bossName, Location spawn,
+            Location chest) {
+        this.configName = configName;
+        this.health = health;
+        this.bossName = bossName;
+        this.spawn = spawn;
+        this.chest = chest;
+        this.setAlive(false);
+    }
 
-	public String getBossName() {
-		return bossName;
-	}
+    public void spawnLootChest() {
+        chest.getBlock().setType(Material.CHEST);
+        Chest c = (Chest) chest.getBlock().getState();
+        Inventory inv = c.getBlockInventory();
+        Random r = new Random();
+        inv.setItem(r.nextInt(inv.getSize()), getRandomItem(legendaries));
+        if (lootItems > inv.getSize() - 2)
+            lootItems = inv.getSize() - 2;
+        for (int i = 0; i < lootItems; i++) {
+            int slot = r.nextInt(inv.getSize());
+            if (isEmpty(inv, slot))
+                inv.setItem(slot, getRandomItem(loot));
+            else
+                i--;
+        }
+        for (int i = 0; i < ingots; i++) {
+            int slot = r.nextInt(inv.getSize());
+            ItemStack stack = inv.getItem(slot);
+            if (isEmpty(inv, slot))
+                inv.setItem(slot, new ItemStack(Material.IRON_INGOT));
+            else if (stack.getType() == Material.IRON_INGOT)
+                inv.getItem(slot).setAmount(stack.getAmount() + 1);
+            else
+                i--;
+        }
+    }
 
-	public void setBossName(String bossName) {
-		this.bossName = bossName;
-	}
+    public String getConfigName() {
+        return configName;
+    }
 
-	public Location getSpawn() {
-		return spawn;
-	}
+    public void setConfigName(String configName) {
+        this.configName = configName;
+    }
 
-	public void setSpawn(Location spawn) {
-		this.spawn = spawn;
-	}
+    public int getHealth() {
+        return health;
+    }
 
-	public Location getChest() {
-		return chest;
-	}
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
-	public void setChest(Location chest) {
-		this.chest = chest;
-	}
+    public String getBossName() {
+        return bossName;
+    }
 
-	public boolean isAlive() {
-		return alive;
-	}
+    public void setBossName(String bossName) {
+        this.bossName = bossName;
+    }
 
-	public void setAlive(boolean alive) {
-		this.alive = alive;
-	}
+    public Location getSpawn() {
+        return spawn;
+    }
+
+    public void setSpawn(Location spawn) {
+        this.spawn = spawn;
+    }
+
+    public Location getChest() {
+        return chest;
+    }
+
+    public void setChest(Location chest) {
+        this.chest = chest;
+    }
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    private static ItemStack getRandomItem(HashMap<ItemStack, Float> weighting) {
+        List<ItemStack> items = new ArrayList<ItemStack>(weighting.keySet());
+
+        float totalWeight = 0F;
+        for (Float f : weighting.values())
+            totalWeight += f;
+
+        float rand = new Random().nextFloat() * totalWeight;
+        for (int i = 0; i < weighting.size(); i++) {
+            ItemStack item = items.get(i);
+            rand -= weighting.get(item);
+            if (rand <= 0F)
+                return item;
+        }
+        return null;
+    }
+
+    private static boolean isEmpty(Inventory inv, int slot) {
+        ItemStack stack = inv.getItem(slot);
+        if (stack == null)
+            return true;
+        if (stack.getType() == Material.AIR)
+            return true;
+        return false;
+    }
 }

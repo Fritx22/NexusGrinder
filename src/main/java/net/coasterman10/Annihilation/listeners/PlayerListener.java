@@ -1,3 +1,21 @@
+/*******************************************************************************
+ * Copyright 2014 stuntguy3000 (Luke Anderson) and coasterman10.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ ******************************************************************************/
 package net.coasterman10.Annihilation.listeners;
 
 import java.util.HashMap;
@@ -13,13 +31,18 @@ import net.coasterman10.Annihilation.object.GameTeam;
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.stats.StatType;
+import net.minecraft.server.v1_7_R1.EntityPlayer;
+import net.minecraft.server.v1_7_R1.EnumClientCommand;
+import net.minecraft.server.v1_7_R1.PacketPlayInClientCommand;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
+import org.bukkit.craftbukkit.v1_7_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -35,6 +58,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.server.ServerListPingEvent;
@@ -45,503 +69,591 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 
 public class PlayerListener implements Listener {
-	private final Annihilation plugin;
+    private Annihilation plugin;
 
-	private HashMap<String, Kit> kitsToGive = new HashMap<String, Kit>();
+    private HashMap<String, Kit> kitsToGive = new HashMap<String, Kit>();
 
-	public PlayerListener(Annihilation plugin) {
-		this.plugin = plugin;
-	}
+    public PlayerListener(Annihilation plugin) {
+        this.plugin = plugin;
+    }
 
-	@SuppressWarnings("static-access")
-	@EventHandler
-	public void onMOTDPing(ServerListPingEvent e) {
-		if (plugin.motd) {
-			String motd = plugin.getConfig().getString("motd");
+    @SuppressWarnings("static-access")
+    @EventHandler
+    public void onMOTDPing(ServerListPingEvent e) {
+        if (plugin.motd) {
+            String motd = plugin.getConfig().getString("motd");
+            try {
+                motd = motd.replaceAll("%PHASE%",
+                        String.valueOf(plugin.getPhase()));
+                motd = motd.replaceAll("%TIME%", plugin.getPhaseManager()
+                        .timeString(plugin.getPhaseManager().getTime()));
+                motd = motd.replaceAll("%PLAYERCOUNT",
+                        String.valueOf(Bukkit.getOnlinePlayers().length));
+                motd = motd.replaceAll("%MAXPLAYERS%",
+                        String.valueOf(Bukkit.getMaxPlayers()));
+                motd = motd.replaceAll("%GREENNEXUS%",
+                        String.valueOf(getNexus(GameTeam.GREEN)));
+                motd = motd.replaceAll("%GREENCOUNT%",
+                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                motd = motd.replaceAll("%REDNEXUS%",
+                        String.valueOf(getNexus(GameTeam.RED)));
+                motd = motd.replaceAll("%REDCOUNT%",
+                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                motd = motd.replaceAll("%BLUENEXUS%",
+                        String.valueOf(getNexus(GameTeam.BLUE)));
+                motd = motd.replaceAll("%BLUECOUNT%",
+                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                motd = motd.replaceAll("%YELLOWNEXUS%",
+                        String.valueOf(getNexus(GameTeam.YELLOW)));
+                motd = motd.replaceAll("%YELLOWCOUNT%",
+                        String.valueOf(getPlayers(GameTeam.GREEN)));
 
-			try {
-				motd = motd.replaceAll("%PHASE%",
-						String.valueOf(plugin.getPhase()));
-				motd = motd.replaceAll("%TIME%", plugin.getPhaseManager()
-						.timeString(plugin.getPhaseManager().getTime()));
-				motd = motd.replaceAll("%PLAYERCOUNT",
-						String.valueOf(Bukkit.getOnlinePlayers().length));
-				motd = motd.replaceAll("%MAXPLAYERS%",
-						String.valueOf(Bukkit.getMaxPlayers()));
-				motd = motd.replaceAll("%GREENNEXUS%",
-						String.valueOf(getNexus(GameTeam.GREEN)));
-				motd = motd.replaceAll("%GREENCOUNT%",
-						String.valueOf(getPlayers(GameTeam.GREEN)));
-				motd = motd.replaceAll("%REDNEXUS%",
-						String.valueOf(getNexus(GameTeam.RED)));
-				motd = motd.replaceAll("%REDCOUNT%",
-						String.valueOf(getPlayers(GameTeam.GREEN)));
-				motd = motd.replaceAll("%BLUENEXUS%",
-						String.valueOf(getNexus(GameTeam.BLUE)));
-				motd = motd.replaceAll("%BLUECOUNT%",
-						String.valueOf(getPlayers(GameTeam.GREEN)));
-				motd = motd.replaceAll("%YELLOWNEXUS%",
-						String.valueOf(getNexus(GameTeam.YELLOW)));
-				motd = motd.replaceAll("%YELLOWCOUNT%",
-						String.valueOf(getPlayers(GameTeam.GREEN)));
+                e.setMotd(ChatColor.translateAlternateColorCodes('&', motd));
+            } catch (Exception ex) {
 
-				e.setMotd(ChatColor.translateAlternateColorCodes('&', motd));
-			} catch (Exception ex) {
+            }
+        }
+    }
 
-			}
-		}
-	}
+    private int getNexus(GameTeam t) {
+        int health = 0;
 
-	private int getNexus(GameTeam t) {
-		int health = 0;
+        if (t.getNexus() != null)
+            health = t.getNexus().getHealth();
 
-		if (t.getNexus() != null)
-			health = t.getNexus().getHealth();
+        return health;
+    }
 
-		return health;
-	}
+    private int getPlayers(GameTeam t) {
+        int size = 0;
 
-	private int getPlayers(GameTeam t) {
-		int size = 0;
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            PlayerMeta meta = PlayerMeta.getMeta(p);
+            if (meta.getTeam() == t)
+                size++;
+        }
 
-		for (Player p : Bukkit.getOnlinePlayers()) {
-			PlayerMeta meta = PlayerMeta.getMeta(p);
-			if (meta.getTeam() == t)
-				size++;
-		}
+        return size;
+    }
 
-		return size;
-	}
+    @EventHandler
+    public void onInteract(PlayerInteractEvent e) {
+        Player player = e.getPlayer();
+        PlayerMeta pmeta = PlayerMeta.getMeta(player);
+        Action a = e.getAction();
+        if (a == Action.RIGHT_CLICK_AIR || a == Action.RIGHT_CLICK_BLOCK) {
+            ItemStack handItem = player.getItemInHand();
+            if (handItem != null) {
+                if (handItem.getType() == Material.FEATHER) {
+                    if (handItem.getItemMeta().hasDisplayName()) {
+                        if (handItem.getItemMeta().getDisplayName()
+                                .contains("Right click to select class")) {
+                            Util.showClassSelector(e.getPlayer(),
+                                    "Select Class");
+                            return;
+                        }
+                    }
+                }
+                if (handItem.getType() == Material.COMPASS) {
+                    boolean setCompass = false;
+                    boolean setToNext = false;
+                    while (!setCompass) {
+                        for (GameTeam team : GameTeam.teams()) {
+                            if (setToNext) {
+                                ItemMeta meta = handItem.getItemMeta();
+                                meta.setDisplayName(team.color()
+                                        + "Pointing to " + team.toString()
+                                        + " Nexus");
+                                handItem.setItemMeta(meta);
+                                player.setCompassTarget(team.getNexus()
+                                        .getLocation());
+                                setCompass = true;
+                                break;
+                            }
+                            if (handItem.getItemMeta().getDisplayName()
+                                    .contains(team.toString()))
+                                setToNext = true;
+                        }
+                    }
+                }
+            }
+        }
 
-	@EventHandler
-	public void onInteract(PlayerInteractEvent e) {
-		Player player = e.getPlayer();
-		PlayerMeta pmeta = PlayerMeta.getMeta(player);
-		Action a = e.getAction();
-		if (a == Action.RIGHT_CLICK_AIR || a == Action.RIGHT_CLICK_BLOCK) {
-			ItemStack handItem = player.getItemInHand();
-			if (handItem != null) {
-				if (handItem.getType() == Material.FEATHER) {
-					if (handItem.getItemMeta().hasDisplayName()) {
-						if (handItem.getItemMeta().getDisplayName()
-								.contains("Right click to select class")) {
-							Util.showClassSelector(e.getPlayer(),
-									"Select Class");
-							return;
-						}
-					}
-				}
-				if (handItem.getType() == Material.COMPASS) {
-					boolean setCompass = false;
-					boolean setToNext = false;
-					while (!setCompass) {
-						for (GameTeam team : GameTeam.teams()) {
-							if (setToNext) {
-								ItemMeta meta = handItem.getItemMeta();
-								meta.setDisplayName(team.color()
-										+ "Pointing to " + team.toString()
-										+ " Nexus");
-								handItem.setItemMeta(meta);
-								player.setCompassTarget(team.getNexus()
-										.getLocation());
-								setCompass = true;
-								break;
-							}
-							if (handItem.getItemMeta().getDisplayName()
-									.contains(team.toString()))
-								setToNext = true;
-						}
-					}
-				}
-			}
-		}
+        if (e.getClickedBlock() != null) {
+            Material clickedType = e.getClickedBlock().getType();
+            if (clickedType == Material.SIGN_POST
+                    || clickedType == Material.WALL_SIGN) {
+                Sign s = (Sign) e.getClickedBlock().getState();
+                if (s.getLine(0).contains(ChatColor.DARK_PURPLE + "[Team]")) {
+                    String teamName = ChatColor.stripColor(s.getLine(1));
+                    GameTeam team = GameTeam.valueOf(teamName.toUpperCase());
+                    if (team != null) {
+                        if (pmeta.getTeam() == GameTeam.NONE) {
 
-		if (e.getClickedBlock() != null) {
-			Material clickedType = e.getClickedBlock().getType();
-			if (clickedType == Material.SIGN_POST
-					|| clickedType == Material.WALL_SIGN) {
-				Sign s = (Sign) e.getClickedBlock().getState();
-				if (s.getLine(0).contains(ChatColor.DARK_PURPLE + "[Team]")) {
-					String teamName = ChatColor.stripColor(s.getLine(1));
-					GameTeam team = GameTeam.valueOf(teamName.toUpperCase());
-					if (team != null) {
-						if (pmeta.getTeam() == GameTeam.NONE) {
-							if (team.getNexus() != null) {
-								if (team.getNexus().getHealth() == 0
-										&& plugin.getPhase() > 1) {
-									player.sendMessage(ChatColor.RED
-											+ "You cannot join a team without a Nexus!");
-									return;
-								}
-							}
+                            if (Util.isTeamTooBig(team)
+                                    && !player
+                                            .hasPermission("annihilation.team-limit-bypass")) {
+                                player.sendMessage(ChatColor.RED
+                                        + "That team is too big, join another team!");
+                                return;
+                            }
 
-							pmeta.setTeam(team);
-							plugin.getScoreboardHandler().teams
-									.get(team.name()).addPlayer(player);
-							player.sendMessage(ChatColor.DARK_AQUA
-									+ "You joined " + team.coloredName());
-							if (plugin.getPhase() > 0)
-								Util.sendPlayerToGame(player);
-						} else {
-						    player.sendMessage(ChatColor.DARK_AQUA + "You cannot switch teams!");
-						}
+                            if (team.getNexus() != null) {
+                                if (team.getNexus().getHealth() == 0
+                                        && plugin.getPhase() > 1) {
+                                    player.sendMessage(ChatColor.RED
+                                            + "You cannot join a team without a Nexus!");
+                                    return;
+                                }
+                            }
 
-						plugin.getSignHandler().updateSigns(team);
-					}
-				}
-			}
-		}
-	}
+                            if (plugin.getPhase() > plugin.lastJoinPhase
+                                    && !player
+                                            .hasPermission("annhilation.bypass.phaselimiter")) {
+                                player.kickPlayer(ChatColor.RED
+                                        + "You cannot join the game in this phase!");
+                                return;
+                            }
 
-	@EventHandler
-	public void onPlayerRespawn(PlayerRespawnEvent e) {
-		Player player = e.getPlayer();
-		PlayerMeta meta = PlayerMeta.getMeta(player);
-		if (meta.isAlive()) {
-			if (kitsToGive.containsKey(e.getPlayer().getName())) {
-				meta.setKit(kitsToGive.get(e.getPlayer().getName()));
-				kitsToGive.remove(e.getPlayer().getName());
-			}
-			e.setRespawnLocation(meta.getTeam().getRandomSpawn());
-			meta.getKit().give(player, meta.getTeam());
-		} else {
-			e.setRespawnLocation(plugin.getMapManager().getLobbySpawnPoint());
-			ItemStack selector = new ItemStack(Material.FEATHER);
-			ItemMeta itemMeta = selector.getItemMeta();
-			itemMeta.setDisplayName(ChatColor.AQUA
-					+ "Right click to select class");
-			selector.setItemMeta(itemMeta);
+                            pmeta.setTeam(team);
+                            plugin.getScoreboardHandler().teams
+                                    .get(team.name()).addPlayer(player);
+                            player.sendMessage(ChatColor.DARK_AQUA
+                                    + "You joined " + team.coloredName());
+                            if (plugin.getPhase() > 0)
+                                Util.sendPlayerToGame(player, plugin);
+                        } else {
+                            player.sendMessage(ChatColor.DARK_AQUA
+                                    + "You cannot switch teams!");
+                        }
 
-			player.getInventory().setItem(0, selector);
-		}
-	}
+                        plugin.getSignHandler().updateSigns(team);
+                    }
+                }
+            }
+        }
+    }
 
-	@SuppressWarnings("deprecation")
-	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent e) {
-		String prefix = ChatColor.AQUA + "[Annihilation] " + ChatColor.GRAY;
-		Player player = e.getPlayer();
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent e) {
+        Player player = e.getPlayer();
+        PlayerMeta meta = PlayerMeta.getMeta(player);
+        if (meta.isAlive()) {
+            if (kitsToGive.containsKey(e.getPlayer().getName())) {
+                meta.setKit(kitsToGive.get(e.getPlayer().getName()));
+                kitsToGive.remove(e.getPlayer().getName());
+            }
+            e.setRespawnLocation(meta.getTeam().getRandomSpawn());
+            meta.getKit().give(player, meta.getTeam());
+        } else {
+            e.setRespawnLocation(plugin.getMapManager().getLobbySpawnPoint());
+            ItemStack selector = new ItemStack(Material.FEATHER);
+            ItemMeta itemMeta = selector.getItemMeta();
+            itemMeta.setDisplayName(ChatColor.AQUA
+                    + "Right click to select class");
+            selector.setItemMeta(itemMeta);
 
-		PlayerMeta meta = PlayerMeta.getMeta(player);
+            player.getInventory().setItem(0, selector);
+        }
+    }
 
-		if (player.hasPermission("annihilation.misc.updatenotify")
-				&& plugin.updateAvailable) {
-			player.sendMessage(prefix
-					+ ChatColor.GOLD
-					+ "An update is available! Please restart the server to apply this update.");
-			player.sendMessage(prefix + "Current Version: " + ChatColor.WHITE
-					+ plugin.getDescription().getVersion()
-					+ ChatColor.DARK_GRAY + " | " + ChatColor.GRAY
-					+ "Newest Version: " + ChatColor.WHITE + plugin.newVersion);
-		}
+    @EventHandler
+    public void onKick(PlayerKickEvent e) {
+        if (e.getReason().equals(ChatColor.RED + "ANNIHILATION-TRIGGER-KICK-01")) {
+            e.setReason(ChatColor.RED + "You cannot join the game in this phase!");
+            e.setLeaveMessage(null);
+        }
+    }
 
-		if (meta.isAlive())
-			player.teleport(meta.getTeam().getRandomSpawn());
-		else {
-			player.teleport(plugin.getMapManager().getLobbySpawnPoint());
-			PlayerInventory inv = player.getInventory();
-			inv.setHelmet(null);
-			inv.setChestplate(null);
-			inv.setLeggings(null);
-			inv.setBoots(null);
+    @SuppressWarnings("deprecation")
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        String prefix = ChatColor.DARK_AQUA + "[Annihilation] " + ChatColor.GRAY;
+        final Player player = e.getPlayer();
 
-			player.getInventory().clear();
+        PlayerMeta meta = PlayerMeta.getMeta(player);
 
-			for (PotionEffect effect : player.getActivePotionEffects())
-				player.removePotionEffect(effect.getType());
+        if (plugin.getPhase() > plugin.lastJoinPhase
+                && !player.hasPermission("annhilation.bypass.phaselimiter")) {
+            Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
+                public void run() {
+                    player.kickPlayer((ChatColor.RED
+                    + "ANNIHILATION-TRIGGER-KICK-01"));
+                }
+            }, 1l);
+            e.setJoinMessage(null);
+            return;
+        }
 
-			player.setLevel(0);
-			player.setExp(0);
-			player.setSaturation(20F);
+        player.sendMessage(prefix + ChatColor.GREEN + "Welcome to NexusGrinder!");
+        player.sendMessage(prefix + ChatColor.GRAY
+                + "Open-source replica by stuntguy3000 and coasterman10");
+        player.sendMessage(prefix + ChatColor.GRAY + "Original plugin by xxsaundersxx");
 
-			ItemStack selector = new ItemStack(Material.FEATHER);
-			ItemMeta itemMeta = selector.getItemMeta();
-			itemMeta.setDisplayName(ChatColor.AQUA
-					+ "Right click to select class");
-			selector.setItemMeta(itemMeta);
+        if (player.hasPermission("annihilation.misc.updatenotify")
+                && plugin.updateAvailable) {
+            player.sendMessage(prefix
+                    + ChatColor.GOLD
+                    + "An update is available! Please restart the server to apply this update.");
+            player.sendMessage(prefix + "Current Version: " + ChatColor.WHITE
+                    + plugin.getDescription().getVersion()
+                    + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY
+                    + "Newest Version: " + ChatColor.WHITE + plugin.newVersion);
+        }
 
-			player.getInventory().setItem(0, selector);
+        if (meta.isAlive())
+            player.teleport(meta.getTeam().getRandomSpawn());
+        else {
+            player.teleport(plugin.getMapManager().getLobbySpawnPoint());
+            PlayerInventory inv = player.getInventory();
+            inv.setHelmet(null);
+            inv.setChestplate(null);
+            inv.setLeggings(null);
+            inv.setBoots(null);
 
-			player.updateInventory();
-		}
+            player.getInventory().clear();
 
-		if (plugin.useMysql)
-			plugin.getDatabaseHandler()
-					.query("INSERT IGNORE INTO `annihilation` (`username`, `kills`, "
-							+ "`deaths`, `wins`, `losses`, `nexus_damage`) VALUES "
-							+ "('"
-							+ player.getName()
-							+ "', '0', '0', '0', '0', '0');");
+            for (PotionEffect effect : player.getActivePotionEffects())
+                player.removePotionEffect(effect.getType());
 
-		if (plugin.getPhase() == 0 && plugin.getVotingManager().isRunning()) {
-			BarUtil.setMessageAndPercent(player, ChatColor.DARK_AQUA
-					+ "Welcome to NexusGrinder!", 0.01f);
-			plugin.checkStarting();
-		}
+            player.setLevel(0);
+            player.setExp(0);
+            player.setSaturation(20F);
 
-		plugin.getSignHandler().updateSigns(meta.getTeam());
-		plugin.getScoreboardHandler().update();
-	}
+            ItemStack selector = new ItemStack(Material.FEATHER);
+            ItemMeta itemMeta = selector.getItemMeta();
+            itemMeta.setDisplayName(ChatColor.AQUA
+                    + "Right click to select class");
+            selector.setItemMeta(itemMeta);
 
-	@EventHandler
-	public void onPlayerDeath(PlayerDeathEvent e) {
-		Player p = e.getEntity();
+            player.getInventory().setItem(0, selector);
 
-		if (plugin.getPhase() > 0) {
-			PlayerMeta meta = PlayerMeta.getMeta(p);
-			if (!meta.getTeam().getNexus().isAlive()) {
-				meta.setAlive(false);
-				for (Player pp : Bukkit.getOnlinePlayers())
-					pp.hidePlayer(p);
-			}
-		}
+            player.updateInventory();
+        }
 
-		plugin.getStatsManager().setValue(StatType.DEATHS, p,
-				plugin.getStatsManager().getStat(StatType.DEATHS, p) + 1);
+        if (plugin.useMysql)
+            plugin.getDatabaseHandler()
+                    .query("INSERT IGNORE INTO `annihilation` (`username`, `kills`, "
+                            + "`deaths`, `wins`, `losses`, `nexus_damage`) VALUES "
+                            + "('"
+                            + player.getName()
+                            + "', '0', '0', '0', '0', '0');");
 
-		if (p.getKiller() != null && !p.getKiller().equals(p)) {
-			Player killer = p.getKiller();
-			plugin.getStatsManager().incrementStat(StatType.KILLS, killer);
-			e.setDeathMessage(ChatUtil.formatDeathMessage(p, p.getKiller(),
-					e.getDeathMessage()));
+        if (plugin.getPhase() == 0 && plugin.getVotingManager().isRunning()) {
+            BarUtil.setMessageAndPercent(player, ChatColor.DARK_AQUA
+                    + "Welcome to NexusGrinder!", 0.01f);
+            plugin.checkStarting();
+        }
 
-			if (PlayerMeta.getMeta(killer).getKit() == Kit.BERSERKER) {
-				addHeart(killer);
-			}
-		} else
-			e.setDeathMessage(ChatUtil.formatDeathMessage(p,
-					e.getDeathMessage()));
-		e.setDroppedExp(p.getTotalExperience());
-	}
+        plugin.getSignHandler().updateSigns(meta.getTeam());
+        plugin.getScoreboardHandler().update();
+    }
 
-	@EventHandler
-	public void onPlayerDamage(EntityDamageEvent e) {
-		if (e.getEntity() instanceof Player) {
-			if (e.getEntity().getWorld().getName().equals("lobby")) {
-				e.setCancelled(true);
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent e) {
+        final Player p = e.getEntity();
 
-				if (e.getCause() == DamageCause.VOID)
-					e.getEntity().teleport(
-							plugin.getMapManager().getLobbySpawnPoint());
-			}
-		}
-	}
+        if (plugin.getPhase() > 0) {
+            PlayerMeta meta = PlayerMeta.getMeta(p);
+            if (!meta.getTeam().getNexus().isAlive()) {
+                meta.setAlive(false);
+                for (Player pp : Bukkit.getOnlinePlayers())
+                    pp.hidePlayer(p);
+            }
+        }
 
-	@EventHandler
-	public void onPlayerPortal(PlayerPortalEvent e) {
-		Player player = e.getPlayer();
-		Util.showClassSelector(player, "Select Class   ");
-	}
+        plugin.getStatsManager().setValue(StatType.DEATHS, p,
+                plugin.getStatsManager().getStat(StatType.DEATHS, p) + 1);
 
-	@EventHandler
-	public void onPlayerAttack(EntityDamageByEntityEvent e) {
-		Entity damager = e.getDamager();
-		if (damager instanceof Player) {
-			if (damager.getWorld().getName().equals("lobby")) {
-				e.setCancelled(true);
-				return;
-			}
-			if (plugin.getPhase() < 1) {
-				e.setCancelled(true);
-				return;
-			}
+        if (p.getKiller() != null && !p.getKiller().equals(p)) {
+            Player killer = p.getKiller();
+            plugin.getStatsManager().incrementStat(StatType.KILLS, killer);
+            e.setDeathMessage(ChatUtil.formatDeathMessage(p, p.getKiller(),
+                    e.getDeathMessage()));
 
-			Player attacker = (Player) damager;
-			if (PlayerMeta.getMeta(attacker).getKit() == Kit.WARRIOR) {
-				ItemStack hand = attacker.getItemInHand();
-				if (hand != null) {
-					String lowercaseName = hand.getType().toString()
-							.toLowerCase();
-					if (lowercaseName.contains("sword")
-							|| lowercaseName.contains("axe"))
-						e.setDamage(e.getDamage() + 1.0);
-				}
-			}
-		}
-	}
+            if (PlayerMeta.getMeta(killer).getKit() == Kit.BERSERKER) {
+                addHeart(killer);
+            }
+        } else
+            e.setDeathMessage(ChatUtil.formatDeathMessage(p,
+                    e.getDeathMessage()));
+        e.setDroppedExp(p.getTotalExperience());
 
-	@EventHandler
-	public void onPlace(BlockPlaceEvent e) {
-		if (plugin.getPhase() > 0) {
-			if (Util.isEmptyColumn(e.getBlock().getLocation()))
-				e.setCancelled(true);
+        Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
+            public void run() {
+                PacketPlayInClientCommand in = new PacketPlayInClientCommand(EnumClientCommand.PERFORM_RESPAWN);
+                EntityPlayer cPlayer = ((CraftPlayer) p).getHandle();
+                cPlayer.playerConnection.a(in);
+            }
+        }, 1l);
+    }
 
-			if (tooClose(e.getBlock().getLocation())
-					&& !e.getPlayer().hasPermission("annihilation.buildbypass")) {
-				e.getPlayer().sendMessage(
-						ChatColor.RED
-								+ "You cannot build this close to the nexus!");
-				e.setCancelled(true);
-			}
-		} else {
-			if (!e.getPlayer().hasPermission("annihilation.buildbypass"))
-				e.setCancelled(true);
-		}
-	}
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent e) {
+        if (e.getEntity() instanceof Player) {
+            if (e.getEntity().getWorld().getName().equals("lobby")) {
+                e.setCancelled(true);
 
-	@EventHandler(ignoreCancelled = true)
-	public void onBreak(BlockBreakEvent e) {
-		if (plugin.getPhase() > 0) {
-			for (GameTeam t : GameTeam.teams()) {
-				if (t.getNexus().getLocation()
-						.equals(e.getBlock().getLocation())) {
-					e.setCancelled(true);
-					if (t.getNexus().isAlive())
-						breakNexus(t, e.getPlayer());
-					return;
-				}
-			}
+                if (e.getCause() == DamageCause.VOID)
+                    e.getEntity().teleport(
+                            plugin.getMapManager().getLobbySpawnPoint());
+            }
+        }
+    }
 
-			if (tooClose(e.getBlock().getLocation())
-					&& !e.getPlayer().hasPermission("annihilation.buildbypass")
-					&& e.getBlock().getType() != Material.ENDER_STONE) {
-				e.getPlayer().sendMessage(
-						ChatColor.RED
-								+ "You cannot build this close to the nexus!");
-				e.setCancelled(true);
-			}
-		} else {
-			if (!e.getPlayer().hasPermission("annihilation.buildbypass"))
-				e.setCancelled(true);
-		}
-	}
+    @EventHandler
+    public void onPlayerPortal(PlayerPortalEvent e) {
+        Player player = e.getPlayer();
+        Util.showClassSelector(player, "Select Class   ");
+    }
 
-	private boolean tooClose(Location loc) {
-		double x = loc.getX();
-		double y = loc.getY();
-		double z = loc.getZ();
+    @EventHandler
+    public void onPlayerAttack(EntityDamageByEntityEvent e) {
+        Entity damager = e.getDamager();
+        if (damager instanceof Player) {
+            if (damager.getWorld().getName().equals("lobby")) {
+                e.setCancelled(true);
+                return;
+            }
+            if (plugin.getPhase() < 1) {
+                e.setCancelled(true);
+                return;
+            }
 
-		for (GameTeam team : GameTeam.teams()) {
-			Location nexusLoc = team.getNexus().getLocation();
-			double nX = nexusLoc.getX();
-			double nY = nexusLoc.getY();
-			double nZ = nexusLoc.getZ();
-			if (Math.abs(nX - x) <= plugin.build
-					&& Math.abs(nY - y) <= plugin.build
-					&& Math.abs(nZ - z) <= plugin.build)
-				return true;
-		}
+            Player attacker = (Player) damager;
+            if (PlayerMeta.getMeta(attacker).getKit() == Kit.WARRIOR) {
+                ItemStack hand = attacker.getItemInHand();
+                if (hand != null) {
+                    String lowercaseName = hand.getType().toString()
+                            .toLowerCase();
+                    if (lowercaseName.contains("sword")
+                            || lowercaseName.contains("axe"))
+                        e.setDamage(e.getDamage() + 1.0);
+                }
+            }
+        }
+    }
 
-		return false;
-	}
+    @EventHandler
+    public void onPlace(BlockPlaceEvent e) {
+        if (plugin.getPhase() > 0) {
+            if (Util.isEmptyColumn(e.getBlock().getLocation()))
+                e.setCancelled(true);
 
-	private void addHeart(Player player) {
-		double maxHealth = player.getMaxHealth();
-		if (maxHealth < 30.0) {
-			double newMaxHealth = maxHealth + 2.0;
-			player.setMaxHealth(newMaxHealth);
-			player.setHealth(player.getHealth() + 2.0);
-		}
-	}
+            if (tooClose(e.getBlock().getLocation())
+                    && !e.getPlayer().hasPermission("annihilation.buildbypass")) {
+                e.getPlayer().sendMessage(
+                        ChatColor.RED
+                                + "You cannot build this close to the nexus!");
+                e.setCancelled(true);
+            }
+        } else {
+            if (!e.getPlayer().hasPermission("annihilation.buildbypass"))
+                e.setCancelled(true);
+        }
+    }
 
-	private void breakNexus(final GameTeam victim, Player breaker) {
-		GameTeam attacker = PlayerMeta.getMeta(breaker).getTeam();
-		if (victim == attacker)
-			breaker.sendMessage(ChatColor.DARK_AQUA
-					+ "You can't damage your own nexus");
-		else if (plugin.getPhase() == 1)
-			breaker.sendMessage(ChatColor.DARK_AQUA
-					+ "Nexuses are invincible in phase 1");
-		else {
-			plugin.getScoreboardHandler().sb.getTeam(victim.name() + "SB")
-					.setPrefix(ChatColor.RESET.toString());
-			victim.getNexus().damage(plugin.getPhase() == 5 ? 2 : 1);
+    @EventHandler(ignoreCancelled = true)
+    public void onBreak(BlockBreakEvent e) {
+        if (plugin.getPhase() > 0) {
+            for (GameTeam t : GameTeam.teams()) {
+                if (t.getNexus().getLocation()
+                        .equals(e.getBlock().getLocation())) {
+                    e.setCancelled(true);
+                    if (t.getNexus().isAlive())
+                        breakNexus(t, e.getPlayer());
+                    return;
+                }
+            }
 
-			plugin.getStatsManager().incrementStat(StatType.NEXUS_DAMAGE,
-					breaker, plugin.getPhase() == 5 ? 2 : 1);
+            if (tooClose(e.getBlock().getLocation())
+                    && !e.getPlayer().hasPermission("annihilation.buildbypass")
+                    && e.getBlock().getType() != Material.ENDER_STONE) {
+                e.getPlayer().sendMessage(
+                        ChatColor.RED
+                                + "You cannot build this close to the nexus!");
+                e.setCancelled(true);
+            }
+        } else {
+            if (!e.getPlayer().hasPermission("annihilation.buildbypass"))
+                e.setCancelled(true);
+        }
+    }
 
-			String msg = ChatUtil.nexusBreakMessage(breaker, attacker, victim);
-			for (Player p : attacker.getPlayers())
-				p.sendMessage(msg);
+    private boolean tooClose(Location loc) {
+        double x = loc.getX();
+        double y = loc.getY();
+        double z = loc.getZ();
 
-			plugin.getScoreboardHandler().scores.get(victim.name()).setScore(
-					victim.getNexus().getHealth());
-			Bukkit.getServer()
-					.getPluginManager()
-					.callEvent(
-							new NexusDamageEvent(breaker, victim, victim
-									.getNexus().getHealth()));
+        for (GameTeam team : GameTeam.teams()) {
+            Location nexusLoc = team.getNexus().getLocation();
+            double nX = nexusLoc.getX();
+            double nY = nexusLoc.getY();
+            double nZ = nexusLoc.getZ();
+            if (Math.abs(nX - x) <= plugin.build
+                    && Math.abs(nY - y) <= plugin.build
+                    && Math.abs(nZ - z) <= plugin.build)
+                return true;
+        }
 
-			Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-				public void run() {
-					plugin.getScoreboardHandler().sb.getTeam(
-							victim.name() + "SB").setPrefix(
-							victim.color().toString());
-				}
-			}, 2L);
+        return false;
+    }
 
-			Random r = new Random();
-			float pitch = 0.5F + r.nextFloat() * 0.5F;
-			victim.getNexus()
-					.getLocation()
-					.getWorld()
-					.playSound(victim.getNexus().getLocation(),
-							Sound.ANVIL_LAND, 1F, pitch);
+    private void addHeart(Player player) {
+        double maxHealth = player.getMaxHealth();
+        if (maxHealth < 30.0) {
+            double newMaxHealth = maxHealth + 2.0;
+            player.setMaxHealth(newMaxHealth);
+            player.setHealth(player.getHealth() + 2.0);
+        }
+    }
 
-			Location nexus = victim.getNexus().getLocation().clone();
-			nexus.add(0.5, 0, 0.5);
-			Util.ParticleEffects.sendToLocation(
-					Util.ParticleEffects.LAVA_SPARK, nexus, 1F, 1F, 1F, 0, 20);
-			Util.ParticleEffects.sendToLocation(
-					Util.ParticleEffects.LARGE_SMOKE, nexus, 1F, 1F, 1F, 0, 20);
+    private void breakNexus(final GameTeam victim, Player breaker) {
+        final GameTeam attacker = PlayerMeta.getMeta(breaker).getTeam();
+        if (victim == attacker)
+            breaker.sendMessage(ChatColor.DARK_AQUA
+                    + "You can't damage your own nexus");
+        else if (plugin.getPhase() == 1)
+            breaker.sendMessage(ChatColor.DARK_AQUA
+                    + "Nexuses are invincible in phase 1");
+        else {
+            plugin.getScoreboardHandler().sb.getTeam(victim.name() + "SB")
+                    .setPrefix(ChatColor.RESET.toString());
+            victim.getNexus().damage(plugin.getPhase() == 5 ? 2 : 1);
 
-			if (victim.getNexus().getHealth() == 0) {
-				plugin.getScoreboardHandler().sb.resetScores(plugin
-						.getScoreboardHandler().scores.remove(victim.name())
-						.getPlayer());
-				Bukkit.getServer().getPluginManager()
-						.callEvent(new NexusDestroyEvent(breaker, victim));
-				ChatUtil.nexusDestroyed(attacker, victim, breaker);
-				plugin.checkWin();
-				for (Player p : victim.getPlayers()) {
-					plugin.getStatsManager().incrementStat(StatType.LOSSES, p);
-				}
-				for (Player player : Bukkit.getOnlinePlayers()) {
-					player.getWorld().playSound(player.getLocation(),
-							Sound.EXPLODE, 1F, 1.25F);
-				}
+            plugin.getStatsManager().incrementStat(StatType.NEXUS_DAMAGE,
+                    breaker, plugin.getPhase() == 5 ? 2 : 1);
 
-				Util.spawnFirework(nexus, victim.getColor(victim),
-						victim.getColor(victim));
-				Util.ParticleEffects.sendToLocation(
-						Util.ParticleEffects.LARGE_EXPLODE, nexus, 1F, 1F, 1F,
-						0, 20);
-			}
+            String msg = ChatUtil.nexusBreakMessage(breaker, attacker, victim);
+            for (Player p : attacker.getPlayers())
+                p.sendMessage(msg);
 
-			plugin.getSignHandler().updateSigns(victim);
-		}
-	}
+            plugin.getScoreboardHandler().scores.get(victim.name()).setScore(
+                    victim.getNexus().getHealth());
+            Bukkit.getServer()
+                    .getPluginManager()
+                    .callEvent(
+                            new NexusDamageEvent(breaker, victim, victim
+                                    .getNexus().getHealth()));
 
-	@EventHandler
-	public void onFoodLevelChange(FoodLevelChangeEvent event) {
-		if (event.getEntity().getWorld().getName().equals("lobby")) {
-			event.setCancelled(true);
-			event.setFoodLevel(20);
-		}
-	}
+            Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
+                public void run() {
+                    plugin.getScoreboardHandler().sb.getTeam(
+                            victim.name() + "SB").setPrefix(
+                            victim.color().toString());
+                }
+            }, 2L);
 
-	@EventHandler
-	public void onInventoryClick(InventoryClickEvent e) {
-		Inventory inv = e.getInventory();
-		Player player = (Player) e.getWhoClicked();
-		if (inv.getTitle().startsWith("Select Class")) {
-			if (e.getCurrentItem().getType() == Material.AIR)
-				return;
-			player.closeInventory();
-			String name = e.getCurrentItem().getItemMeta().getDisplayName();
-			PlayerMeta meta = PlayerMeta.getMeta(player);
-			if (meta.isAlive() && !inv.getTitle().endsWith(" ")) {
-				player.sendMessage(ChatColor.GREEN
-						+ "You will recieve this class when you respawn.");
-				kitsToGive.put(player.getName(),
-						Kit.getKit(ChatColor.stripColor(name)));
-			} else {
-				meta.setKit(Kit.getKit(ChatColor.stripColor(name)));
-				if (meta.isAlive())
-					player.setHealth(0.0);
-			}
-			player.sendMessage(ChatColor.DARK_AQUA + "Selected class "
-					+ ChatColor.stripColor(name));
-		}
-	}
+            Random r = new Random();
+            float pitch = 0.5F + r.nextFloat() * 0.5F;
+            victim.getNexus()
+                    .getLocation()
+                    .getWorld()
+                    .playSound(victim.getNexus().getLocation(),
+                            Sound.ANVIL_LAND, 1F, pitch);
+
+            Location nexus = victim.getNexus().getLocation().clone();
+            nexus.add(0.5, 0, 0.5);
+            Util.ParticleEffects.sendToLocation(
+                    Util.ParticleEffects.LAVA_SPARK, nexus, 1F, 1F, 1F, 0, 20);
+            Util.ParticleEffects.sendToLocation(
+                    Util.ParticleEffects.LARGE_SMOKE, nexus, 1F, 1F, 1F, 0, 20);
+
+            if (victim.getNexus().getHealth() == 0) {
+                plugin.getScoreboardHandler().sb.resetScores(plugin
+                        .getScoreboardHandler().scores.remove(victim.name())
+                        .getPlayer());
+                Bukkit.getServer().getPluginManager()
+                        .callEvent(new NexusDestroyEvent(breaker, victim));
+                ChatUtil.nexusDestroyed(attacker, victim, breaker);
+
+                plugin.checkWin();
+
+                for (Player p : victim.getPlayers()) {
+                    plugin.getStatsManager().incrementStat(StatType.LOSSES, p);
+                }
+
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    player.getWorld().playSound(player.getLocation(),
+                            Sound.EXPLODE, 1F, 1.25F);
+                }
+
+                for (final Location spawn : victim.getSpawns()) {
+                    Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
+                        public void run() {
+                            Util.spawnFirework(spawn, attacker.getColor(attacker), attacker.getColor(attacker));
+                        }
+                    }, new Random().nextInt(20));
+                }
+
+                Util.ParticleEffects.sendToLocation(
+                        Util.ParticleEffects.LARGE_EXPLODE, nexus, 1F, 1F, 1F,
+                        0, 20);
+
+                Bukkit.getScheduler().runTask(plugin, new Runnable() {
+                    public void run() {
+                        Location nexus = victim.getNexus().getLocation()
+                                .clone();
+                        boolean found = false;
+                        int y = 0;
+
+                        while (!found) {
+                            y++;
+
+                            Block b = nexus.add(0, 1, 0).getBlock();
+
+                            if (b != null && b.getType() == Material.BEACON)
+                                b.setType(Material.AIR);
+
+                            if (y > 10)
+                                found = true;
+                        }
+                    }
+                });
+            }
+
+            plugin.getSignHandler().updateSigns(victim);
+        }
+    }
+
+    @EventHandler
+    public void onFoodLevelChange(FoodLevelChangeEvent event) {
+        if (event.getEntity().getWorld().getName().equals("lobby")) {
+            event.setCancelled(true);
+            event.setFoodLevel(20);
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent e) {
+        Inventory inv = e.getInventory();
+        Player player = (Player) e.getWhoClicked();
+        if (inv.getTitle().startsWith("Select Class")) {
+            if (e.getCurrentItem().getType() == Material.AIR)
+                return;
+            player.closeInventory();
+            String name = e.getCurrentItem().getItemMeta().getDisplayName();
+            PlayerMeta meta = PlayerMeta.getMeta(player);
+
+            if (!Kit.valueOf(ChatColor.stripColor(name).toUpperCase())
+                    .isOwnedBy(player)) {
+                player.sendMessage(ChatColor.RED + "You do not own this class.");
+                player.closeInventory();
+                return;
+            }
+
+            if (meta.isAlive() && !inv.getTitle().endsWith(" ")) {
+                player.sendMessage(ChatColor.GREEN
+                        + "You will recieve this class when you respawn.");
+                kitsToGive.put(player.getName(),
+                        Kit.getKit(ChatColor.stripColor(name)));
+            } else {
+                meta.setKit(Kit.getKit(ChatColor.stripColor(name)));
+                if (meta.isAlive())
+                    player.setHealth(0.0);
+            }
+            player.sendMessage(ChatColor.DARK_AQUA + "Selected class "
+                    + ChatColor.stripColor(name));
+        }
+    }
 }

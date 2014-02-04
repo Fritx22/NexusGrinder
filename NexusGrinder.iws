@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d4d544ad-b694-45c1-89e7-8483e2eee9f4" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\.name" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\copyright\profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\libraries\Maven__com_bergerkiller_bukkit_BKCommonLib_1_57.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\libraries\Maven__org_bukkit_bukkit_1_7_2_R0_1_SNAPSHOT.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\libraries\Maven__org_bukkit_craftbukkit_1_7_2_R0_1_SNAPSHOT.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\scopes\scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\.idea\workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\NexusGrinder.iml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\dependency-reduced-pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\src\main\java\net\.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\src\main\java\net\coasterman10\Annihilation\Metrics.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\Annihilation.jar" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\config.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\maps.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Metrics$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Metrics$Graph.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Metrics$Plotter.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Metrics.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\NexusGrinder$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\NexusGrinder$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\NexusGrinder$Util.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\NexusGrinder.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Updater$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Updater$ReleaseType.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Updater$UpdateResult.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Updater$UpdateRunnable.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Updater$UpdateType.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\Updater.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\api\BossSpawnEvent.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\api\GameStartEvent.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\api\NexusDamageEvent.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\api\NexusDestroyEvent.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\api\PhaseChangeEvent.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\bar\BarUtil$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\bar\BarUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\bar\FakeDragon.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\bar\Util.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\chat\ChatListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\chat\ChatListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\chat\ChatUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\ClassCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\DistanceCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\MapCommand$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\MapCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\NexusGrinderCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\StatsCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\TeamCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\TeamShortcutCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\commands\VoteCommand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\BossListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\BossListener$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\BossListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ClassAbilityListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ClassAbilityListener$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ClassAbilityListener$3.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ClassAbilityListener$4.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ClassAbilityListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\CraftingListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderBrewingStandListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderBrewingStandListener$VirtualBrewingStand$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderBrewingStandListener$VirtualBrewingStand.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderBrewingStandListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderChestListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderFurnaceListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderFurnaceListener$VirtualFurnace$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderFurnaceListener$VirtualFurnace.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\EnderFurnaceListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\PlayerListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\PlayerListener$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\PlayerListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ResourceListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ResourceListener$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ResourceListener$Resource.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\ResourceListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\SoulboundListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\WandListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\WandListener$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\WandListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\WorldListener$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\listeners\WorldListener.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\BossManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\ConfigManager$Configuration.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\ConfigManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\DatabaseManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\DatabaseManager$Result.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\DatabaseManager$Statements.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\DatabaseManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\PhaseManager$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\PhaseManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\RestartHandler$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\RestartHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\ScoreboardManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\SignManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\manager\SoundManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\maps\GameMap.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\maps\MapLoader.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\maps\MapManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\maps\VoidGenerator.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\maps\VotingManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Boss.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\GameTeam.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$1.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$2.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$3.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$4.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$5.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$6.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$7.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$8.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit$9.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Kit.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Nexus.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\PlayerMeta.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Shop$ShopItem.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\object\Shop.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\stats\StatType.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\me\morpig\NexusGrinder\stats\StatsManager.class" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\plugin.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\classes\shops.yml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\maven-archiver\pom.properties" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\maven-status\maven-compiler-plugin\compile\default-compile\createdFiles.lst" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\morpig\Documents\GitHub\NexusGrinder\target\original-Annihilation.jar" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Annihilation.iml" afterPath="$PROJECT_DIR$/Annihilation.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/AnnihilationCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/AnnihilationCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/BarUtil.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/BarUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Boss.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Boss.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/BossListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/BossListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/BossManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/BossManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/BossSpawnEvent.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/BossSpawnEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/chat/ChatUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ClassAbilityListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ClassAbilityListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/ConfigManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/ConfigManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/CraftingListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/CraftingListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/DatabaseManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/DatabaseManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/DistanceCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/DistanceCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderBrewingStandListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderBrewingStandListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderChestListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderChestListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderFurnaceListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/EnderFurnaceListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/FakeDragon.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/FakeDragon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/GameMap.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/GameMap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/GameStartEvent.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/GameStartEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/GameTeam.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/GameTeam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Kit.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Kit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/MapCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/MapCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/MapLoader.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/MapLoader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/MapManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/MapManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Nexus.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Nexus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/NexusDamageEvent.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/NexusDamageEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/NexusDestroyEvent.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/NexusDestroyEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/PhaseChangeEvent.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/api/PhaseChangeEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/PlayerMeta.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/PlayerMeta.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ResourceListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ResourceListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/RestartHandler.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/RestartHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/ScoreboardManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/ScoreboardManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Shop.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/Shop.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/SignManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/SignManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/SoulboundListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/SoulboundListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/SoundManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/SoundManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/stats/StatType.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/stats/StatType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/StatsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/StatsCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/stats/StatsManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/stats/StatsManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamShortcutCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamShortcutCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Util.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/Util.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/bar/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/VaultHooks.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/VaultHooks.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/VoidGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/VoidGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/VoteCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/VoteCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/VotingManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/VotingManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/WandListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/WandListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/WorldListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/WorldListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+    </list>
+    <ignored path="NexusGrinder.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="NexusGrinder" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="530" column="29" selection-start="20725" selection-end="20733" vertical-scroll-proportion="-15.076923" vertical-offset="6867" max-vertical-offset="7939">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="342" column="68" selection-start="14841" selection-end="14841" vertical-scroll-proportion="-1.5957447" vertical-offset="5575" max-vertical-offset="10064">
+              <folding>
+                <element signature="e#16263#16566#0" expanded="true" />
+                <element signature="e#16555#16556#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NexusGrinder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Annihilation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="listeners" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="SearchEverywhereHistory" value="Player" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <list size="0" />
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d4d544ad-b694-45c1-89e7-8483e2eee9f4" name="Default" comment="" />
+      <created>1391510259272</created>
+      <updated>1391510259272</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/NexusGrinder.iws">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4012">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1700">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="530" column="29" selection-start="20725" selection-end="20733" vertical-scroll-proportion="-15.076923" vertical-offset="6867" max-vertical-offset="7939">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="342" column="68" selection-start="14841" selection-end="14841" vertical-scroll-proportion="-1.5957447" vertical-offset="5575" max-vertical-offset="10064">
+          <folding>
+            <element signature="e#16263#16566#0" expanded="true" />
+            <element signature="e#16555#16556#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

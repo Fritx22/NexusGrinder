@@ -15,7 +15,7 @@ MySQL:
     user: mc_
     pass: mc_
     host: localhost
-    name: mc_
+    name: annihilation
     
 # Display Roman Numerals for phase numbers
 roman: true
@@ -35,8 +35,11 @@ bossRespawnDelay: 10
 # Enable the custom MOTD
 enableMotd: true
 
+# The last phase players can join a team
+lastJoinPhase: 2
+
 # Custom MOTD - Values you can use
 # %PHASE% %TIME% %PLAYERCOUNT% %MAXPLAYERS%
 # %GREENNEXUS% %REDNEXUS% %BLUENEXUS% %YELLOWNEXUS%
 # %GREENCOUNT% %REDCOUNT% %BLUECOUNT% %YELLOWCOUNT% 
-motd: '&3Phase: &b%PHASE% &8| &bTime left: &a%TIME%'
+motd: '&3Phase: &b%PHASE% &8| &bTime: &a%TIME%'

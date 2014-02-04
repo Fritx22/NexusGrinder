@@ -1,7 +1,8 @@
 name: Anni
-main: me.morpig.NexusGrinder.Annihilation
+main: net.coasterman10.Annihilation.Annihilation
 authors: [coasterman10, stuntguy3000]
-version: 1.41
+depend: [Vault]
+version: ${project.version}
 commands:
   annihilation:
     description: Plugin commands for Annihilation
