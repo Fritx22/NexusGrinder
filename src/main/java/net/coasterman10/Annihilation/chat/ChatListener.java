@@ -43,7 +43,7 @@ public class ChatListener implements Listener {
         boolean dead = !meta.isAlive() && plugin.getPhase() > 0;
         String msg = e.getMessage();
 
-        if (e.getMessage().startsWith("!") && !e.getMessage().equalsIgnoreCase("!")) {
+        if (e.getMessage().startsWith("@") && !e.getMessage().equalsIgnoreCase("@")) {
             isAll = true;
             msg = msg.substring(1);
         }
