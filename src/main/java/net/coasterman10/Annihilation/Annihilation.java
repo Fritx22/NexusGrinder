@@ -80,6 +80,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -88,9 +89,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scoreboard.Team;
-import org.mcstats.Metrics;
 
-public final class Annihilation extends JavaPlugin {
+public final class Annihilation extends JavaPlugin implements Listener {
     private ConfigManager configManager;
     private VotingManager voting;
     private MapManager maps;
@@ -160,6 +160,7 @@ public final class Annihilation extends JavaPlugin {
         pm.registerEvents(enderFurnaces, this);
         pm.registerEvents(enderBrewingStands, this);
         pm.registerEvents(enderChests, this);
+        pm.registerEvents(this, this);
         pm.registerEvents(new ChatListener(this), this);
         pm.registerEvents(new PlayerListener(this), this);
         pm.registerEvents(new WorldListener(), this);
