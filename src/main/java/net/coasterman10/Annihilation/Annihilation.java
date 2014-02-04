@@ -641,7 +641,8 @@ public final class Annihilation extends JavaPlugin implements Listener {
         if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
             int damageAmount = 2;
             e.getPlayer().damage(damageAmount);
-            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.AMBIENCE_RAIN, 150, 1);
+            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.AMBIENCE_RAIN, 10, 1);
+            e.getPlayer().sendMessage(ChatColor.GOLD + "[NexusGrinder]" + ChatColor.AQUA + "You can't swim on water!");
         }
     }
 
@@ -675,6 +676,9 @@ public final class Annihilation extends JavaPlugin implements Listener {
             loadMap(winner);
 
             voting.end();
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 1);
+            }
         }
 
         if (time == 0L)
