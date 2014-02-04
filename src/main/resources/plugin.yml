@@ -1,7 +1,6 @@
 name: NexusGrinder
 main: net.coasterman10.Annihilation.Annihilation
 authors: [coasterman10, stuntguy3000]
-depend: [Vault]
 version: ${project.version}
 commands:
   annihilation:
