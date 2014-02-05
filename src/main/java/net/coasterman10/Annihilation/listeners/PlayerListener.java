@@ -84,7 +84,7 @@ public class PlayerListener implements Listener {
             String motd = plugin.getConfig().getString("motd");
             try {
                 motd = motd.replaceAll("%PHASE%",
-                        String.valueOf(plugin.getPhase()));
+                        String.valueOf(plugin.getPhase() == 0 ? "Starting" : plugin.getPhase()));
                 motd = motd.replaceAll("%TIME%", plugin.getPhaseManager()
                         .timeString(plugin.getPhaseManager().getTime()));
                 motd = motd.replaceAll("%PLAYERCOUNT",
@@ -402,6 +402,17 @@ public class PlayerListener implements Listener {
             if (!e.getPlayer().hasPermission("annihilation.buildbypass"))
                 e.setCancelled(true);
         }
+
+        if (!e.isCancelled()) {
+            if (e.getBlock().getState() instanceof Sign) {
+                Sign s = (Sign) e.getBlock().getState();
+                if (e.getPlayer().hasPermission("annihilation.buildbypass")) {
+                    if (s.getLine(0).equals("Shop"))
+                        s.setLine(0, ChatColor.GOLD + "Shop");
+                    s.update(true);
+                }
+            }
+        }
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -532,7 +543,9 @@ public class PlayerListener implements Listener {
                 for (final Location spawn : victim.getSpawns()) {
                     Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
                         public void run() {
-                            Util.spawnFirework(spawn, attacker.getColor(attacker), attacker.getColor(attacker));
+                            Util.spawnFirework(spawn,
+                                    attacker.getColor(attacker),
+                                    attacker.getColor(attacker));
                         }
                     }, new Random().nextInt(20));
                 }

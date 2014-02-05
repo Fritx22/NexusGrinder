@@ -19,9 +19,7 @@
 package net.coasterman10.Annihilation;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.Level;
 
 import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
@@ -115,6 +113,9 @@ public final class Annihilation extends JavaPlugin implements Listener {
     public int lastJoinPhase = 2;
     public int respawn = 10;
 
+    public boolean runCommand = false;
+    public List<String> commands = new ArrayList<String>();
+
     public String mysqlName = "annihilation";
 
     @Override
@@ -125,6 +126,12 @@ public final class Annihilation extends JavaPlugin implements Listener {
                 "stats.yml");
 
         MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
+
+        runCommand = getConfig().contains("commandsToRunAtEndGame");
+
+        if (runCommand) {
+            commands = getConfig().getStringList("commandsToRunAtEndGame");
+        } else commands = null;
 
         maps = new MapManager(this, mapLoader,
                 configManager.getConfig("maps.yml"));
@@ -728,9 +735,11 @@ public final class Annihilation extends JavaPlugin implements Listener {
         ChatUtil.winMessage(winner);
         timer.stop();
 
-        for (Player p : getServer().getOnlinePlayers())
+        for (Player p : getServer().getOnlinePlayers()) {
             if (PlayerMeta.getMeta(p).getTeam() == winner)
                 stats.incrementStat(StatType.WINS, p);
+        }
+
         long restartDelay = configManager.getConfig("config.yml").getLong(
                 "restart-delay");
         RestartHandler rs = new RestartHandler(this, restartDelay);
@@ -741,6 +750,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
                 + " | " + ChatColor.GOLD + "/vote <name>");
         maps.reset();
+        PlayerMeta.reset();
         timer.reset();
         for (Player p : getServer().getOnlinePlayers()) {
             PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);

@@ -52,6 +52,10 @@ public class PlayerMeta {
             team = GameTeam.NONE;
     }
 
+    public static void reset() {
+        metaTable.clear();
+    }
+
     public GameTeam getTeam() {
         return team;
     }

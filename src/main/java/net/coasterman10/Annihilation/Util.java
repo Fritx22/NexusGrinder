@@ -208,6 +208,8 @@ public class Util {
     
     public static Location parseLocation(World w, String in) {
         String[] params = in.split(",");
+        for (String s : params)
+        s.replace("0", "0");
         if (params.length == 3 || params.length == 5) {
             double x = Double.parseDouble(params[0]);
             double y = Double.parseDouble(params[1]);

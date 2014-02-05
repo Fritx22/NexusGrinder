@@ -147,6 +147,6 @@ public class PhaseManager {
         long seconds = time - hours * 3600L - minutes * 60L;
         return String.format(ChatColor.WHITE + "%02d" + ChatColor.GRAY + ":"
                 + ChatColor.WHITE + "%02d" + ChatColor.GRAY + ":"
-                + ChatColor.WHITE + "%02d", hours, minutes, seconds);
+                + ChatColor.WHITE + "%02d", hours, minutes, seconds).replace("-", "");
     }
 }

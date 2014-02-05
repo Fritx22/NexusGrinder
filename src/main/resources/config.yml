@@ -43,3 +43,8 @@ lastJoinPhase: 2
 # %GREENNEXUS% %REDNEXUS% %BLUENEXUS% %YELLOWNEXUS%
 # %GREENCOUNT% %REDCOUNT% %BLUECOUNT% %YELLOWCOUNT% 
 motd: '&3Phase: &b%PHASE% &8| &bTime: &a%TIME%'
+
+# Un-comment the below to enable
+# NOTICE: If enabled the game WILL NOT AUTO RESTART.
+# commandsToRunAtEndGame:
+# - "stop"
