@@ -646,10 +646,10 @@ public final class Annihilation extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerSwim(PlayerMoveEvent e) {
         if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
-            int damageAmount = 2;
+            int damageAmount = 1;
             e.getPlayer().damage(damageAmount);
             e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.AMBIENCE_RAIN, 10, 1);
-            e.getPlayer().sendMessage(ChatColor.GOLD + "[NexusGrinder]" + ChatColor.AQUA + "You can't swim on water!");
+            e.getPlayer().sendMessage(ChatColor.GOLD + "[NexusGrinder]" + ChatColor.AQUA + " You can't swim on water!");
         }
     }
 

@@ -4,12 +4,6 @@
     <list default="true" id="d4d544ad-b694-45c1-89e7-8483e2eee9f4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NexusGrinder.iws" afterPath="$PROJECT_DIR$/NexusGrinder.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/PlayerMeta.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/PlayerMeta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/RestartHandler.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/RestartHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Util.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Util.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config.yml" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" />
     </list>
     <ignored path="NexusGrinder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,10 +67,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="745" column="6" selection-start="31531" selection-end="31531" vertical-scroll-proportion="-8.730769" vertical-offset="12438" max-vertical-offset="15912">
+            <state line="648" column="32" selection-start="28856" selection-end="28856" vertical-scroll-proportion="0.23674242" vertical-offset="10891" max-vertical-offset="15912">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -87,29 +81,29 @@
                 <element signature="e#27970#27971#0" expanded="true" />
                 <element signature="e#28050#28656#0" expanded="true" />
                 <element signature="e#28645#28646#0" expanded="true" />
-                <element signature="e#30399#30400#0" expanded="true" />
-                <element signature="e#30426#30427#0" expanded="true" />
-                <element signature="e#30471#30472#0" expanded="true" />
-                <element signature="e#30499#30500#0" expanded="true" />
-                <element signature="e#30550#30551#0" expanded="true" />
-                <element signature="e#30575#30576#0" expanded="true" />
-                <element signature="e#30622#30623#0" expanded="true" />
-                <element signature="e#30658#30659#0" expanded="true" />
-                <element signature="e#30901#30902#0" expanded="true" />
-                <element signature="e#30930#30931#0" expanded="true" />
-                <element signature="e#30985#30986#0" expanded="true" />
-                <element signature="e#31010#31011#0" expanded="true" />
-                <element signature="e#32555#33874#0" expanded="true" />
-                <element signature="e#32584#32616#0" expanded="true" />
-                <element signature="e#33863#33864#0" expanded="true" />
-                <element signature="e#34258#34259#0" expanded="true" />
-                <element signature="e#34285#34286#0" expanded="true" />
-                <element signature="e#34337#34338#0" expanded="true" />
-                <element signature="e#34369#34370#0" expanded="true" />
-                <element signature="e#34640#34641#0" expanded="true" />
-                <element signature="e#34667#34668#0" expanded="true" />
-                <element signature="e#34712#34713#0" expanded="true" />
-                <element signature="e#34740#34741#0" expanded="true" />
+                <element signature="e#30400#30401#0" expanded="true" />
+                <element signature="e#30427#30428#0" expanded="true" />
+                <element signature="e#30472#30473#0" expanded="true" />
+                <element signature="e#30500#30501#0" expanded="true" />
+                <element signature="e#30551#30552#0" expanded="true" />
+                <element signature="e#30576#30577#0" expanded="true" />
+                <element signature="e#30623#30624#0" expanded="true" />
+                <element signature="e#30659#30660#0" expanded="true" />
+                <element signature="e#30902#30903#0" expanded="true" />
+                <element signature="e#30931#30932#0" expanded="true" />
+                <element signature="e#30986#30987#0" expanded="true" />
+                <element signature="e#31011#31012#0" expanded="true" />
+                <element signature="e#32556#33875#0" expanded="true" />
+                <element signature="e#32585#32617#0" expanded="true" />
+                <element signature="e#33864#33865#0" expanded="true" />
+                <element signature="e#34259#34260#0" expanded="true" />
+                <element signature="e#34286#34287#0" expanded="true" />
+                <element signature="e#34338#34339#0" expanded="true" />
+                <element signature="e#34370#34371#0" expanded="true" />
+                <element signature="e#34641#34642#0" expanded="true" />
+                <element signature="e#34668#34669#0" expanded="true" />
+                <element signature="e#34713#34714#0" expanded="true" />
+                <element signature="e#34741#34742#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -177,7 +171,7 @@
       <file leaf-file-name="PlayerListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="29" selection-start="3949" selection-end="3949" vertical-scroll-proportion="-9.538462" vertical-offset="1282" max-vertical-offset="10676">
+            <state line="71" column="18" selection-start="3168" selection-end="3174" vertical-scroll-proportion="-6.923077" vertical-offset="1027" max-vertical-offset="10676">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -197,10 +191,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhaseManager.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PhaseManager.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="83" selection-start="4851" selection-end="4851" vertical-scroll-proportion="0.7171904" vertical-offset="1601" max-vertical-offset="2142">
+            <state line="149" column="83" selection-start="4851" selection-end="4851" vertical-scroll-proportion="-14.923077" vertical-offset="1601" max-vertical-offset="2142">
               <folding>
                 <element signature="e#2006#2154#0" expanded="true" />
                 <element signature="e#2131#2132#0" expanded="true" />
@@ -243,11 +237,11 @@
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/SignManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/object/PlayerMeta.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Util.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/RestartHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/config.yml" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
       </list>
     </option>
   </component>
@@ -259,7 +253,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1358" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -653,7 +647,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="SearchEverywhereHistory" value="Phase&#10;PlayerL&#10;Restart&#10;Util&#10;Player&#10;A&#10;Nexus&#10;Sign&#10;Play&#10;Tea" />
+    <property name="SearchEverywhereHistory" value="Annihi&#10;Phase&#10;PlayerL&#10;Restart&#10;Util&#10;Player&#10;A&#10;Nexus&#10;Sign&#10;Play&#10;Tea" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
@@ -760,7 +754,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -992,46 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="745" column="6" selection-start="31531" selection-end="31531" vertical-scroll-proportion="-8.730769" vertical-offset="12438" max-vertical-offset="15912">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#5427#5435#0" expanded="true" />
-            <element signature="e#25175#25189#0" expanded="true" />
-            <element signature="e#25900#25910#0" expanded="true" />
-            <element signature="e#27655#27981#0" expanded="true" />
-            <element signature="e#27970#27971#0" expanded="true" />
-            <element signature="e#28050#28656#0" expanded="true" />
-            <element signature="e#28645#28646#0" expanded="true" />
-            <element signature="e#30399#30400#0" expanded="true" />
-            <element signature="e#30426#30427#0" expanded="true" />
-            <element signature="e#30471#30472#0" expanded="true" />
-            <element signature="e#30499#30500#0" expanded="true" />
-            <element signature="e#30550#30551#0" expanded="true" />
-            <element signature="e#30575#30576#0" expanded="true" />
-            <element signature="e#30622#30623#0" expanded="true" />
-            <element signature="e#30658#30659#0" expanded="true" />
-            <element signature="e#30901#30902#0" expanded="true" />
-            <element signature="e#30930#30931#0" expanded="true" />
-            <element signature="e#30985#30986#0" expanded="true" />
-            <element signature="e#31010#31011#0" expanded="true" />
-            <element signature="e#32555#33874#0" expanded="true" />
-            <element signature="e#32584#32616#0" expanded="true" />
-            <element signature="e#33863#33864#0" expanded="true" />
-            <element signature="e#34258#34259#0" expanded="true" />
-            <element signature="e#34285#34286#0" expanded="true" />
-            <element signature="e#34337#34338#0" expanded="true" />
-            <element signature="e#34369#34370#0" expanded="true" />
-            <element signature="e#34640#34641#0" expanded="true" />
-            <element signature="e#34667#34668#0" expanded="true" />
-            <element signature="e#34712#34713#0" expanded="true" />
-            <element signature="e#34740#34741#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/RestartHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="94" column="3" selection-start="3755" selection-end="3755" vertical-scroll-proportion="-12.461538" vertical-offset="696" max-vertical-offset="1224">
@@ -1046,9 +1000,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="149" column="83" selection-start="4851" selection-end="4851" vertical-scroll-proportion="-14.923077" vertical-offset="1601" max-vertical-offset="2142">
+          <folding>
+            <element signature="e#2006#2154#0" expanded="true" />
+            <element signature="e#2131#2132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="29" selection-start="3949" selection-end="3949" vertical-scroll-proportion="-9.538462" vertical-offset="1282" max-vertical-offset="10676">
+        <state line="71" column="18" selection-start="3168" selection-end="3174" vertical-scroll-proportion="-6.923077" vertical-offset="1027" max-vertical-offset="10676">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1067,12 +1031,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/manager/PhaseManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="83" selection-start="4851" selection-end="4851" vertical-scroll-proportion="0.7171904" vertical-offset="1601" max-vertical-offset="2142">
+        <state line="648" column="32" selection-start="28856" selection-end="28856" vertical-scroll-proportion="0.23674242" vertical-offset="10891" max-vertical-offset="15912">
           <folding>
-            <element signature="e#2006#2154#0" expanded="true" />
-            <element signature="e#2131#2132#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#5427#5435#0" expanded="true" />
+            <element signature="e#25175#25189#0" expanded="true" />
+            <element signature="e#25900#25910#0" expanded="true" />
+            <element signature="e#27655#27981#0" expanded="true" />
+            <element signature="e#27970#27971#0" expanded="true" />
+            <element signature="e#28050#28656#0" expanded="true" />
+            <element signature="e#28645#28646#0" expanded="true" />
+            <element signature="e#30400#30401#0" expanded="true" />
+            <element signature="e#30427#30428#0" expanded="true" />
+            <element signature="e#30472#30473#0" expanded="true" />
+            <element signature="e#30500#30501#0" expanded="true" />
+            <element signature="e#30551#30552#0" expanded="true" />
+            <element signature="e#30576#30577#0" expanded="true" />
+            <element signature="e#30623#30624#0" expanded="true" />
+            <element signature="e#30659#30660#0" expanded="true" />
+            <element signature="e#30902#30903#0" expanded="true" />
+            <element signature="e#30931#30932#0" expanded="true" />
+            <element signature="e#30986#30987#0" expanded="true" />
+            <element signature="e#31011#31012#0" expanded="true" />
+            <element signature="e#32556#33875#0" expanded="true" />
+            <element signature="e#32585#32617#0" expanded="true" />
+            <element signature="e#33864#33865#0" expanded="true" />
+            <element signature="e#34259#34260#0" expanded="true" />
+            <element signature="e#34286#34287#0" expanded="true" />
+            <element signature="e#34338#34339#0" expanded="true" />
+            <element signature="e#34370#34371#0" expanded="true" />
+            <element signature="e#34641#34642#0" expanded="true" />
+            <element signature="e#34668#34669#0" expanded="true" />
+            <element signature="e#34713#34714#0" expanded="true" />
+            <element signature="e#34741#34742#0" expanded="true" />
           </folding>
         </state>
       </provider>
