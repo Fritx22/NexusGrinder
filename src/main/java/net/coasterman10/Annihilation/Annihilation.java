@@ -684,7 +684,13 @@ public final class Annihilation extends JavaPlugin implements Listener {
     public void onSecond() {
         long time = timer.getTime();
 
+        if (time == 10L) {
+            voting.end();
+            getServer().broadcastMessage(ChatColor.GOLD + "Voting is now closed!");
+        }
+
         if (time == -5L) {
+
             String winner = voting.getWinner();
             maps.selectMap(winner);
             getServer().broadcastMessage(
@@ -692,7 +698,6 @@ public final class Annihilation extends JavaPlugin implements Listener {
                             + " was chosen!");
             loadMap(winner);
 
-            voting.end();
             for (Player p : Bukkit.getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 1);
             }
