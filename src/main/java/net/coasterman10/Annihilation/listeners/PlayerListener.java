@@ -254,11 +254,6 @@ public class PlayerListener implements Listener {
                 + "Idea from the brain of _BritishCow_");
         player.sendMessage(prefix + ChatColor.GOLD + "Coded by morpigthekidMC");
 
-        if (player.getName().equals("morpigthekidMC") || player.getName().equals("_BritishCow_") || player.getName().equals("CubedRams")) {
-            player.sendMessage(prefix + ChatColor.GOLD + "Running " + plugin.getDescription().getVersion() + " NexusGrinder");
-            player.sendMessage(prefix + ChatColor.GOLD + "Running DogeBukkit " + plugin.getServer().getVersion());
-        }
-
         if (meta.isAlive())
             player.teleport(meta.getTeam().getRandomSpawn());
         else {

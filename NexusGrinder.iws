@@ -157,7 +157,7 @@
       <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="0" selection-start="11192" selection-end="11192" vertical-scroll-proportion="0.7617329" vertical-offset="3114" max-vertical-offset="9690">
+            <state line="254" column="80" selection-start="10798" selection-end="10798" vertical-scroll-proportion="0.45487365" vertical-offset="3182" max-vertical-offset="9605">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -1245,7 +1245,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="0" selection-start="11192" selection-end="11192" vertical-scroll-proportion="0.7617329" vertical-offset="3114" max-vertical-offset="9690">
+        <state line="254" column="80" selection-start="10798" selection-end="10798" vertical-scroll-proportion="0.45487365" vertical-offset="3182" max-vertical-offset="9605">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
