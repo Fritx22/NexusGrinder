@@ -705,16 +705,14 @@ public final class Annihilation extends JavaPlugin implements Listener {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 1);
                 p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
+                p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2F);
+                p.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 10, 2F);
+                p.playSound(p.getLocation(), Sound.NOTE_PIANO, 10, 2F);
             }
         }
 
         if (time == 0L)
             startGame();
-        for (Player p : Bukkit.getOnlinePlayers()) {
-            p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 2F);
-            p.playSound(p.getLocation(), Sound.NOTE_BASS_GUITAR, 10, 2F);
-            p.playSound(p.getLocation(), Sound.NOTE_PIANO, 10, 2F);
-        }
     }
 
     public int getPhase() {
