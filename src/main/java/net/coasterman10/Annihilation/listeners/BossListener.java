@@ -29,6 +29,8 @@ import org.bukkit.entity.IronGolem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByBlockEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -44,13 +46,6 @@ public class BossListener implements Listener {
     @EventHandler
     public void onHit(EntityDamageEvent event) {
         if (event.getEntity() instanceof IronGolem) {
-            if (event.getCause() == DamageCause.FALL
-                    || event.getCause() == DamageCause.DROWNING
-                    || event.getCause() == DamageCause.FIRE
-                    || event.getCause() == DamageCause.FIRE_TICK) {
-                event.setCancelled(true);
-                return;
-            }
 
             final IronGolem g = (IronGolem) event.getEntity();
             if (g.getCustomName() == null)
@@ -62,8 +57,15 @@ public class BossListener implements Listener {
                 return;
 
             if (event.getCause() == DamageCause.VOID) {
-                event.setCancelled(true);
-                g.teleport(b.getSpawn());
+                event.getEntity().remove();
+
+                Bukkit.getScheduler().runTask(plugin, new Runnable() {
+                    @Override
+                    public void run() {
+                        Boss n = plugin.getBossManager().newBoss(b);
+                        plugin.getBossManager().spawn(n);
+                    }
+                });
                 return;
             }
 
@@ -72,6 +74,25 @@ public class BossListener implements Listener {
                     plugin.getBossManager().update(b, g);
                 }
             });
+        }
+    }
+
+    @EventHandler
+    public void onHit(EntityDamageByEntityEvent e) {
+        if (e.getEntity() instanceof IronGolem) {
+            if (!(e.getDamager() instanceof Player)) {
+                e.setCancelled(true);
+
+                final IronGolem g = (IronGolem) e.getEntity();
+                if (g.getCustomName() == null)
+                    return;
+
+                final Boss b = plugin.getBossManager().bossNames.get(g
+                .getCustomName());
+
+                if (b == null)
+                    return;
+            }
         }
     }
 

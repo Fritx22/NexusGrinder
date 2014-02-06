@@ -18,13 +18,9 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation.commands;
 
+import static net.coasterman10.Annihilation.Translation._;
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.Util;
-import net.coasterman10.Annihilation.object.GameTeam;
-import net.coasterman10.Annihilation.object.PlayerMeta;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -43,7 +39,7 @@ public class TeamCommand implements CommandExecutor {
             plugin.listTeams(sender);
         else {
             if (!(sender instanceof Player)) {
-                sender.sendMessage("Only players can join teams");
+                sender.sendMessage(_("ERROR_CONSOLE_PLAYERCOMMAND"));
             } else {
                 plugin.joinTeam((Player) sender, args[0]);
             }

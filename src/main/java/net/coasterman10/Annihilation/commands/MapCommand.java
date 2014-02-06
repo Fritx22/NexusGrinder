@@ -1,16 +1,16 @@
 /*******************************************************************************
  * Copyright 2014 stuntguy3000 (Luke Anderson) and coasterman10.
- *  
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -18,6 +18,7 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation.commands;
 
+import static net.coasterman10.Annihilation.Translation._;
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.maps.MapLoader;
 import net.coasterman10.Annihilation.maps.VoidGenerator;
@@ -46,8 +47,8 @@ public class MapCommand implements CommandExecutor {
         String gray = ChatColor.GRAY.toString();
         String red = ChatColor.RED.toString();
         final String green = ChatColor.GREEN.toString();
-        String prefix = cyan + "[NexusGrinder] " + gray;
-        
+        String prefix = cyan + "[Annihilation] " + gray;
+
         if (sender instanceof Player) {
             Player p = (Player) sender;
             if (args.length == 2) {
@@ -66,7 +67,7 @@ public class MapCommand implements CommandExecutor {
                             loc.setY(w.getHighestBlockYAt(loc));
                             ((Player) sender).teleport(loc);
                         }
-                    } else sender.sendMessage(prefix + red + "You cannot use this command!");
+                    } else sender.sendMessage(prefix + red + _("ERROR_PLAYER_NOPERMISSION"));
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("save")) {
@@ -83,17 +84,17 @@ public class MapCommand implements CommandExecutor {
                                 }
                             }, 40L);
                         }
-                    } else sender.sendMessage(prefix + red + "You cannot use this command!");
+                    } else sender.sendMessage(prefix + red + _("ERROR_PLAYER_NOPERMISSION"));
                     return true;
                 }
             }
-            
+
             sender.sendMessage(prefix + red + "Syntax: /map <save/edit> <name>");
         } else {
-            sender.sendMessage(prefix + red + "Only a player can use the map editing tools!");
+            sender.sendMessage(prefix + red + _("ERROR_CONSOLE_PLAYERCOMMAND"));
         }
         return true;
     }
 
-    
+
 }

@@ -354,8 +354,14 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onPlayerPortal(PlayerPortalEvent e) {
-        Player player = e.getPlayer();
-        Util.showClassSelector(player, "Select Class   ");
+        final Player player = e.getPlayer();
+        player.setHealth(0D);
+        Bukkit.getScheduler().runTaskLater(plugin , new Runnable() {
+            @Override
+            public void run() {
+                Util.showClassSelector(player, "Select Class");
+            }
+        }, 41);
     }
 
     @EventHandler
@@ -596,28 +602,20 @@ public class PlayerListener implements Listener {
             if (e.getCurrentItem().getType() == Material.AIR)
                 return;
             player.closeInventory();
+            e.setCancelled(true);
             String name = e.getCurrentItem().getItemMeta().getDisplayName();
             PlayerMeta meta = PlayerMeta.getMeta(player);
 
             if (!Kit.valueOf(ChatColor.stripColor(name).toUpperCase())
                     .isOwnedBy(player)) {
                 player.sendMessage(ChatColor.RED + "You do not own this class.");
-                player.closeInventory();
                 return;
             }
 
-            if (meta.isAlive() && !inv.getTitle().endsWith(" ")) {
-                player.sendMessage(ChatColor.GREEN
-                        + "You will recieve this class when you respawn.");
-                kitsToGive.put(player.getName(),
-                        Kit.getKit(ChatColor.stripColor(name)));
-            } else {
-                meta.setKit(Kit.getKit(ChatColor.stripColor(name)));
-                if (meta.isAlive())
-                    player.setHealth(0.0);
-            }
-            player.sendMessage(ChatColor.DARK_AQUA + "Selected class "
-                    + ChatColor.stripColor(name));
+            player.sendMessage(ChatColor.GREEN +
+            "You will recieve this class when you respawn.");
+            meta.setKit(Kit.getKit(ChatColor.stripColor(name)));
+            player.sendMessage(ChatColor.DARK_AQUA + "Selected class " + ChatColor.stripColor(name));
         }
     }
 }

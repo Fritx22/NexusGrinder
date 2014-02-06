@@ -177,9 +177,9 @@ public class ClassAbilityListener implements Listener {
         Player player = (Player) e.getEntity();
         PlayerMeta meta = PlayerMeta.getMeta(player);
         if (meta.getKit() == Kit.SCOUT && e.getCause() == DamageCause.FALL) {
-            if (player.getItemInHand() != null 
-                    && player.getItemInHand().hasItemMeta() 
-                    && player.getItemInHand().getItemMeta().hasDisplayName() 
+            if (player.getItemInHand() != null
+                    && player.getItemInHand().hasItemMeta()
+                    && player.getItemInHand().getItemMeta().hasDisplayName()
                     && player.getItemInHand().getItemMeta().getDisplayName().contains("Grapple"))
                 e.setDamage(e.getDamage() / 2.0);
         }
@@ -213,7 +213,7 @@ public class ClassAbilityListener implements Listener {
                     blockLocations.remove(name);
                 } else if (cooldown == 20 || cooldown == 10 || cooldown <= 5) {
                     player.sendMessage(ChatColor.DARK_AQUA
-                            + "Teleporting back in " + cooldown + " seconds");
+                            + "Teleporting back in " + cooldown + " second" + (cooldown == 1 ? "" : "s"));
                 }
             default:
                 continue;
