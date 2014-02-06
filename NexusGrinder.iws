@@ -78,26 +78,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="661" column="86" selection-start="29519" selection-end="29519" vertical-scroll-proportion="-9.653846" vertical-offset="10918" max-vertical-offset="15572">
+            <state line="130" column="42" selection-start="5956" selection-end="5956" vertical-scroll-proportion="0.11657559" vertical-offset="2146" max-vertical-offset="15572">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#5343#5359#0" expanded="true" />
                 <element signature="e#5684#5692#0" expanded="true" />
-                <element signature="e#25702#25716#0" expanded="true" />
-                <element signature="e#26427#26437#0" expanded="true" />
+                <element signature="e#25718#25732#0" expanded="true" />
+                <element signature="e#26443#26453#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messages.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="messages.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="14" selection-start="915" selection-end="915" vertical-scroll-proportion="0.52040815" vertical-offset="0" max-vertical-offset="588">
+            <state line="12" column="31" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
               <folding />
             </state>
           </provider>
@@ -147,8 +147,8 @@
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/StatsCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/VoteCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
         <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
       </list>
     </option>
   </component>
@@ -554,7 +554,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="SearchEverywhereHistory" value="VoteCo&#10;TeamCom&#10;TeamCo&#10;Stat&#10;MapCo&#10;Dista&#10;ClassCo&#10;PlayerL&#10;Class&#10;Listen&#10;BossL&#10;Annihi&#10;Phase&#10;Restart&#10;Util&#10;Player&#10;A&#10;Nexus&#10;Sign&#10;Play&#10;Tea" />
+    <property name="SearchEverywhereHistory" value="&#10;VoteCo&#10;TeamCom&#10;TeamCo&#10;Stat&#10;MapCo&#10;Dista&#10;ClassCo&#10;PlayerL&#10;Class&#10;Listen&#10;BossL&#10;Annihi&#10;Phase&#10;Restart&#10;Util&#10;Player&#10;A&#10;Nexus&#10;Sign&#10;Play&#10;Tea" />
     <property name="last_opened_file_path" value="$MCP_LOC$" />
   </component>
   <component name="RunManager">
@@ -753,8 +753,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5343#5359#0" expanded="true" />
             <element signature="e#5684#5692#0" expanded="true" />
-            <element signature="e#25702#25716#0" expanded="true" />
-            <element signature="e#26427#26437#0" expanded="true" />
+            <element signature="e#25718#25732#0" expanded="true" />
+            <element signature="e#26443#26453#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1155,24 +1155,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="31" selection-start="671" selection-end="671" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="661" column="86" selection-start="29519" selection-end="29519" vertical-scroll-proportion="-9.653846" vertical-offset="10918" max-vertical-offset="15572">
+        <state line="130" column="42" selection-start="5956" selection-end="5956" vertical-scroll-proportion="0.11657559" vertical-offset="2146" max-vertical-offset="15572">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#5343#5359#0" expanded="true" />
             <element signature="e#5684#5692#0" expanded="true" />
-            <element signature="e#25702#25716#0" expanded="true" />
-            <element signature="e#26427#26437#0" expanded="true" />
+            <element signature="e#25718#25732#0" expanded="true" />
+            <element signature="e#26443#26453#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="14" selection-start="915" selection-end="915" vertical-scroll-proportion="0.52040815" vertical-offset="0" max-vertical-offset="588">
-          <folding />
         </state>
       </provider>
     </entry>
