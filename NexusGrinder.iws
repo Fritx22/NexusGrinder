@@ -126,7 +126,12 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/GameMap.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="26" column="13" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="595">
-              <folding />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1658#1659#0" expanded="false" />
+                <element signature="e#1686#1687#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,7 +157,7 @@
       <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="260" column="0" selection-start="11177" selection-end="11177" vertical-scroll-proportion="0.6696751" vertical-offset="3165" max-vertical-offset="9690">
+            <state line="260" column="0" selection-start="11192" selection-end="11192" vertical-scroll-proportion="0.7617329" vertical-offset="3114" max-vertical-offset="9690">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -992,7 +997,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="34" selection-start="1727" selection-end="1727" vertical-scroll-proportion="0.0" vertical-offset="113" max-vertical-offset="680">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1192,8 +1197,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/maps/GameMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="13" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-          <folding />
+        <state line="26" column="13" selection-start="1149" selection-end="1149" vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="595">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1658#1659#0" expanded="false" />
+            <element signature="e#1686#1687#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1235,7 +1245,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="260" column="0" selection-start="11177" selection-end="11177" vertical-scroll-proportion="0.6696751" vertical-offset="3165" max-vertical-offset="9690">
+        <state line="260" column="0" selection-start="11192" selection-end="11192" vertical-scroll-proportion="0.7617329" vertical-offset="3114" max-vertical-offset="9690">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
