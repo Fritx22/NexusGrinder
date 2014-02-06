@@ -70,7 +70,7 @@
       <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="693" column="47" selection-start="30393" selection-end="30393" vertical-scroll-proportion="0.46212122" vertical-offset="11469" max-vertical-offset="15657">
+            <state line="698" column="77" selection-start="30712" selection-end="30712" vertical-scroll-proportion="0.51704544" vertical-offset="11525" max-vertical-offset="15708">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -78,6 +78,7 @@
                 <element signature="e#5684#5692#0" expanded="true" />
                 <element signature="e#25718#25732#0" expanded="true" />
                 <element signature="e#26443#26453#0" expanded="true" />
+                <element signature="e#33271#33303#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -213,7 +214,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
@@ -754,7 +755,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -808,6 +809,7 @@
             <element signature="e#5684#5692#0" expanded="true" />
             <element signature="e#25718#25732#0" expanded="true" />
             <element signature="e#26443#26453#0" expanded="true" />
+            <element signature="e#33271#33303#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1222,7 +1224,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="693" column="47" selection-start="30393" selection-end="30393" vertical-scroll-proportion="0.46212122" vertical-offset="11469" max-vertical-offset="15657">
+        <state line="698" column="77" selection-start="30712" selection-end="30712" vertical-scroll-proportion="0.51704544" vertical-offset="11525" max-vertical-offset="15708">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1230,6 +1232,7 @@
             <element signature="e#5684#5692#0" expanded="true" />
             <element signature="e#25718#25732#0" expanded="true" />
             <element signature="e#26443#26453#0" expanded="true" />
+            <element signature="e#33271#33303#0" expanded="true" />
           </folding>
         </state>
       </provider>
