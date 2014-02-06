@@ -55,11 +55,11 @@ public class AnnihilationCommand implements CommandExecutor {
             if (args[0].equalsIgnoreCase("start")) {
                 if (sender.hasPermission("annihilation.command.start")) {
                     if (!plugin.startTimer()) {
-                        sender.sendMessage(prefix + red + "The game has already started");
+                        sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + red + "The game has already started");
                     } else {
-                        sender.sendMessage(prefix + green + "The game has been started.");
+                        sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + green + "The game has been started.");
                     }
-                } else sender.sendMessage(prefix + red + "You cannot use this command!");
+                } else sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + red + "You cannot use this command!");
             }
         }
         return false;
