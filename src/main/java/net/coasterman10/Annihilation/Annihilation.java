@@ -700,7 +700,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
             }
         }
 
-        if (time <= 5L) {
+        if (time <= -5L) {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 1);
             }

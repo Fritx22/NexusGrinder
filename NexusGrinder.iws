@@ -70,7 +70,7 @@
       <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="698" column="77" selection-start="30712" selection-end="30712" vertical-scroll-proportion="0.51704544" vertical-offset="11525" max-vertical-offset="15708">
+            <state line="703" column="37" selection-start="30802" selection-end="30802" vertical-scroll-proportion="0.6780303" vertical-offset="11525" max-vertical-offset="15708">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -78,7 +78,7 @@
                 <element signature="e#5684#5692#0" expanded="true" />
                 <element signature="e#25718#25732#0" expanded="true" />
                 <element signature="e#26443#26453#0" expanded="true" />
-                <element signature="e#33271#33303#0" expanded="true" />
+                <element signature="e#33272#33304#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -809,7 +809,7 @@
             <element signature="e#5684#5692#0" expanded="true" />
             <element signature="e#25718#25732#0" expanded="true" />
             <element signature="e#26443#26453#0" expanded="true" />
-            <element signature="e#33271#33303#0" expanded="true" />
+            <element signature="e#33272#33304#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1224,7 +1224,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="698" column="77" selection-start="30712" selection-end="30712" vertical-scroll-proportion="0.51704544" vertical-offset="11525" max-vertical-offset="15708">
+        <state line="703" column="37" selection-start="30802" selection-end="30802" vertical-scroll-proportion="0.6780303" vertical-offset="11525" max-vertical-offset="15708">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1232,7 +1232,7 @@
             <element signature="e#5684#5692#0" expanded="true" />
             <element signature="e#25718#25732#0" expanded="true" />
             <element signature="e#26443#26453#0" expanded="true" />
-            <element signature="e#33271#33303#0" expanded="true" />
+            <element signature="e#33272#33304#0" expanded="true" />
           </folding>
         </state>
       </provider>
