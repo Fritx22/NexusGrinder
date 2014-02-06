@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d4d544ad-b694-45c1-89e7-8483e2eee9f4" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Translation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/BossListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/BossListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ClassAbilityListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ClassAbilityListener.java" />
@@ -15,6 +14,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/StatsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/StatsCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/VoteCommand.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/VoteCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages.yml" afterPath="$PROJECT_DIR$/src/main/resources/messages.yml" />
     </list>
     <ignored path="NexusGrinder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,10 +78,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Annihilation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Annihilation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="661" column="86" selection-start="29519" selection-end="29519" vertical-scroll-proportion="0.4571949" vertical-offset="10918" max-vertical-offset="15572">
+            <state line="661" column="86" selection-start="29519" selection-end="29519" vertical-scroll-proportion="-9.653846" vertical-offset="10918" max-vertical-offset="15572">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -90,6 +90,15 @@
                 <element signature="e#25702#25716#0" expanded="true" />
                 <element signature="e#26427#26437#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="messages.yml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="14" selection-start="915" selection-end="915" vertical-scroll-proportion="0.52040815" vertical-offset="0" max-vertical-offset="588">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -131,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/BossListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/ClassAbilityListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Translation.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/ClassCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/DistanceCommand.java" />
@@ -140,6 +148,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/TeamCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/commands/VoteCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages.yml" />
       </list>
     </option>
   </component>
@@ -1077,13 +1086,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="28" selection-end="28" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Translation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="1" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
@@ -1155,7 +1157,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/Annihilation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="661" column="86" selection-start="29519" selection-end="29519" vertical-scroll-proportion="0.4571949" vertical-offset="10918" max-vertical-offset="15572">
+        <state line="661" column="86" selection-start="29519" selection-end="29519" vertical-scroll-proportion="-9.653846" vertical-offset="10918" max-vertical-offset="15572">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1164,6 +1166,13 @@
             <element signature="e#25702#25716#0" expanded="true" />
             <element signature="e#26427#26437#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="14" selection-start="915" selection-end="915" vertical-scroll-proportion="0.52040815" vertical-offset="0" max-vertical-offset="588">
+          <folding />
         </state>
       </provider>
     </entry>
