@@ -1,11 +1,11 @@
 name: NexusGrinder
 main: net.coasterman10.Annihilation.Annihilation
-authors: [coasterman10, stuntguy3000]
-version: ${project.version}
+authors: [morpigthekidMC, _BritishCow_]
+version: ${project.version}-b${BUILD_NUMBER}
 commands:
-  annihilation:
+  nexusgrinder:
     description: Plugin commands for Annihilation
-    aliases: anni
+    aliases: ng
   team:
     description: Team command for Annihilation
     aliases: t

@@ -42,12 +42,12 @@ public class DistanceCommand implements CommandExecutor {
             Player p = (Player) sender;
 
             if (plugin.getPhase() == 0) {
-                p.sendMessage(ChatColor.RED + _("ERROR_GAME_NOTSTARTED"));
+                p.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_NOTSTARTED"));
                 return false;
             }
 
             if (PlayerMeta.getMeta(p).getTeam() == GameTeam.NONE) {
-                p.sendMessage(ChatColor.RED + _("ERROR_PLAYER_NOTEAM"));
+                p.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_PLAYER_NOTEAM"));
                 return false;
             }
 

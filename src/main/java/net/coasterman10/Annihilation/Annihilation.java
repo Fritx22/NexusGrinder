@@ -189,7 +189,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         pm.registerEvents(new ClassAbilityListener(this), this);
         pm.registerEvents(new BossListener(this), this);
 
-        getCommand("annihilation").setExecutor(new AnnihilationCommand(this));
+        getCommand("nexusgrinder").setExecutor(new AnnihilationCommand(this));
         getCommand("class").setExecutor(new ClassCommand());
         getCommand("stats").setExecutor(new StatsCommand(stats));
         getCommand("team").setExecutor(new TeamCommand(this));
@@ -697,12 +697,14 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
             for (Player p : Bukkit.getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 1);
+                p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
             }
         }
 
         if (time <= -5L) {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 p.playSound(p.getLocation(), Sound.ENDERDRAGON_WINGS, 10, 1);
+                p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
             }
         }
 
@@ -893,7 +895,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
     public void joinTeam(Player player, String team) {
         PlayerMeta meta = PlayerMeta.getMeta(player);
         if (meta.getTeam() != GameTeam.NONE && !player.hasPermission("annihilation.bypass.teamlimitor")) {
-            player.sendMessage(ChatColor.DARK_AQUA + _("ERROR_PLAYER_NOSWITCHTEAM"));
+            player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + _("ERROR_PLAYER_NOSWITCHTEAM"));
             return;
         }
 
@@ -901,32 +903,32 @@ public final class Annihilation extends JavaPlugin implements Listener {
         try {
             target = GameTeam.valueOf(team.toUpperCase());
         } catch (IllegalArgumentException e) {
-            player.sendMessage(ChatColor.RED + _("ERROR_GAME_INVALIDTEAM"));
+            player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_INVALIDTEAM"));
             listTeams(player);
             return;
         }
 
         if (Util.isTeamTooBig(target)
                 && !player.hasPermission("annihilation.bypass.teamlimit")) {
-            player.sendMessage(ChatColor.RED + _("ERROR_GAME_TEAMFULL"));
+            player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_TEAMFULL"));
             return;
         }
 
         if (target.getNexus() != null) {
             if (target.getNexus().getHealth() == 0 && getPhase() > 1) {
-                player.sendMessage(ChatColor.RED + _("ERROR_GAME_TEAMNONEXUS"));
+                player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_TEAMNONEXUS"));
                 return;
             }
         }
 
         if (getPhase() > lastJoinPhase
                 && !player.hasPermission("annhilation.bypass.phaselimiter")) {
-            player.kickPlayer(ChatColor.RED
+            player.kickPlayer(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED
                     + "You cannot join the game in this phase!");
             return;
         }
 
-        player.sendMessage(ChatColor.DARK_AQUA + "You joined "
+        player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + "You joined "
                 + target.coloredName());
         meta.setTeam(target);
 

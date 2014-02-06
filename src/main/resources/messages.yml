@@ -1,4 +1,5 @@
 #NexusGrinder messages file
+NEXUSGRINDER_PREFIX : "[NexusGrinder]"
 ERROR_GAME_NOTSTARTED: "The game has not started yet!"
 ERROR_CONSOLE_CLASSCOMMAND: "Classes pertain only to players"
 ERROR_CONSOLE_PLAYERCOMMAND: "Only players can use this command!"

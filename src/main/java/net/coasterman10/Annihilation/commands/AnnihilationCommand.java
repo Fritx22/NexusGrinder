@@ -25,6 +25,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import static net.coasterman10.Annihilation.Translation._;
+
 public class AnnihilationCommand implements CommandExecutor {
     private Annihilation plugin;
 
@@ -44,12 +46,9 @@ public class AnnihilationCommand implements CommandExecutor {
         String prefix = cyan + "[Annihilation] " + gray;
         
         if (args.length == 0) {
-            sender.sendMessage(prefix + white + "Annihilation v" + plugin.getDescription().getVersion() + " by coasterman10 & stuntguy3000.");
-            sender.sendMessage(prefix + gold + "Download Annihilation at");
-            sender.sendMessage(prefix + yellow + "http://dev.bukkit.org/bukkit-plugins/anni/");
-            sender.sendMessage(prefix + gray + "Command Help:");
-            sender.sendMessage(prefix + gray + "/anni " + dgray + "-" + white + " Show plugin information.");
-            sender.sendMessage(prefix + gray + "/anni start " + dgray + "-" + white + " Begin the game.");
+            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + gray + "Command Help:");
+            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + gray + "/anni " + dgray + "-" + white + " Show plugin information.");
+            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + gray + "/anni start " + dgray + "-" + white + " Begin the game.");
         }
         
         if (args.length == 1) {

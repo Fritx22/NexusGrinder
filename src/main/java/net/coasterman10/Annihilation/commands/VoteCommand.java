@@ -36,22 +36,22 @@ public class VoteCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label,
                              String[] args) {
         if (!manager.isRunning())
-            sender.sendMessage(ChatColor.RED + _("INFO_COMMAND_VOTING_ENDED"));
+            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("INFO_COMMAND_VOTING_ENDED"));
         else if (args.length == 0)
             listMaps(sender);
         else if (!manager.vote(sender, args[0])) {
-            sender.sendMessage(ChatColor.RED + _("INFO_COMMAND_VOTING_INVALID"));
+            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("INFO_COMMAND_VOTING_INVALID"));
             listMaps(sender);
         }
         return true;
     }
 
     private void listMaps(CommandSender sender) {
-        sender.sendMessage(ChatColor.DARK_AQUA + _("INFO_COMMAND_VOTING_MAPS"));
+        sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + _("INFO_COMMAND_VOTING_MAPS"));
         int count = 0;
         for (String map : manager.getMaps().values()) {
             count ++;
-            sender.sendMessage(ChatColor.DARK_GRAY + " - " + ChatColor.AQUA + "[" + count + "] " + ChatColor.GRAY + map);
+            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.DARK_GRAY + " - " + ChatColor.AQUA + "[" + count + "] " + ChatColor.GRAY + map);
         }
     }
 }
