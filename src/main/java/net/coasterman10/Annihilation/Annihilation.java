@@ -90,6 +90,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
 public final class Annihilation extends JavaPlugin implements Listener {
@@ -657,9 +658,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerSwim(PlayerMoveEvent e) {
         if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
-            int damageAmount = 1;
-            e.getPlayer().damage(damageAmount);
-            e.getPlayer().playSound(e.getPlayer().getLocation(), Sound.WATER, 150, 1);
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 1000, 10));
         }
     }
 

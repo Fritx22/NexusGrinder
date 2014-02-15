@@ -90,26 +90,26 @@
         <root url="jar://$MAVEN_REPOSITORY$/net/milkbowl/vault/Vault/1.2.31/Vault-1.2.31-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.bukkit:bukkit:1.7.2-R0.2">
+    <library name="Maven: org.bukkit:bukkit:1.7.2-R0.3-SNAPSHOT">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.2/bukkit-1.7.2-R0.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.3-SNAPSHOT/bukkit-1.7.2-R0.3-20140210.232337-32.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.2/bukkit-1.7.2-R0.2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.3-SNAPSHOT/bukkit-1.7.2-R0.3-20140210.232337-32-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.2/bukkit-1.7.2-R0.2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/bukkit/1.7.2-R0.3-SNAPSHOT/bukkit-1.7.2-R0.3-20140210.232337-32-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.bukkit:craftbukkit:1.7.2-R0.2">
+    <library name="Maven: org.bukkit:craftbukkit:1.7.2-R0.1-SNAPSHOT">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.2/craftbukkit-1.7.2-R0.2.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.1-SNAPSHOT/craftbukkit-1.7.2-R0.1-20131218.033322-46.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.2/craftbukkit-1.7.2-R0.2-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.1-SNAPSHOT/craftbukkit-1.7.2-R0.1-20131218.033322-46-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.2/craftbukkit-1.7.2-R0.2-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/bukkit/craftbukkit/1.7.2-R0.1-SNAPSHOT/craftbukkit-1.7.2-R0.1-20131218.033322-46-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.mcstats.bukkit:metrics:R7">

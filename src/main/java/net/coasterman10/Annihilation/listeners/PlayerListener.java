@@ -494,9 +494,9 @@ public class PlayerListener implements Listener {
             plugin.getStatsManager().incrementStat(StatType.NEXUS_DAMAGE,
                     breaker, plugin.getPhase() == 5 ? 2 : 1);
 
-            String msg = ChatUtil.nexusBreakMessage(breaker, attacker, victim);
+
             for (Player p : attacker.getPlayers())
-                p.sendMessage(msg);
+                p.playSound(p.getLocation(), Sound.NOTE_PLING, 10, 1);
 
             plugin.getScoreboardHandler().scores.get(victim.name()).setScore(
                     victim.getNexus().getHealth());

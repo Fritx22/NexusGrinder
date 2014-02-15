@@ -102,11 +102,6 @@ public class ChatUtil {
         broadcast(GRAY + "===============================================");
     }
 
-    public static String nexusBreakMessage(Player breaker, GameTeam attacker,
-            GameTeam victim) {
-        return colorizeName(breaker, attacker) + GRAY + " has damaged the "
-                + victim.coloredName() + " team's Nexus!";
-    }
 
     private static String colorizeName(Player player, GameTeam team) {
         return team.color() + player.getName();
