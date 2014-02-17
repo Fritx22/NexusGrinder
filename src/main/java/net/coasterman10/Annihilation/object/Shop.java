@@ -113,9 +113,8 @@ public class Shop implements Listener {
             if (type == Material.WALL_SIGN || type == Material.SIGN_POST) {
                 Sign sign = (Sign) e.getClickedBlock().getState();
                 String line0 = sign.getLine(0);
-                String line1 = sign.getLine(1);
                 if (line0.equals(ChatColor.DARK_PURPLE + "[Shop]")
-                        && line1.equals(name)) {
+                        ) {
                     openShop(e.getPlayer());
                 }
             }

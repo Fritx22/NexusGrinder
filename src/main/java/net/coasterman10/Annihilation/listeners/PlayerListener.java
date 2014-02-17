@@ -228,7 +228,7 @@ public class PlayerListener implements Listener {
             if (e.getLine(0).toLowerCase().contains("[Shop".toLowerCase()))
                 e.setLine(0, ChatColor.DARK_PURPLE + "[Shop]");
         }
-    
+
     @EventHandler
     public void onKick(PlayerKickEvent e) {
         if (e.getReason().equals(ChatColor.RED + "ANNIHILATION-TRIGGER-KICK-01")) {
