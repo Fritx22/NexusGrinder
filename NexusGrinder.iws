@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4d544ad-b694-45c1-89e7-8483e2eee9f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NexusGrinder.iws" afterPath="$PROJECT_DIR$/NexusGrinder.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" afterPath="$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java" />
     </list>
     <ignored path="NexusGrinder.iws" />
@@ -117,7 +116,7 @@
       <file leaf-file-name="PlayerListener.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="255" column="159" selection-start="10958" selection-end="10958" vertical-scroll-proportion="0.6875" vertical-offset="3938" max-vertical-offset="10472">
+            <state line="255" column="167" selection-start="10966" selection-end="10966" vertical-scroll-proportion="0.6875" vertical-offset="3938" max-vertical-offset="10472">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -1086,7 +1085,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/coasterman10/Annihilation/listeners/PlayerListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="159" selection-start="10958" selection-end="10958" vertical-scroll-proportion="0.6875" vertical-offset="3938" max-vertical-offset="10472">
+        <state line="255" column="167" selection-start="10966" selection-end="10966" vertical-scroll-proportion="0.6875" vertical-offset="3938" max-vertical-offset="10472">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
