@@ -50,6 +50,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -221,6 +222,13 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void onSignPlace(SignChangeEvent e) {
+        if (e.getPlayer().hasPermission("annihilation.buildbypass"))
+            if (e.getLine(0).toLowerCase().contains("[Shop".toLowerCase()))
+                e.setLine(0, ChatColor.DARK_PURPLE + "[Shop]");
+        }
+    
     @EventHandler
     public void onKick(PlayerKickEvent e) {
         if (e.getReason().equals(ChatColor.RED + "ANNIHILATION-TRIGGER-KICK-01")) {
