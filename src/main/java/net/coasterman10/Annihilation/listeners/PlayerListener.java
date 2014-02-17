@@ -253,6 +253,7 @@ public class PlayerListener implements Listener {
         player.sendMessage(prefix + ChatColor.GRAY
                 + "Idea from the brain of _BritishCow_");
         player.sendMessage(prefix + ChatColor.GOLD + "Coded by morpigthekidMC");
+        player.sendMessage(prefix + ChatColor.RED + ChatColor.BOLD + ChatColor.UNDERLINE + "THIS GAME COULD TOOK 1 HOUR OR MORE. THIS IS A GAME. NOT A MINIGAME");
 
         if (meta.isAlive())
             player.teleport(meta.getTeam().getRandomSpawn());
