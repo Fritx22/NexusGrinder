@@ -20,7 +20,7 @@ package net.coasterman10.Annihilation.commands;
 
 import static net.coasterman10.Annihilation.Translation.get;
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.ChatColor;
@@ -46,7 +46,7 @@ public class DistanceCommand implements CommandExecutor {
                 return false;
             }
 
-            if (PlayerMeta.getMeta(p).getTeam() == GameTeam.NONE) {
+            if (PlayerMeta.getMeta(p).getTeam() == TeamEnum.NONE) {
                 p.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + get("ERROR_PLAYER_NOTEAM"));
                 return false;
             }
@@ -54,8 +54,8 @@ public class DistanceCommand implements CommandExecutor {
             p.sendMessage(ChatColor.GRAY + "=========[ " + ChatColor.DARK_AQUA.toString() + get("INFO_COMMAND_DISTANCE")
                     + ChatColor.GRAY + " ]=========");
 
-            for (GameTeam t : GameTeam.values()) {
-                if (t != GameTeam.NONE) {
+            for (TeamEnum t : TeamEnum.values()) {
+                if (t != TeamEnum.NONE) {
                     showTeam(p, t);
                 }
             }
@@ -68,7 +68,7 @@ public class DistanceCommand implements CommandExecutor {
         return true;
     }
 
-    private void showTeam(Player p, GameTeam t) {
+    private void showTeam(Player p, TeamEnum t) {
         try {
             if (t.getNexus() != null && t.getNexus().getHealth() > 0)
                 p.sendMessage(t.coloredName() + ChatColor.GRAY + " Nexus Distance: " + ChatColor.WHITE + ((int) p.getLocation().distance(t.getNexus().getLocation())) + ChatColor.GRAY + " Blocks");

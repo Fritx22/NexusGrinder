@@ -21,7 +21,7 @@ package net.coasterman10.Annihilation.chat;
 import net.coasterman10.Annihilation.Util;
 import net.coasterman10.Annihilation.VaultHooks;
 import net.coasterman10.Annihilation.object.Boss;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
@@ -43,11 +43,11 @@ public class ChatUtil {
         roman = b;
     }
 
-    public static void allMessage(GameTeam team, Player sender, String message,
-            boolean dead) {
+    public static void allMessage(TeamEnum team, Player sender, String message,
+                                  boolean dead) {
         String group;
         String username;
-        if (team == GameTeam.NONE) {
+        if (team == TeamEnum.NONE) {
             group = DARK_GRAY + "[" + DARK_PURPLE + "Lobby" + DARK_GRAY + "]";
             username = RESET + sender.getName();
         } else {
@@ -67,10 +67,10 @@ public class ChatUtil {
             player.sendMessage(toSend);
     }
 
-    public static void teamMessage(GameTeam team, Player sender,
-            String message, boolean dead) {
+    public static void teamMessage(TeamEnum team, Player sender,
+                                   String message, boolean dead) {
         String group;
-        if (team == GameTeam.NONE) {
+        if (team == TeamEnum.NONE) {
             allMessage(team, sender, message, false);
             return;
         } else {
@@ -92,8 +92,8 @@ public class ChatUtil {
                 message));
     }
 
-    public static void nexusDestroyed(GameTeam attacker, GameTeam victim,
-            Player p) {
+    public static void nexusDestroyed(TeamEnum attacker, TeamEnum victim,
+                                      Player p) {
         broadcast(GRAY + "===============[ " + victim.color().toString()
                 + "Nexus Destroyed" + GRAY + " ]===============");
         broadcast(attacker.color().toString() + p.getName() + GRAY + " from "
@@ -103,7 +103,7 @@ public class ChatUtil {
     }
 
 
-    private static String colorizeName(Player player, GameTeam team) {
+    private static String colorizeName(Player player, TeamEnum team) {
         return team.color() + player.getName();
     }
 
@@ -131,7 +131,7 @@ public class ChatUtil {
         broadcast(GRAY + "================================");
     }
 
-    public static void winMessage(GameTeam winner) {
+    public static void winMessage(TeamEnum winner) {
         broadcast(GRAY + "================[ " + winner.color().toString()
                 + "End Game" + GRAY + " ]================");
         broadcast(GRAY + "Team " + winner.coloredName() + GRAY
@@ -139,7 +139,7 @@ public class ChatUtil {
         broadcast(GRAY + "==========================================");
     }
 
-    public static void bossDeath(Boss b, Player killer, GameTeam team) {
+    public static void bossDeath(Boss b, Player killer, TeamEnum team) {
         broadcast(GRAY + "==========[ " + DARK_AQUA + "Boss Killed" + GRAY
                 + " ]==========");
         broadcast(GRAY + b.getBossName() + GRAY + " was killed by "
@@ -157,7 +157,7 @@ public class ChatUtil {
 
     public static String formatDeathMessage(Player victim, Player killer,
             String original) {
-        GameTeam killerTeam = PlayerMeta.getMeta(killer).getTeam();
+        TeamEnum killerTeam = PlayerMeta.getMeta(killer).getTeam();
         String killerColor = killerTeam != null ? killerTeam.color().toString()
                 : ChatColor.DARK_PURPLE.toString();
         String killerName = killerColor + killer.getName() + ChatColor.GRAY;
@@ -169,7 +169,7 @@ public class ChatUtil {
     }
 
     public static String formatDeathMessage(Player victim, String original) {
-        GameTeam victimTeam = PlayerMeta.getMeta(victim).getTeam();
+        TeamEnum victimTeam = PlayerMeta.getMeta(victim).getTeam();
         String victimColor = victimTeam != null ? victimTeam.color().toString()
                 : ChatColor.DARK_PURPLE.toString();
         String victimName = victimColor + victim.getName() + ChatColor.GRAY;

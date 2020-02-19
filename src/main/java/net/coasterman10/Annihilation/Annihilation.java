@@ -53,7 +53,7 @@ import net.coasterman10.Annihilation.manager.SignManager;
 import net.coasterman10.Annihilation.manager.VotingManager;
 import net.coasterman10.Annihilation.maps.MapLoader;
 import net.coasterman10.Annihilation.object.Boss;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.object.Shop;
@@ -73,16 +73,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
 import java.io.File;
@@ -564,7 +561,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
         World w = getServer().getWorld(map);
 
-        for (GameTeam team : GameTeam.teams()) {
+        for (TeamEnum team : TeamEnum.teams()) {
             String name = team.name().toLowerCase();
             if (section.contains("spawns." + name)) {
                 for (String s : section.getStringList("spawns." + name))
@@ -637,7 +634,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         scoreboardManager.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
                 + WordUtils.capitalize(votingManager.getWinner()));
 
-        for (GameTeam t : GameTeam.teams()) {
+        for (TeamEnum t : TeamEnum.teams()) {
             scoreboardManager.scores.put(t.name(), scoreboardManager.obj.getScore(Bukkit
                     .getOfflinePlayer(WordUtils.capitalize(t.name()
                             .toLowerCase() + " Nexus"))));
@@ -655,7 +652,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
                 + WordUtils.capitalize(votingManager.getWinner()));
 
         for (Player p : getServer().getOnlinePlayers())
-            if (PlayerMeta.getMeta(p).getTeam() != GameTeam.NONE)
+            if (PlayerMeta.getMeta(p).getTeam() != TeamEnum.NONE)
                 Util.sendPlayerToGame(p, this);
 
         scoreboardManager.update();
@@ -672,8 +669,8 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
         getServer().getScheduler().runTaskTimer(this, new Runnable() {
             public void run() {
-                for (GameTeam t : GameTeam.values()) {
-                    if (t != GameTeam.NONE && t.getNexus().isAlive()) {
+                for (TeamEnum t : TeamEnum.values()) {
+                    if (t != TeamEnum.NONE && t.getNexus().isAlive()) {
                         Location nexus = t.getNexus().getLocation().clone();
                         nexus.add(0.5, 0, 0.5);
                         Util.ParticleEffects.sendToLocation(Util.ParticleEffects.ENDER, nexus, 1F, 1F, 1F, 0, 20);
@@ -698,10 +695,10 @@ public final class Annihilation extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().callEvent(
                 new PhaseChangeEvent(phaseManager.getPhase()));
 
-        getSignHandler().updateSigns(GameTeam.RED);
-        getSignHandler().updateSigns(GameTeam.BLUE);
-        getSignHandler().updateSigns(GameTeam.GREEN);
-        getSignHandler().updateSigns(GameTeam.YELLOW);
+        getSignHandler().updateSigns(TeamEnum.RED);
+        getSignHandler().updateSigns(TeamEnum.BLUE);
+        getSignHandler().updateSigns(TeamEnum.GREEN);
+        getSignHandler().updateSigns(TeamEnum.YELLOW);
     }
 
     public void onSecond() {
@@ -774,7 +771,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         return scoreboardManager;
     }
 
-    public void endGame(GameTeam winner) {
+    public void endGame(TeamEnum winner) {
         if (winner == null)
             return;
 
@@ -802,7 +799,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         phaseManager.reset();
 
         for (Player p : getServer().getOnlinePlayers()) {
-            PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
+            PlayerMeta.getMeta(p).setTeam(TeamEnum.NONE);
             p.teleport(mapManager.getLobbySpawnPoint());
             BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA + "Welcome to NexusGrinder!", 0.01F);
             p.setMaxHealth(20D);
@@ -849,8 +846,8 @@ public final class Annihilation extends JavaPlugin implements Listener {
                     p.updateInventory();
                 }
 
-                for (GameTeam t : GameTeam.values())
-                    if (t != GameTeam.NONE)
+                for (TeamEnum t : TeamEnum.values())
+                    if (t != TeamEnum.NONE)
                         signManager.updateSigns(t);
 
                 checkStarting();
@@ -860,8 +857,8 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
     public void checkWin() {
         int alive = 0;
-        GameTeam aliveTeam = null;
-        for (GameTeam t : GameTeam.teams()) {
+        TeamEnum aliveTeam = null;
+        for (TeamEnum t : TeamEnum.teams()) {
             if (t.getNexus().isAlive()) {
                 alive++;
                 aliveTeam = t;
@@ -900,7 +897,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         sender.sendMessage(ChatColor.GRAY + "============[ "
                 + ChatColor.DARK_AQUA + "Teams" + ChatColor.GRAY
                 + " ]============");
-        for (GameTeam t : GameTeam.teams()) {
+        for (TeamEnum t : TeamEnum.teams()) {
             int size = 0;
 
             for (Player p : Bukkit.getOnlinePlayers()) {
@@ -920,14 +917,14 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
     public void joinTeam(Player player, String team) {
         PlayerMeta meta = PlayerMeta.getMeta(player);
-        if (meta.getTeam() != GameTeam.NONE && !player.hasPermission("annihilation.bypass.teamlimitor")) {
+        if (meta.getTeam() != TeamEnum.NONE && !player.hasPermission("annihilation.bypass.teamlimitor")) {
             player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA + get("ERROR_PLAYER_NOSWITCHTEAM"));
             return;
         }
 
-        GameTeam target;
+        TeamEnum target;
         try {
-            target = GameTeam.valueOf(team.toUpperCase());
+            target = TeamEnum.valueOf(team.toUpperCase());
         } catch (IllegalArgumentException e) {
             player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + get("ERROR_GAME_INVALIDTEAM"));
             listTeams(player);
@@ -965,9 +962,9 @@ public final class Annihilation extends JavaPlugin implements Listener {
             Util.sendPlayerToGame(player, this);
         }
 
-        getSignHandler().updateSigns(GameTeam.RED);
-        getSignHandler().updateSigns(GameTeam.BLUE);
-        getSignHandler().updateSigns(GameTeam.GREEN);
-        getSignHandler().updateSigns(GameTeam.YELLOW);
+        getSignHandler().updateSigns(TeamEnum.RED);
+        getSignHandler().updateSigns(TeamEnum.BLUE);
+        getSignHandler().updateSigns(TeamEnum.GREEN);
+        getSignHandler().updateSigns(TeamEnum.YELLOW);
     }
 }

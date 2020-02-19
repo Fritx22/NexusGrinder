@@ -19,7 +19,7 @@
 package net.coasterman10.Annihilation.chat;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.entity.Player;
@@ -38,7 +38,7 @@ public class ChatListener implements Listener {
     public void onPlayerChat(final AsyncPlayerChatEvent e) {
         Player sender = e.getPlayer();
         PlayerMeta meta = PlayerMeta.getMeta(sender);
-        GameTeam team = meta.getTeam();
+        TeamEnum team = meta.getTeam();
         boolean isAll = false;
         boolean dead = !meta.isAlive() && plugin.getPhase() > 0;
         String msg = e.getMessage();
@@ -48,7 +48,7 @@ public class ChatListener implements Listener {
             msg = msg.substring(1);
         }
 
-        if (team == GameTeam.NONE)
+        if (team == TeamEnum.NONE)
             isAll = true;
 
         if (isAll)

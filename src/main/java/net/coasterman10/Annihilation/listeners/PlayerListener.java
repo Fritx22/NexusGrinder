@@ -25,7 +25,7 @@ import net.coasterman10.Annihilation.api.NexusDestroyEvent;
 import net.coasterman10.Annihilation.bar.BarUtil;
 import net.coasterman10.Annihilation.chat.ChatUtil;
 import net.coasterman10.Annihilation.manager.PhaseManager;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.stats.StatType;
@@ -101,21 +101,21 @@ public class PlayerListener implements Listener {
                 motd = motd.replaceAll("%MAXPLAYERS%",
                         String.valueOf(Bukkit.getMaxPlayers()));
                 motd = motd.replaceAll("%GREENNEXUS%",
-                        String.valueOf(getNexus(GameTeam.GREEN)));
+                        String.valueOf(getNexus(TeamEnum.GREEN)));
                 motd = motd.replaceAll("%GREENCOUNT%",
-                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                        String.valueOf(getPlayers(TeamEnum.GREEN)));
                 motd = motd.replaceAll("%REDNEXUS%",
-                        String.valueOf(getNexus(GameTeam.RED)));
+                        String.valueOf(getNexus(TeamEnum.RED)));
                 motd = motd.replaceAll("%REDCOUNT%",
-                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                        String.valueOf(getPlayers(TeamEnum.GREEN)));
                 motd = motd.replaceAll("%BLUENEXUS%",
-                        String.valueOf(getNexus(GameTeam.BLUE)));
+                        String.valueOf(getNexus(TeamEnum.BLUE)));
                 motd = motd.replaceAll("%BLUECOUNT%",
-                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                        String.valueOf(getPlayers(TeamEnum.GREEN)));
                 motd = motd.replaceAll("%YELLOWNEXUS%",
-                        String.valueOf(getNexus(GameTeam.YELLOW)));
+                        String.valueOf(getNexus(TeamEnum.YELLOW)));
                 motd = motd.replaceAll("%YELLOWCOUNT%",
-                        String.valueOf(getPlayers(GameTeam.GREEN)));
+                        String.valueOf(getPlayers(TeamEnum.GREEN)));
 
                 e.setMotd(ChatColor.translateAlternateColorCodes('&', motd));
             } catch (Exception ex) {
@@ -124,7 +124,7 @@ public class PlayerListener implements Listener {
         }
     }
 
-    private int getNexus(GameTeam t) {
+    private int getNexus(TeamEnum t) {
         int health = 0;
 
         if (t.getNexus() != null)
@@ -133,7 +133,7 @@ public class PlayerListener implements Listener {
         return health;
     }
 
-    private int getPlayers(GameTeam t) {
+    private int getPlayers(TeamEnum t) {
         int size = 0;
 
         for (Player p : Bukkit.getOnlinePlayers()) {
@@ -168,7 +168,7 @@ public class PlayerListener implements Listener {
                     boolean setCompass = false;
                     boolean setToNext = false;
                     while (!setCompass) {
-                        for (GameTeam team : GameTeam.teams()) {
+                        for (TeamEnum team : TeamEnum.teams()) {
                             if (setToNext) {
                                 ItemMeta meta = handItem.getItemMeta();
                                 meta.setDisplayName(team.color()
@@ -196,8 +196,8 @@ public class PlayerListener implements Listener {
                 Sign s = (Sign) e.getClickedBlock().getState();
                 if (s.getLine(0).contains(ChatColor.DARK_PURPLE + "[Team]")) {
                     String teamName = ChatColor.stripColor(s.getLine(1));
-                    GameTeam team = GameTeam.valueOf(teamName.toUpperCase());
-                    if (pmeta.getTeam() == GameTeam.NONE)
+                    TeamEnum team = TeamEnum.valueOf(teamName.toUpperCase());
+                    if (pmeta.getTeam() == TeamEnum.NONE)
                         plugin.joinTeam(e.getPlayer(), teamName);
                 }
             }
@@ -446,7 +446,7 @@ public class PlayerListener implements Listener {
     @EventHandler(ignoreCancelled = true)
     public void onBreak(BlockBreakEvent e) {
         if (plugin.getPhase() > 0) {
-            for (GameTeam t : GameTeam.teams()) {
+            for (TeamEnum t : TeamEnum.teams()) {
                 if (t.getNexus().getLocation()
                         .equals(e.getBlock().getLocation())) {
                     e.setCancelled(true);
@@ -475,7 +475,7 @@ public class PlayerListener implements Listener {
         double y = loc.getY();
         double z = loc.getZ();
 
-        for (GameTeam team : GameTeam.teams()) {
+        for (TeamEnum team : TeamEnum.teams()) {
             Location nexusLoc = team.getNexus().getLocation();
             double nX = nexusLoc.getX();
             double nY = nexusLoc.getY();
@@ -498,8 +498,8 @@ public class PlayerListener implements Listener {
         }
     }
 
-    private void breakNexus(final GameTeam victim, Player breaker) {
-        final GameTeam attacker = PlayerMeta.getMeta(breaker).getTeam();
+    private void breakNexus(final TeamEnum victim, Player breaker) {
+        final TeamEnum attacker = PlayerMeta.getMeta(breaker).getTeam();
         if (victim == attacker)
             breaker.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA
                     + "You can't damage your own nexus");

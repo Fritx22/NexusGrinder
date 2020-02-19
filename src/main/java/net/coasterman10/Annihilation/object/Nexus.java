@@ -22,11 +22,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 
 public class Nexus {
-    private final GameTeam team;
+    private final TeamEnum team;
     private final Location location;
     private int health;
 
-    public Nexus(GameTeam team, Location location, int health) {
+    public Nexus(TeamEnum team, Location location, int health) {
         this.team = team;
         this.location = location;
         this.health = health;
@@ -34,7 +34,7 @@ public class Nexus {
         location.getBlock().setType(Material.ENDER_STONE);
     }
 
-    public GameTeam getTeam() {
+    public TeamEnum getTeam() {
         return team;
     }
 

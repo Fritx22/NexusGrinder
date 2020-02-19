@@ -23,7 +23,7 @@ import java.util.Iterator;
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.Util;
 import net.coasterman10.Annihilation.bar.BarUtil;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -76,8 +76,8 @@ public class RestartHandler {
 
         fwID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new Runnable() {
             public void run() {
-                    for (GameTeam gt : GameTeam.values()) {
-                        if (gt != GameTeam.NONE) {
+                    for (TeamEnum gt : TeamEnum.values()) {
+                        if (gt != TeamEnum.NONE) {
                             for (Location l : gt.getSpawns()) {
                                 Util.spawnFirework(l, c, c);
                             }

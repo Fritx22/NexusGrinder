@@ -28,14 +28,14 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-public enum GameTeam {
+public enum TeamEnum {
     RED, YELLOW, GREEN, BLUE, NONE;
 
     private final ChatColor color;
     private List<Location> spawns;
     private Nexus nexus;
 
-    GameTeam() {
+    TeamEnum() {
         if (name().equals("NONE"))
             color = ChatColor.WHITE;
         else
@@ -92,15 +92,15 @@ public enum GameTeam {
         return players;
     }
 
-    public static GameTeam[] teams() {
-        return new GameTeam[] { RED, YELLOW, GREEN, BLUE };
+    public static TeamEnum[] teams() {
+        return new TeamEnum[] { RED, YELLOW, GREEN, BLUE };
     }
 
-    public Color getColor(GameTeam gt) {
-        if (gt == GameTeam.RED) return Color.RED;
-        if (gt == GameTeam.BLUE) return Color.BLUE;
-        if (gt == GameTeam.GREEN) return Color.LIME;
-        if (gt == GameTeam.YELLOW) return Color.YELLOW;
+    public Color getColor(TeamEnum gt) {
+        if (gt == TeamEnum.RED) return Color.RED;
+        if (gt == TeamEnum.BLUE) return Color.BLUE;
+        if (gt == TeamEnum.GREEN) return Color.LIME;
+        if (gt == TeamEnum.YELLOW) return Color.YELLOW;
 
         return null;
     }

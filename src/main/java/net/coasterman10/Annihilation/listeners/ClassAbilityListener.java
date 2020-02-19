@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 
@@ -63,7 +63,7 @@ public class ClassAbilityListener implements Listener {
         for (Entry<String, Location> entry : blockLocations.entrySet()) {
             if (entry.getValue().equals(b.getLocation())) {
                 PlayerMeta meta = PlayerMeta.getMeta(entry.getKey());
-                GameTeam ownerTeam = meta.getTeam();
+                TeamEnum ownerTeam = meta.getTeam();
                 if (PlayerMeta.getMeta(e.getPlayer()).getTeam() == ownerTeam) {
                     e.setCancelled(true);
                     break;

@@ -35,28 +35,28 @@ public class PlayerMeta {
         return metaTable.get(username);
     }
 
-    private GameTeam team;
+    private TeamEnum team;
     private Kit kit;
     private boolean alive;
 
     public PlayerMeta() {
-        team = GameTeam.NONE;
+        team = TeamEnum.NONE;
         kit = Kit.CIVILIAN;
         alive = false;
     }
 
-    public void setTeam(GameTeam t) {
+    public void setTeam(TeamEnum t) {
         if (team != null)
             team = t;
         else
-            team = GameTeam.NONE;
+            team = TeamEnum.NONE;
     }
 
     public static void reset() {
         metaTable.clear();
     }
 
-    public GameTeam getTeam() {
+    public TeamEnum getTeam() {
         return team;
     }
     

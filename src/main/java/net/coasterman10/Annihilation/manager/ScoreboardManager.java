@@ -20,7 +20,7 @@ package net.coasterman10.Annihilation.manager;
 
 import java.util.HashMap;
 
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -58,13 +58,13 @@ public class ScoreboardManager {
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         obj.setDisplayName(objName);
         
-        setTeam(GameTeam.RED);
-        setTeam(GameTeam.BLUE);
-        setTeam(GameTeam.GREEN);
-        setTeam(GameTeam.YELLOW);
+        setTeam(TeamEnum.RED);
+        setTeam(TeamEnum.BLUE);
+        setTeam(TeamEnum.GREEN);
+        setTeam(TeamEnum.YELLOW);
     }
     
-    public void setTeam(GameTeam t) {
+    public void setTeam(TeamEnum t) {
         teams.put(t.name(), sb.registerNewTeam(t.name()));
         Team sbt = teams.get(t.name());
         sbt.setAllowFriendlyFire(false);

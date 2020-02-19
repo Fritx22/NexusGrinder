@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map.Entry;
 
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
@@ -40,7 +40,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class EnderChestListener implements Listener {
-    private HashMap<GameTeam, Location> chests = new HashMap<GameTeam, Location>();
+    private HashMap<TeamEnum, Location> chests = new HashMap<TeamEnum, Location>();
     private HashMap<String, Inventory> inventories = new HashMap<String, Inventory>();
 
     @EventHandler
@@ -52,21 +52,21 @@ public class EnderChestListener implements Listener {
 
         Block clicked = e.getClickedBlock();
         Player player = e.getPlayer();
-        GameTeam team = PlayerMeta.getMeta(player).getTeam();
-        if (team == GameTeam.NONE || !chests.containsKey(team))
+        TeamEnum team = PlayerMeta.getMeta(player).getTeam();
+        if (team == TeamEnum.NONE || !chests.containsKey(team))
             return;
         e.setCancelled(true);
         if (chests.get(team).equals(clicked.getLocation())) {
             openEnderChest(player);
         } else {
-            GameTeam owner = getTeamWithChest(clicked.getLocation());
-            if (owner != GameTeam.NONE) {
+            TeamEnum owner = getTeamWithChest(clicked.getLocation());
+            if (owner != TeamEnum.NONE) {
                 openEnemyEnderChest(player, owner);
             }
         }
     }
 
-    public void setEnderChestLocation(GameTeam team, Location loc) {
+    public void setEnderChestLocation(TeamEnum team, Location loc) {
         chests.put(team, loc);
     }
 
@@ -86,7 +86,7 @@ public class EnderChestListener implements Listener {
     }
 
     
-    private void openEnemyEnderChest(Player player, GameTeam owner) {
+    private void openEnemyEnderChest(Player player, TeamEnum owner) {
         LinkedList<Inventory> shuffledInventories = new LinkedList<Inventory>();
         for (Entry<String, Inventory> entry : inventories.entrySet())
             if (PlayerMeta.getMeta(entry.getKey()).getTeam() == owner)
@@ -105,10 +105,10 @@ public class EnderChestListener implements Listener {
         player.openInventory(view);
     }
 
-    private GameTeam getTeamWithChest(Location loc) {
-        for (Entry<GameTeam, Location> entry : chests.entrySet())
+    private TeamEnum getTeamWithChest(Location loc) {
+        for (Entry<TeamEnum, Location> entry : chests.entrySet())
             if (entry.getValue().equals(loc))
                 return entry.getKey();
-        return GameTeam.NONE;
+        return TeamEnum.NONE;
     }
 }

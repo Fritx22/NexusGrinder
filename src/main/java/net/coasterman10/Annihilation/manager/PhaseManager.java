@@ -27,7 +27,7 @@ import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.Util;
 import net.coasterman10.Annihilation.bar.BarUtil;
 import net.coasterman10.Annihilation.chat.ChatUtil;
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 
 public class PhaseManager {
     private long time;
@@ -65,10 +65,10 @@ public class PhaseManager {
             BarUtil.setMessageAndPercent(p, ChatColor.GREEN + "Starting in "
                     + -time, 1F);
 
-        plugin.getSignHandler().updateSigns(GameTeam.RED);
-        plugin.getSignHandler().updateSigns(GameTeam.BLUE);
-        plugin.getSignHandler().updateSigns(GameTeam.GREEN);
-        plugin.getSignHandler().updateSigns(GameTeam.YELLOW);
+        plugin.getSignHandler().updateSigns(TeamEnum.RED);
+        plugin.getSignHandler().updateSigns(TeamEnum.BLUE);
+        plugin.getSignHandler().updateSigns(TeamEnum.GREEN);
+        plugin.getSignHandler().updateSigns(TeamEnum.YELLOW);
     }
 
     public void stop() {
@@ -129,10 +129,10 @@ public class PhaseManager {
                     + ChatColor.DARK_GRAY + " | " + ChatColor.WHITE
                     + timeString(time);
 
-            plugin.getSignHandler().updateSigns(GameTeam.RED);
-            plugin.getSignHandler().updateSigns(GameTeam.BLUE);
-            plugin.getSignHandler().updateSigns(GameTeam.GREEN);
-            plugin.getSignHandler().updateSigns(GameTeam.YELLOW);
+            plugin.getSignHandler().updateSigns(TeamEnum.RED);
+            plugin.getSignHandler().updateSigns(TeamEnum.BLUE);
+            plugin.getSignHandler().updateSigns(TeamEnum.GREEN);
+            plugin.getSignHandler().updateSigns(TeamEnum.YELLOW);
         }
 
         for (Player p : Bukkit.getOnlinePlayers())

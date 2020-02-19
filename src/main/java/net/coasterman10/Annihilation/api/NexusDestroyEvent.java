@@ -18,7 +18,7 @@
  */
 package net.coasterman10.Annihilation.api;
 
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -27,9 +27,9 @@ import org.bukkit.event.HandlerList;
 public class NexusDestroyEvent extends Event {
 
     private Player player;
-    private GameTeam team;
+    private TeamEnum team;
     
-    public NexusDestroyEvent(Player player, GameTeam team) {
+    public NexusDestroyEvent(Player player, TeamEnum team) {
         this.player = player;
         this.team = team;
     }
@@ -48,7 +48,7 @@ public class NexusDestroyEvent extends Event {
         return player;
     }
     
-    public GameTeam getTeam() {
+    public TeamEnum getTeam() {
         return team;
     }
 }

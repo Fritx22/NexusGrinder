@@ -20,7 +20,7 @@ package net.coasterman10.Annihilation.manager;
 
 import java.util.Random;
 
-import net.coasterman10.Annihilation.object.GameTeam;
+import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 
 import org.bukkit.Bukkit;
@@ -43,8 +43,8 @@ public class SoundManager {
                 randomPitch(minPitch, maxPitch));
     }
 
-    public static void playSoundForTeam(GameTeam team, Sound sound, float volume,
-            float minPitch, float maxPitch) {
+    public static void playSoundForTeam(TeamEnum team, Sound sound, float volume,
+                                        float minPitch, float maxPitch) {
         for (Player p : Bukkit.getOnlinePlayers())
             if (PlayerMeta.getMeta(p).getTeam() == team)
             playSoundForPlayer(p, sound, volume, minPitch, maxPitch);

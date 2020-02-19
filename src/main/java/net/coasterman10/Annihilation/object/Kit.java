@@ -229,7 +229,7 @@ public enum Kit {
         return null;
     }
 
-    public void give(Player recipient, GameTeam team) {
+    public void give(Player recipient, TeamEnum team) {
         PlayerInventory inv = recipient.getInventory();
         inv.clear();
 
@@ -266,7 +266,7 @@ public enum Kit {
             recipient.setMaxHealth(20.0);
     }
 
-    private Color getTeamColor(GameTeam team) {
+    private Color getTeamColor(TeamEnum team) {
         switch (team) {
         case RED:
             return Color.RED;
