@@ -89,6 +89,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="PlayerL&#10;StatsMa&#10;PlayerLi&#10;MapM&#10;Vote&#10;VoteCo&#10;TeamCom&#10;TeamCo&#10;Stat&#10;MapCo&#10;Dista&#10;ClassCo&#10;Class&#10;Listen&#10;BossL&#10;Annihi&#10;Phase&#10;Restart&#10;Util&#10;Player&#10;A&#10;Nexus&#10;Sign&#10;Play&#10;Tea" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -205,5 +206,13 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="526" y="240" width="303" height="206" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.768@0.0.1366.768" timestamp="1582124970465" />
+    <state x="170" y="-17" key="SettingsEditor" timestamp="1582135787117">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="170" y="-17" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1582135787117" />
+    <state x="352" y="176" key="com.intellij.ide.util.TipDialog" timestamp="1582130726055">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="352" y="176" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1582130726055" />
   </component>
 </project>

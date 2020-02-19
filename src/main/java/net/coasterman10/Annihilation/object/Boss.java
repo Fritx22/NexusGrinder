@@ -149,10 +149,6 @@ public class Boss {
 
     private static boolean isEmpty(Inventory inv, int slot) {
         ItemStack stack = inv.getItem(slot);
-        if (stack == null)
-            return true;
-        if (stack.getType() == Material.AIR)
-            return true;
-        return false;
+        return stack == null || stack.getType() == Material.AIR;
     }
 }

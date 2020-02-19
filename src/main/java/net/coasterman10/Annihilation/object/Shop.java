@@ -161,9 +161,9 @@ public class Shop implements Listener {
         if (buyerInv.contains(Material.GOLD_INGOT, price)) {
             buyerInv.removeItem(new ItemStack(Material.GOLD_INGOT, price));
             buyerInv.addItem(stackToGive);
-            buyer.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.GREEN + "Purchased " + stackName);
+            buyer.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.GREEN + "Purchased " + stackName);
         } else {
-            buyer.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + "Insufficient gold to purchase "
+            buyer.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + "Insufficient gold to purchase "
                     + stackName);
         }
     }

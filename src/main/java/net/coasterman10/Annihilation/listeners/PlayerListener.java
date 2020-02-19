@@ -83,7 +83,7 @@ public class PlayerListener implements Listener {
     @SuppressWarnings("static-access")
     @EventHandler
     public void onMOTDPing(ServerListPingEvent e) {
-        if (plugin.motd) {
+        if (plugin.messageOfTheDay) {
             String motd = plugin.getConfig().getString("motd");
             try {
                 motd = motd.replaceAll("%PHASE%",
@@ -410,7 +410,7 @@ public class PlayerListener implements Listener {
 
             if (tooClose(e.getBlock().getLocation())
                     && !e.getPlayer().hasPermission("annihilation.buildbypass")) {
-                e.getPlayer().sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") +
+                e.getPlayer().sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") +
                         ChatColor.RED
                                 + "You cannot build this close to the nexus!");
                 e.setCancelled(true);
@@ -448,7 +448,7 @@ public class PlayerListener implements Listener {
             if (tooClose(e.getBlock().getLocation())
                     && !e.getPlayer().hasPermission("annihilation.buildbypass")
                     && e.getBlock().getType() != Material.ENDER_STONE) {
-                e.getPlayer().sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") +
+                e.getPlayer().sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") +
                         ChatColor.RED
                                 + "You cannot build this close to the nexus!");
                 e.setCancelled(true);
@@ -469,9 +469,9 @@ public class PlayerListener implements Listener {
             double nX = nexusLoc.getX();
             double nY = nexusLoc.getY();
             double nZ = nexusLoc.getZ();
-            if (Math.abs(nX - x) <= plugin.build
-                    && Math.abs(nY - y) <= plugin.build
-                    && Math.abs(nZ - z) <= plugin.build)
+            if (Math.abs(nX - x) <= plugin.nexusBuildRadius
+                    && Math.abs(nY - y) <= plugin.nexusBuildRadius
+                    && Math.abs(nZ - z) <= plugin.nexusBuildRadius)
                 return true;
         }
 
@@ -490,10 +490,10 @@ public class PlayerListener implements Listener {
     private void breakNexus(final GameTeam victim, Player breaker) {
         final GameTeam attacker = PlayerMeta.getMeta(breaker).getTeam();
         if (victim == attacker)
-            breaker.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA
+            breaker.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA
                     + "You can't damage your own nexus");
         else if (plugin.getPhase() == 1)
-            breaker.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA
+            breaker.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA
                     + "Nexuses are invincible in phase 1");
         else {
             plugin.getScoreboardHandler().sb.getTeam(victim.name() + "SB")
@@ -619,14 +619,14 @@ public class PlayerListener implements Listener {
 
             if (!Kit.valueOf(ChatColor.stripColor(name).toUpperCase())
                     .isOwnedBy(player)) {
-                player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + "You do not own this class.");
+                player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + "You do not own this class.");
                 return;
             }
 
             player.sendMessage(ChatColor.GREEN +
             "You will recieve this class when you respawn.");
             meta.setKit(Kit.getKit(ChatColor.stripColor(name)));
-            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + "Selected class " + ChatColor.stripColor(name));
+            player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA + "Selected class " + ChatColor.stripColor(name));
         }
     }
 }

@@ -45,7 +45,7 @@ public class StatsManager {
                 int stat = UNDEF_STAT;
                 ResultSet rs = plugin
                         .getDatabaseHandler()
-                        .query("SELECT * FROM `" + plugin.mysqlName + "` WHERE `username`='"
+                        .query("SELECT * FROM `" + plugin.getMysqlTable() + "` WHERE `username`='"
                                 + p.getName() + "'").getResultSet();
 
                 while (rs.next())
@@ -66,7 +66,7 @@ public class StatsManager {
             config.save("stats.yml");
         } else {
             plugin.getDatabaseHandler().query(
-                    "UPDATE `" + plugin.mysqlName + "` SET `" + s.name().toLowerCase()
+                    "UPDATE `" + plugin.getMysqlTable() + "` SET `" + s.name().toLowerCase()
                             + "`='" + value + "' WHERE `username`='"
                             + p.getName() + "';");
         }

@@ -18,11 +18,6 @@
  */
 package net.coasterman10.Annihilation;
 
-import java.io.File;
-import java.util.*;
-import java.util.logging.Level;
-
-//import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
 import net.coasterman10.Annihilation.api.GameStartEvent;
 import net.coasterman10.Annihilation.api.PhaseChangeEvent;
 import net.coasterman10.Annihilation.bar.BarUtil;
@@ -64,24 +59,22 @@ import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.object.Shop;
 import net.coasterman10.Annihilation.stats.StatType;
 import net.coasterman10.Annihilation.stats.StatsManager;
-//import net.gravitydevelopment.updater.Updater;
-//import net.gravitydevelopment.updater.Updater.UpdateResult;
-import static net.coasterman10.Annihilation.Translation.get;
-
 import org.apache.commons.lang.WordUtils;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -92,93 +85,124 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scoreboard.Team;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.logging.Level;
+
+import static net.coasterman10.Annihilation.Translation.get;
+
+//import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
+//import net.gravitydevelopment.updater.Updater;
+//import net.gravitydevelopment.updater.Updater.UpdateResult;
+
 public final class Annihilation extends JavaPlugin implements Listener {
+
+    private static Annihilation instance = null;
+
     private ConfigManager configManager;
-    private VotingManager voting;
-    private MapManager maps;
-    private PhaseManager timer;
-    private ResourceListener resources;
-    private EnderFurnaceListener enderFurnaces;
-    private EnderBrewingStandListener enderBrewingStands;
-    private EnderChestListener enderChests;
-    private StatsManager stats;
-    private SignManager sign;
-    private ScoreboardManager sb;
-    private DatabaseManager db;
-    private BossManager boss;
-    private Translation translation;
+    private VotingManager votingManager;
+    private MapManager mapManager;
+    private PhaseManager phaseManager;
+    private ResourceListener resourceListener;
+    private EnderFurnaceListener enderFurnaceListener;
+    private EnderBrewingStandListener enderBrewingStandListener;
+    private EnderChestListener enderChestListener;
+    private StatsManager statsManager;
+    private SignManager signManager;
+    private ScoreboardManager scoreboardManager;
+    private DatabaseManager databaseManager;
+    private BossManager bossManager;
 
-    public static HashMap<String, String> messages = new HashMap<String, String>();
+    private YamlConfiguration pluginConfiguration;
+
+    private static HashMap<String, String> messages = new HashMap<String, String>();
     public boolean useMysql = false;
-    public boolean updateAvailable = false;
-    public boolean motd = true;
-    public String newVersion;
+    public boolean messageOfTheDay = true;
 
-    public int build = 1;
-    public int lastJoinPhase = 2;
-    public int respawn = 10;
+    //public String newVersion;
+    //public boolean updateAvailable = false;
 
-    public boolean runCommand = false;
+    public int nexusBuildRadius;
+    public int lastJoinPhase;
+    public int respawn;
+
+    public boolean isEndGameCommandsEnabled = false;
     public List<String> commands = new ArrayList<String>();
 
-    public String mysqlName = "annihilation";
+    private String mysqlTable;
+
+    public String getMysqlTable() {
+        return mysqlTable;
+    }
+
+    public static Annihilation getInstance() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
 
+        instance = this;
+
+        // Configuration files setup
         configManager = new ConfigManager(this);
-        configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml",
-                "stats.yml", "messages.yml");
+        configManager.loadConfigFiles("config.yml", "maps.yml", "shops.yml", "stats.yml", "messages.yml");
+
+        this.pluginConfiguration = configManager.getConfig("config.yml");
+        YamlConfiguration messagesConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "messages.yml"));
+        YamlConfiguration shops = configManager.getConfig("shops.yml");
+
+        // Store messages in the HashMap
+        for (String id : messagesConfig.getKeys(false))
+            messages.put(id, messagesConfig.getString(id));
 
         MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
 
-        runCommand = getConfig().contains("commandsToRunAtEndGame");
+        isEndGameCommandsEnabled = getConfig().contains("commandsToRunAtEndGame");
 
-        if (runCommand) {
+        if (isEndGameCommandsEnabled) {
             commands = getConfig().getStringList("commandsToRunAtEndGame");
         } else commands = null;
 
-        maps = new MapManager(this, mapLoader,
-                configManager.getConfig("maps.yml"));
+        mapManager = new MapManager(this, mapLoader, configManager.getConfig("maps.yml"));
 
-        File messageFile = new File("plugins/" + getDescription().getName() + "/messages.yml");
-        YamlConfiguration yml = YamlConfiguration.loadConfiguration(messageFile);
-
-        for (String id : yml.getKeys(false))
-        messages.put(id, yml.getString(id));
-
-        Configuration shops = configManager.getConfig("shops.yml");
+        // Setup shops
         new Shop(this, "Weapon", shops);
         new Shop(this, "Brewing", shops);
 
-        stats = new StatsManager(this, configManager);
-        resources = new ResourceListener(this);
-        enderFurnaces = new EnderFurnaceListener(this);
-        enderBrewingStands = new EnderBrewingStandListener(this);
-        enderChests = new EnderChestListener();
-        sign = new SignManager(this);
-        Configuration config = configManager.getConfig("config.yml");
-        timer = new PhaseManager(this, config.getInt("start-delay"),
-                config.getInt("phase-period"));
-        voting = new VotingManager(this);
-        sb = new ScoreboardManager();
-        boss = new BossManager(this);
+        // Setup listeners
+        resourceListener = new ResourceListener(this);
+        enderFurnaceListener = new EnderFurnaceListener(this);
+        enderBrewingStandListener = new EnderBrewingStandListener(this);
+        enderChestListener = new EnderChestListener();
+
+        // Setup managers
+        statsManager = new StatsManager(this, configManager);
+        this.setSignHandler(new SignManager(this));
+        phaseManager = new PhaseManager(this, pluginConfiguration.getInt("start-delay"), pluginConfiguration.getInt("phase-period"));
+        votingManager = new VotingManager(this);
+        scoreboardManager = new ScoreboardManager();
+        bossManager = new BossManager(this);
 
         PluginManager pm = getServer().getPluginManager();
 
-        sign.loadSigns();
+        signManager.loadSigns();
 
-        sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
+        scoreboardManager.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
                 + " | " + ChatColor.GOLD + "/vote <name>");
 
-        build = this.getConfig().getInt("build", 5);
+        nexusBuildRadius = this.getConfig().getInt("build", 5);
         lastJoinPhase = this.getConfig().getInt("lastJoinPhase", 2);
         respawn = this.getConfig().getInt("bossRespawnDelay", 10);
 
-        pm.registerEvents(resources, this);
-        pm.registerEvents(enderFurnaces, this);
-        pm.registerEvents(enderBrewingStands, this);
-        pm.registerEvents(enderChests, this);
+        pm.registerEvents(resourceListener, this);
+        pm.registerEvents(enderFurnaceListener, this);
+        pm.registerEvents(enderBrewingStandListener, this);
+        pm.registerEvents(enderChestListener, this);
         pm.registerEvents(this, this);
         pm.registerEvents(new ChatListener(this), this);
         pm.registerEvents(new PlayerListener(this), this);
@@ -191,9 +215,9 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
         getCommand("nexusgrinder").setExecutor(new AnnihilationCommand(this));
         getCommand("class").setExecutor(new ClassCommand());
-        getCommand("stats").setExecutor(new StatsCommand(stats));
+        getCommand("stats").setExecutor(new StatsCommand(statsManager));
         getCommand("team").setExecutor(new TeamCommand(this));
-        getCommand("vote").setExecutor(new VoteCommand(voting));
+        getCommand("vote").setExecutor(new VoteCommand(votingManager));
         getCommand("red").setExecutor(new TeamShortcutCommand());
         getCommand("green").setExecutor(new TeamShortcutCommand());
         getCommand("yellow").setExecutor(new TeamShortcutCommand());
@@ -203,44 +227,38 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
         BarUtil.init(this);
 
-        if (config.getString("stats").equalsIgnoreCase("sql"))
+        if (pluginConfiguration.getString("stats").equalsIgnoreCase("sql"))
             useMysql = true;
 
-        motd = config.getBoolean("enableMotd", true);
+        messageOfTheDay = pluginConfiguration.getBoolean("enableMotd", true);
 
         if (useMysql) {
-            String host = config.getString("MySQL.host");
-            Integer port = config.getInt("MySQL.port");
-            String name = config.getString("MySQL.name");
-            String user = config.getString("MySQL.user");
-            String pass = config.getString("MySQL.pass");
-            db = new DatabaseManager(host, port, name, user, pass, this);
+            String mysqlHost = pluginConfiguration.getString("MySQL.host", "localhost");
+            int mysqlPort = pluginConfiguration.getInt("MySQL.port", 3306);
+            String mysqlDatabase = pluginConfiguration.getString("MySQL.database-name", "annihilation");
+            mysqlTable = pluginConfiguration.getString("MySQL.table-name", "annihilation");
+            String mysqlUser = pluginConfiguration.getString("MySQL.user", "annihilation");
+            String mysqlPass = pluginConfiguration.getString("MySQL.pass", "myPassword");
+            databaseManager = new DatabaseManager(mysqlHost, mysqlPort, mysqlDatabase, mysqlUser, mysqlPass, this);
 
-            db.query("CREATE TABLE IF NOT EXISTS `" + mysqlName + "` ( `username` varchar(16) NOT NULL, "
+            databaseManager.query("CREATE TABLE IF NOT EXISTS `" + mysqlTable + "` ( `username` varchar(16) NOT NULL, "
                     + "`kills` int(16) NOT NULL, `deaths` int(16) NOT NULL, `wins` int(16) NOT NULL, "
                     + "`losses` int(16) NOT NULL, `nexus_damage` int(16) NOT NULL, "
                     + "UNIQUE KEY `username` (`username`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;");
         } else
-            db = new DatabaseManager(this);
+            databaseManager = new DatabaseManager(this);
 
         if (getServer().getPluginManager().isPluginEnabled("Vault")) {
-            VaultHooks.vault = true;
-            if (!VaultHooks.instance().setupPermissions()) {
-                VaultHooks.vault = false;
-                getLogger().warning("Unable to load Vault: No permission plugin found.");
-            } else {
-                if (!VaultHooks.instance().setupChat()) {
-                    VaultHooks.vault = false;
-                    getLogger().warning("Unable to load Vault: No chat plugin found.");
-                } else {
-                    getLogger().info("Vault hook initalized!");
-                }
-            }
+            if(!VaultHooks.getInstance().setupPermissions())
+                getLogger().severe("Permission plugin not found. Unable to load vault.");
+            if(!VaultHooks.getInstance().setupChat())
+                getLogger().severe("Chat plugin not found. Unable load vault.");
         } else {
             getLogger().warning("Vault not found! Permissions features disabled.");
+            VaultHooks.setVault(false);
         }
 
-        reset();
+        setupServerForGame();
 
         for (Entity e : Bukkit.getWorld("lobby").getEntities()) {
             e.remove();
@@ -249,6 +267,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
         ChatUtil.setRoman(getConfig().getBoolean("roman", false));
 
+        /*
         //sheep npc
         //BLUE
         double xblue = 11;
@@ -320,6 +339,15 @@ public final class Annihilation extends JavaPlugin implements Listener {
         sgreen.getLocation().setZ(zgreen);
         sgreen.setCustomName(ChatColor.GREEN + "Join" + ChatColor.DARK_GREEN + ">" + ChatColor.GREEN + " GREEN TEAM " + ChatColor.DARK_GREEN + "<" + ChatColor.GREEN + "Join " + "0 " + "Players" );
         getLogger().info("Green sheep, spawned.");
+         */
+    }
+
+    public YamlConfiguration getConfig() {
+        return this.pluginConfiguration;
+    }
+
+    public HashMap<String, String> getMessagesConfig() {
+        return messages;
     }
 
     /*
@@ -522,10 +550,10 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
 
     public boolean startTimer() {
-        if (timer.isRunning())
+        if (phaseManager.isRunning())
             return false;
 
-        timer.start();
+        phaseManager.start();
 
         return true;
     }
@@ -551,19 +579,19 @@ public final class Annihilation extends JavaPlugin implements Listener {
             if (section.contains("furnaces." + name)) {
                 Location loc = Util.parseLocation(w,
                         section.getString("furnaces." + name));
-                enderFurnaces.setFurnaceLocation(team, loc);
+                enderFurnaceListener.setFurnaceLocation(team, loc);
                 loc.getBlock().setType(Material.FURNACE);
             }
             if (section.contains("brewingstands." + name)) {
                 Location loc = Util.parseLocation(w,
                         section.getString("brewingstands." + name));
-                enderBrewingStands.setBrewingStandLocation(team, loc);
+                enderBrewingStandListener.setBrewingStandLocation(team, loc);
                 loc.getBlock().setType(Material.BREWING_STAND);
             }
             if (section.contains("enderchests." + name)) {
                 Location loc = Util.parseLocation(w,
                         section.getString("enderchests." + name));
-                enderChests.setEnderChestLocation(team, loc);
+                enderChestListener.setEnderChestLocation(team, loc);
                 loc.getBlock().setType(Material.ENDER_CHEST);
             }
         }
@@ -580,14 +608,14 @@ public final class Annihilation extends JavaPlugin implements Listener {
                                 w, sec.getString(boss + ".spawn")), Util
                                 .parseLocation(w,
                                         sec.getString(boss + ".chest"))));
-            boss.loadBosses(bosses);
+            bossManager.loadBosses(bosses);
         }
 
         if (section.contains("diamonds")) {
             Set<Location> diamonds = new HashSet<Location>();
             for (String s : section.getStringList("diamonds"))
                 diamonds.add(Util.parseLocation(w, s));
-            resources.loadDiamonds(diamonds);
+            resourceListener.loadDiamonds(diamonds);
         }
     }
 
@@ -600,36 +628,36 @@ public final class Annihilation extends JavaPlugin implements Listener {
         }
 
         Bukkit.getPluginManager().callEvent(
-                new GameStartEvent(maps.getCurrentMap()));
-        sb.scores.clear();
+                new GameStartEvent(mapManager.getCurrentMap()));
+        scoreboardManager.scores.clear();
 
-        for (OfflinePlayer score : sb.sb.getPlayers())
-            sb.sb.resetScores(score);
+        for (OfflinePlayer score : scoreboardManager.sb.getPlayers())
+            scoreboardManager.sb.resetScores(score);
 
-        sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
-                + WordUtils.capitalize(voting.getWinner()));
+        scoreboardManager.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
+                + WordUtils.capitalize(votingManager.getWinner()));
 
         for (GameTeam t : GameTeam.teams()) {
-            sb.scores.put(t.name(), sb.obj.getScore(Bukkit
+            scoreboardManager.scores.put(t.name(), scoreboardManager.obj.getScore(Bukkit
                     .getOfflinePlayer(WordUtils.capitalize(t.name()
                             .toLowerCase() + " Nexus"))));
-            sb.scores.get(t.name()).setScore(t.getNexus().getHealth());
+            scoreboardManager.scores.get(t.name()).setScore(t.getNexus().getHealth());
 
-            Team sbt = sb.sb.registerNewTeam(t.name() + "SB");
+            Team sbt = scoreboardManager.sb.registerNewTeam(t.name() + "SB");
             sbt.addPlayer(Bukkit.getOfflinePlayer(WordUtils
                     .capitalize(WordUtils.capitalize(t.name().toLowerCase()
                             + " Nexus"))));
             sbt.setPrefix(t.color().toString());
         }
 
-        sb.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
-                + WordUtils.capitalize(voting.getWinner()));
+        scoreboardManager.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
+                + WordUtils.capitalize(votingManager.getWinner()));
 
         for (Player p : getServer().getOnlinePlayers())
             if (PlayerMeta.getMeta(p).getTeam() != GameTeam.NONE)
                 Util.sendPlayerToGame(p, this);
 
-        sb.update();
+        scoreboardManager.update();
 
         getServer().getScheduler().runTaskTimer(this, new Runnable() {
             public void run() {
@@ -655,6 +683,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         }, 100L, 5L);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerSwim(PlayerMoveEvent e) {
         if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
@@ -663,16 +692,16 @@ public final class Annihilation extends JavaPlugin implements Listener {
     }
 
     public void advancePhase() {
-        ChatUtil.phaseMessage(timer.getPhase());
+        ChatUtil.phaseMessage(phaseManager.getPhase());
 
-        if (timer.getPhase() == 2)
-            boss.spawnBosses();
+        if (phaseManager.getPhase() == 2)
+            bossManager.spawnBosses();
 
-        if (timer.getPhase() == 3)
-            resources.spawnDiamonds();
+        if (phaseManager.getPhase() == 3)
+            resourceListener.spawnDiamonds();
 
         Bukkit.getPluginManager().callEvent(
-                new PhaseChangeEvent(timer.getPhase()));
+                new PhaseChangeEvent(phaseManager.getPhase()));
 
         getSignHandler().updateSigns(GameTeam.RED);
         getSignHandler().updateSigns(GameTeam.BLUE);
@@ -681,14 +710,14 @@ public final class Annihilation extends JavaPlugin implements Listener {
     }
 
     public void onSecond() {
-        long time = timer.getTime();
+        long time = phaseManager.getTime();
 
         if (time == -5L) {
 
-            String winner = voting.getWinner();
-            voting.end();
+            String winner = votingManager.getWinner();
+            votingManager.end();
             getServer().broadcastMessage(ChatColor.GOLD + "Voting is now closed!");
-            maps.selectMap(winner);
+            mapManager.selectMap(winner);
             getServer().broadcastMessage(
                     ChatColor.GREEN + WordUtils.capitalize(winner)
                             + " was chosen!");
@@ -715,19 +744,19 @@ public final class Annihilation extends JavaPlugin implements Listener {
     }
 
     public int getPhase() {
-        return timer.getPhase();
+        return phaseManager.getPhase();
     }
 
     public MapManager getMapManager() {
-        return maps;
+        return mapManager;
     }
 
     public StatsManager getStatsManager() {
-        return stats;
+        return statsManager;
     }
 
     public DatabaseManager getDatabaseHandler() {
-        return db;
+        return databaseManager;
     }
 
     public ConfigManager getConfigManager() {
@@ -743,11 +772,11 @@ public final class Annihilation extends JavaPlugin implements Listener {
     }
 
     public VotingManager getVotingManager() {
-        return voting;
+        return votingManager;
     }
 
     public ScoreboardManager getScoreboardHandler() {
-        return sb;
+        return scoreboardManager;
     }
 
     public void endGame(GameTeam winner) {
@@ -755,38 +784,40 @@ public final class Annihilation extends JavaPlugin implements Listener {
             return;
 
         ChatUtil.winMessage(winner);
-        timer.stop();
+        phaseManager.stop();
 
         for (Player p : getServer().getOnlinePlayers()) {
             if (PlayerMeta.getMeta(p).getTeam() == winner)
-                stats.incrementStat(StatType.WINS, p);
+                statsManager.incrementStat(StatType.WINS, p);
         }
 
         long restartDelay = configManager.getConfig("config.yml").getLong(
                 "restart-delay");
         RestartHandler rs = new RestartHandler(this, restartDelay);
-        rs.start(timer.getTime(), winner.getColor(winner));
+        rs.start(phaseManager.getTime(), winner.getColor(winner));
     }
 
-    public void reset() {
-        sb.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
+    public void setupServerForGame() {
+
+        scoreboardManager.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
                 + " | " + ChatColor.GOLD + "/vote <name>");
-        maps.reset();
+
+        mapManager.reset();
         PlayerMeta.reset();
-        timer.reset();
+        phaseManager.reset();
+
         for (Player p : getServer().getOnlinePlayers()) {
             PlayerMeta.getMeta(p).setTeam(GameTeam.NONE);
-            p.teleport(maps.getLobbySpawnPoint());
-            BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA
-                    + "Welcome to NexusGrinder!", 0.01F);
+            p.teleport(mapManager.getLobbySpawnPoint());
+            BarUtil.setMessageAndPercent(p, ChatColor.DARK_AQUA + "Welcome to NexusGrinder!", 0.01F);
             p.setMaxHealth(20D);
             p.setHealth(20D);
             p.setFoodLevel(20);
             p.setSaturation(20F);
         }
 
-        voting.start();
-        sb.update();
+        votingManager.start();
+        scoreboardManager.update();
 
         for (Player p : Bukkit.getOnlinePlayers()) {
             for (Player pp : Bukkit.getOnlinePlayers()) {
@@ -796,7 +827,6 @@ public final class Annihilation extends JavaPlugin implements Listener {
         }
 
         Bukkit.getScheduler().runTaskLater(this, new Runnable() {
-            @SuppressWarnings("deprecation")
             public void run() {
                 for (Player p : getServer().getOnlinePlayers()) {
                     PlayerInventory inv = p.getInventory();
@@ -816,8 +846,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
                     ItemStack selector = new ItemStack(Material.FEATHER);
                     ItemMeta itemMeta = selector.getItemMeta();
-                    itemMeta.setDisplayName(ChatColor.AQUA
-                            + "Right click to select class");
+                    itemMeta.setDisplayName(ChatColor.AQUA + "Right click to select class");
                     selector.setItemMeta(itemMeta);
 
                     p.getInventory().setItem(0, selector);
@@ -827,7 +856,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
 
                 for (GameTeam t : GameTeam.values())
                     if (t != GameTeam.NONE)
-                        sign.updateSigns(t);
+                        signManager.updateSigns(t);
 
                 checkStarting();
             }
@@ -849,27 +878,27 @@ public final class Annihilation extends JavaPlugin implements Listener {
     }
 
     public SignManager getSignHandler() {
-        return sign;
+        return signManager;
     }
 
     public void setSignHandler(SignManager sign) {
-        this.sign = sign;
+        this.signManager = sign;
     }
 
     public void checkStarting() {
-        if (!timer.isRunning()) {
+        if (!phaseManager.isRunning()) {
             if (Bukkit.getOnlinePlayers().size() >= getConfig().getInt(
                     "requiredToStart"))
-                timer.start();
+                phaseManager.start();
         }
     }
 
     public BossManager getBossManager() {
-        return boss;
+        return bossManager;
     }
 
     public PhaseManager getPhaseManager() {
-        return timer;
+        return phaseManager;
     }
 
     public void listTeams(CommandSender sender) {
@@ -897,7 +926,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
     public void joinTeam(Player player, String team) {
         PlayerMeta meta = PlayerMeta.getMeta(player);
         if (meta.getTeam() != GameTeam.NONE && !player.hasPermission("annihilation.bypass.teamlimitor")) {
-            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + get("ERROR_PLAYER_NOSWITCHTEAM"));
+            player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA + get("ERROR_PLAYER_NOSWITCHTEAM"));
             return;
         }
 
@@ -905,32 +934,32 @@ public final class Annihilation extends JavaPlugin implements Listener {
         try {
             target = GameTeam.valueOf(team.toUpperCase());
         } catch (IllegalArgumentException e) {
-            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_INVALIDTEAM"));
+            player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + get("ERROR_GAME_INVALIDTEAM"));
             listTeams(player);
             return;
         }
 
         if (Util.isTeamTooBig(target)
                 && !player.hasPermission("annihilation.bypass.teamlimit")) {
-            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_TEAMFULL"));
+            player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + get("ERROR_GAME_TEAMFULL"));
             return;
         }
 
         if (target.getNexus() != null) {
             if (target.getNexus().getHealth() == 0 && getPhase() > 1) {
-                player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_TEAMNONEXUS"));
+                player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + get("ERROR_GAME_TEAMNONEXUS"));
                 return;
             }
         }
 
         if (getPhase() > lastJoinPhase
                 && !player.hasPermission("annhilation.bypass.phaselimiter")) {
-            player.kickPlayer(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED
+            player.kickPlayer(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED
                     + "You cannot join the game in this phase!");
             return;
         }
 
-        player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + "You joined "
+        player.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.DARK_AQUA + "You joined "
                 + target.coloredName());
         meta.setTeam(target);
 

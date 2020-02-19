@@ -58,7 +58,7 @@ public class MapCommand implements CommandExecutor {
                         WorldCreator wc = new WorldCreator(args[1]);
                         wc.generator(new VoidGenerator());
                         Bukkit.createWorld(wc);
-                        sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + green + "Map " + args[1]
+                        sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + green + "Map " + args[1]
                                 + " loaded for editing.");
                         if (sender instanceof Player) {
                             sender.sendMessage(green + "Teleporting...");
@@ -67,7 +67,7 @@ public class MapCommand implements CommandExecutor {
                             loc.setY(w.getHighestBlockYAt(loc));
                             ((Player) sender).teleport(loc);
                         }
-                    } else sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + red + get("ERROR_PLAYER_NOPERMISSION"));
+                    } else sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + red + get("ERROR_PLAYER_NOPERMISSION"));
                     return true;
                 }
                 if (args[0].equalsIgnoreCase("save")) {
@@ -84,14 +84,14 @@ public class MapCommand implements CommandExecutor {
                                 }
                             }, 40L);
                         }
-                    } else sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + red + get("ERROR_PLAYER_NOPERMISSION"));
+                    } else sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + red + get("ERROR_PLAYER_NOPERMISSION"));
                     return true;
                 }
             }
 
-            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + red + "Syntax: /map <save/edit> <name>");
+            sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + red + "Syntax: /map <save/edit> <name>");
         } else {
-            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + red + get("ERROR_CONSOLE_PLAYERCOMMAND"));
+            sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + red + get("ERROR_CONSOLE_PLAYERCOMMAND"));
         }
         return true;
     }

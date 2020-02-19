@@ -18,60 +18,62 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation;
 
+import net.milkbowl.vault.chat.Chat;
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import net.milkbowl.vault.chat.Chat;
-import net.milkbowl.vault.permission.Permission;
-
 public class VaultHooks {
-    public static boolean vault = false;
-
-    private static VaultHooks inst;
-
-    public static VaultHooks instance() {
-        if (vault) {
-            if (inst == null)
-                inst = new VaultHooks();
-            return inst;
-        } else
-            return null;
-    }
-
-    private VaultHooks() {
-
-    }
-
+    private static boolean vault = true;
+    private static VaultHooks instance;
     public static Permission permission;
     public static Chat chat;
-     
+
+    public static VaultHooks getInstance() {
+        if (instance == null)
+            instance = new VaultHooks();
+        return instance;
+    }
+
+
     public static Permission getPermissionManager() {
         return permission;
     }
-    
+
+
     public static Chat getChatManager() {
         return chat;
     }
-    
+
+    public static void setVault(boolean value) {
+
+        vault = value;
+    }
+
+
     public boolean setupPermissions() {
-        if (!vault)
+        if (!vault) {
             return false;
-        
-        RegisteredServiceProvider<Permission> permissionProvider = Bukkit
-                .getServicesManager().getRegistration(
-                        net.milkbowl.vault.permission.Permission.class);
+        }
+        RegisteredServiceProvider<Permission> permissionProvider =
+                Bukkit.getServicesManager().getRegistration(
+                        Permission.class);
         if (permissionProvider != null)
             permission = permissionProvider.getProvider();
+
+        if(permissionProvider == null)
+            vault = false;
+
         return (permission != null);
     }
-    
-    public boolean setupChat()
-    {
-        if (!vault)
+
+
+    public boolean setupChat() {
+        if (!vault) {
             return false;
-        
-        RegisteredServiceProvider<Chat> chatProvider = Bukkit.getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
+        }
+        RegisteredServiceProvider<Chat> chatProvider = Bukkit.getServicesManager().getRegistration(Chat.class);
         if (chatProvider != null) {
             chat = chatProvider.getProvider();
         }
@@ -81,9 +83,13 @@ public class VaultHooks {
 
     public static String getGroup(String name) {
         if (!vault) return "";
-        
-        String group = VaultHooks.getPermissionManager().getPrimaryGroup(Bukkit.getPlayer(name));
-        return ChatColor.translateAlternateColorCodes('&', 
-                VaultHooks.getChatManager().getGroupPrefix(Bukkit.getPlayer(name).getWorld(), group));
+
+        String prefix = getChatManager().getPlayerPrefix(Bukkit.getPlayer(name));
+        String group = getPermissionManager().getPrimaryGroup(Bukkit.getPlayer(name));
+
+        if (prefix == null || prefix.equals("")) {
+            prefix = getChatManager().getGroupPrefix(Bukkit.getPlayer(name).getWorld(), group);
+        }
+        return ChatColor.translateAlternateColorCodes('&', prefix);
     }
 }

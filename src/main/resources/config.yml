@@ -12,10 +12,11 @@ stats: flatfile
 
 MySQL:
     port: 3306
-    user: mc_
-    pass: mc_
+    user: annihilation
+    pass: myPassword
     host: localhost
-    name: annihilation
+    database-name: annihilation
+    table-name: annihilation
     
 # Display Roman Numerals for phase numbers
 roman: true

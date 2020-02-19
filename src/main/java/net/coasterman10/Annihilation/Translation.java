@@ -23,10 +23,10 @@ import org.bukkit.ChatColor;
 /**
  * Created by morpig on 2/6/14.
  */
-public class Translation {
+public final class Translation {
 
     public static String get(String id) {
-        return ChatColor.translateAlternateColorCodes('&', Annihilation.messages.get(id));
+        return ChatColor.translateAlternateColorCodes('&', Annihilation.getInstance().getMessagesConfig().get(id));
     }
 
 }

@@ -59,7 +59,7 @@ public class RestartHandler {
                 new Runnable() {
                     public void run() {
                         if (time <= 0) {
-                            plugin.reset();
+                            plugin.setupServerForGame();
                             stop();
                             return;
                         }
@@ -90,11 +90,11 @@ public class RestartHandler {
     private void stop() {
         Bukkit.getScheduler().cancelTask(taskID);
         Bukkit.getScheduler().cancelTask(fwID);
-        if (plugin.runCommand) {
+        if (plugin.isEndGameCommandsEnabled) {
             for (String c : plugin.commands)
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), c);
         } else {
-            plugin.reset();
+            plugin.setupServerForGame();
         }
     }
 }

@@ -40,7 +40,7 @@ public class TeamCommand implements CommandExecutor {
             plugin.listTeams(sender);
         else {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + get("ERROR_CONSOLE_PLAYERCOMMAND"));
+                sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + get("ERROR_CONSOLE_PLAYERCOMMAND"));
             } else {
                 plugin.joinTeam((Player) sender, args[0]);
             }

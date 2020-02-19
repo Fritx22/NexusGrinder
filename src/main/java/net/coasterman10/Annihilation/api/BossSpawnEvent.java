@@ -19,7 +19,6 @@
 package net.coasterman10.Annihilation.api;
 
 import net.coasterman10.Annihilation.object.Boss;
-
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 

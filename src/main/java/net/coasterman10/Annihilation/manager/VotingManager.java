@@ -75,7 +75,7 @@ public class VotingManager {
                 for (String map : maps.values()) {
                     if (vote.equalsIgnoreCase(map)) {
                         votes.put(voter.getName(), map);
-                        voter.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.GOLD + "You voted for "
+                        voter.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.GOLD + "You voted for "
                                 + ChatColor.WHITE + map);
                         updateScoreboard();
                         return true;
@@ -86,7 +86,7 @@ public class VotingManager {
             for (String map : maps.values()) {
                 if (vote.equalsIgnoreCase(map)) {
                     votes.put(voter.getName(), map);
-                    voter.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.GOLD + "You voted for "
+                    voter.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.GOLD + "You voted for "
                             + ChatColor.WHITE + map);
                     updateScoreboard();
                     return true;
@@ -94,7 +94,7 @@ public class VotingManager {
             }
         }
 
-        voter.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + vote + ChatColor.RED + " is not a valid map");
+        voter.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + vote + ChatColor.RED + " is not a valid map");
         return false;
     }
 

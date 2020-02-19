@@ -32,7 +32,7 @@ public class ClassCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label,
                              String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_CONSOLE_CLASSCOMMAND"));
+            sender.sendMessage(ChatColor.GOLD + get("ANNIHILATION_PREFIX") + ChatColor.RED + get("ERROR_CONSOLE_CLASSCOMMAND"));
         } else {
             Player player = (Player) sender;
             Util.showClassSelector(player, get("INFO_CLASS_CHOOSERTITLE"));
