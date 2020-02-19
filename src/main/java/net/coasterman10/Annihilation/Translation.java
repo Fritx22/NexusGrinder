@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
  */
 public class Translation {
 
-    public static String _ (String id) {
+    public static String get(String id) {
         return ChatColor.stripColor(Annihilation.messages.get(id));
     }
 

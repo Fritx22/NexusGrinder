@@ -18,7 +18,7 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation.commands;
 
-import static net.coasterman10.Annihilation.Translation._;
+import static net.coasterman10.Annihilation.Translation.get;
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.object.GameTeam;
 import net.coasterman10.Annihilation.object.PlayerMeta;
@@ -42,16 +42,16 @@ public class DistanceCommand implements CommandExecutor {
             Player p = (Player) sender;
 
             if (plugin.getPhase() == 0) {
-                p.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_NOTSTARTED"));
+                p.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_NOTSTARTED"));
                 return false;
             }
 
             if (PlayerMeta.getMeta(p).getTeam() == GameTeam.NONE) {
-                p.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_PLAYER_NOTEAM"));
+                p.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_PLAYER_NOTEAM"));
                 return false;
             }
 
-            p.sendMessage(ChatColor.GRAY + "=========[ " + ChatColor.DARK_AQUA.toString() + _("INFO_COMMAND_DISTANCE")
+            p.sendMessage(ChatColor.GRAY + "=========[ " + ChatColor.DARK_AQUA.toString() + get("INFO_COMMAND_DISTANCE")
                     + ChatColor.GRAY + " ]=========");
 
             for (GameTeam t : GameTeam.values()) {
@@ -62,7 +62,7 @@ public class DistanceCommand implements CommandExecutor {
 
             p.sendMessage(ChatColor.GRAY + "============================");
         } else {
-            sender.sendMessage(ChatColor.RED + _("ERROR_CONSOLE_PLAYERCOMMAND"));
+            sender.sendMessage(ChatColor.RED + get("ERROR_CONSOLE_PLAYERCOMMAND"));
         }
 
         return true;

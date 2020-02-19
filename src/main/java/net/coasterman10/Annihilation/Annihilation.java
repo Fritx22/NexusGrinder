@@ -19,11 +19,10 @@
 package net.coasterman10.Annihilation;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 
-import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
+//import com.bergerkiller.bukkit.common.events.EntityMoveEvent;
 import net.coasterman10.Annihilation.api.GameStartEvent;
 import net.coasterman10.Annihilation.api.PhaseChangeEvent;
 import net.coasterman10.Annihilation.bar.BarUtil;
@@ -67,7 +66,7 @@ import net.coasterman10.Annihilation.stats.StatType;
 import net.coasterman10.Annihilation.stats.StatsManager;
 import net.gravitydevelopment.updater.Updater;
 import net.gravitydevelopment.updater.Updater.UpdateResult;
-import static net.coasterman10.Annihilation.Translation._;
+import static net.coasterman10.Annihilation.Translation.get;
 
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.*;
@@ -323,7 +322,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         getLogger().info("Green sheep, spawned.");
     }
 
-
+    /*
     @EventHandler
     public void sheepMoveEvent(EntityMoveEvent event) {
 
@@ -516,6 +515,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
             }
         }
     }
+     */
 
     //WATER DAMAGE
 
@@ -886,9 +886,9 @@ public final class Annihilation extends JavaPlugin implements Listener {
             }
 
             if (size != 1) {
-                sender.sendMessage(t.coloredName() + " - " + size + " " + _("INFO_TEAM_LIST_PLAYERS") + _("DYNAMIC_S"));
+                sender.sendMessage(t.coloredName() + " - " + size + " " + get("INFO_TEAM_LIST_PLAYERS") + get("DYNAMIC_S"));
             } else {
-                sender.sendMessage(t.coloredName() + " - " + size + " " + _("INFO_TEAM_LIST_PLAYERS"));
+                sender.sendMessage(t.coloredName() + " - " + size + " " + get("INFO_TEAM_LIST_PLAYERS"));
             }
         }
         sender.sendMessage(ChatColor.GRAY + "===============================");
@@ -897,7 +897,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
     public void joinTeam(Player player, String team) {
         PlayerMeta meta = PlayerMeta.getMeta(player);
         if (meta.getTeam() != GameTeam.NONE && !player.hasPermission("annihilation.bypass.teamlimitor")) {
-            player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + _("ERROR_PLAYER_NOSWITCHTEAM"));
+            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + get("ERROR_PLAYER_NOSWITCHTEAM"));
             return;
         }
 
@@ -905,32 +905,32 @@ public final class Annihilation extends JavaPlugin implements Listener {
         try {
             target = GameTeam.valueOf(team.toUpperCase());
         } catch (IllegalArgumentException e) {
-            player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_INVALIDTEAM"));
+            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_INVALIDTEAM"));
             listTeams(player);
             return;
         }
 
         if (Util.isTeamTooBig(target)
                 && !player.hasPermission("annihilation.bypass.teamlimit")) {
-            player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_TEAMFULL"));
+            player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_TEAMFULL"));
             return;
         }
 
         if (target.getNexus() != null) {
             if (target.getNexus().getHealth() == 0 && getPhase() > 1) {
-                player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_GAME_TEAMNONEXUS"));
+                player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_GAME_TEAMNONEXUS"));
                 return;
             }
         }
 
         if (getPhase() > lastJoinPhase
                 && !player.hasPermission("annhilation.bypass.phaselimiter")) {
-            player.kickPlayer(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED
+            player.kickPlayer(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED
                     + "You cannot join the game in this phase!");
             return;
         }
 
-        player.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + "You joined "
+        player.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.DARK_AQUA + "You joined "
                 + target.coloredName());
         meta.setTeam(target);
 

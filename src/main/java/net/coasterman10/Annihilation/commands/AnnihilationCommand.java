@@ -25,7 +25,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static net.coasterman10.Annihilation.Translation._;
+import static net.coasterman10.Annihilation.Translation.get;
 
 public class AnnihilationCommand implements CommandExecutor {
     private Annihilation plugin;
@@ -46,20 +46,20 @@ public class AnnihilationCommand implements CommandExecutor {
         String prefix = cyan + "[Annihilation] " + gray;
         
         if (args.length == 0) {
-            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + gray + "Command Help:");
-            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + gray + "/anni " + dgray + "-" + white + " Show plugin information.");
-            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + gray + "/anni start " + dgray + "-" + white + " Begin the game.");
+            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + gray + "Command Help:");
+            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + gray + "/anni " + dgray + "-" + white + " Show plugin information.");
+            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + gray + "/anni start " + dgray + "-" + white + " Begin the game.");
         }
         
         if (args.length == 1) {
             if (args[0].equalsIgnoreCase("start")) {
                 if (sender.hasPermission("annihilation.command.start")) {
                     if (!plugin.startTimer()) {
-                        sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + red + "The game has already started");
+                        sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + red + "The game has already started");
                     } else {
-                        sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + green + "The game has been started.");
+                        sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + green + "The game has been started.");
                     }
-                } else sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + red + "You cannot use this command!");
+                } else sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + red + "You cannot use this command!");
             }
         }
         return false;

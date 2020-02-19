@@ -18,7 +18,7 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation.commands;
 
-import static net.coasterman10.Annihilation.Translation._;
+import static net.coasterman10.Annihilation.Translation.get;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -66,7 +66,7 @@ public class StatsCommand implements CommandExecutor {
                 listStats((Player) sender);
             }
         } else {
-            sender.sendMessage(ChatColor.RED + _("ERROR_CONSOLE_PLAYERCOMMAND"));
+            sender.sendMessage(ChatColor.RED + get("ERROR_CONSOLE_PLAYERCOMMAND"));
         }
 
         return true;
@@ -81,7 +81,7 @@ public class StatsCommand implements CommandExecutor {
         String DARK_AQUA = ChatColor.DARK_AQUA.toString();
         String AQUA = ChatColor.AQUA.toString();
 
-        player.sendMessage(GRAY + "=========[ " + DARK_AQUA + _("INFO_COMMAND_STATS") + GRAY
+        player.sendMessage(GRAY + "=========[ " + DARK_AQUA + get("INFO_COMMAND_STATS") + GRAY
                 + " ]=========");
 
         for (StatType stat : stats) {

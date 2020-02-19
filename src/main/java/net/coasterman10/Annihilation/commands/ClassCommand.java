@@ -18,7 +18,7 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation.commands;
 
-import static net.coasterman10.Annihilation.Translation._;
+import static net.coasterman10.Annihilation.Translation.get;
 import net.coasterman10.Annihilation.Util;
 
 import org.bukkit.ChatColor;
@@ -32,10 +32,10 @@ public class ClassCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label,
                              String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + ChatColor.RED + _("ERROR_CONSOLE_CLASSCOMMAND"));
+            sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + ChatColor.RED + get("ERROR_CONSOLE_CLASSCOMMAND"));
         } else {
             Player player = (Player) sender;
-            Util.showClassSelector(player, _("INFO_CLASS_CHOOSERTITLE"));
+            Util.showClassSelector(player, get("INFO_CLASS_CHOOSERTITLE"));
         }
         return false;
     }

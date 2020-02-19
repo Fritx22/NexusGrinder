@@ -18,7 +18,7 @@
  ******************************************************************************/
 package net.coasterman10.Annihilation.commands;
 
-import static net.coasterman10.Annihilation.Translation._;
+import static net.coasterman10.Annihilation.Translation.get;
 import net.coasterman10.Annihilation.Annihilation;
 
 import org.bukkit.ChatColor;
@@ -40,7 +40,7 @@ public class TeamCommand implements CommandExecutor {
             plugin.listTeams(sender);
         else {
             if (!(sender instanceof Player)) {
-                sender.sendMessage(ChatColor.GOLD + _("NEXUSGRINDER_PREFIX") + _("ERROR_CONSOLE_PLAYERCOMMAND"));
+                sender.sendMessage(ChatColor.GOLD + get("NEXUSGRINDER_PREFIX") + get("ERROR_CONSOLE_PLAYERCOMMAND"));
             } else {
                 plugin.joinTeam((Player) sender, args[0]);
             }
