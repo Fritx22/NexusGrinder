@@ -47,6 +47,14 @@
       </list>
     </option>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="federico">
+      <words>
+        <w>coasterman</w>
+        <w>stuntguy</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Annihilation.iml" filepath="$PROJECT_DIR$/Annihilation.iml" />
