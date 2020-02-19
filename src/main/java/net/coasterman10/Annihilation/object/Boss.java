@@ -18,16 +18,17 @@
  */
 package net.coasterman10.Annihilation.object;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-
+import com.sun.istack.internal.NotNull;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Chest;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class Boss {
     private String configName;
@@ -37,13 +38,12 @@ public class Boss {
     private Location chest;
     private boolean alive;
 
-    private HashMap<ItemStack, Float> legendaries = new HashMap<ItemStack, Float>();
+    private HashMap<ItemStack, Float> bossLoot = new HashMap<ItemStack, Float>();
     private HashMap<ItemStack, Float> loot = new HashMap<ItemStack, Float>();
     private int lootItems;
     private int ingots;
 
-    public Boss(String configName, int health, String bossName, Location spawn,
-            Location chest) {
+    public Boss(@NotNull String configName, @NotNull int health, @NotNull String bossName, @NotNull Location spawn, @NotNull Location chest) {
         this.configName = configName;
         this.health = health;
         this.bossName = bossName;
@@ -53,22 +53,25 @@ public class Boss {
     }
 
     public void spawnLootChest() {
-        chest.getBlock().setType(Material.CHEST);
-        Chest c = (Chest) chest.getBlock().getState();
-        Inventory inv = c.getBlockInventory();
-        Random r = new Random();
-        inv.setItem(r.nextInt(inv.getSize()), getRandomItem(legendaries));
+        this.chest.getBlock().setType(Material.CHEST);
+
+        Chest chest = (Chest) this.chest.getBlock().getState();
+        Inventory inv = chest.getBlockInventory();
+        Random random = new Random();
+
+        inv.setItem(random.nextInt(inv.getSize()), getRandomItem(bossLoot));
+
         if (lootItems > inv.getSize() - 2)
             lootItems = inv.getSize() - 2;
         for (int i = 0; i < lootItems; i++) {
-            int slot = r.nextInt(inv.getSize());
+            int slot = random.nextInt(inv.getSize());
             if (isEmpty(inv, slot))
                 inv.setItem(slot, getRandomItem(loot));
             else
                 i--;
         }
         for (int i = 0; i < ingots; i++) {
-            int slot = r.nextInt(inv.getSize());
+            int slot = random.nextInt(inv.getSize());
             ItemStack stack = inv.getItem(slot);
             if (isEmpty(inv, slot))
                 inv.setItem(slot, new ItemStack(Material.IRON_INGOT));

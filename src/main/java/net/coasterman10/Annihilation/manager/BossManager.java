@@ -22,8 +22,10 @@ import java.util.HashMap;
 
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.Util;
+import net.coasterman10.Annihilation.api.BossSpawnEvent;
 import net.coasterman10.Annihilation.object.Boss;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
@@ -50,26 +52,24 @@ public class BossManager {
             spawn(b);
     }
 
-    @SuppressWarnings("deprecation")
     public void spawn(Boss b) {
-        Location spawn = b.getSpawn();
+        Location bossSpawnLocation = b.getSpawn();
 
-        if (spawn != null && spawn.getWorld() != null) {
-            IronGolem boss = (IronGolem) spawn.getWorld().spawnCreature(spawn,
-                    EntityType.IRON_GOLEM);
-            boss.setMaxHealth(b.getHealth());
-            boss.setHealth(b.getHealth());
-            boss.setCanPickupItems(false);
-            boss.setPlayerCreated(false);
-            boss.setRemoveWhenFarAway(false);
-            boss.setCustomNameVisible(true);
-            boss.setCustomName(ChatColor.translateAlternateColorCodes('&',
-                    b.getBossName() + " &8» &a" + (int) b.getHealth() + " HP"));
-            bossNames.put(boss.getCustomName(), b);
-            Util.spawnFirework(b.getSpawn());
-            Util.spawnFirework(b.getSpawn());
-            Util.spawnFirework(b.getSpawn());
-        }
+        IronGolem boss = (IronGolem) bossSpawnLocation.getWorld().spawnEntity(bossSpawnLocation, EntityType.IRON_GOLEM);
+        boss.setMaxHealth(b.getHealth());
+        boss.setHealth(b.getHealth());
+        boss.setCanPickupItems(false);
+        boss.setPlayerCreated(false);
+        boss.setRemoveWhenFarAway(false);
+        boss.setCustomNameVisible(true);
+        boss.setCustomName(ChatColor.translateAlternateColorCodes('&',
+                b.getBossName() + " &8» &a" + (int) b.getHealth() + " HP"));
+        bossNames.put(boss.getCustomName(), b);
+        Util.spawnFirework(bossSpawnLocation);
+        Util.spawnFirework(bossSpawnLocation);
+        Util.spawnFirework(bossSpawnLocation);
+
+        Bukkit.getPluginManager().callEvent(new BossSpawnEvent(b));
     }
 
     public void update(Boss boss, IronGolem g) {
@@ -94,9 +94,9 @@ public class BossManager {
         Boss bb = new Boss(boss, sec.getInt(boss + ".hearts") * 2,
                 sec.getString(boss + ".name"), Util.parseLocation(plugin
                         .getMapManager().getCurrentMap().getWorld(),
-                        sec.getString(boss + ".spawn")), Util.parseLocation(
-                        plugin.getMapManager().getCurrentMap().getWorld(),
-                        sec.getString(boss + ".chest")));
+                sec.getString(boss + ".spawn")), Util.parseLocation(
+                plugin.getMapManager().getCurrentMap().getWorld(),
+                sec.getString(boss + ".chest")));
         bosses.put(boss, bb);
 
         return bb;

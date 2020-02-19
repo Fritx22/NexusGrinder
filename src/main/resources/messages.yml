@@ -1,9 +1,9 @@
 #NexusGrinder messages file
-NEXUSGRINDER_PREFIX : "[NexusGrinder] "
+NEXUSGRINDER_PREFIX : "[XAnnihilation] "
 ERROR_GAME_NOTSTARTED: "The game has not started yet!"
 ERROR_CONSOLE_CLASSCOMMAND: "Classes pertain only to players"
 ERROR_CONSOLE_PLAYERCOMMAND: "Only players can use this command!"
-ERROR_PLAYER_NOTEAM: "You have to be ingame to use this command!"
+ERROR_PLAYER_NOTEAM: "You must be in game to use this command!"
 ERROR_PLAYER_NOPERMISSION: "You do not have permission!"
 ERROR_PLAYER_NOSWITCHTEAM: "You cannot switch teams!"
 ERROR_GAME_INVALIDTEAM: "Invalid team specified!"
