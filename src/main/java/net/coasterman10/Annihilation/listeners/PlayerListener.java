@@ -18,23 +18,17 @@
  */
 package net.coasterman10.Annihilation.listeners;
 
-import java.util.HashMap;
-import java.util.Random;
-
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.Util;
 import net.coasterman10.Annihilation.api.NexusDamageEvent;
 import net.coasterman10.Annihilation.api.NexusDestroyEvent;
 import net.coasterman10.Annihilation.bar.BarUtil;
 import net.coasterman10.Annihilation.chat.ChatUtil;
+import net.coasterman10.Annihilation.manager.PhaseManager;
 import net.coasterman10.Annihilation.object.GameTeam;
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
 import net.coasterman10.Annihilation.stats.StatType;
-import net.minecraft.server.v1_7_R1.EntityPlayer;
-import net.minecraft.server.v1_7_R1.EnumClientCommand;
-import net.minecraft.server.v1_7_R1.PacketPlayInClientCommand;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -42,7 +36,6 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
-import org.bukkit.craftbukkit.v1_7_R1.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -60,6 +53,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.server.ServerListPingEvent;
@@ -68,6 +62,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import java.util.HashMap;
+import java.util.Random;
 
 import static net.coasterman10.Annihilation.Translation.get;
 
@@ -80,7 +78,15 @@ public class PlayerListener implements Listener {
         this.plugin = plugin;
     }
 
-    @SuppressWarnings("static-access")
+    @SuppressWarnings("unused")
+    @EventHandler
+    public void onPlayerSwim(PlayerMoveEvent e) {
+        if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 1000, 10));
+        }
+    }
+
+    @SuppressWarnings("unused")
     @EventHandler
     public void onMOTDPing(ServerListPingEvent e) {
         if (plugin.messageOfTheDay) {
@@ -88,10 +94,10 @@ public class PlayerListener implements Listener {
             try {
                 motd = motd.replaceAll("%PHASE%",
                         String.valueOf(plugin.getPhase() == 0 ? "Starting" : plugin.getPhase()));
-                motd = motd.replaceAll("%TIME%", plugin.getPhaseManager()
+                motd = motd.replaceAll("%TIME%", PhaseManager
                         .timeString(plugin.getPhaseManager().getTime()));
                 motd = motd.replaceAll("%PLAYERCOUNT",
-                        String.valueOf(Bukkit.getOnlinePlayers().length));
+                        String.valueOf(Bukkit.getOnlinePlayers().size()));
                 motd = motd.replaceAll("%MAXPLAYERS%",
                         String.valueOf(Bukkit.getMaxPlayers()));
                 motd = motd.replaceAll("%GREENNEXUS%",
@@ -113,7 +119,7 @@ public class PlayerListener implements Listener {
 
                 e.setMotd(ChatColor.translateAlternateColorCodes('&', motd));
             } catch (Exception ex) {
-
+                ex.printStackTrace();
             }
         }
     }
@@ -139,6 +145,7 @@ public class PlayerListener implements Listener {
         return size;
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
         Player player = e.getPlayer();
@@ -190,15 +197,14 @@ public class PlayerListener implements Listener {
                 if (s.getLine(0).contains(ChatColor.DARK_PURPLE + "[Team]")) {
                     String teamName = ChatColor.stripColor(s.getLine(1));
                     GameTeam team = GameTeam.valueOf(teamName.toUpperCase());
-                    if (team != null) {
-                        if (pmeta.getTeam() == GameTeam.NONE)
-                            plugin.joinTeam(e.getPlayer(), teamName);
-                    }
+                    if (pmeta.getTeam() == GameTeam.NONE)
+                        plugin.joinTeam(e.getPlayer(), teamName);
                 }
             }
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         Player player = e.getPlayer();
@@ -222,13 +228,15 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onSignPlace(SignChangeEvent e) {
         if (e.getPlayer().hasPermission("annihilation.buildbypass"))
             if (e.getLine(0).toLowerCase().contains("[Shop]".toLowerCase()))
                 e.setLine(0, ChatColor.DARK_PURPLE + "[Shop]");
-        }
+    }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onKick(PlayerKickEvent e) {
         if (e.getReason().equals(ChatColor.RED + "ANNIHILATION-TRIGGER-KICK-01")) {
@@ -237,7 +245,7 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         String prefix = ChatColor.GOLD + "[NexusGrinder] " + ChatColor.GRAY;
@@ -252,7 +260,7 @@ public class PlayerListener implements Listener {
                     player.kickPlayer((ChatColor.RED
                             + "ANNIHILATION-TRIGGER-KICK-01"));
                 }
-            }, 1l);
+            }, 1L);
             e.setJoinMessage(null);
             return;
         }
@@ -311,6 +319,7 @@ public class PlayerListener implements Listener {
         plugin.getScoreboardHandler().update();
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         final Player p = e.getEntity();
@@ -343,13 +352,12 @@ public class PlayerListener implements Listener {
 
         Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
             public void run() {
-                PacketPlayInClientCommand in = new PacketPlayInClientCommand(EnumClientCommand.PERFORM_RESPAWN);
-                EntityPlayer cPlayer = ((CraftPlayer) p).getHandle();
-                cPlayer.playerConnection.a(in);
+                p.spigot().respawn();
             }
-        }, 1l);
+        }, 1L);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
@@ -363,18 +371,19 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerPortal(PlayerPortalEvent e) {
         final Player player = e.getPlayer();
         player.setHealth(0D);
         Bukkit.getScheduler().runTaskLater(plugin , new Runnable() {
-            @Override
             public void run() {
                 Util.showClassSelector(player, "Select Class");
             }
         }, 41);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerAttack(EntityDamageByEntityEvent e) {
         Entity damager = e.getDamager();
@@ -402,6 +411,7 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlace(BlockPlaceEvent e) {
         if (plugin.getPhase() > 0) {
@@ -432,6 +442,7 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler(ignoreCancelled = true)
     public void onBreak(BlockBreakEvent e) {
         if (plugin.getPhase() > 0) {
@@ -597,6 +608,7 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onFoodLevelChange(FoodLevelChangeEvent event) {
         if (event.getEntity().getWorld().getName().equals("lobby")) {
@@ -605,6 +617,7 @@ public class PlayerListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         Inventory inv = e.getInventory();

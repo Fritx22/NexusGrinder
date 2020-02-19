@@ -620,6 +620,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
     }
 
     public void startGame() {
+
         for (Player p : Bukkit.getOnlinePlayers()) {
             for (Player pp : Bukkit.getOnlinePlayers()) {
                 p.showPlayer(pp);
@@ -627,12 +628,11 @@ public final class Annihilation extends JavaPlugin implements Listener {
             }
         }
 
-        Bukkit.getPluginManager().callEvent(
-                new GameStartEvent(mapManager.getCurrentMap()));
+        Bukkit.getPluginManager().callEvent(new GameStartEvent(mapManager.getCurrentMap()));
+
         scoreboardManager.scores.clear();
 
-        for (OfflinePlayer score : scoreboardManager.sb.getPlayers())
-            scoreboardManager.sb.resetScores(score);
+        for (OfflinePlayer score : scoreboardManager.sb.getPlayers()) scoreboardManager.sb.resetScores(score);
 
         scoreboardManager.obj.setDisplayName(ChatColor.DARK_AQUA + "Map: "
                 + WordUtils.capitalize(votingManager.getWinner()));
@@ -641,6 +641,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
             scoreboardManager.scores.put(t.name(), scoreboardManager.obj.getScore(Bukkit
                     .getOfflinePlayer(WordUtils.capitalize(t.name()
                             .toLowerCase() + " Nexus"))));
+
             scoreboardManager.scores.get(t.name()).setScore(t.getNexus().getHealth());
 
             Team sbt = scoreboardManager.sb.registerNewTeam(t.name() + "SB");
@@ -683,13 +684,7 @@ public final class Annihilation extends JavaPlugin implements Listener {
         }, 100L, 5L);
     }
 
-    @SuppressWarnings("unused")
-    @EventHandler
-    public void onPlayerSwim(PlayerMoveEvent e) {
-        if (e.getTo().getBlock().getType().equals(Material.STATIONARY_WATER)) {
-            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 1000, 10));
-        }
-    }
+
 
     public void advancePhase() {
         ChatUtil.phaseMessage(phaseManager.getPhase());
