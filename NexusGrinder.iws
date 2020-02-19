@@ -206,6 +206,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="526" y="240" width="303" height="206" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.768@0.0.1366.768" timestamp="1582124970465" />
+    <state x="382" y="-64" width="563" height="758" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582139130115">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="382" y="-64" width="563" height="758" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768@0.0.1366.768" timestamp="1582139130115" />
     <state x="170" y="-17" key="SettingsEditor" timestamp="1582135787117">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

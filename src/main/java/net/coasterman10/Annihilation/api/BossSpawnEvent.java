@@ -24,10 +24,10 @@ import org.bukkit.event.HandlerList;
 
 public class BossSpawnEvent extends Event {
 
-    private Boss b;
+    private Boss boss;
     
-    public BossSpawnEvent(Boss b) {
-        this.b = b;
+    public BossSpawnEvent(Boss boss) {
+        this.boss = boss;
     }
     
     private static final HandlerList handlers = new HandlerList();
@@ -41,6 +41,6 @@ public class BossSpawnEvent extends Event {
     }
 
     public Boss getBoss() {
-        return b;
+        return boss;
     }
 }

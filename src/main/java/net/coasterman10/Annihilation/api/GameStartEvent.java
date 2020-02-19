@@ -27,10 +27,10 @@ public class GameStartEvent extends Event {
     
     private static final HandlerList handlers = new HandlerList();
 
-    private GameMap m;
+    private GameMap map;
     
-    public GameStartEvent(GameMap m) {
-        this.m = m;
+    public GameStartEvent(GameMap map) {
+        this.map = map;
     }
     
     public HandlerList getHandlers() {
@@ -42,6 +42,6 @@ public class GameStartEvent extends Event {
     }
 
     public GameMap getMap() {
-        return m;
+        return map;
     }
 }

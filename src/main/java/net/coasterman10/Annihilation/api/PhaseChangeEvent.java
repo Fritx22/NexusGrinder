@@ -23,10 +23,10 @@ import org.bukkit.event.HandlerList;
 
 public class PhaseChangeEvent extends Event {
 
-    private int p;
+    private int newPhase;
     
-    public PhaseChangeEvent(int p) {
-        this.p = p;
+    public PhaseChangeEvent(int newPhase) {
+        this.newPhase = newPhase;
     }
     
     private static final HandlerList handlers = new HandlerList();
@@ -40,6 +40,6 @@ public class PhaseChangeEvent extends Event {
     }
 
     public int getNewPhase() {
-        return p;
+        return newPhase;
     }
 }

@@ -26,12 +26,12 @@ import org.bukkit.event.HandlerList;
 
 public class NexusDestroyEvent extends Event {
 
-    private Player p;
-    private GameTeam t;
+    private Player player;
+    private GameTeam team;
     
-    public NexusDestroyEvent(Player p, GameTeam t) {
-        this.p = p;
-        this.t = t;
+    public NexusDestroyEvent(Player player, GameTeam team) {
+        this.player = player;
+        this.team = team;
     }
     
     private static final HandlerList handlers = new HandlerList();
@@ -45,10 +45,10 @@ public class NexusDestroyEvent extends Event {
     }
 
     public Player getPlayer() {
-        return p;
+        return player;
     }
     
     public GameTeam getTeam() {
-        return t;
+        return team;
     }
 }

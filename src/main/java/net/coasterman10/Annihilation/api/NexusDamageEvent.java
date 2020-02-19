@@ -26,14 +26,14 @@ import org.bukkit.event.HandlerList;
 
 public class NexusDamageEvent extends Event {
 
-    private Player p;
-    private GameTeam t;
-    private int h;
+    private Player player;
+    private GameTeam team;
+    private int damage;
     
-    public NexusDamageEvent(Player p, GameTeam t, int h) {
-        this.p = p;
-        this.t = t;
-        this.h = h;
+    public NexusDamageEvent(Player player, GameTeam team, int damage) {
+        this.player = player;
+        this.team = team;
+        this.damage = damage;
     }
     
     private static final HandlerList handlers = new HandlerList();
@@ -47,14 +47,14 @@ public class NexusDamageEvent extends Event {
     }
 
     public Player getPlayer() {
-        return p;
+        return player;
     }
     
     public GameTeam getTeam() {
-        return t;
+        return team;
     }
 
     public int getNexusDamage() {
-        return h;
+        return damage;
     }
 }
