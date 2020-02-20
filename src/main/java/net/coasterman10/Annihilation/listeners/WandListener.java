@@ -58,6 +58,7 @@ public class WandListener implements Listener {
         this.plugin = plugin;
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onWandUse(PlayerInteractEvent e) {
         if (e.getAction() == Action.RIGHT_CLICK_AIR

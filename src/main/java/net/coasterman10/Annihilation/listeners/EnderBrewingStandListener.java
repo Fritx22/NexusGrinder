@@ -25,8 +25,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.craftbukkit.v1_7_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_7_R1.inventory.CraftInventoryBrewer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftInventoryBrewer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -39,9 +39,9 @@ import org.bukkit.inventory.InventoryHolder;
 import net.coasterman10.Annihilation.Annihilation;
 import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
-import net.minecraft.server.v1_7_R1.EntityHuman;
-import net.minecraft.server.v1_7_R1.EntityPlayer;
-import net.minecraft.server.v1_7_R1.TileEntityBrewingStand;
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.TileEntityBrewingStand;
 
 public class EnderBrewingStandListener implements Listener {
     private HashMap<TeamEnum, Location> locations;
@@ -54,7 +54,7 @@ public class EnderBrewingStandListener implements Listener {
         Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
             public void run() {
                 for (VirtualBrewingStand b : brewingStands.values())
-                    b.h();
+                    b.c();
             }
         }, 0L, 1L);
     }
@@ -63,30 +63,37 @@ public class EnderBrewingStandListener implements Listener {
         locations.put(team, loc);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onFurnaceOpen(PlayerInteractEvent e) {
+
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK)
             return;
         
         Block b = e.getClickedBlock();
+
         if (b.getType() != Material.BREWING_STAND)
             return;
 
         Location loc = b.getLocation();
         Player player = e.getPlayer();
         TeamEnum team = PlayerMeta.getMeta(player).getTeam();
+
         if (team == null || !locations.containsKey(team))
             return;
         
         e.setCancelled(true);
         if (locations.get(team).equals(loc)) {
+
             EntityPlayer handle = ((CraftPlayer) player).getHandle();
-            handle.openBrewingStand(getBrewingStand(player));
+            handle.openContainer(getBrewingStand(player));
+
             player.sendMessage(ChatColor.DARK_AQUA
                     + "This is your team's Ender Brewing Stand. Any items you brew here are safe from all other players.");
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onFurnaceBreak(BlockBreakEvent e) {
         if (locations.values().contains(e.getBlock().getLocation()))
@@ -112,13 +119,13 @@ public class EnderBrewingStandListener implements Listener {
         }
 
         @Override
-        public int p() {
+        public int g() {
             return 0;
         }
 
         @Override
-        public net.minecraft.server.v1_7_R1.Block q() {
-            return net.minecraft.server.v1_7_R1.Blocks.BREWING_STAND;
+        public net.minecraft.server.v1_8_R3.Block w() {
+            return net.minecraft.server.v1_8_R3.Blocks.BREWING_STAND;
         }
 
         @Override

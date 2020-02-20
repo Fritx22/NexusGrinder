@@ -18,10 +18,7 @@
  */
 package net.coasterman10.Annihilation.bar;
 
-import java.util.HashMap;
-
 import net.coasterman10.Annihilation.Annihilation;
-
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -32,7 +29,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-;
+import java.util.HashMap;
 
 public class BarUtil implements Listener {
     private static BarUtil instance;
@@ -50,13 +47,15 @@ public class BarUtil implements Listener {
         plugin.getServer().getPluginManager().registerEvents(instance, plugin);
     }
 
-    public static void setMessageAndPercent(Player player, String message,
-            float percent) {
+    public static void setMessageAndPercent(Player player, String message, float percent) {
+
         FakeDragon dragon = instance.getDragon(player, message);
+
         if (message.length() > 64)
             dragon.name = message.substring(0, 63);
         else
             dragon.name = message;
+
         dragon.health = percent * FakeDragon.MAX_HEALTH;
         instance.sendDragon(dragon, player);
     }
@@ -80,22 +79,26 @@ public class BarUtil implements Listener {
         instance.sendDragon(dragon, player);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void PlayerLogout(PlayerQuitEvent event) {
         quit(event.getPlayer());
     }
 
+    @SuppressWarnings("unused")
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerKick(PlayerKickEvent event) {
         quit(event.getPlayer());
     }
 
+    @SuppressWarnings("unused")
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         if (event.getTo() != null)
             handleTeleport(event.getPlayer(), event.getTo().clone());
     }
 
+    @SuppressWarnings("unused")
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onPlayerTeleport(PlayerRespawnEvent event) {
         handleTeleport(event.getPlayer(), event.getRespawnLocation().clone());

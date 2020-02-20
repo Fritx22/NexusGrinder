@@ -18,14 +18,8 @@
  */
 package net.coasterman10.Annihilation.listeners;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map.Entry;
-
-import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.PlayerMeta;
-
+import net.coasterman10.Annihilation.object.TeamEnum;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -39,23 +33,33 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map.Entry;
+
 public class EnderChestListener implements Listener {
     private HashMap<TeamEnum, Location> chests = new HashMap<TeamEnum, Location>();
     private HashMap<String, Inventory> inventories = new HashMap<String, Inventory>();
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onChestOpen(PlayerInteractEvent e) {
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK)
             return;
+
         if (e.getClickedBlock().getType() != Material.ENDER_CHEST)
             return;
 
         Block clicked = e.getClickedBlock();
         Player player = e.getPlayer();
         TeamEnum team = PlayerMeta.getMeta(player).getTeam();
+
         if (team == TeamEnum.NONE || !chests.containsKey(team))
             return;
+
         e.setCancelled(true);
+
         if (chests.get(team).equals(clicked.getLocation())) {
             openEnderChest(player);
         } else {
@@ -79,13 +83,14 @@ public class EnderChestListener implements Listener {
         player.openInventory(inventories.get(name));
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onFurnaceBreak(BlockBreakEvent e) {
         if (chests.values().contains(e.getBlock().getLocation()))
             e.setCancelled(true);
     }
 
-    
+
     private void openEnemyEnderChest(Player player, TeamEnum owner) {
         LinkedList<Inventory> shuffledInventories = new LinkedList<Inventory>();
         for (Entry<String, Inventory> entry : inventories.entrySet())

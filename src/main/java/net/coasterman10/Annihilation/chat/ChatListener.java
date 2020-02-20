@@ -34,6 +34,7 @@ public class ChatListener implements Listener {
         this.plugin = plugin;
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerChat(final AsyncPlayerChatEvent e) {
         Player sender = e.getPlayer();

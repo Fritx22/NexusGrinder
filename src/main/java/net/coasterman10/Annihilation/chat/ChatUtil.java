@@ -58,11 +58,10 @@ public class ChatUtil {
                         + group;
             }
         }
-        String msg = message;
         String permGroup = VaultHooks.getGroup(sender.getName());
         if (!permGroup.equals(""))
             group += " " + permGroup + RESET;
-        String toSend = group + " " + username + RESET + ": " + msg;
+        String toSend = group + " " + username + RESET + ": " + message;
         for (Player player : Bukkit.getOnlinePlayers())
             player.sendMessage(toSend);
     }

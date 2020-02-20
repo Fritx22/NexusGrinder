@@ -18,11 +18,7 @@
  */
 package net.coasterman10.Annihilation.listeners;
 
-import java.util.Arrays;
-import java.util.Iterator;
-
 import net.coasterman10.Annihilation.manager.SoundManager;
-
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -33,9 +29,13 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.Collections;
+import java.util.Iterator;
+
 public class SoulboundListener implements Listener {
     private static final String soulboundTag = ChatColor.GOLD + "Soulbound";
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onSoulboundDrop(PlayerDropItemEvent e) {
         if (isSoulbound(e.getItemDrop().getItemStack())) {
@@ -45,6 +45,7 @@ public class SoulboundListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         Iterator<ItemStack> it = e.getDrops().iterator();
@@ -56,19 +57,21 @@ public class SoulboundListener implements Listener {
 
     public static boolean isSoulbound(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
-        if (item.hasItemMeta())
-            if (meta.hasLore())
-                if (meta.getLore().contains(soulboundTag))
-                    return true;
+
+        if (item.hasItemMeta() && meta.hasLore())
+            return meta.getLore().contains(soulboundTag);
+
         return false;
     }
-    
+
     public static void soulbind(ItemStack stack) {
         ItemMeta meta = stack.getItemMeta();
+
         if (!meta.hasLore())
-            meta.setLore(Arrays.asList(soulboundTag));
+            meta.setLore(Collections.singletonList(soulboundTag));
         else
             meta.getLore().add(soulboundTag);
+
         stack.setItemMeta(meta);
     }
 }

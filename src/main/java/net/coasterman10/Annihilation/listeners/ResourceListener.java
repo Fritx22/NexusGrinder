@@ -73,7 +73,7 @@ public class ResourceListener implements Listener {
         addResource(Material.MELON_BLOCK, 0, 10);
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("unused")
     @EventHandler(ignoreCancelled = false)
     public void onResourceBreak(BlockBreakEvent e) {
         if (resources.containsKey(e.getBlock().getType())) {
@@ -85,7 +85,8 @@ public class ResourceListener implements Listener {
         }
     }
 
-    @EventHandler(ignoreCancelled = false)
+    @SuppressWarnings("unused")
+    @EventHandler()
     public void placeResource(BlockPlaceEvent e) {
         if (resources.containsKey(e.getBlock().getType())) {
             e.setCancelled(true);
