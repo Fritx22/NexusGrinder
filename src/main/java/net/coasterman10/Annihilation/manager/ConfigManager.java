@@ -58,6 +58,7 @@ public class ConfigManager {
     private final TreeMap<String, Configuration> configs = new TreeMap<String, Configuration>(
             String.CASE_INSENSITIVE_ORDER);
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public ConfigManager(Annihilation plugin) {
         this.plugin = plugin;
         configFolder = plugin.getDataFolder();
@@ -66,12 +67,14 @@ public class ConfigManager {
         }
     }
 
+    @SuppressWarnings("unused")
     public void loadConfigFile(String filename) {
         loadConfigFiles(filename);
     }
 
-    public void loadConfigFiles(String... filenames) {
-        for (String filename : filenames) {
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    public void loadConfigFiles(String... fileNames) {
+        for (String filename : fileNames) {
             File configFile = new File(configFolder, filename);
             Configuration config;
             try {
@@ -118,6 +121,7 @@ public class ConfigManager {
         }
     }
 
+    @SuppressWarnings("unused")
     public void reload(String filename) {
         if (configs.containsKey(filename)) {
             try {

@@ -50,41 +50,45 @@ public class DatabaseManager {
         this.plugin = plugin;
     }
     
-    public Connection open() { 
+    public void open() {
         try { 
             Class.forName(driver); 
 
-            this.c = DriverManager.getConnection(connectionString); 
-            return c; 
-        } catch (SQLException e) { 
+            this.c = DriverManager.getConnection(connectionString);
+            this.connected = true;
+
+        } catch (SQLException e) {
             System.out.println("Could not connect to Database! because: " + e.getMessage()); 
         } catch (ClassNotFoundException e) { 
             System.out.println(driver+" not found!"); 
         } catch (Exception e) { 
             System.out.println(e.getMessage()); 
-        } 
-        return this.c; 
-    } 
+        }
+    }
    
     public Connection getConn() { 
         return this.c; 
-    } 
+    }
+
     public void close() {
         try {
             if(c!=null) c.close();
+            this.connected = false;
         } catch (SQLException ex) {
             plugin.log(ex.getMessage(), Level.SEVERE);
         }
         c = null; 
-    } 
+    }
+
     public boolean isConnected() {
         try {
-            return((c==null || c.isClosed()) ? false:true);
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return((c.isClosed() || c!=null));
+        } catch (SQLException | NullPointerException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
+
     public class Result {
          private ResultSet resultSet;
          private Statement statement;
@@ -108,15 +112,15 @@ public class DatabaseManager {
          }
      } 
     public Result query(final String query) {
-        if (!isConnected()) open();
+        if (isConnected()) open();
         return query(query,true);
     }
     public Result query(final String query, boolean retry) {
-        if (!isConnected()) open();
+        if (isConnected()) open();
         try {
             PreparedStatement statement=null;
             try {
-                if (!isConnected()) open();
+                if (isConnected()) open();
                 statement = c.prepareStatement(query);
                 if (statement.execute())
                 return new Result(statement, statement.getResultSet());
@@ -127,11 +131,7 @@ public class DatabaseManager {
                 if (retry && msg.contains("_BUSY")) {
                     logger.severe("Retrying query...");
                     plugin.getServer().getScheduler()
-                    .scheduleSyncDelayedTask(plugin, new Runnable() {
-                        public void run() {
-                                query(query,false);
-                            }
-                        }, 20);
+                    .scheduleSyncDelayedTask(plugin, () -> query(query,false), 20);
                 }
             }
             if (statement != null) statement.close();
@@ -178,12 +178,12 @@ public class DatabaseManager {
   } 
   
   
-  protected static enum Statements 
+  protected enum Statements
   { 
     SELECT, INSERT, UPDATE, DELETE, DO, REPLACE, LOAD, HANDLER, CALL,  
     CREATE, ALTER, DROP, TRUNCATE, RENAME, START, COMMIT, ROLLBACK,  
     SAVEPOINT, LOCK, UNLOCK, PREPARE, EXECUTE, DEALLOCATE, SET, SHOW,  
     DESCRIBE, EXPLAIN, HELP, USE, ANALYZE, ATTACH, BEGIN, DETACH,  
-    END, INDEXED, ON, PRAGMA, REINDEX, RELEASE, VACUUM; 
+    END, INDEXED, ON, PRAGMA, REINDEX, RELEASE, VACUUM
   }
 }

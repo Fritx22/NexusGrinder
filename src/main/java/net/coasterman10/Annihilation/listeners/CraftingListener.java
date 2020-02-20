@@ -18,11 +18,8 @@
  */
 package net.coasterman10.Annihilation.listeners;
 
-import java.util.Arrays;
-
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -33,6 +30,8 @@ import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
+import java.util.Arrays;
+
 public class CraftingListener implements Listener {
     private ShapedRecipe arrowRecipe;
 
@@ -42,8 +41,9 @@ public class CraftingListener implements Listener {
         arrowRecipe.setIngredient('F', Material.FLINT);
         arrowRecipe.setIngredient('S', Material.STICK);
         Bukkit.addRecipe(arrowRecipe);
-    };
+    }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onPrepareCraft(PrepareItemCraftEvent e) {
         Player player = (Player) e.getView().getPlayer();
@@ -57,6 +57,7 @@ public class CraftingListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onCraft(CraftItemEvent e) {
         Player player = (Player) e.getWhoClicked();
@@ -77,8 +78,7 @@ public class CraftingListener implements Listener {
             return false;
         if (!r1.getResult().equals(r2.getResult()))
             return false;
-        if (Arrays.equals(r1.getShape(), r2.getShape()))
-            return true;
-        return false;
+
+        return Arrays.equals(r1.getShape(), r2.getShape());
     }
 }

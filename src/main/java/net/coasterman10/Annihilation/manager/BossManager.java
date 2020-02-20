@@ -63,7 +63,7 @@ public class BossManager {
         boss.setRemoveWhenFarAway(false);
         boss.setCustomNameVisible(true);
         boss.setCustomName(ChatColor.translateAlternateColorCodes('&',
-                b.getBossName() + " &8» &a" + (int) b.getHealth() + " HP"));
+                b.getBossName() + " &8» &a" + b.getHealth() + " HP"));
         bossNames.put(boss.getCustomName(), b);
         Util.spawnFirework(bossSpawnLocation);
         Util.spawnFirework(bossSpawnLocation);
@@ -75,7 +75,7 @@ public class BossManager {
     public void update(Boss boss, IronGolem g) {
         boss.setHealth((int) g.getHealth());
         g.setCustomName(ChatColor.translateAlternateColorCodes('&',
-                boss.getBossName() + " &8» &a" + (int) boss.getHealth() + " HP"));
+                boss.getBossName() + " &8» &a" + boss.getHealth() + " HP"));
         bossNames.put(g.getCustomName(), boss);
         bosses.put(boss.getConfigName(), boss);
     }

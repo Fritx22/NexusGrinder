@@ -18,14 +18,10 @@
  */
 package net.coasterman10.Annihilation.listeners;
 
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.object.TeamEnum;
 import net.coasterman10.Annihilation.object.Kit;
 import net.coasterman10.Annihilation.object.PlayerMeta;
-
+import net.coasterman10.Annihilation.object.TeamEnum;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -43,6 +39,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 public class ClassAbilityListener implements Listener {
     private final HashMap<String, Location> blockLocations = new HashMap<String, Location>();
     private final HashMap<String, Long> cooldowns = new HashMap<String, Long>();
@@ -57,6 +56,7 @@ public class ClassAbilityListener implements Listener {
         }, 20L, 20L);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onSpecialBlockBreak(BlockBreakEvent e) {
         Block b = e.getBlock();
@@ -86,7 +86,7 @@ public class ClassAbilityListener implements Listener {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("unused")
     @EventHandler
     public void onSpecialBlockPlace(PlayerInteractEvent e) {
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK)
@@ -102,7 +102,7 @@ public class ClassAbilityListener implements Listener {
             if (held.hasItemMeta()) {
                 if (held.getType() == Material.SOUL_SAND
                         && held.getItemMeta().getDisplayName()
-                                .equals(ChatColor.AQUA + "Return Point")) {
+                        .equals(ChatColor.AQUA + "Return Point")) {
                     e.setCancelled(true);
                     if (blockLocations.get(player.getName()) == null) {
                         player.updateInventory();
@@ -127,6 +127,7 @@ public class ClassAbilityListener implements Listener {
         }
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onScoutGrapple(PlayerFishEvent e) {
         Player player = e.getPlayer();
@@ -169,6 +170,7 @@ public class ClassAbilityListener implements Listener {
         player.setVelocity(vel);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onFallDamage(EntityDamageEvent e) {
         if (!(e.getEntity() instanceof Player))
@@ -198,26 +200,30 @@ public class ClassAbilityListener implements Listener {
             final Player player = Bukkit.getPlayer(name);
             if (!player.isOnline())
                 continue;
+
+
             switch (PlayerMeta.getMeta(player).getKit()) {
-            case OPERATIVE:
-                if (cooldown == 0) {
-                    final Location returnPoint = blockLocations.get(name);
-                    returnPoint.getBlock().setType(Material.AIR);
-                    Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
-                        public void run() {
-                            player.teleport(returnPoint);
-                            player.sendMessage(ChatColor.DARK_AQUA
-                                    + "You have been teleported back to your return point.");
-                        }
-                    }, 1L);
-                    blockLocations.remove(name);
-                } else if (cooldown == 20 || cooldown == 10 || cooldown <= 5) {
-                    player.sendMessage(ChatColor.DARK_AQUA
-                            + "Teleporting back in " + cooldown + " second" + (cooldown == 1 ? "" : "s"));
-                }
-            default:
-                continue;
+                case OPERATIVE:
+                    if (cooldown == 0) {
+                        final Location returnPoint = blockLocations.get(name);
+                        returnPoint.getBlock().setType(Material.AIR);
+                        Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
+                            public void run() {
+                                player.teleport(returnPoint);
+                                player.sendMessage(ChatColor.DARK_AQUA
+                                        + "You have been teleported back to your return point.");
+                            }
+                        }, 1L);
+                        blockLocations.remove(name);
+                    } else if (cooldown == 20 || cooldown == 10 || cooldown <= 5) {
+                        player.sendMessage(ChatColor.DARK_AQUA
+                                + "Teleporting back in " + cooldown + " second" + (cooldown == 1 ? "" : "s"));
+                    }
+                default:
+                    continue;
             }
+
+
         }
     }
 }

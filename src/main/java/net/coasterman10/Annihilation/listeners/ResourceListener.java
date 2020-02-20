@@ -74,12 +74,12 @@ public class ResourceListener implements Listener {
     }
 
     @SuppressWarnings("unused")
-    @EventHandler(ignoreCancelled = false)
+    @EventHandler()
     public void onResourceBreak(BlockBreakEvent e) {
         if (resources.containsKey(e.getBlock().getType())) {
             e.setCancelled(true);
             breakResource(e.getPlayer(), e.getBlock());
-            e.getBlock().getWorld().playEffect(e.getBlock().getLocation(), Effect.STEP_SOUND, e.getBlock().getTypeId());
+            e.getBlock().getWorld().playEffect(e.getBlock().getLocation(), Effect.STEP_SOUND, e.getBlock().getType());
         } else if (queue.contains(e.getBlock().getLocation())) {
             e.setCancelled(true);
         }

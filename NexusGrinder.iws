@@ -96,6 +96,9 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="SearchEverywhereHistory" value="PlayerL&#10;StatsMa&#10;PlayerLi&#10;MapM&#10;Vote&#10;VoteCo&#10;TeamCom&#10;TeamCo&#10;Stat&#10;MapCo&#10;Dista&#10;ClassCo&#10;Class&#10;Listen&#10;BossL&#10;Annihi&#10;Phase&#10;Restart&#10;Util&#10;Player&#10;A&#10;Nexus&#10;Sign&#10;Play&#10;Tea" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RunManager">
@@ -209,6 +212,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="276" y="10" width="804" height="667" key="#Project_Structure" timestamp="1582233303715">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="276" y="10" width="804" height="667" key="#Project_Structure/0.0.1366.768@0.0.1366.768" timestamp="1582233303715" />
     <state x="526" y="240" width="303" height="206" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1582124970465">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

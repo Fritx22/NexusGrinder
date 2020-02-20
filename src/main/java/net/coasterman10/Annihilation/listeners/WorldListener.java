@@ -44,12 +44,14 @@ public class WorldListener implements Listener {
         }
     };
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onWaterFlow(BlockFromToEvent e) {
         if (Util.isEmptyColumn(e.getToBlock().getLocation()))
             e.setCancelled(true);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onSpawn(CreatureSpawnEvent e) {
         if (isHostile(e.getEntityType()))

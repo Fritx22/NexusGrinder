@@ -18,8 +18,12 @@
  */
 package net.coasterman10.Annihilation.listeners;
 
-import java.util.HashMap;
-
+import net.coasterman10.Annihilation.Annihilation;
+import net.coasterman10.Annihilation.object.PlayerMeta;
+import net.coasterman10.Annihilation.object.TeamEnum;
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.TileEntityBrewingStand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -36,12 +40,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-import net.coasterman10.Annihilation.Annihilation;
-import net.coasterman10.Annihilation.object.TeamEnum;
-import net.coasterman10.Annihilation.object.PlayerMeta;
-import net.minecraft.server.v1_8_R3.EntityHuman;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.server.v1_8_R3.TileEntityBrewingStand;
+import java.util.HashMap;
 
 public class EnderBrewingStandListener implements Listener {
     private HashMap<TeamEnum, Location> locations;
@@ -50,7 +49,7 @@ public class EnderBrewingStandListener implements Listener {
     public EnderBrewingStandListener(Annihilation plugin) {
         locations = new HashMap<TeamEnum, Location>();
         brewingStands = new HashMap<String, VirtualBrewingStand>();
-        
+
         Bukkit.getScheduler().runTaskTimer(plugin, new Runnable() {
             public void run() {
                 for (VirtualBrewingStand b : brewingStands.values())
@@ -69,7 +68,7 @@ public class EnderBrewingStandListener implements Listener {
 
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK)
             return;
-        
+
         Block b = e.getClickedBlock();
 
         if (b.getType() != Material.BREWING_STAND)
@@ -81,7 +80,7 @@ public class EnderBrewingStandListener implements Listener {
 
         if (team == null || !locations.containsKey(team))
             return;
-        
+
         e.setCancelled(true);
         if (locations.get(team).equals(loc)) {
 
@@ -112,7 +111,7 @@ public class EnderBrewingStandListener implements Listener {
         public VirtualBrewingStand(EntityHuman entity) {
             world = entity.world;
         }
-        
+
         @Override
         public boolean a(EntityHuman entity) {
             return true;
