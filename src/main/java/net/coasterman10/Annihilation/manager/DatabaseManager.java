@@ -41,8 +41,8 @@ public class DatabaseManager {
     public Connection connection = null;
   
     public DatabaseManager(String hostname, int port, String database, String username, String password, Annihilation plugin) { 
-        driver="com.mysql.jdbc.Driver";
-        connectionString="jdbc:mysql://" + hostname + ":" + port + "/" + database+ "?user=" + username + "&password=" + password;
+        this.driver="com.mysql.jdbc.Driver";
+        this.connectionString="jdbc:mysql://" + hostname + ":" + port + "/" + database+ "?user=" + username + "&password=" + password;
         this.plugin = plugin;
     } 
     

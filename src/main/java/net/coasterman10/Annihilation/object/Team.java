@@ -22,15 +22,19 @@ public final class Team {
         //Location nexusLocation = Util.parseLocation(Annihilation.getInstance().getConfig().getString("nexuses." + this.teamColor.name().toLowerCase()));
         //this.nexus = new Nexus(teamColor, nexusLocation, 75);
         this.id = nextId++;
-        this.players = new HashMap<Player, UUID>();
+        this.players = new HashMap<>();
     }
 
     public byte getId() {
         return this.id;
     }
 
-    public HashMap<Player, UUID> getPlayers() {
-        return (HashMap<Player, UUID>) players.clone();
+    /**
+     *
+     * @return a copy of the HashMap containing the players
+     */
+    public Object getPlayers() {
+        return players.clone();
     }
 
     // TODO: Code this class

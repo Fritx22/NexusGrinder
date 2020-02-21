@@ -153,11 +153,23 @@ public final class Annihilation extends JavaPlugin implements Listener {
         YamlConfiguration messagesConfig = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "messages.yml"));
         YamlConfiguration shops = configManager.getConfig("shops.yml");
 
+        // Get necessary configuration values
+        this.nexusBuildRadius = this.getConfig().getInt("build", 5);
+        this.lastJoinPhase = this.getConfig().getInt("lastJoinPhase", 2);
+        this.respawn = this.getConfig().getInt("bossRespawnDelay", 10);
+        this.messageOfTheDay = pluginConfiguration.getBoolean("enableMotd", true);
+
+
+        // Setup utils
+        ChatUtil.setRoman(getConfig().getBoolean("roman", false));
+        BarUtil.init(this);
+
         // Store messages in the HashMap
         for (String id : messagesConfig.getKeys(false))
             messages.put(id, messagesConfig.getString(id));
 
         MapLoader mapLoader = new MapLoader(getLogger(), getDataFolder());
+
 
         isEndGameCommandsEnabled = getConfig().contains("commandsToRunAtEndGame");
 
@@ -185,16 +197,11 @@ public final class Annihilation extends JavaPlugin implements Listener {
         scoreboardManager = new ScoreboardManager();
         bossManager = new BossManager(this);
 
-        PluginManager pm = getServer().getPluginManager();
-
         signManager.loadSigns();
 
-        scoreboardManager.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
-                + " | " + ChatColor.GOLD + "/vote <name>");
 
-        nexusBuildRadius = this.getConfig().getInt("build", 5);
-        lastJoinPhase = this.getConfig().getInt("lastJoinPhase", 2);
-        respawn = this.getConfig().getInt("bossRespawnDelay", 10);
+        // Registering listeners
+        PluginManager pm = getServer().getPluginManager();
 
         pm.registerEvents(resourceListener, this);
         pm.registerEvents(enderFurnaceListener, this);
@@ -210,6 +217,11 @@ public final class Annihilation extends JavaPlugin implements Listener {
         pm.registerEvents(new ClassAbilityListener(this), this);
         pm.registerEvents(new BossListener(this), this);
 
+        scoreboardManager.resetScoreboard(ChatColor.DARK_AQUA + "Voting" + ChatColor.WHITE
+                + " | " + ChatColor.GOLD + "/vote <name>");
+
+
+        // Setup commands
         getCommand("nexusgrinder").setExecutor(new AnnihilationCommand(this));
         getCommand("class").setExecutor(new ClassCommand());
         getCommand("stats").setExecutor(new StatsCommand(statsManager));
@@ -222,12 +234,8 @@ public final class Annihilation extends JavaPlugin implements Listener {
         getCommand("distance").setExecutor(new DistanceCommand(this));
         getCommand("map").setExecutor(new MapCommand(this, mapLoader));
 
-        BarUtil.init(this);
-
         if (pluginConfiguration.getString("stats").equalsIgnoreCase("sql"))
             useMysql = true;
-
-        messageOfTheDay = pluginConfiguration.getBoolean("enableMotd", true);
 
         if (useMysql) {
             String mysqlHost = pluginConfiguration.getString("MySQL.host", "localhost");
@@ -255,14 +263,13 @@ public final class Annihilation extends JavaPlugin implements Listener {
             VaultHooks.setVault(false);
         }
 
-        setupServerForGame();
+        this.setupServerForGame();
 
         for (Entity e : Bukkit.getWorld("lobby").getEntities()) {
             e.remove();
         }
-        getLogger().info("Remove entities for NPC, success.");
 
-        ChatUtil.setRoman(getConfig().getBoolean("roman", false));
+        getLogger().info("Remove entities for NPC, success.");
 
         /*
         //sheep npc
