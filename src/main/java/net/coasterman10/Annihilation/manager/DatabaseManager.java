@@ -38,7 +38,7 @@ public class DatabaseManager {
     private String driver;
     private String connectionString;
     private Annihilation plugin;
-    public Connection c = null; 
+    public Connection connection = null;
   
     public DatabaseManager(String hostname, int port, String database, String username, String password, Annihilation plugin) { 
         driver="com.mysql.jdbc.Driver";
@@ -54,7 +54,7 @@ public class DatabaseManager {
         try { 
             Class.forName(driver); 
 
-            this.c = DriverManager.getConnection(connectionString);
+            this.connection = DriverManager.getConnection(connectionString);
             this.connected = true;
 
         } catch (SQLException e) {
@@ -66,23 +66,23 @@ public class DatabaseManager {
         }
     }
    
-    public Connection getConn() { 
-        return this.c; 
+    public Connection getConnection() {
+        return this.connection;
     }
 
     public void close() {
         try {
-            if(c!=null) c.close();
+            if(connection !=null) connection.close();
             this.connected = false;
         } catch (SQLException ex) {
             plugin.log(ex.getMessage(), Level.SEVERE);
         }
-        c = null; 
+        connection = null;
     }
 
     public boolean isConnected() {
         try {
-            return((c.isClosed() || c!=null));
+            return((connection.isClosed() || connection !=null));
         } catch (SQLException | NullPointerException ex) {
             ex.printStackTrace();
             return false;
@@ -121,7 +121,7 @@ public class DatabaseManager {
             PreparedStatement statement=null;
             try {
                 if (isConnected()) open();
-                statement = c.prepareStatement(query);
+                statement = connection.prepareStatement(query);
                 if (statement.execute())
                 return new Result(statement, statement.getResultSet());
             } catch (final SQLException e) {
