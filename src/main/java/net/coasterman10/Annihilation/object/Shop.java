@@ -106,6 +106,7 @@ public class Shop implements Listener {
         loadConfig(config);
     }
 
+    @SuppressWarnings("unused")
     @EventHandler
     public void onSignClick(PlayerInteractEvent e) {
         if (e.getClickedBlock() != null) {
@@ -121,7 +122,7 @@ public class Shop implements Listener {
         }
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings("unused")
     @EventHandler
     public void onShopInventoryClick(InventoryClickEvent e) {
         Player buyer = (Player) e.getWhoClicked();
@@ -169,7 +170,7 @@ public class Shop implements Listener {
     }
 
     private void loadConfig(Configuration config) {
-        items = new ArrayList<ShopItem>();
+        items = new ArrayList<>();
 
         List<String> list = config.getStringList(name.toLowerCase());
         for (String entry : list) {
@@ -181,8 +182,8 @@ public class Shop implements Listener {
                 String[] params = entry.split(",");
                 if (params.length >= 3) {
                     Material type = Material.getMaterial(params[0]);
-                    int qty = Integer.valueOf(params[1]);
-                    int price = Integer.valueOf(params[2]);
+                    int qty = Integer.parseInt(params[1]);
+                    int price = Integer.parseInt(params[2]);
                     ShopItem item = new ShopItem(type, qty, price);
                     if (params.length >= 4) {
                         String itemName = params[3].replace("\"", "");
