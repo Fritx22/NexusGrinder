@@ -3,3 +3,6 @@
 /.settings
 .classpath
 dependency-reduced-pom.xml
+*.iml
+*.ipr
+*.iws
